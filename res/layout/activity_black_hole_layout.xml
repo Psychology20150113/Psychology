@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <com.dcy.psychology.view.BlackHoleView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bg_black_hole"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#0E0f11"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true">
+        <EditText 
+            android:id="@+id/input_et"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="15dp"
+            android:background="#ffffff"
+            android:inputType="text"/>
+        <TextView 
+            android:id="@+id/throw_tv"
+            style="@style/text_white18_style"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/throw_black_hole"/>
+    </LinearLayout>
+</RelativeLayout>

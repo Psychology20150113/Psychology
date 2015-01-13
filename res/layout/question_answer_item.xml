@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <ImageView 
+        android:id="@+id/answer_explain_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/icon_why"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/answer_explain_iv"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+        <TextView 
+            android:id="@+id/question_index_tv"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        <ImageView 
+            android:id="@+id/question_answer_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/icon_user"/>
+        <TextView 
+            android:id="@+id/mine_answer_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        <TextView 
+            android:id="@+id/right_answer_tv"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textColor="#00FF00"/>
+    </LinearLayout>
+
+</RelativeLayout>

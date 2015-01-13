@@ -1,0 +1,8 @@
+[{"id":1,"title":"方向","picture":"artical1/artical1_1.jpg","content":"artical1_1"},
+{"id":2,"title":"选择","picture":"artical1/artical1_2.jpg","content":"artical1_2"}, 
+{"id":3,"title":"“一打玫瑰花”","picture":"artical1/artical1_3.jpg","content":"artical1_3"}, 
+{"id":4,"title":"够了","picture":"artical1/artical1_4.jpg","content":"artical1_4"}, 
+{"id":5,"title":"抱怨学校不好，你没有资格！","picture":"artical1/artical1_5.jpg","content":"artical1_5"}, 
+{"id":6,"title":"装出一份好心情","picture":"artical1/artical1_6.jpg","content":"artical1_6"}, 
+{"id":7,"title":"土豆先生与西红柿小姐","picture":"artical1/artical1_7.jpg","content":"artical1_7"}, 
+{"id":8,"title":"三个小金人","picture":"artical1/artical1_8.jpg","content":"artical1_8"}]

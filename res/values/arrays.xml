@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level_choose">
+        <item>@string/easy</item>
+        <item>@string/normal</item>
+        <item>@string/difficult</item>
+    </string-array>
+    <string-array name="color_level_choose">
+        <item>@string/easy</item>
+        <item>@string/difficult</item>
+    </string-array>
+    <string-array name="tab_name">
+        <item>@string/tab_one</item>
+        <item>@string/tab_two</item>
+        <item>@string/tab_mine</item>
+    </string-array>
+    <string-array name="problem_array">
+        <item>@string/depression</item>
+        <item>@string/anxiety</item>
+        <item>@string/force</item>
+    </string-array>
+    <string-array name="problem_introduce_array">
+        <item>@string/depression_introduce</item>
+        <item>@string/anxiety_introduce</item>
+        <item>@string/force_introduce</item>
+    </string-array>
+    <string-array name="grow_platform_array">
+        <item>@string/grow_platform_one</item>
+    	<item>@string/grow_platform_two</item>
+    	<item>@string/grow_platform_three</item>
+    	<item>@string/grow_platform_four</item>
+    </string-array>
+    <string-array name="label_platform_array">
+        <item>@string/label_platform_one</item>
+        <item>@string/label_platform_two</item>
+        <item>@string/label_platform_three</item>
+        <item>@string/label_platform_four</item>
+    </string-array>
+    <string-array name="slide_item_array">
+        <item>@string/login</item>
+        <item>@string/slide_blackhole</item>
+        <item>@string/slide_music</item>
+        <item>@string/slide_message</item>
+        <item>@string/slide_discuss</item>
+        <item>@string/slide_love</item>
+        <item>@string/slide_point</item>
+        <item>@string/slide_account</item>
+    </string-array>
+</resources>

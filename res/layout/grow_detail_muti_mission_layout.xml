@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp" >
+    <TextView 
+	    android:id="@+id/mission_tv"
+	    style="@style/text_black18_style"/>
+    <ListView 
+        android:id="@+id/content_lv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:divider="@color/divider"
+        android:dividerHeight="1dp"
+        android:listSelector="#00000000"/>
+    <LinearLayout 
+        android:id="@+id/check_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center">
+		<Button 
+		    android:id="@+id/commit_btn"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/ok"/>
+		<Button 
+		    android:id="@+id/think_btn"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/thinking"/>
+	</LinearLayout>
+</LinearLayout>

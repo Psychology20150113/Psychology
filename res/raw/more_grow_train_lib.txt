@@ -1,0 +1,13 @@
+[[{"id":1,"type":"link","title":"心理测试","comment":"心理修复与成长前奏"},
+{"id":2,"type":"write","title":"体会","comment":"体会糟糕的情绪并且观察反应","count":6,"mission":"每天花2个小时，回忆并体验曾经让自己最痛苦的6个情景，并记录下来"},
+{"id":3,"type":"link","title":"心理测试","comment":"来个阶段测试吧！Come On!"},
+{"id":4,"type":"mutiMission","title":"放松训练","comment":"跟着资料学习放松方法","count":5,"dailyMax":1,"mission":"跟着资料学习放松方法及自我催眠方法","missionTips":["肌肉放松法","呼吸放松法"],"missionDetail":["进行肌肉放松15-20分钟","进行呼吸放松15-20分钟"],"checkTitle":"完成情况","checkItem":["完成","未完成"]},
+{"id":5,"type":"singleMission","title":"催眠训练","comment":"跟着资料学习催眠方法","mission":"放松催眠整合法（30分钟）3次，记录感受并写信","count":3,"dailyMax":3,"checkTitle":"完成情况","checkItem":["完成","未完成"]},
+{"id":6,"type":"link","title":"心理测试","comment":"来个阶段测试吧！Come On!"},
+{"id":7,"type":"mutiWrite","title":"调节认知","comment":"学习知识，明白认知可以调节人的情绪。不良情绪根源在不良的认知，不良情绪背后原因是消极认知","mission":"给自己1-2个小时，寻找你糟糕情绪背后的不良认知（完成15条左右），并反馈给咨询师","count":15,"missionDetail":["不良情绪","消极认知"]},
+{"id":8,"type":"singleMission","title":"整合训练","comment":"跟着资料学习放松及自我催眠整合训练的方法。","mission":"放松催眠整合法（30分钟）","count":7,"dailyMax":1,"checkTitle":"训练时间","checkItem":["达到时间","超过时间"]},
+{"id":9,"type":"write","title":"接受现实","comment":"学习知识，坦然接受不完美及无法改变的事实也可以调节人的情绪","mission":"看看，你是否存在这些不完美的想法？选择出来，写在笔记本上！","count":10,"checkTitle":"有无此类情况","checkItem":["有","无"]},
+{"id":10,"type":"mutiWrite","title":"接受现实","comment":"针对不完美的观点及事实时我们应该采取“拿得起，放得下”的态度","mission":"写出我对待这些现象的应采取的态度","count":10,"missionDetail":["不完美的观点","我的态度"],"linkMission":"看看，你是否存在这些不完美的想法？选择出来，写在笔记本上！"},
+{"id":11,"type":"singleMission","title":"接受现实","comment":"不要轻视您的言语的作用。言语不但会影响我们的情感，也会影响我们的思维判断。","mission":"面对镜子里的我，大声朗读这些需要坦然接受不完美的态度句子30分钟。","count":7,"dailyMax":1,"checkTitle":"自我反省","checkItem":["达到要求","未达到要求"]},
+{"id":12,"type":"link","title":"心理测试","comment":"来个阶段测试吧！Come On!"}
+]]

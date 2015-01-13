@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_gray" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@color/black"/>
+        <TextView 
+            android:id="@+id/problem_introduce_one_tv"
+            android:layout_marginLeft="20dp"
+            style="@style/text_black18_style"/>
+    </LinearLayout>
+    <include layout = "@layout/line_divider"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@color/black"/>
+        <TextView 
+            android:id="@+id/problem_introduce_two_tv"
+            android:layout_marginLeft="20dp"
+            style="@style/text_black18_style"
+            android:text="@string/problem_introduce_two"/>
+    </LinearLayout>
+    <include layout = "@layout/line_divider"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@color/black"/>
+        <TextView 
+            android:id="@+id/problem_introduce_three_tv"
+            android:layout_marginLeft="20dp"
+            style="@style/text_black18_style"
+            android:text="@string/problem_introduce_three"/>
+    </LinearLayout>
+    <include layout = "@layout/line_divider"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@color/black"/>
+        <TextView 
+            android:id="@+id/problem_introduce_four_tv"
+            android:layout_marginLeft="20dp"
+            style="@style/text_black18_style"
+            android:text="@string/problem_introduce_four"/>
+    </LinearLayout>
+	
+</LinearLayout>

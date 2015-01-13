@@ -1,0 +1,32 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <LinearLayout 
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff">
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1E1918"
+        android:orientation="vertical"
+	    android:layout_gravity="left">
+        <TextView 
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:padding="15dp"
+            android:visibility="gone"
+            android:textColor="#CCFFFFFF"/>
+		<ListView 
+	        android:id="@+id/drawer_lv"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"/>
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
