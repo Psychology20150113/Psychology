@@ -1,8 +1,9 @@
 package com.dcy.psychology.gsonbean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GameFishBean {
+public class GameFishBean implements Serializable{
 	private ArrayList<Fish> fish;
 	private ArrayList<String> colors;
 	
@@ -19,7 +20,7 @@ public class GameFishBean {
 		this.colors = colors;
 	}
 
-	public class Fish{
+	public class Fish implements Serializable{
 		private int type;
 		private int pointx;
 		private int pointy;

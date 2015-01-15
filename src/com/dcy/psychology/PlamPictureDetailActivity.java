@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 
 import com.dcy.psychology.gsonbean.GrowPictureBean;
 import com.dcy.psychology.util.Constants;
+import com.dcy.psychology.util.IOUtils;
 import com.dcy.psychology.util.Utils;
 
 import android.content.res.AssetManager;
@@ -42,7 +43,8 @@ public class PlamPictureDetailActivity extends BaseActivity {
 		try {
 			InputStream stream = manager.open(detailBean.getPicture());
 			mPicView.setImageBitmap(BitmapFactory.decodeStream(stream));
-			mContentText.setText(Utils.loadRawString(this, getResources().getIdentifier(detailBean.getContent(), "raw", getPackageName())));
+			mContentText.setText(IOUtils.convertStreamToString(manager.open(detailBean.getPicture().replace(".jpg", ".txt"))));
+//			mContentText.setText(Utils.loadRawString(this, getResources().getIdentifier(detailBean.getContent(), "raw", getPackageName())));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -54,6 +54,21 @@
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.SeaGameActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+        	<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.SeaGameResultActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+        </activity>
+        <activity 
             android:name="com.dcy.psychology.PlatformTwoActivity"
             android:screenOrientation="portrait">
         </activity>

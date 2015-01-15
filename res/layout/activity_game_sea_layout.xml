@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <com.dcy.psychology.view.SeaFishView 
+        android:id="@+id/fish_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <com.dcy.psychology.view.SeaChooseLayout
+        android:id="@+id/choose_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

@@ -1,0 +1,4 @@
+[{"fish":[{"type":0,"pointx":110,"pointy":110,"width":329,"height":272},
+{"type":1,"pointx":500,"pointy":300,"width":212,"height":248},
+{"type":0,"pointx":800,"pointy":200,"width":329,"height":272}],
+"colors":["#dc98ef","#b6eae8","#ffcc01"]}]

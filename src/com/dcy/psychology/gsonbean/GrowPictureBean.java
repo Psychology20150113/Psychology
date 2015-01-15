@@ -29,7 +29,7 @@ public class GrowPictureBean implements Serializable{
 	public String getContent() {
 		return content;
 	}
-	public void setCintent(String cintent) {
-		this.content = cintent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
