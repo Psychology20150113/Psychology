@@ -63,6 +63,10 @@ public class HomeListAdapter extends BaseAdapter {
 		super.notifyDataSetChanged();
 	}
 	
+	public int getPageIndex(){
+		return startPosition/getCount();
+	}
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Holder mHolder;
@@ -75,7 +79,7 @@ public class HomeListAdapter extends BaseAdapter {
 		}else {
 			mHolder = (Holder) convertView.getTag();
 		}
-		if(position % getCount() == 1){
+		if(position == 1){
 			mHolder.mImageView.setImageResource(R.drawable.icon_pic_text_default);
 			mHolder.mTextView.setText(Constants.HomePageTestTitle[startPosition/getCount()]);
 		}else {

@@ -14,4 +14,28 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"/>
+    <GridView 
+        android:id="@+id/level_gv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="27dp"
+        android:verticalSpacing="27dp"
+        android:numColumns="5"
+        android:layout_centerInParent="true"/>
+    <ImageView 
+        android:id="@+id/countdown_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"/>
+    <ImageView 
+        android:id="@+id/complete_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_game_complete"
+        android:visibility="gone"/>
 </RelativeLayout>

@@ -106,14 +106,14 @@
 	
 	<string name="title_pic">文章及测试题</string>
 	
-	<string name="grow_platform_one">自信</string>
-	<string name="grow_platform_two">人际交往</string>
-	<string name="grow_platform_three">恋爱</string>
-	<string name="grow_platform_four">时间管理</string>
+	<string name="grow_platform_one">在全新环境中驰骋</string>
+	<string name="grow_platform_two">琐事缠身，学习爱好睡眠难平衡</string>
+	<string name="grow_platform_three">爱ta的心渴望转化为语言和行动</string>
+	<string name="grow_platform_four">演讲怯场面试紧张，害怕被拒绝</string>
 	
 	<string name="label_platform_one">入学▪初来乍道</string>
 	<string name="label_platform_two">大一▪考试来了</string>
-	<string name="label_platform_three">大二▪感情复杂</string>
+	<string name="label_platform_three">大二▪恋爱悸动</string>
 	<string name="label_platform_four">大三▪发展瓶颈</string>
 	
 	<string name="cure_self">自助治疗</string>
@@ -128,9 +128,9 @@
 	<string name="problem_introduce_two">心理测试</string>
 	<string name="problem_introduce_three">个人成长</string>
 	<string name="problem_introduce_four">小故事</string>
-	<string name="student_grow_one">成长模式</string>
-	<string name="student_grow_test">测试</string>
-	<string name="student_grow_pic">图文</string>
+	<string name="student_grow_one">日积月累</string>
+	<string name="student_grow_test">效果测评</string>
+	<string name="student_grow_pic">心鲜图文</string>
 	<string name="black_hole">黑洞</string>
 	<string name="throw_black_hole">丢入黑洞</string>
 			

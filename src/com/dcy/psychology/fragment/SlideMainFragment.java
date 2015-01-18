@@ -113,8 +113,8 @@ public class SlideMainFragment extends Fragment implements OnClickListener , OnI
 			long id) {
 		if((position-1) % mAdapter.getCount() == 1){
 			Intent mIntent = new Intent(mContext, ThoughtReadingActivity.class);
-			mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get((position - 1)/ mAdapter.getCount()));
-			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[(position - 1)/ mAdapter.getCount()]);
+			mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get(mAdapter.getPageIndex()));
+			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[mAdapter.getPageIndex()]);
 			startActivity(mIntent);
 		}else {
 			Intent mIntent = new Intent(mContext, PlamPictureDetailActivity.class);
