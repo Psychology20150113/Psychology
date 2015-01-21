@@ -23,6 +23,7 @@ public class DiscussListActivity extends BaseActivity
 	private ArrayList<CommentBean> dataList = new ArrayList<CommentBean>();
 	private int pageIndex = 1;
 	private boolean isEnd = false;
+	private int themeIndex;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class DiscussListActivity extends BaseActivity
 		showCustomDialog();
 		setContentView(R.layout.activity_discussion_list_layout);
 		initView();
+		themeIndex = getIntent().getIntExtra("themeIndex", 0);
 		new CommentListTask().execute();
 	}
 	
@@ -45,7 +47,7 @@ public class DiscussListActivity extends BaseActivity
 	private class CommentListTask extends AsyncTask<Void, Void, ArrayList<CommentBean>>{
 		@Override
 		protected ArrayList<CommentBean> doInBackground(Void... params) {
-			return Utils.getCommentList(pageIndex);
+			return Utils.getCommentList(pageIndex , Constants.IdOfGrowMode[themeIndex]);
 		}
 		
 		@Override

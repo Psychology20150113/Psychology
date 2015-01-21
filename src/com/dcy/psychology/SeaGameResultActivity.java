@@ -8,8 +8,11 @@ import com.dcy.psychology.view.SeaFishView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class SeaGameResultActivity extends Activity {
+public class SeaGameResultActivity extends Activity implements OnClickListener{
 	private ArrayList<String> rightColors;
 	private ArrayList<String> mineColors;
 	
@@ -20,8 +23,34 @@ public class SeaGameResultActivity extends Activity {
 		Intent mIntent = getIntent();
 		rightColors = mIntent.getStringArrayListExtra("rightColors");
 		mineColors = mIntent.getStringArrayListExtra("mineColors");
+		initView(mIntent);
+	}
+
+	private void initView(Intent mIntent) {
 		GameFishBean bean = (GameFishBean) mIntent.getSerializableExtra("gamefishbean");
-		((SeaFishView)findViewById(R.id.right_view)).setData(bean , rightColors);
-		((SeaFishView)findViewById(R.id.mine_view)).setData(bean , mineColors);
+		DisplayMetrics dm = getResources().getDisplayMetrics();
+		float ratio_xy = ((float)dm.widthPixels) / dm.heightPixels;
+		float widthPixel = dm.widthPixels - 30 * dm.density;
+		SeaFishView rightView = (SeaFishView)findViewById(R.id.right_view);
+		rightView.getLayoutParams().width = (int)(widthPixel * 1 / 2);
+		rightView.getLayoutParams().height = (int)(widthPixel * 1 / 2 / ratio_xy);
+		rightView.setData(bean , rightColors);
+		SeaFishView mineView = (SeaFishView)findViewById(R.id.mine_view);
+		mineView.getLayoutParams().width = (int)(widthPixel * 1 / 2);
+		mineView.getLayoutParams().height = (int)(widthPixel * 1 / 2 / ratio_xy);
+		mineView.setData(bean , mineColors);
+		findViewById(R.id.complete_iv).setOnClickListener(this);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.complete_iv:
+			finish();
+			break;
+
+		default:
+			break;
+		}
 	}
 }

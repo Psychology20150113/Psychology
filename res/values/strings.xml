@@ -100,9 +100,14 @@
 	<string name="test_evaluate">测试评价</string>
 	<string name="comment_success">评论成功</string>
 	<string name="comment_failed">评论失败</string>
-		
+	
+	<string name="black_hole_success">%s 送入黑洞成功</string>
+	<string name="black_hole_failed">送入黑洞失败</string>
 	<string name="platform_one">大学无忧</string>
 	<string name="platform_two">问题来了</string>
+	
+	<string name="test">测试</string>
+	<string name="pic">图文</string>
 	
 	<string name="title_pic">文章及测试题</string>
 	

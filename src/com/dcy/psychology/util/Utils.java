@@ -170,12 +170,13 @@ public class Utils {
 		}
 	}
 	
-	public static String publishComment(String loginName , String comment){
+	public static String publishComment(String loginName , String comment , int id){
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.PublishComment);
 		request.addProperty("userLoginName", loginName);
 		request.addProperty("fileName", "");
 		request.addProperty("heartWeiBo", comment);
 		request.addProperty("img", null);
+		request.addProperty("classificationId", id);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null){
 			return "";
@@ -188,10 +189,11 @@ public class Utils {
 		}
 	}
 	
-	public static ArrayList<CommentBean> getCommentList(int pageIndex){
+	public static ArrayList<CommentBean> getCommentList(int pageIndex , int id){
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetCommentList);
 		request.addProperty("pageIndex", pageIndex);
 		request.addProperty("pageSize", Constants.PageCount);
+		request.addProperty("classificationId", id);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null){
 			return new ArrayList<CommentBean>();
@@ -217,6 +219,15 @@ public class Utils {
 		if(result == null)
 			return new ArrayList<CommentDetailBean>();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<CommentDetailBean>>(){}.getType());
+	}
+	
+	public static boolean inputBlackHole(String input){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.InputBlackHole);
+		request.addProperty("blackHoleContext", input);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return false;
+		return Boolean.valueOf(result.getPropertyAsString(0));
 	}
 	
 	public static String getArticleList(){

@@ -7,11 +7,25 @@
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
     android:gravity="center_vertical" >
-    <ImageView 
-        android:id="@+id/item_thumb_iv"
+    <RelativeLayout 
         android:layout_width="108dp"
-        android:layout_height="60dp"
-        android:scaleType="fitXY"/>
+        android:layout_height="60dp">
+    	<ImageView 
+	        android:id="@+id/item_thumb_iv"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:scaleType="fitXY"/>
+    	<TextView 
+    	    android:id="@+id/item_label_tv"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="18dp"
+    	    android:gravity="center_vertical"
+    	    android:textColor="#ffffff"
+    	    android:background="#B2261D1B"
+    	    android:textSize="12sp"
+    	    android:paddingLeft="10dp"
+    	    android:layout_alignParentBottom="true"/>    
+    </RelativeLayout>
 	<TextView 
 	    android:id="@+id/item_text_tv"
 	    android:layout_marginLeft="10dp"

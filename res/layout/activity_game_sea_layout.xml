@@ -16,11 +16,12 @@
         android:layout_centerHorizontal="true"/>
     <GridView 
         android:id="@+id/level_gv"
-        android:layout_width="match_parent"
+        android:layout_width="377dp"
         android:layout_height="wrap_content"
         android:horizontalSpacing="27dp"
         android:verticalSpacing="27dp"
         android:numColumns="5"
+        android:listSelector="#00ffffff"
         android:layout_centerInParent="true"/>
     <ImageView 
         android:id="@+id/countdown_iv"

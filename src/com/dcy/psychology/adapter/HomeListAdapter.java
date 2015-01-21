@@ -75,6 +75,7 @@ public class HomeListAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.item_home_pic_layout, null);
 			mHolder.mImageView = (ImageView) convertView.findViewById(R.id.item_thumb_iv);
 			mHolder.mTextView = (TextView) convertView.findViewById(R.id.item_text_tv);
+			mHolder.mLabelView = (TextView) convertView.findViewById(R.id.item_label_tv);
 			convertView.setTag(mHolder);
 		}else {
 			mHolder = (Holder) convertView.getTag();
@@ -82,6 +83,7 @@ public class HomeListAdapter extends BaseAdapter {
 		if(position == 1){
 			mHolder.mImageView.setImageResource(R.drawable.icon_pic_text_default);
 			mHolder.mTextView.setText(Constants.HomePageTestTitle[startPosition/getCount()]);
+			mHolder.mLabelView.setText(R.string.test);
 		}else {
 			GrowPictureBean item = (GrowPictureBean) getItem(position);
 			try {
@@ -90,12 +92,14 @@ public class HomeListAdapter extends BaseAdapter {
 				e.printStackTrace();
 			}
 			mHolder.mTextView.setText(item.getTitle());
+			mHolder.mLabelView.setText(R.string.pic);
 		}
 		return convertView;
 	}
 	
 	private class Holder{
 		TextView mTextView;
+		TextView mLabelView;
 		ImageView mImageView;
 	}
 

@@ -13,11 +13,14 @@ public interface Constants {
 	public static final String GetCommentList = "GetHeartWeiBoList";
 	public static final String CommentItem = "CommentHertWeiBo";
 	public static final String GetCommentDetail = "GetCommentDetail";
+	public static final String InputBlackHole = "InputBlackHole";
 	public static final String ChangePwdMethod = "UpdateUserPwd";
 	
 	public static final String UserWSDL = "http://114.215.179.130/WebService/WebServiceAPPUser.asmx";
 	public static final String ArticleWSDL = "http://114.215.179.130/WebService/WebServiceAPPArticle.asmx";
 
+	public static final int[] IdOfGrowMode = {1 , 2, 3 ,4};
+	
 	public static final String ThemeIndex = "themeIndex";
 	public static final String IsSpecial = "isSpecial";
 	public static final String Level = "level";

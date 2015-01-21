@@ -12,6 +12,7 @@ import com.dcy.psychology.db.DbHelper;
 import com.dcy.psychology.db.SqlConstants;
 import com.dcy.psychology.gsonbean.GrowModelBean;
 import com.dcy.psychology.model.GrowWriteItem;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 
@@ -71,6 +72,7 @@ public class GrowDetailView extends LinearLayout {
 	private DbHelper mDbHelper;
 	
 	private String key;
+	private int themeIndex;
 	private int mLevel;
 	private InfoShared mShared;
 	private int savedLevel;
@@ -95,7 +97,7 @@ public class GrowDetailView extends LinearLayout {
 		protected String doInBackground(String... params) {
 			if(params.length < 1)
 				return null;
-			return Utils.publishComment(MyApplication.myUserName, params[0]);
+			return Utils.publishComment(MyApplication.myUserName, params[0], Constants.IdOfGrowMode[themeIndex]);
 		}
 		
 		protected void onPostExecute(String result) {
@@ -166,6 +168,7 @@ public class GrowDetailView extends LinearLayout {
 		key = String.format(mShared.ThemeFormat, String.valueOf(isSpecial) , themeIndex);
 		this.mLevel = level;
 		this.savedLevel = mShared.getInt(key);
+		this.themeIndex = themeIndex;
 	}
 
 	private void initWriteLayout(GrowModelBean bean) {
@@ -230,6 +233,7 @@ public class GrowDetailView extends LinearLayout {
 			dataList.add(item);
 			insertDataToDb(item, type, mission);
 			mAdapter.notifyDataSetChanged();
+			contentView.setSelection(dataList.size());
 			mInputEt.setText("");
 			if(dataList.size() == writeCount){
 				mInputEt.setVisibility(View.GONE);

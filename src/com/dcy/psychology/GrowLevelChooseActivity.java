@@ -48,7 +48,9 @@ public class GrowLevelChooseActivity extends BaseActivity implements OnClickList
 
 	@Override
 	public void onRightTextClick() {
-		startActivity(new Intent(this, DiscussListActivity.class));
+		Intent mIntent = new Intent(this, DiscussListActivity.class);
+		mIntent.putExtra("themeIndex", themeIndex);
+		startActivity(mIntent);
 	}
 	
 	private OnLevelClickListener mLevelClickListener = new OnLevelClickListener() {

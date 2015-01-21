@@ -110,7 +110,7 @@ public class SeaGameActivity extends Activity implements OnItemClickListener
 	
 	public void onItemClick(android.widget.AdapterView<?> parent, View view, int position, long id) {
 		parent.setVisibility(View.GONE);
-		bean = allList.get(0);
+		bean = allList.get(position);
 		mCountDownHandler.post(mCountDownTask);
 	};
 

@@ -41,12 +41,13 @@ public class SeaFishView extends ViewGroup {
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		if(fishData == null)
 			return;
-		float ratio = 1080f/dm.heightPixels * (1080f/getHeight());
+		float ratio_y = 1080f/dm.heightPixels * (1080f/getHeight());
+		float ratio_x = 1920f/dm.widthPixels * (1920f/getWidth());
 		for(int i = 0 ; i < fishData.size() ; i ++){
 			Fish dataItem = fishData.get(i);
 			ImageView fishItem = fishView.get(i);
-			fishItem.layout((int)(dataItem.getPointx()/ratio), (int)(dataItem.getPointy()/ratio),
-					(int)((dataItem.getPointx() + dataItem.getWidth())/ratio), (int)((dataItem.getPointy() + dataItem.getHeight())/ratio));
+			fishItem.layout((int)(dataItem.getPointx()/ratio_x), (int)(dataItem.getPointy()/ratio_y),
+					(int)((dataItem.getPointx() + dataItem.getWidth())/ratio_x), (int)((dataItem.getPointy() + dataItem.getHeight())/ratio_y));
 		}
 	}
 	

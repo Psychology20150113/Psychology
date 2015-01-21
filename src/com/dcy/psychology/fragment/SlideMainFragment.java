@@ -8,6 +8,7 @@ import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.PlatformTwoActivity;
 import com.dcy.psychology.QuestionThemeChooseActivity;
 import com.dcy.psychology.R;
+import com.dcy.psychology.SeaGameActivity;
 import com.dcy.psychology.StudentGrowActivity;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.adapter.HomeListAdapter;
@@ -134,7 +135,8 @@ public class SlideMainFragment extends Fragment implements OnClickListener , OnI
 			mIntent = new Intent(mContext, PlatformTwoActivity.class);
 			break;
 		case R.id.game_one_tv:
-			mIntent = new Intent(mContext, FlowerGameChooseActivity.class);
+//			mIntent = new Intent(mContext, FlowerGameChooseActivity.class);
+			mIntent = new Intent(mContext, SeaGameActivity.class);
 			break;
 		case R.id.game_two_tv:
 			mIntent = new Intent(mContext, QuestionThemeChooseActivity.class);
