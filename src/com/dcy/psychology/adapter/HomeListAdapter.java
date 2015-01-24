@@ -25,6 +25,9 @@ public class HomeListAdapter extends BaseAdapter {
 	private AssetManager manager;
 	private int startPosition = 0;
 	
+	private int[] picResArray = {R.drawable.icon_home_pic_text_01, R.drawable.icon_home_pic_text_02,
+			R.drawable.icon_home_pic_text_03, R.drawable.icon_home_pic_text_04};
+	
 	public HomeListAdapter(Context context , ArrayList<GrowPictureBean> dataList){
 		mInflater = LayoutInflater.from(context);
 		manager = context.getAssets();
@@ -81,7 +84,7 @@ public class HomeListAdapter extends BaseAdapter {
 			mHolder = (Holder) convertView.getTag();
 		}
 		if(position == 1){
-			mHolder.mImageView.setImageResource(R.drawable.icon_pic_text_default);
+			mHolder.mImageView.setImageResource(picResArray[startPosition/getCount()]);
 			mHolder.mTextView.setText(Constants.HomePageTestTitle[startPosition/getCount()]);
 			mHolder.mLabelView.setText(R.string.test);
 		}else {

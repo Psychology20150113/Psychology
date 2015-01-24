@@ -41,5 +41,66 @@
 	            style="@style/text_white18_style"
 	            android:layout_marginLeft="10dp"/>
 	    </LinearLayout>
+	    <LinearLayout 
+	        android:id="@+id/choose_ll"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:background="#B2000000"
+	        android:visibility="gone"
+	        android:gravity="center">
+	        <LinearLayout 
+	            android:id="@+id/student_grow_ll"
+	            android:layout_width="93dp"
+	            android:layout_height="60dp"
+	            android:orientation="vertical"
+	            android:gravity="center">
+	            <ImageView 
+    	            android:layout_width="21dp"
+    	            android:layout_height="27dp"
+    	            android:src="@drawable/icon_student_one"/>
+    	        <TextView 
+    	            style="@style/text_white14_style"
+    	            android:layout_marginTop="5dp"
+    	            android:text="@string/student_grow_one"/>
+	        </LinearLayout>
+	        <ImageView 
+	            android:layout_width="1dp"
+	            android:layout_height="50dp"
+	            android:background="#B2ffffff"/>
+	        <LinearLayout 
+	            android:id="@+id/student_test_ll"
+	            android:layout_width="93dp"
+	            android:layout_height="60dp"
+	            android:orientation="vertical"
+	            android:gravity="center">
+	            <ImageView 
+    	            android:layout_width="24dp"
+    	            android:layout_height="24dp"
+    	            android:src="@drawable/icon_student_two"/>
+    	        <TextView 
+    	            style="@style/text_white14_style"
+    	            android:layout_marginTop="5dp"
+    	            android:text="@string/student_grow_test"/>
+	        </LinearLayout>
+	        <ImageView 
+	            android:layout_width="1dp"
+	            android:layout_height="50dp"
+	            android:background="#B2ffffff"/>
+	        <LinearLayout 
+	            android:id="@+id/student_pic_ll"
+	            android:layout_width="93dp"
+	            android:layout_height="60dp"
+	            android:orientation="vertical"
+	            android:gravity="center">
+	            <ImageView 
+    	            android:layout_width="23dp"
+    	            android:layout_height="27dp"
+    	            android:src="@drawable/icon_student_three"/>
+    	        <TextView 
+    	            style="@style/text_white14_style"
+    	            android:layout_marginTop="5dp"
+    	            android:text="@string/student_grow_pic"/>
+	        </LinearLayout>
+	    </LinearLayout>
 	</RelativeLayout>
 </LinearLayout>

@@ -25,7 +25,7 @@ public class StudentGrowActivity extends BaseActivity implements OnClickListener
 	private void initView(){
 		setTopTitle(R.string.platform_one);
 		mPlatformLV = (ListView) findViewById(R.id.platform_lv);
-		mAdapter = new StudentGrowPlatformAdapter(this);
+		mAdapter = new StudentGrowPlatformAdapter(this, mPlatformLV);
 		mPlatformLV.setAdapter(mAdapter);
 		mAdapter.setOnPlatClickListener(mPlatClickListener);
 	}
