@@ -1,6 +1,10 @@
 package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import com.dcy.psychology.FlowerGameChooseActivity;
 import com.dcy.psychology.MyApplication;
@@ -26,8 +30,10 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,8 +50,11 @@ public class SlideMainFragment extends Fragment implements OnClickListener , OnI
 	private ArrayList<GrowQuestionBean> questionList;
 	private HomeListAdapter mAdapter;
 	
+	private ViewPager mBannerPager;
 	private PageIndicatorView indicatorView;
 	private final int[] bannerRes = {R.drawable.banner_one , R.drawable.banner_two , R.drawable.banner_three};
+	private ScheduledExecutorService mExecutorService;
+	private final int BannerChangeTime = 5;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -71,9 +80,9 @@ public class SlideMainFragment extends Fragment implements OnClickListener , OnI
 			item.setImageResource(bannerRes[i]);
 			bannerList.add(item);
 		}
-		ViewPager bannerPager = (ViewPager) view.findViewById(R.id.banner_vp);
-		bannerPager.setAdapter(new Utils.ViewAdapter(bannerList));
-		bannerPager.setOnPageChangeListener(mBannerListener);
+		mBannerPager = (ViewPager) view.findViewById(R.id.banner_vp);
+		mBannerPager.setAdapter(new Utils.ViewAdapter(bannerList));
+		mBannerPager.setOnPageChangeListener(mBannerListener);
 		indicatorView = (PageIndicatorView) view.findViewById(R.id.banner_indicator);
 		indicatorView.setCount(bannerRes.length , true);
 		indicatorView.updateIndicator(0);
@@ -148,5 +157,29 @@ public class SlideMainFragment extends Fragment implements OnClickListener , OnI
 		}
 		if(mIntent != null)
 			startActivity(mIntent);
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		mExecutorService = Executors.newSingleThreadScheduledExecutor();
+		mExecutorService.scheduleAtFixedRate(new Runnable() {
+			@Override
+			public void run() {
+				mBannerChangeHandler.sendEmptyMessage(0);
+			}
+		}, BannerChangeTime, BannerChangeTime, TimeUnit.SECONDS);
+	}
+	
+	private Handler mBannerChangeHandler = new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			mBannerPager.setCurrentItem((mBannerPager.getCurrentItem() + 1) % bannerRes.length);
+		};
+	};
+	
+	@Override
+	public void onStop() {
+		super.onStop();
+		mExecutorService.shutdown();
 	}
 }

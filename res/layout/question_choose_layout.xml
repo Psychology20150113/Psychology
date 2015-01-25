@@ -38,5 +38,6 @@
 	    android:text="@string/comp_name"
 	    android:textColor="@android:color/white"
 	    android:layout_centerHorizontal="true"
-	    android:layout_alignParentBottom="true"/>
+	    android:layout_alignParentBottom="true"
+	    android:visibility="gone"/>
 </RelativeLayout>

@@ -36,6 +36,7 @@ import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.CommentBean;
 import com.dcy.psychology.gsonbean.CommentDetailBean;
 import com.dcy.psychology.gsonbean.LoginBean;
+import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.view.QuestionView;
 import com.easemob.chat.EMChatManager;
@@ -153,7 +154,7 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), LoginBean.class);
 	}
 	
-	public static void getRegisterResult(UserInfoModel user){
+	public static RegisterBean getRegisterResult(UserInfoModel user){
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.RegisterUserMethod);
 		request.addProperty("userLoginName", user.getUserLoginName());
 		request.addProperty("userPwd", user.getUserPwd());
@@ -166,8 +167,9 @@ public class Utils {
 		request.addProperty("pwdAnswer", user.getPwdAnswer());
 		SoapObject result = getResultFromRequest(request);
 		if(result == null){
-			//return new LoginBean();
+			return new RegisterBean();
 		}
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), RegisterBean.class);
 	}
 	
 	public static String publishComment(String loginName , String comment , int id){

@@ -222,7 +222,7 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 					Intent mIntent = new Intent(this, ThoughtReadingResultActivity.class);
 					mIntent.putExtra(ThoughtReadingUtils.QuestionAnswer, getAnswerMap());
 					mIntent.putExtra(ThoughtReadingUtils.QuestionModelList, mQuestionModelList);
-					mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, getTitle());
+					mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, themeTitle);
 					mIntent.putExtra(ThoughtReadingUtils.ThemeIndex, themeIndex);
 					startActivity(mIntent);
 					finish();

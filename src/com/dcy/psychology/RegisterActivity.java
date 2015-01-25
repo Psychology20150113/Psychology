@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Utils;
@@ -31,17 +32,17 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	
 	private UserInfoModel userInfo = new UserInfoModel();
 	
-	private class RegisterTask extends AsyncTask<String, Void, Boolean>{
+	private class RegisterTask extends AsyncTask<String, Void, RegisterBean>{
 		private String account;
 		private String pwd;
 		private String chatAccount;
 		private String chatPwd;
 		
 		@Override
-		protected Boolean doInBackground(String... arg0) {
+		protected RegisterBean doInBackground(String... arg0) {
 			account = userInfo.getUserLoginName();
 			pwd = userInfo.getUserPwd();
-			chatAccount = AsyncImageCache.MD5.Md5(account);
+			/*chatAccount = AsyncImageCache.MD5.Md5(account);
 			chatPwd = AsyncImageCache.MD5.Md5(pwd);
 			try {
 				EMChatManager.getInstance().createAccountOnServer(chatAccount, chatPwd);
@@ -62,7 +63,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 				});
 				return true;
 			} catch (final Exception e) {
-				/*if (e != null && e.getMessage() != null) {
+				if (e != null && e.getMessage() != null) {
 					String errorMsg = e.getMessage();
 					if (errorMsg.indexOf("EMNetworkUnconnectedException") != -1) {
 						Toast.makeText(getApplicationContext(), "ÍøÂçÒì³££¬Çë¼ì²éÍøÂç£¡", 0).show();
@@ -75,19 +76,21 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 					}
 				} else {
 					Toast.makeText(getApplicationContext(), "×¢²áÊ§°Ü: Î´ÖªÒì³£", 1).show();
-				}*/
+				}
 				e.printStackTrace();
 				return false;
-			}
+			}*/
+			return Utils.getRegisterResult(userInfo);
 		}
 		
 		@Override
-		protected void onPostExecute(Boolean result) {
+		protected void onPostExecute(RegisterBean result) {
 			super.onPostExecute(result);
-			if(result){
+			hideCustomDialog();
+			if("OK".equals(result.getResult())){
 				Toast.makeText(RegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
-				MyApplication.getInstance().setUserName(chatAccount);
-				MyApplication.getInstance().setPassword(chatPwd);
+				//MyApplication.getInstance().setUserName(chatAccount);
+				//MyApplication.getInstance().setPassword(chatPwd);
 				MyApplication.myUserName = account;
 				MyApplication.myPwd = pwd;
 				MyApplication.myNick = userInfo.getUserName();
@@ -97,7 +100,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 				setResult(1, mIntent);
 				finish();
 			}else {
-				Toast.makeText(RegisterActivity.this, R.string.register_failed, Toast.LENGTH_SHORT).show();
+				Toast.makeText(RegisterActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -130,6 +133,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 		case R.id.register_btn:
 			if(checkInput()){
 				initUserInfo();
+				showCustomDialog();
 				new RegisterTask().execute();
 			}
 			break;
@@ -148,12 +152,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 				sexGroup.getCheckedRadioButtonId())).getText().toString());
 		String ageString = ageEt.getText().toString();
 		if(!TextUtils.isEmpty(ageString)){
-			int age = Integer.parseInt(ageString);
-			if( age < 1 || age > 200){
-				Toast.makeText(this, R.string.age_error, Toast.LENGTH_SHORT).show();
-			}else {
-				userInfo.setUserAge(age);
-			}
+			userInfo.setUserAge(Integer.valueOf(ageString));
 		}
 		userInfo.setUserPhone(phoneEt.getText().toString());
 		userInfo.setUserEmail(mailEt.getText().toString());
@@ -194,6 +193,15 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			phoneEt.requestFocus();
 			phoneEt.setSelection(phoneEt.getText().length());
 			return false;
+		}
+		if(!TextUtils.isEmpty(ageEt.getText())){
+			int age = Integer.valueOf(ageEt.getText().toString());
+			if(age < 1 || age > 200){
+				Toast.makeText(this, R.string.age_error, Toast.LENGTH_SHORT).show();
+				ageEt.requestFocus();
+				ageEt.setSelection(ageEt.getText().length());
+				return false;
+			}
 		}
 		return true;
 	}

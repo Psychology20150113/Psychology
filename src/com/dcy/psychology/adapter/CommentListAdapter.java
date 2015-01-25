@@ -190,7 +190,7 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 			newItem.setReviewContent(content);
 			newItem.setReviewDate(mFormat.format(Calendar.getInstance().getTime()));
 			newItem.setReviewUserLoginName(MyApplication.myUserName);
-			dataList.get(position).detailItems.add(newItem);
+			dataList.get(position).detailItems.add(0, newItem);
 			mDetailAdapterList.get(position).notifyDataSetChanged();
 			Toast.makeText(mContext, result ? R.string.comment_success : R.string.comment_failed, 
 					Toast.LENGTH_SHORT).show();

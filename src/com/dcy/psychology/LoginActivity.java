@@ -25,7 +25,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	private class LoginTask extends AsyncTask<Void, Void, LoginBean>{
 		@Override
 		protected LoginBean doInBackground(Void... arg0) {
-			EMChatManager.getInstance().login(AsyncImageCache.MD5.Md5(accountET.getText().toString()),
+			/*EMChatManager.getInstance().login(AsyncImageCache.MD5.Md5(accountET.getText().toString()),
 					AsyncImageCache.MD5.Md5(pwdET.getText().toString()), new EMCallBack() {
 				@Override
 				public void onError(int arg0, String arg1) {
@@ -49,7 +49,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 						}
 					});
 				}
-			});
+			});*/
 			return Utils.getLoginWeb(accountET.getText().toString(), pwdET.getText().toString());
 		}
 		

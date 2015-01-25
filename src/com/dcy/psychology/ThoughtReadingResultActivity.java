@@ -67,7 +67,8 @@ public class ThoughtReadingResultActivity extends Activity implements OnClickLis
 		case R.id.question_replay_btn:
 			Intent mIntent = new Intent(this,ThoughtReadingActivity.class);
 			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, themeName);
-			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, themeIndex);
+			mIntent.putExtra(ThoughtReadingUtils.ThemeIndex, themeIndex);
+			mIntent.putExtra(ThoughtReadingUtils.IsThoughtReadingMode, true);
 			startActivity(mIntent);
 			break;
 		default:

@@ -195,11 +195,11 @@ public class ThoughtReadingUtils {
 			mHolder.indexText.setText(String.valueOf(position+1));
 			HashMap<String, String> answerMap = dataList.get(position);
 			String rightAnswer = answerMap.get(RightAnswerKey);
-			String mineAnswer = ":" + answerMap.get(MineAnswerKey);
+			String mineAnswer = answerMap.get(MineAnswerKey);
 //			mHolder.rightAnswer.setText(String.format(
 //					mResources.getString(R.string.answer_right), rightAnswer));
 			mHolder.rightAnswer.setText(rightAnswer);
-			mHolder.mineAnswer.setText(mineAnswer);
+			mHolder.mineAnswer.setText(":" + mineAnswer);
 			boolean isRight = rightAnswer.equals(mineAnswer) || rightAnswer.equals(mineAnswer.replace(",", ""));
 			mHolder.resultView.setImageResource(isRight? 
 					R.drawable.icon_right : R.drawable.icon_wrong);
