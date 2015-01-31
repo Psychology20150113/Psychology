@@ -36,8 +36,8 @@ public interface Constants {
 	public static final String TestType = "type_test";
 	public static final String SpecialTestType = "type_special_type";
 	
-	public static final String[][] GrowTestTitle = {{"自信"} , {"人际交往测试","人际交往诚信度测试","人际焦虑感测试","人际中的情绪测试"},
-													{"恋爱配对测试"},{"时间管理能力测试"}};
+	public static final String[][] GrowTestTitle = {{"人际交往测试","人际交往诚信度测试","人际焦虑感测试","人际中的情绪测试"},
+													{"时间管理能力测试"},{"恋爱配对测试"},{"自信"}};
 
 	public static final String[][] SpecialGrowTestTitle = {{"抑郁测试" , "抑郁自评" , "焦虑自评"}};
 	public static final String[] HomePageTestTitle = {"你容易成瘾吗？" , "你眼中乌云密布还是希望闪烁？" ,"你会怒不可遏吗？","你孤独吗？"};
