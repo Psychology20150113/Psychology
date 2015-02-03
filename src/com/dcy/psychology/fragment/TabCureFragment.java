@@ -26,9 +26,9 @@ public class TabCureFragment extends Fragment implements OnClickListener{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_two_layout, null);
-		view.findViewById(R.id.problem_one_tv).setOnClickListener(this);
-		view.findViewById(R.id.problem_two_tv).setOnClickListener(this);
-		view.findViewById(R.id.problem_three_tv).setOnClickListener(this);
+		view.findViewById(R.id.problem_one_rl).setOnClickListener(this);
+		view.findViewById(R.id.problem_two_rl).setOnClickListener(this);
+//		view.findViewById(R.id.problem_three_tv).setOnClickListener(this);
 		return view;
 	}
 	
@@ -37,15 +37,15 @@ public class TabCureFragment extends Fragment implements OnClickListener{
 		int problemIndex = 0;
 		Intent mIntent = new Intent(mContext, ProblemDirectoryActivity.class);
 		switch (view.getId()) {
-		case R.id.problem_one_tv:
+		case R.id.problem_one_rl:
 			problemIndex = 0;
 			break;
-		case R.id.problem_two_tv:
+		case R.id.problem_two_rl:
 			problemIndex = 1;
 			break;
-		case R.id.problem_three_tv:
-			problemIndex = 2;
-			break;
+//		case R.id.problem_three_tv:
+//			problemIndex = 2;
+//			break;
 		default:
 			break;
 		}

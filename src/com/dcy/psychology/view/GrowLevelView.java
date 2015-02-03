@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.dcy.psychology.R;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;
 
 import android.content.Context;
@@ -117,12 +118,17 @@ public class GrowLevelView extends LinearLayout{
 		Button item = new Button(mContext);
 		item.setLayoutParams(i % 2 == 0 ? leftParams : rightParams);
 		item.setTag(i);
-		if(i <= savedPosition){
+		if(Constants.DebugMode){
 			item.setBackgroundColor(Color.parseColor("#5ce5d5"));
 			item.setOnClickListener(mButtonClick);
 		}else {
-			item.setBackgroundColor(Color.parseColor("#999999"));
-			item.setClickable(false);
+			if(i <= savedPosition){
+				item.setBackgroundColor(Color.parseColor("#5ce5d5"));
+				item.setOnClickListener(mButtonClick);
+			}else {
+				item.setBackgroundColor(Color.parseColor("#999999"));
+				item.setClickable(false);
+			}
 		}
 		item.setText("ตฺ" + (i+1) + "นุ");
 		item.setGravity(Gravity.CENTER);

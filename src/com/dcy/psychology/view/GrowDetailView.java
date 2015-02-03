@@ -342,13 +342,14 @@ public class GrowDetailView extends LinearLayout {
 	}
 
 	private OnClickListener singleMissionListener = new OnClickListener() {
+		@SuppressWarnings("unused")
 		@Override
 		public void onClick(View view) {
 			if(dataList.size() == writeCount && mContext instanceof Activity){
 				((Activity)mContext).finish();
 				return;
 			}
-			if(dailyMax > 0){
+			if(dailyMax > 0 && !Constants.DebugMode){
 				Calendar mCalender = Calendar.getInstance();
 				mCalender.set(Calendar.HOUR_OF_DAY, 0);
 				mCalender.set(Calendar.MINUTE, 0);
@@ -428,6 +429,7 @@ public class GrowDetailView extends LinearLayout {
 	}
 	
 	private OnClickListener mutiMissionListener = new OnClickListener() {
+		@SuppressWarnings("unused")
 		@Override
 		public void onClick(View view) {
 			if(dataList.size() == writeCount && mContext instanceof Activity){
@@ -447,7 +449,7 @@ public class GrowDetailView extends LinearLayout {
 				if(((RadioButton)groupItem.getChildAt(groupItem.getChildCount() - 1)).isChecked())
 					pass = false;
 			}
-			if(dailyMax > 0){
+			if(dailyMax > 0 && !Constants.DebugMode){
 				Calendar mCalender = Calendar.getInstance();
 				mCalender.set(Calendar.HOUR_OF_DAY, 0);
 				mCalender.set(Calendar.MINUTE, 0);

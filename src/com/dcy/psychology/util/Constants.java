@@ -1,6 +1,8 @@
 package com.dcy.psychology.util;
 
 public interface Constants {
+	public static final boolean DebugMode = true;
+	
 	public static final String SpaceUrl = "http://114.215.179.130/";
 	public static final String SpaceName = "http://114.215.179.130";
 	public static final int TimeOut = 15000;

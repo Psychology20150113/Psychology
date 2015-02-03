@@ -25,7 +25,7 @@ public class ProblemDirectoryActivity extends BaseActivity implements OnClickLis
 	}
 	
 	private void initView(){
-		setTopTitle(problemNameArray[problemIndex] + getString(R.string.disease));
+		setTopTitle(problemNameArray[problemIndex]);
 		introduceNameTv = (TextView) findViewById(R.id.problem_introduce_one_tv);
 		introduceNameTv.setOnClickListener(this);
 		findViewById(R.id.problem_introduce_two_tv).setOnClickListener(this);

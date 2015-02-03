@@ -122,11 +122,11 @@
 	<string name="label_platform_four">大三▪发展瓶颈</string>
 	
 	<string name="cure_self">自助治疗</string>
-	<string name="realy_doctor">官方特约专家，值得信赖</string>
-	<string name="depression">抑郁</string>
-	<string name="anxiety">焦虑</string>
-	<string name="force">强迫</string>
-	<string name="disease">症</string>
+	<string name="realy_doctor">心灵专家导师</string>
+	<string name="doctor_waiting">敬请期待导师加入</string>
+	<string name="depression">抑郁症</string>
+	<string name="anxiety">焦虑症</string>
+	<string name="force">强迫症</string>
 	<string name="depression_introduce">抑郁介绍</string>
 	<string name="anxiety_introduce">焦虑介绍</string>
 	<string name="force_introduce">强迫介绍</string>
