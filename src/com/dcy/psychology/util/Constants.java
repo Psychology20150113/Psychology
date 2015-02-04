@@ -5,6 +5,9 @@ public interface Constants {
 	
 	public static final String SpaceUrl = "http://114.215.179.130/";
 	public static final String SpaceName = "http://114.215.179.130";
+	public static final String IMAddress = "114.215.179.130";
+	public static final int IMPort = 6222;
+	public static final String IMDefaultGroup = "IMFriends";
 	public static final int TimeOut = 15000;
 	public static final int PageCount = 8;
 	

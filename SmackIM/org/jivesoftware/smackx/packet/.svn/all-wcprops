@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet
+END
+MUCOwner.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/MUCOwner.java
+END
+VCard.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/VCard.java
+END
+OfflineMessageRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/OfflineMessageRequest.java
+END
+OfflineMessageInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/OfflineMessageInfo.java
+END
+PEPItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/PEPItem.java
+END
+DelayInformation.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/DelayInformation.java
+END
+PrivateData.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/PrivateData.java
+END
+PEPPubSub.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/PEPPubSub.java
+END
+DefaultPrivateData.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/DefaultPrivateData.java
+END
+IBBExtensions.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/IBBExtensions.java
+END
+ChatStateExtension.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/ChatStateExtension.java
+END
+Bytestream.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/Bytestream.java
+END
+LastActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/LastActivity.java
+END
+DiscoverItems.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/DiscoverItems.java
+END
+RosterExchange.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/RosterExchange.java
+END
+SharedGroupsInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/SharedGroupsInfo.java
+END
+MUCUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/MUCUser.java
+END
+MUCInitialPresence.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/MUCInitialPresence.java
+END
+StreamInitiation.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/StreamInitiation.java
+END
+Version.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/Version.java
+END
+MessageEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/MessageEvent.java
+END
+PEPEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/PEPEvent.java
+END
+MultipleAddresses.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/MultipleAddresses.java
+END
+XHTMLExtension.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/XHTMLExtension.java
+END
+DiscoverInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/DiscoverInfo.java
+END
+MUCAdmin.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/MUCAdmin.java
+END
+DataForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/DataForm.java
+END
+Time.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/IM/!svn/ver/47/trunk/Android_IM/src/org/jivesoftware/smackx/packet/Time.java
+END

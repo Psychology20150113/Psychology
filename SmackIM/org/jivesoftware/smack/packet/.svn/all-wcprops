@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/IM/!svn/ver/44/trunk/Android_IM/src/org/jivesoftware/smack/packet
+END
+PacketExtension.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/PacketExtension.java
+END
+Presence.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Presence.java
+END
+StreamError.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/StreamError.java
+END
+RosterPacket.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/RosterPacket.java
+END
+Packet.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Packet.java
+END
+DefaultPacketExtension.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/DefaultPacketExtension.java
+END
+IQ.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/IQ.java
+END
+Registration.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Registration.java
+END
+Bind.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Bind.java
+END
+Privacy.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Privacy.java
+END
+Authentication.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Authentication.java
+END
+Session.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Session.java
+END
+Message.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/Message.java
+END
+PrivacyItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/PrivacyItem.java
+END
+XMPPError.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/packet/XMPPError.java
+END

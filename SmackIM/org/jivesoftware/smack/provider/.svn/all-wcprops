@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/IM/!svn/ver/45/trunk/Android_IM/src/org/jivesoftware/smack/provider
+END
+PacketExtensionProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/provider/PacketExtensionProvider.java
+END
+IQProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/provider/IQProvider.java
+END
+ProviderManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/provider/ProviderManager.java
+END
+PrivacyProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/provider/PrivacyProvider.java
+END

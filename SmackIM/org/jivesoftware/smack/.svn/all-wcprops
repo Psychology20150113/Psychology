@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/IM/!svn/ver/46/trunk/Android_IM/src/org/jivesoftware/smack
+END
+RosterEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/RosterEntry.java
+END
+ServerTrustManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/ServerTrustManager.java
+END
+XMPPException.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/XMPPException.java
+END
+PrivacyListManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PrivacyListManager.java
+END
+PacketWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PacketWriter.java
+END
+XMPPConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/XMPPConnection.java
+END
+ConnectionListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/ConnectionListener.java
+END
+PrivacyList.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PrivacyList.java
+END
+ChatManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/ChatManager.java
+END
+PacketListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PacketListener.java
+END
+NonSASLAuthentication.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/NonSASLAuthentication.java
+END
+PacketCollector.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PacketCollector.java
+END
+UserAuthentication.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/UserAuthentication.java
+END
+Roster.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/Roster.java
+END
+Chat.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/Chat.java
+END
+PrivacyListListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PrivacyListListener.java
+END
+ChatManagerListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/ChatManagerListener.java
+END
+ReconnectionManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/ReconnectionManager.java
+END
+RosterListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/RosterListener.java
+END
+PacketInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PacketInterceptor.java
+END
+SmackConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IM/!svn/ver/27/trunk/Android_IM/src/org/jivesoftware/smack/SmackConfiguration.java
+END
+AccountManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/AccountManager.java
+END
+ConnectionConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/ConnectionConfiguration.java
+END
+PacketReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/PacketReader.java
+END
+ConnectionCreationListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/ConnectionCreationListener.java
+END
+MessageListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/MessageListener.java
+END
+RosterGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/RosterGroup.java
+END
+OpenTrustManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/IM/!svn/ver/9/trunk/Android_IM/src/org/jivesoftware/smack/OpenTrustManager.java
+END
