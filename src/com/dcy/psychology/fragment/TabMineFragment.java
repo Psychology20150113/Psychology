@@ -6,7 +6,6 @@ import com.dcy.psychology.R;
 import com.dcy.psychology.RegisterActivity;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
-import com.easemob.chatuidemo.activity.ChatMainActivity;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -74,7 +73,6 @@ public class TabMineFragment extends Fragment implements OnClickListener{
 		MyApplication.myUserName = "";
 		MyApplication.myPwd = "";
 		MyApplication.myNick = "";
-		MyApplication.getInstance().logout();
 		new InfoShared(mContext).clearInfo();
 	}
 	

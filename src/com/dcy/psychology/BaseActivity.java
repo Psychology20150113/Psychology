@@ -20,6 +20,7 @@ public class BaseActivity extends Activity {
 	private CustomProgressDialog mDialog;
 	private TextView mTopRightText;
 	private ImageView mLeftView;
+	private ImageView mRightView;
 	
 	private OnClickListener mClickListener = new OnClickListener() {
 		@Override
@@ -30,6 +31,9 @@ public class BaseActivity extends Activity {
 				break;
 			case R.id.top_left_iv:
 				onLeftViewClick();
+				break;
+			case R.id.top_right_iv:
+				onRightViewClick();
 				break;
 			default:
 				break;
@@ -66,6 +70,8 @@ public class BaseActivity extends Activity {
 		mTopRightText.setOnClickListener(mClickListener);
 		mLeftView = (ImageView) titleView.findViewById(R.id.top_left_iv);
 		mLeftView.setOnClickListener(mClickListener);
+		mRightView = (ImageView) titleView.findViewById(R.id.top_right_iv);
+		mRightView.setOnClickListener(mClickListener);
 	}
 	
 	public void setTopTitle(int resId){
@@ -91,6 +97,8 @@ public class BaseActivity extends Activity {
 	public void onRightTextClick(){};
 	
 	public void onLeftViewClick(){};
+	
+	public void onRightViewClick(){};
 	
 	protected void showCustomDialog(){
 		if(mDialog == null){

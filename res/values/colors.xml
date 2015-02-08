@@ -16,6 +16,9 @@
     <color name="bg_student_two">#a1c1e3</color>
     <color name="bg_student_three">#b9ade9</color>
 
+    <color name="bg_check_item">#ff9262</color>
+    <color name="bg_save_btn">#ff6622</color>
+    
 	<!-- chat-values -->
     <color name="common_top_bar_blue">#4ebcd3</color>
     <color name="btn_login_normal">#007086</color>

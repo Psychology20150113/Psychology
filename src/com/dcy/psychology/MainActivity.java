@@ -7,17 +7,13 @@ import com.dcy.psychology.fragment.TabCureFragment;
 import com.dcy.psychology.fragment.TabGrowthFragment;
 import com.dcy.psychology.fragment.TabMineFragment;
 import com.dcy.psychology.util.Utils;
-import com.easemob.chatuidemo.activity.LoginActivity;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RadioGroup;

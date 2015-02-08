@@ -20,4 +20,10 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="20dp"/>
+    <ImageView 
+        android:id="@+id/top_right_iv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"/>
 </RelativeLayout>

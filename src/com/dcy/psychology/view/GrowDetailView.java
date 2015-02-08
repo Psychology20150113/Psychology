@@ -24,10 +24,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.drawable.BitmapDrawable;
 import android.hardware.input.InputManager;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +48,9 @@ public class GrowDetailView extends LinearLayout {
 	private LayoutInflater mInflater;
 	private Context mContext;
 	private Resources mResources;
+	private DisplayMetrics dm;
 	private LayoutParams mMatchParams;
+	private LayoutParams mAverageParams;
 	
 	//single mode
 	private ListView contentView;
@@ -83,7 +87,10 @@ public class GrowDetailView extends LinearLayout {
 		mShared = new InfoShared(context);
 		mResources = mContext.getResources();
 		mInflater = LayoutInflater.from(context);
+		dm = mResources.getDisplayMetrics();
 		mMatchParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		mAverageParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1);
+		mAverageParams.setMargins((int)(10*dm.density), 0, 0,(int)(10 * dm.density));
 		mDbHelper = new DbHelper(mContext, SqlConstants.DBName, 1, SqlConstants.CreateTableSql);
 	}
 
@@ -321,10 +328,13 @@ public class GrowDetailView extends LinearLayout {
 		mCheckLayout = (LinearLayout) view.findViewById(R.id.check_layout);
 		ArrayList<GrowWriteItem> dbList = pullDbData(type, mission);
 		if(dbList == null || (dbList != null && dbList.size() < writeCount)){
-			((TextView) view.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle());
+			((TextView) view.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle()+":");
 			mRegreeRg = (RadioGroup) view.findViewById(R.id.check_rg);
 			for(String checkItem : bean.getCheckItem()){
 				RadioButton button = new RadioButton(mContext);
+				button.setLayoutParams(mAverageParams);
+				button.setButtonDrawable(R.drawable.bg_trans_shape);
+				button.setBackgroundResource(R.drawable.bg_checked_item_selector);
 				button.setText(checkItem);
 				mRegreeRg.addView(button);
 			}

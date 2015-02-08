@@ -5,8 +5,6 @@ import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
-import com.easemob.EMCallBack;
-import com.easemob.chat.EMChatManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -25,31 +23,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	private class LoginTask extends AsyncTask<Void, Void, LoginBean>{
 		@Override
 		protected LoginBean doInBackground(Void... arg0) {
-			/*EMChatManager.getInstance().login(AsyncImageCache.MD5.Md5(accountET.getText().toString()),
-					AsyncImageCache.MD5.Md5(pwdET.getText().toString()), new EMCallBack() {
-				@Override
-				public void onError(int arg0, String arg1) {
-					runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							Toast.makeText(LoginActivity.this, R.string.login_chat_failed, Toast.LENGTH_SHORT).show();
-						}
-					});
-				}
-				@Override
-				public void onProgress(int arg0, String arg1) {
-				}
-				@Override
-				public void onSuccess() {
-					Utils.getFriends(LoginActivity.this);
-					runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							Toast.makeText(LoginActivity.this, R.string.login_chat_success, Toast.LENGTH_SHORT).show();
-						}
-					});
-				}
-			});*/
 			return Utils.getLoginWeb(accountET.getText().toString(), pwdET.getText().toString());
 		}
 		

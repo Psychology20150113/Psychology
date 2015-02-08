@@ -39,13 +39,6 @@ import com.dcy.psychology.gsonbean.LoginBean;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.view.QuestionView;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.Constant;
-import com.easemob.chatuidemo.activity.LoginActivity;
-import com.easemob.chatuidemo.db.UserDao;
-import com.easemob.chatuidemo.domain.User;
-import com.easemob.util.HanziToPinyin;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -382,57 +375,6 @@ public class Utils {
 		}
 	}
 	
-	public static void getFriends(Context context){
-		try {
-			List<String> usernames = EMChatManager.getInstance().getContactUserNames();
-			Map<String, User> userlist = new HashMap<String, User>();
-			for (String username : usernames) {
-				User user = new User();
-				user.setUsername(username);
-				setUserHearder(username, user);
-				userlist.put(username, user);
-			}
-			User newFriends = new User();
-			newFriends.setUsername(Constant.NEW_FRIENDS_USERNAME);
-			newFriends.setNick("申请与通知");
-			newFriends.setHeader("");
-			userlist.put(Constant.NEW_FRIENDS_USERNAME, newFriends);
-			User groupUser = new User();
-			groupUser.setUsername(Constant.GROUP_USERNAME);
-			groupUser.setNick("群聊");
-			groupUser.setHeader("");
-			userlist.put(Constant.GROUP_USERNAME, groupUser);
-
-			MyApplication.getInstance().setContactList(userlist);
-			UserDao dao = new UserDao(context);
-			List<User> users = new ArrayList<User>(userlist.values());
-			dao.saveContactList(users);
-
-			EMGroupManager.getInstance().getGroupsFromServer();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private static void setUserHearder(String username, User user) {
-		String headerName = null;
-		if (!TextUtils.isEmpty(user.getNick())) {
-			headerName = user.getNick();
-		} else {
-			headerName = user.getUsername();
-		}
-		if (username.equals(Constant.NEW_FRIENDS_USERNAME)) {
-			user.setHeader("");
-		} else if (Character.isDigit(headerName.charAt(0))) {
-			user.setHeader("#");
-		} else {
-			user.setHeader(HanziToPinyin.getInstance().get(headerName.substring(0, 1)).get(0).target.substring(0, 1).toUpperCase());
-			char header = user.getHeader().toLowerCase().charAt(0);
-			if (header < 'a' || header > 'z') {
-				user.setHeader("#");
-			}
-		}
-	}
 	
 	/*static HostnameVerifier hv = new HostnameVerifier() {  
 		@Override
