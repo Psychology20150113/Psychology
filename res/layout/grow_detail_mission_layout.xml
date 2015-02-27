@@ -8,6 +8,26 @@
     <TextView 
 	    android:id="@+id/mission_tv"
 	    style="@style/text_black18_style"/>
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+		<LinearLayout 
+		    android:id="@+id/check_layout"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical">
+        	<TextView 
+		        android:id="@+id/check_title_tv"
+		        style="@style/text_black18_style"/>
+    		<RadioGroup 
+			    android:id="@+id/check_rg"
+			    android:layout_width="match_parent"
+			    android:gravity="center_vertical"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"/>
+    	</LinearLayout>        
+    </ScrollView>
     <ListView 
         android:id="@+id/content_lv"
         android:layout_width="match_parent"
@@ -16,37 +36,12 @@
         android:layout_marginTop="10dp"
         android:divider="@color/divider"
         android:dividerHeight="1dp"
+        android:visibility="gone"
         android:listSelector="#00000000"/>
-	<LinearLayout 
-	    android:id="@+id/check_layout"
+	<Button 
+	    android:id="@+id/commit_btn"
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
-	    android:gravity="center_vertical">
-	    <TextView 
-	        android:id="@+id/check_title_tv"
-	        style="@style/text_black18_style"/>
-	    <RadioGroup 
-		    android:id="@+id/check_rg"
-		    android:layout_width="0dp"
-		    android:layout_weight="1"
-		    android:gravity="center_vertical"
-		    android:layout_height="wrap_content"
-		    android:orientation="horizontal"/>
-	</LinearLayout>
-	<LinearLayout 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:gravity="center">
-		<Button 
-		    android:id="@+id/commit_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/ok"/>
-		<Button 
-		    android:id="@+id/think_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/thinking"/>
-	</LinearLayout>
+	    android:layout_height="40dp"
+	    android:text="@string/ok"
+	    android:background="@drawable/bg_save_btn_shape"/>
 </LinearLayout>

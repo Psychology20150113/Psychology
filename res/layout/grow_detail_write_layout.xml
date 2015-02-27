@@ -39,19 +39,10 @@
 		    android:layout_height="wrap_content"
 		    android:orientation="horizontal"/>
 	</LinearLayout>
-	<LinearLayout 
+	<Button 
+	    android:id="@+id/commit_btn"
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:gravity="center">
-		<Button 
-		    android:id="@+id/commit_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/ok"/>
-		<Button 
-		    android:id="@+id/think_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/thinking"/>
-	</LinearLayout>
+	    android:layout_height="40dp"
+	    android:text="@string/ok"
+	    android:background="@drawable/bg_save_btn_shape"/>
 </LinearLayout>

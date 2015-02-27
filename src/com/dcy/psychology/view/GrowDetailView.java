@@ -51,11 +51,9 @@ public class GrowDetailView extends LinearLayout {
 	private DisplayMetrics dm;
 	private LayoutParams mMatchParams;
 	private LayoutParams mAverageParams;
+	private LayoutParams mRadioButtonParams;
 	
 	//single mode
-	private ListView contentView;
-	private GrowWriteAdapter mAdapter;
-	private ArrayList<GrowWriteItem> dataList;
 	private LinearLayout mCheckLayout;
 	private RadioGroup mRegreeRg;
 	private EditText mInputEt;
@@ -63,6 +61,7 @@ public class GrowDetailView extends LinearLayout {
 	private String mission;
 	private String type;
 	private int dailyMax;
+	private int historyCount;
 	
 	//muti mode
 	private ListView mLeftContentView;
@@ -89,6 +88,7 @@ public class GrowDetailView extends LinearLayout {
 		mInflater = LayoutInflater.from(context);
 		dm = mResources.getDisplayMetrics();
 		mMatchParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		mRadioButtonParams = new LayoutParams(LayoutParams.MATCH_PARENT, (int)(40*dm.density));
 		mAverageParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1);
 		mAverageParams.setMargins((int)(10*dm.density), 0, 0,(int)(10 * dm.density));
 		mDbHelper = new DbHelper(mContext, SqlConstants.DBName, 1, SqlConstants.CreateTableSql);
@@ -133,43 +133,43 @@ public class GrowDetailView extends LinearLayout {
 		}else if(GrowModelBean.Type_MutiMission.equals(bean.getType())){
 			initMutiMissionLayout(bean);
 		}
-		View thinkBtn = this.findViewById(R.id.think_btn);
-		if(thinkBtn == null)
-			return;
-		thinkBtn.setOnClickListener(mThinkClickListener);
+//		View thinkBtn = this.findViewById(R.id.think_btn);
+//		if(thinkBtn == null)
+//			return;
+//		thinkBtn.setOnClickListener(mThinkClickListener);
 	}
 	
-	private OnClickListener mThinkClickListener = new OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			final EditText editText = new EditText(mContext);
-			Builder builder = new Builder(mContext);
-			builder.setTitle(R.string.think_title).
-			setView(editText).
-			setNegativeButton(R.string.cancel, null).
-			setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					if(TextUtils.isEmpty(editText.getText().toString())){
-						Toast.makeText(mContext, R.string.think_title, Toast.LENGTH_SHORT).show();
-						return;
-					}
-					StringBuilder content = new StringBuilder();
-					if(dataList != null && dataList.size() > 0){
-						for(GrowWriteItem item : dataList){
-							content.append(item.getIndexString()).append("  ");
-							if(!TextUtils.isEmpty(item.getContent()))
-								content.append(item.getContent()).append("  ");
-							if(!TextUtils.isEmpty(item.getDegree()))
-								content.append(item.getDegree());
-							content.append("\n");
-						}
-					}
-					new PublishCommentTask().execute(mission + "\n" + content.toString() + editText.getText().toString());
-				}
-			}).show();
-		}
-	};
+//	private OnClickListener mThinkClickListener = new OnClickListener() {
+//		@Override
+//		public void onClick(View v) {
+//			final EditText editText = new EditText(mContext);
+//			Builder builder = new Builder(mContext);
+//			builder.setTitle(R.string.think_title).
+//			setView(editText).
+//			setNegativeButton(R.string.cancel, null).
+//			setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//				@Override
+//				public void onClick(DialogInterface dialog, int which) {
+//					if(TextUtils.isEmpty(editText.getText().toString())){
+//						Toast.makeText(mContext, R.string.think_title, Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					StringBuilder content = new StringBuilder();
+//					if(dataList != null && dataList.size() > 0){
+//						for(GrowWriteItem item : dataList){
+//							content.append(item.getIndexString()).append("  ");
+//							if(!TextUtils.isEmpty(item.getContent()))
+//								content.append(item.getContent()).append("  ");
+//							if(!TextUtils.isEmpty(item.getDegree()))
+//								content.append(item.getDegree());
+//							content.append("\n");
+//						}
+//					}
+//					new PublishCommentTask().execute(mission + "\n" + content.toString() + editText.getText().toString());
+//				}
+//			}).show();
+//		}
+//	};
 	
 	public void saveCompeLevel(boolean isSpecial , int themeIndex , int level){
 		key = String.format(mShared.ThemeFormat, String.valueOf(isSpecial) , themeIndex);
@@ -185,41 +185,34 @@ public class GrowDetailView extends LinearLayout {
 		mInputEt = (EditText) writeView.findViewById(R.id.input_et);
 		mRegreeRg = (RadioGroup) writeView.findViewById(R.id.check_rg);
 		mCheckLayout = (LinearLayout) writeView.findViewById(R.id.check_ll);
-		dataList = new ArrayList<GrowWriteItem>();
 		writeCount = bean.getCount();
-		ArrayList<GrowWriteItem> dbList = pullDbData(bean.getType(), bean.getMission());
-		if(dbList == null || (dbList!=null && dbList.size() < writeCount)){
+		historyCount = getHistoryCount(type, mission);
+		if(historyCount < writeCount){
 			if(TextUtils.isEmpty(bean.getCheckTitle())){
 				mCheckLayout.setVisibility(View.GONE);
 			}else {
 				((TextView)writeView.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle());
 				for(String item : bean.getCheckItem()){
 					RadioButton itemBtn = new RadioButton(mContext);
+					itemBtn.setLayoutParams(mAverageParams);
+					itemBtn.setButtonDrawable(R.drawable.bg_trans_shape);
+					itemBtn.setBackgroundResource(R.drawable.bg_checked_item_selector);
 					itemBtn.setText(item);
 					mRegreeRg.addView(itemBtn);
 				}
 			}
-			if(dbList != null){
-				dataList.addAll(dbList);
-			}
 		}else {
-			dataList.addAll(dbList);
 			mInputEt.setVisibility(View.GONE);
 			mCheckLayout.setVisibility(View.GONE);
 		}
 		writeView.findViewById(R.id.commit_btn).setOnClickListener(mWriteCommitListener);
-		contentView = (ListView) writeView.findViewById(R.id.content_lv);
-		mAdapter = new GrowWriteAdapter(mContext, dataList);
-		if(mLevel < savedLevel)
-			mAdapter.setCanDelete(false);
-		contentView.setAdapter(mAdapter);
 		this.addView(writeView);
 	}
 	
 	private OnClickListener mWriteCommitListener = new OnClickListener() {
 		@Override
 		public void onClick(View view) {
-			if(checkEmptyOrFull(dataList , mInputEt))
+			if(checkEmptyOrFull(mInputEt))
 				return;
 			GrowWriteItem item = new GrowWriteItem();
 			item.setContent(mInputEt.getText().toString());
@@ -236,13 +229,12 @@ public class GrowDetailView extends LinearLayout {
 					return;
 				}
 			}
-			item.setIndexString(String.valueOf(dataList.size() + 1));
-			dataList.add(item);
+			item.setIndexString(String.valueOf(historyCount + 1));
+			historyCount ++;
 			insertDataToDb(item, type, mission);
-			mAdapter.notifyDataSetChanged();
-			contentView.setSelection(dataList.size());
+			Toast.makeText(mContext, R.string.complete_once, Toast.LENGTH_SHORT).show();
 			mInputEt.setText("");
-			if(dataList.size() == writeCount){
+			if(historyCount == writeCount){
 				mInputEt.setVisibility(View.GONE);
 				mCheckLayout.setVisibility(View.GONE);
 				if(mContext instanceof GrowDetailActivity)
@@ -291,7 +283,7 @@ public class GrowDetailView extends LinearLayout {
 			EditText input = (EditText) view.getTag();
 			switch ((Integer)input.getTag()) {
 			case 0:
-				if(checkEmptyOrFull(mLeftDataList , input))
+				if(checkEmptyOrFull(input))
 					return;
 				GrowWriteItem leftItem = new GrowWriteItem();
 				leftItem.setContent(input.getText().toString());
@@ -299,7 +291,7 @@ public class GrowDetailView extends LinearLayout {
 				mLeftAdapter.notifyDataSetChanged();
 				break;
 			case 1:
-				if(checkEmptyOrFull(mRightDataList , input))
+				if(checkEmptyOrFull(input))
 					return;
 				GrowWriteItem rightItem = new GrowWriteItem();
 				rightItem.setContent(input.getText().toString());
@@ -318,33 +310,21 @@ public class GrowDetailView extends LinearLayout {
 		View view = mInflater.inflate(R.layout.grow_detail_mission_layout, null);
 		view.setLayoutParams(mMatchParams);
 		((TextView)view.findViewById(R.id.mission_tv)).setText(bean.getMission());
-		contentView = (ListView) view.findViewById(R.id.content_lv);
-		dataList = new ArrayList<GrowWriteItem>();
-		mAdapter = new GrowWriteAdapter(mContext, dataList);
-		mAdapter.setCanDelete(false);
-		mAdapter.setShowCountString(true);
-		contentView.setAdapter(mAdapter);
 		writeCount = bean.getCount();
 		mCheckLayout = (LinearLayout) view.findViewById(R.id.check_layout);
-		ArrayList<GrowWriteItem> dbList = pullDbData(type, mission);
-		if(dbList == null || (dbList != null && dbList.size() < writeCount)){
+		historyCount = getHistoryCount(type, mission);
+		if(historyCount < writeCount){
 			((TextView) view.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle()+":");
 			mRegreeRg = (RadioGroup) view.findViewById(R.id.check_rg);
 			for(String checkItem : bean.getCheckItem()){
 				RadioButton button = new RadioButton(mContext);
-				button.setLayoutParams(mAverageParams);
+				button.setLayoutParams(mRadioButtonParams);
 				button.setButtonDrawable(R.drawable.bg_trans_shape);
 				button.setBackgroundResource(R.drawable.bg_checked_item_selector);
 				button.setText(checkItem);
 				mRegreeRg.addView(button);
 			}
-			if(dbList != null){
-				dataList.addAll(dbList);
-				mAdapter.notifyDataSetChanged();
-			}
 		}else {
-			dataList.addAll(dbList);
-			mAdapter.notifyDataSetChanged();
 			mCheckLayout.setVisibility(View.GONE);
 		}
 		view.findViewById(R.id.commit_btn).setOnClickListener(singleMissionListener);
@@ -355,7 +335,7 @@ public class GrowDetailView extends LinearLayout {
 		@SuppressWarnings("unused")
 		@Override
 		public void onClick(View view) {
-			if(dataList.size() == writeCount && mContext instanceof Activity){
+			if(historyCount == writeCount && mContext instanceof Activity){
 				((Activity)mContext).finish();
 				return;
 			}
@@ -369,6 +349,7 @@ public class GrowDetailView extends LinearLayout {
 						String.valueOf(startTime + 24*60*60*1000));
 				if(cursor.getCount() >= dailyMax){
 					Toast.makeText(mContext, R.string.complete_today, Toast.LENGTH_SHORT).show();
+					cursor.close();
 					return;
 				}
 			}
@@ -384,11 +365,11 @@ public class GrowDetailView extends LinearLayout {
 				Toast.makeText(mContext, R.string.please_choose_degree, Toast.LENGTH_SHORT).show();
 				return;
 			}
-			item.setIndexString(String.format("第%d次  ", dataList.size() + 1));
-			dataList.add(item);
-			mAdapter.notifyDataSetChanged();
+			item.setIndexString(String.format("第%d次  ", historyCount + 1));
+			historyCount ++ ;
 			insertDataToDb(item, type, mission);
-			if(dataList.size() == writeCount){
+			Toast.makeText(mContext, R.string.complete_once, Toast.LENGTH_SHORT).show();
+			if(historyCount == writeCount){
 				mCheckLayout.setVisibility(View.GONE);
 				if(mContext instanceof GrowDetailActivity)
 					((Activity)mContext).setResult(1, new Intent());
@@ -401,16 +382,10 @@ public class GrowDetailView extends LinearLayout {
 		View view = mInflater.inflate(R.layout.grow_detail_muti_mission_layout, null);
 		view.setLayoutParams(mMatchParams);
 		((TextView)view.findViewById(R.id.mission_tv)).setText(bean.getMission());
-		contentView = (ListView) view.findViewById(R.id.content_lv);
-		dataList = new ArrayList<GrowWriteItem>();
-		mAdapter = new GrowWriteAdapter(mContext, dataList);
-		mAdapter.setCanDelete(false);
-		mAdapter.setShowCountString(true);
-		contentView.setAdapter(mAdapter);
 		writeCount = bean.getCount();
 		mCheckLayout = (LinearLayout) view.findViewById(R.id.check_layout);
-		ArrayList<GrowWriteItem> dbList = pullDbData(type, mission);
-		if(dbList == null || (dbList !=null && dbList.size() < writeCount)){
+		historyCount = getHistoryCount(type, mission);
+		if(historyCount < writeCount){
 			mutiMissionList = new ArrayList<RadioGroup>();
 			for(int i = 0 ; i < bean.getMissionDetail().size() ; i++){
 				View itemView = mInflater.inflate(R.layout.item_mission_check_layout, null);
@@ -418,21 +393,19 @@ public class GrowDetailView extends LinearLayout {
 						"%d %s----%s", i+1 ,bean.getMissionTips().get(i) , bean.getMissionDetail().get(i)));
 				((TextView)itemView.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle());
 				RadioGroup itemGroup = (RadioGroup) itemView.findViewById(R.id.check_rg);
+				itemGroup.setOrientation(VERTICAL);
 				mutiMissionList.add(itemGroup);
 				for(String checkItem : bean.getCheckItem()){
 					RadioButton itemButton = new RadioButton(mContext);
+					itemButton.setLayoutParams(mRadioButtonParams);
+					itemButton.setButtonDrawable(R.drawable.bg_trans_shape);
+					itemButton.setBackgroundResource(R.drawable.bg_checked_item_selector);
 					itemButton.setText(checkItem);
 					itemGroup.addView(itemButton);
 				}
 				mCheckLayout.addView(itemView);
 			}
-			if(dbList != null){
-				dataList.addAll(dbList);
-				mAdapter.notifyDataSetChanged();
-			}
 		}else {
-			dataList.addAll(dbList);
-			mAdapter.notifyDataSetChanged();
 		}
 		view.findViewById(R.id.commit_btn).setOnClickListener(mutiMissionListener);
 		this.addView(view);
@@ -442,7 +415,7 @@ public class GrowDetailView extends LinearLayout {
 		@SuppressWarnings("unused")
 		@Override
 		public void onClick(View view) {
-			if(dataList.size() == writeCount && mContext instanceof Activity){
+			if(historyCount == writeCount && mContext instanceof Activity){
 				((Activity)mContext).finish();
 				return;
 			}
@@ -469,17 +442,18 @@ public class GrowDetailView extends LinearLayout {
 						String.valueOf(startTime + 24*60*60*1000));
 				if(cursor.getCount() >= dailyMax){
 					Toast.makeText(mContext, R.string.complete_today, Toast.LENGTH_SHORT).show();
+					cursor.close();
 					return;
 				}
 			}
 			GrowWriteItem item = new GrowWriteItem();
 			item.setDegree(pass && goodPoint >= mutiMissionList.size() - 1 ? 
 					mResources.getString(R.string.complete_mission) : mResources.getString(R.string.fail_mission));
-			item.setIndexString(String.format("第%d次  ", dataList.size() + 1));
-			dataList.add(item);
-			mAdapter.notifyDataSetChanged();
+			item.setIndexString(String.format("第%d次  ", historyCount + 1));
+			historyCount ++;
 			insertDataToDb(item, type, mission);
-			if(dataList.size() == writeCount){
+			Toast.makeText(mContext, R.string.complete_once, Toast.LENGTH_SHORT).show();
+			if(historyCount == writeCount){
 				mCheckLayout.setVisibility(View.GONE);
 				if(mContext instanceof GrowDetailActivity)
 					((Activity)mContext).setResult(1, new Intent());
@@ -514,6 +488,11 @@ public class GrowDetailView extends LinearLayout {
 		mDbHelper.insert(SqlConstants.TableName, values);
 	}
 	
+	private int getHistoryCount(String type, String mission){
+		Cursor cursor = mDbHelper.query(SqlConstants.SelectSql, mission);
+		return cursor.getCount();
+	}
+	
 	private ArrayList<GrowWriteItem> pullDbData(String type, String mission){
 		ArrayList<GrowWriteItem> list = new ArrayList<GrowWriteItem>();
 		Cursor cursor = mDbHelper.query(SqlConstants.SelectSql, mission);
@@ -545,7 +524,7 @@ public class GrowDetailView extends LinearLayout {
 				list.add(item);
 			}
 		}
-		
+		cursor.close();
 		return list;
 	}
 	
@@ -555,8 +534,9 @@ public class GrowDetailView extends LinearLayout {
 		super.onDetachedFromWindow();
 	}
 	
-	private boolean checkEmptyOrFull(ArrayList<GrowWriteItem> data , EditText input){
-		if(data.size() == writeCount){
+	private boolean checkEmptyOrFull(EditText input){
+//		if(data.size() == writeCount){
+		if(historyCount == writeCount){
 			//Toast.makeText(mContext, R.string.complete, Toast.LENGTH_SHORT).show();
 			if(mContext instanceof Activity){
 				((Activity) mContext).finish();

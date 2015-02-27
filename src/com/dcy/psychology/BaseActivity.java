@@ -94,6 +94,11 @@ public class BaseActivity extends Activity {
 		mTopRightText.setText(res);
 	}
 	
+	public void setRightView(int resId){
+		mRightView.setVisibility(View.VISIBLE);
+		mRightView.setImageResource(resId);
+	}
+	
 	public void onRightTextClick(){};
 	
 	public void onLeftViewClick(){};

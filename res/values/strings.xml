@@ -153,6 +153,8 @@
 	<string name="game_one">糖果鱼</string>
 	<string name="more">更多</string>
 	<string name="hide_comment">收起回复</string>
+	<string name="grow_history">关卡记录</string>
+	<string name="complete_once">成功训练一次</string>
 	
 	<!-- chat-values -->
     <string name="text_ack_msg">已读</string>

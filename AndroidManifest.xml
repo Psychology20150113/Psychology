@@ -123,6 +123,11 @@
             android:windowSoftInputMode="adjustUnspecified">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.GrowHistoryActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity 
             android:name="com.dcy.psychology.PlamPictureDetailActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize">

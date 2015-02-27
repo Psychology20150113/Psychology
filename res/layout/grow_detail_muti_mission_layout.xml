@@ -8,6 +8,16 @@
     <TextView 
 	    android:id="@+id/mission_tv"
 	    style="@style/text_black18_style"/>
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/check_layout" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
     <ListView 
         android:id="@+id/content_lv"
         android:layout_width="match_parent"
@@ -16,25 +26,12 @@
         android:layout_marginTop="10dp"
         android:divider="@color/divider"
         android:dividerHeight="1dp"
+        android:visibility="gone"
         android:listSelector="#00000000"/>
-    <LinearLayout 
-        android:id="@+id/check_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"/>
-	<LinearLayout 
+	<Button 
+	    android:id="@+id/commit_btn"
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:gravity="center">
-		<Button 
-		    android:id="@+id/commit_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/ok"/>
-		<Button 
-		    android:id="@+id/think_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/thinking"/>
-	</LinearLayout>
+	    android:layout_height="40dp"
+	    android:text="@string/ok"
+	    android:background="@drawable/bg_save_btn_shape"/>
 </LinearLayout>
