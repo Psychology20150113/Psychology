@@ -41,8 +41,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:text="@string/start"
-        android:background="@drawable/bg_white_red_selector"/>
+        android:text="@string/start"/>
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"

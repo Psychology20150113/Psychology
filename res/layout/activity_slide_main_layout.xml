@@ -16,14 +16,59 @@
         android:background="#1E1918"
         android:orientation="vertical"
 	    android:layout_gravity="left">
-        <TextView 
-            android:id="@+id/name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:padding="15dp"
-            android:visibility="gone"
-            android:textColor="#CCFFFFFF"/>
+	    <RelativeLayout 
+	        android:id="@+id/name_ll"
+	        android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:visibility="gone">
+			<TextView 
+	            android:id="@+id/name_tv"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="22sp"
+	            android:padding="15dp"
+	            android:textColor="#CCFFFFFF"/>
+			<TextView 
+	            android:id="@+id/logout_tv"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/quit"
+	            android:textSize="16sp"
+	            android:padding="15dp"
+	            android:layout_alignParentRight="true"
+	            android:layout_centerVertical="true"
+	            android:textColor="#CCFFFFFF"/>	        
+	    </RelativeLayout>
+	    <RelativeLayout 
+	        android:id="@+id/login_ll"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:padding="15dp" >
+		    <ImageView 
+		        android:id="@+id/left_icon_iv"
+		        android:layout_width="20dp"
+		        android:layout_height="20dp"
+		        android:layout_centerVertical="true"
+		        android:src="@drawable/icon_slide_one"
+		        android:scaleType="centerInside"/>
+			<TextView 
+			    android:id="@+id/slide_menu_tv"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/login"
+			    android:textSize="18sp"
+			    android:textColor="#CCFFFFFF"
+			    android:layout_toRightOf="@id/left_icon_iv"
+			    android:layout_centerVertical="true"
+			    android:layout_marginLeft="10dp"/>
+			<ImageView 
+			    android:layout_width="7dp"
+			    android:layout_height="11dp"
+			    android:src="@drawable/icon_arraw_right"
+			    android:layout_alignParentRight="true"
+			    android:layout_centerVertical="true"
+			    android:layout_marginRight="17dp"/>
+		</RelativeLayout>
 		<ListView 
 	        android:id="@+id/drawer_lv"
 	        android:layout_width="match_parent"

@@ -59,7 +59,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="#ffffff"
-        android:text="@string/logout"
+        android:text="@string/quit"
         android:visibility="gone"
         android:gravity="center"/>
     <Button 

@@ -54,7 +54,7 @@ public class DoctorListAdapter extends BaseAdapter {
 		}
 		DoctorListBean item = mDataList.get(position);
 		mHolder.nameText.setText(item.getDoctorName());
-		imageLoader.displayImage(mHolder.docView, R.drawable.chat_edit, 
+		imageLoader.displayImage(mHolder.docView, R.drawable.ic_launcher, 
 				new AsyncImageCache.NetworkImageGenerator(item.getDoctorHeadUrl(), item.getDoctorHeadUrl()));
 		return viewHolder;
 	}

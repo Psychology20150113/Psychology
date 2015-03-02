@@ -206,6 +206,10 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 			new GetCommentDetailTask().execute(position);
 			break;
 		case R.id.item_comment_btn:
+			if(TextUtils.isEmpty(MyApplication.myUserName)){
+				Toast.makeText(mContext, R.string.please_login, Toast.LENGTH_SHORT).show();
+				return;
+			}
 			((LinearLayout)v.getParent().getParent()).findViewById(R.id.item_comment_ll).setVisibility(View.VISIBLE);
 			break;
 		case R.id.item_comment_sure_btn:

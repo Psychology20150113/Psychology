@@ -37,7 +37,6 @@
         <item>@string/label_platform_four</item>
     </string-array>
     <string-array name="slide_item_array">
-        <item>@string/login</item>
         <item>@string/slide_blackhole</item>
         <item>@string/slide_music</item>
         <item>@string/slide_message</item>

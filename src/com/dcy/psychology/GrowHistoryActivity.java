@@ -49,6 +49,10 @@ public class GrowHistoryActivity extends BaseActivity {
 
 	@Override
 	public void onRightViewClick() {
+		if(TextUtils.isEmpty(MyApplication.myUserName)){
+			Toast.makeText(this, R.string.please_login, Toast.LENGTH_SHORT).show();
+			return;
+		}
 		final EditText editText = new EditText(this);
 		Builder builder = new Builder(this);
 		builder.setTitle(R.string.think_title).
