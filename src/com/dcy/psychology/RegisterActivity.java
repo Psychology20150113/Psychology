@@ -3,6 +3,7 @@ package com.dcy.psychology;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.util.AsyncImageCache;
+import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.Utils;
 
 import android.content.Intent;
@@ -33,11 +34,13 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	private class RegisterTask extends AsyncTask<String, Void, RegisterBean>{
 		private String account;
 		private String pwd;
+		private boolean chatRegister = false;
 		
 		@Override
 		protected RegisterBean doInBackground(String... arg0) {
 			account = userInfo.getUserLoginName();
 			pwd = userInfo.getUserPwd();
+			chatRegister = IMManager.getInstance().registerIM(account, pwd);
 			return Utils.getRegisterResult(userInfo);
 		}
 		
@@ -45,14 +48,11 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 		protected void onPostExecute(RegisterBean result) {
 			super.onPostExecute(result);
 			hideCustomDialog();
-			if("OK".equals(result.getResult())){
+			if("OK".equals(result.getResult()) && chatRegister){
 				Toast.makeText(RegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
-				//MyApplication.getInstance().setUserName(chatAccount);
-				//MyApplication.getInstance().setPassword(chatPwd);
 				MyApplication.myUserName = account;
 				MyApplication.myPwd = pwd;
 				MyApplication.myNick = userInfo.getUserName();
-				
 				Intent mIntent = new Intent();
 				mIntent.putExtra("login_success", true);
 				setResult(1, mIntent);

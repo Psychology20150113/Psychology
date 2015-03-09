@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Application;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.dcy.psychology.util.AsyncImageCache;
+import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.google.gson.Gson;
@@ -30,6 +33,9 @@ public class MyApplication extends Application{
         AsyncImageCache.setMemoryCacheSize(1024 * 1024 * 10);    //10MB
         initAppInfo();
         mGson = new Gson();
+        if(!TextUtils.isEmpty(myUserName)){
+        	new LoginActivity.ChatLoginTask(this).execute(myUserName, myPwd);
+        }
 	}
 	
 	private void initAppInfo(){

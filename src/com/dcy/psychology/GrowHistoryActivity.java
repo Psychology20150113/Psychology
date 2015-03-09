@@ -131,6 +131,19 @@ public class GrowHistoryActivity extends BaseActivity {
 						cursor.getColumnIndex(SqlConstants.DescriptionKey)));
 				list.add(item);
 			}
+		}else if(GrowModelBean.Type_MutiWrite.equals(type)){
+			while (cursor.moveToNext()) {
+				GrowWriteItem item = new GrowWriteItem();
+				item.setIndexString(cursor.getString(
+						cursor.getColumnIndex(SqlConstants.IndexKey)));
+				String content = cursor.getString(
+						cursor.getColumnIndex(SqlConstants.DescriptionKey));
+				String[] splitContent = content.split("\\^");
+				if(splitContent.length < 2)
+					continue;
+				item.setContent(splitContent[0] + "\n" + splitContent[1]);
+				list.add(item);
+			}
 		}
 		cursor.close();
 		return list;

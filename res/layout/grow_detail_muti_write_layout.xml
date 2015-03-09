@@ -10,7 +10,8 @@
         style="@style/text_black18_style"/>
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView 
             android:id="@+id/mission_title_left"
             android:layout_width="0dp"
@@ -18,7 +19,8 @@
             android:layout_height="match_parent"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:background="@drawable/bg_checked_item_selector"/>
         <TextView 
             android:id="@+id/mission_title_right"
             android:layout_width="0dp"
@@ -26,27 +28,20 @@
             android:layout_height="match_parent"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:background="@drawable/bg_checked_item_selector"/>
     </LinearLayout>
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <ListView 
-	        android:id="@+id/content_left_lv"
-	        android:layout_width="0dp"
-	        android:layout_weight="1"
-	        android:layout_height="match_parent"
-	        android:divider="@color/divider"
-	        android:dividerHeight="1dp"
-	        android:listSelector="#00000000"/>
-        <ListView 
-	        android:id="@+id/content_right_lv"
-	        android:layout_width="0dp"
-	        android:layout_weight="1"
-	        android:layout_height="match_parent"
-	        android:divider="@color/divider"
-	        android:dividerHeight="1dp"
-	        android:listSelector="#00000000"/>
-    </LinearLayout>
+    <EditText 
+	    android:id="@+id/input_et"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1"
+	    android:textSize="18sp"
+	    android:inputType="text"/>
+	<Button 
+	    android:id="@+id/commit_btn"
+	    android:layout_width="match_parent"
+	    android:layout_height="40dp"
+	    android:text="@string/ok"
+	    android:background="@drawable/bg_save_btn_shape"/>
 </LinearLayout>

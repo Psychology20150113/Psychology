@@ -20,6 +20,7 @@
 	    android:id="@+id/input_et"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="20dp"
 	    android:textSize="18sp"
 	    android:inputType="text"/>
 	<LinearLayout 
@@ -35,6 +36,7 @@
 		    android:id="@+id/check_rg"
 		    android:layout_width="0dp"
 		    android:layout_weight="1"
+		    android:layout_marginLeft="20dp"
 		    android:gravity="center_vertical"
 		    android:layout_height="wrap_content"
 		    android:orientation="horizontal"/>
@@ -43,6 +45,7 @@
 	    android:id="@+id/commit_btn"
 	    android:layout_width="match_parent"
 	    android:layout_height="40dp"
+	    android:layout_marginTop="20dp"
 	    android:text="@string/ok"
 	    android:background="@drawable/bg_save_btn_shape"/>
 </LinearLayout>

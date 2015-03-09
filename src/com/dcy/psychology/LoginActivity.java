@@ -2,15 +2,18 @@ package com.dcy.psychology;
 
 import com.dcy.psychology.gsonbean.LoginBean;
 import com.dcy.psychology.util.AsyncImageCache;
+import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -40,8 +43,28 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				finish();
 			}
 		}
-		
 	} 
+
+	public static class ChatLoginTask extends AsyncTask<String, Void, Boolean>{
+		private Context mContext;
+		
+		public ChatLoginTask(Context context) {
+			mContext = context;
+		}
+		
+		@Override
+		protected Boolean doInBackground(String... params) {
+			if(TextUtils.isEmpty(params[0]) || TextUtils.isEmpty(params[1]))
+				return false;
+			return IMManager.getInstance().loginIM(params[0], params[1]);
+		}
+		
+		@Override
+		protected void onPostExecute(Boolean result) {
+			if(!result)
+				Toast.makeText(mContext, R.string.login_chat_failed, Toast.LENGTH_SHORT).show();
+		}
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +127,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		MyApplication.myUserName = account;
 		MyApplication.myPwd = pwd;
 		MyApplication.myUserRole = role;
+		new ChatLoginTask(this).execute(account, pwd);
 	}
 	
 	private boolean checkInput(){

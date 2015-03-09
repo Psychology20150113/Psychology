@@ -18,6 +18,7 @@
 		    android:id="@+id/check_rg"
 		    android:layout_width="0dp"
 		    android:layout_weight="1"
+		    android:layout_marginLeft="20dp"
 		    android:gravity="center_vertical"
 		    android:layout_height="wrap_content"
 		    android:orientation="horizontal"/>

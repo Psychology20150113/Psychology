@@ -158,4 +158,5 @@
 	<string name="please_login">请您先注册登录</string>
 	<string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="send_msg_failed">发送失败</string>
 </resources>

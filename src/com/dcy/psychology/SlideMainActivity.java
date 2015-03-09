@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import com.dcy.psychology.adapter.SlideAdapter;
 import com.dcy.psychology.fragment.SlideMainFragment;
+import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 
 import android.content.Intent;
@@ -43,6 +44,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		slideView.setAdapter(new SlideAdapter(this));
 		slideView.setOnItemClickListener(this);
 		setLeftView(R.drawable.icon_user);
+		setRightView(R.drawable.ic_launcher);
 		if(!TextUtils.isEmpty(MyApplication.myUserName)){
 			nameLayout.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myUserName);
@@ -56,10 +58,16 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	}
 	
 	@Override
+	public void onRightViewClick() {
+		startActivity(new Intent(this, ChatIMActivity.class));
+	}
+	
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.logout_tv:
 			clearInfo();
+			IMManager.getInstance().logoutIM();
 			loginLayout.setVisibility(View.VISIBLE);
 			nameLayout.setVisibility(View.GONE);
 			break;

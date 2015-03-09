@@ -62,14 +62,10 @@ public class GrowDetailView extends LinearLayout {
 	private String type;
 	private int dailyMax;
 	private int historyCount;
-	
-	//muti mode
-	private ListView mLeftContentView;
-	private ListView mRightContentView;
-	private GrowWriteAdapter mLeftAdapter;
-	private GrowWriteAdapter mRightAdapter;
-	private ArrayList<GrowWriteItem> mLeftDataList;
-	private ArrayList<GrowWriteItem> mRightDataList;
+
+	//mutiWrite use
+	private TextView mTabLeftView;
+	private TextView mTabRightView;
 	
 	private ArrayList<RadioGroup> mutiMissionList;
 	private DbHelper mDbHelper;
@@ -194,6 +190,7 @@ public class GrowDetailView extends LinearLayout {
 				((TextView)writeView.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle());
 				for(String item : bean.getCheckItem()){
 					RadioButton itemBtn = new RadioButton(mContext);
+					itemBtn.setPadding((int)(10*dm.density), 0, (int)(10*dm.density), 0);
 					itemBtn.setLayoutParams(mAverageParams);
 					itemBtn.setButtonDrawable(R.drawable.bg_trans_shape);
 					itemBtn.setBackgroundResource(R.drawable.bg_checked_item_selector);
@@ -249,60 +246,53 @@ public class GrowDetailView extends LinearLayout {
 	private void initMutiWriteLayout(GrowModelBean bean){
 		LinearLayout view = (LinearLayout) mInflater.inflate(R.layout.grow_detail_muti_write_layout, null);
 		view.setLayoutParams(mMatchParams);
+		mTabLeftView = (TextView) view.findViewById(R.id.mission_title_left);
+		mTabLeftView.setSelected(true);
+		mTabRightView = (TextView) view.findViewById(R.id.mission_title_right);
 		((TextView) view.findViewById(R.id.mission_tv)).setText(bean.getMission());
-		((TextView) view.findViewById(R.id.mission_title_left)).setText(bean.getMissionDetail().get(0));
-		((TextView) view.findViewById(R.id.mission_title_right)).setText(bean.getMissionDetail().get(1));
-		mLeftContentView = (ListView) view.findViewById(R.id.content_left_lv);
-		mRightContentView = (ListView)view.findViewById(R.id.content_right_lv);
-		mLeftDataList = new ArrayList<GrowWriteItem>();
-		mRightDataList = new ArrayList<GrowWriteItem>();
-		mLeftAdapter = new GrowWriteAdapter(mContext, mLeftDataList);
-		mRightAdapter = new GrowWriteAdapter(mContext, mRightDataList);
-		mLeftContentView.setAdapter(mLeftAdapter);
-		mRightContentView.setAdapter(mRightAdapter);
+		mTabLeftView.setText(bean.getMissionDetail().get(0));
+		mTabRightView.setText(bean.getMissionDetail().get(1));
+		mInputEt = (EditText) view.findViewById(R.id.input_et);
 		writeCount = bean.getCount();
-		for(int i = 0 ; i < bean.getMissionDetail().size() ; i++)
-			view.addView(addCommitLayout(bean.getMissionDetail().get(i) , mutiWriteListener , i));
+		historyCount = getHistoryCount(type, mission);
+		if(historyCount >= writeCount){
+			mInputEt.setVisibility(View.GONE);
+		}
+		view.findViewById(R.id.commit_btn).setOnClickListener(mutiWriteListener);
 		this.addView(view);
-	}
-	
-	private View addCommitLayout(String mission , OnClickListener commitListener , int index){
-		View commitView = mInflater.inflate(R.layout.item_write_commit_layout, null);
-		((TextView) commitView.findViewById(R.id.item_mission_tv)).setText(mission);
-		EditText inputEt = (EditText) commitView.findViewById(R.id.item_input_et);
-		inputEt.setTag(index);
-		Button commitBtn = (Button) commitView.findViewById(R.id.item_commit_btn);
-		commitBtn.setTag(inputEt);
-		commitBtn.setOnClickListener(commitListener);
-		return commitView;
 	}
 	
 	private OnClickListener mutiWriteListener = new OnClickListener() {
 		@Override
 		public void onClick(View view) {
-			EditText input = (EditText) view.getTag();
-			switch ((Integer)input.getTag()) {
-			case 0:
-				if(checkEmptyOrFull(input))
-					return;
-				GrowWriteItem leftItem = new GrowWriteItem();
-				leftItem.setContent(input.getText().toString());
-				mLeftDataList.add(leftItem);
-				mLeftAdapter.notifyDataSetChanged();
-				break;
-			case 1:
-				if(checkEmptyOrFull(input))
-					return;
-				GrowWriteItem rightItem = new GrowWriteItem();
-				rightItem.setContent(input.getText().toString());
-				mRightDataList.add(rightItem);
-				mRightAdapter.notifyDataSetChanged();
-				break;
-			default:
-				break;
+			if(checkEmptyOrFull(mInputEt))
+				return;
+			if(mTabLeftView.isSelected()){
+				mTabLeftView.setTag(mInputEt.getText().toString());
+				mTabLeftView.setSelected(false);
+				mTabRightView.setSelected(true);
+				mInputEt.setText("");
+				return;
+			} else {
+				mTabLeftView.setSelected(true);
+				mTabRightView.setSelected(false);
+				GrowWriteItem item = new GrowWriteItem();
+				item.setIndexString(String.valueOf(historyCount + 1));
+				item.setContent(String.format("%s^%s", mTabLeftView.getTag().toString(),
+						mInputEt.getText().toString()));
+				historyCount ++;
+				insertDataToDb(item, type, mission);
+				Toast.makeText(mContext, R.string.complete_once, Toast.LENGTH_SHORT).show();
+				mInputEt.setText("");
 			}
-			input.setText("");
-			hideSoftInput(input);
+			if(historyCount == writeCount){
+				mInputEt.setVisibility(View.GONE);
+				mCheckLayout.setVisibility(View.GONE);
+				if(mContext instanceof GrowDetailActivity)
+					((Activity)mContext).setResult(1, new Intent());
+				mShared.putInt(key, mLevel + 1);
+				hideSoftInput(mInputEt);
+			}
 		}
 	};
 	
@@ -318,6 +308,7 @@ public class GrowDetailView extends LinearLayout {
 			mRegreeRg = (RadioGroup) view.findViewById(R.id.check_rg);
 			for(String checkItem : bean.getCheckItem()){
 				RadioButton button = new RadioButton(mContext);
+				button.setPadding((int)(10*dm.density), 0, 0, 0);
 				button.setLayoutParams(mRadioButtonParams);
 				button.setButtonDrawable(R.drawable.bg_trans_shape);
 				button.setBackgroundResource(R.drawable.bg_checked_item_selector);
@@ -397,6 +388,7 @@ public class GrowDetailView extends LinearLayout {
 				mutiMissionList.add(itemGroup);
 				for(String checkItem : bean.getCheckItem()){
 					RadioButton itemButton = new RadioButton(mContext);
+					itemButton.setPadding((int)(10*dm.density), 0, 0, 0);
 					itemButton.setLayoutParams(mRadioButtonParams);
 					itemButton.setButtonDrawable(R.drawable.bg_trans_shape);
 					itemButton.setBackgroundResource(R.drawable.bg_checked_item_selector);
@@ -483,6 +475,8 @@ public class GrowDetailView extends LinearLayout {
 			}
 		}else if(GrowModelBean.Type_SingleMission.equals(type) || GrowModelBean.Type_MutiMission.equals(type)){
 			values.put(SqlConstants.DescriptionKey, item.getDegree());
+		}else if(GrowModelBean.Type_MutiWrite.equals(type)){
+			values.put(SqlConstants.DescriptionKey, item.getContent());
 		}
 		values.put(SqlConstants.TimeKey, Calendar.getInstance().getTimeInMillis());
 		mDbHelper.insert(SqlConstants.TableName, values);
