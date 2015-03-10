@@ -1,9 +1,12 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.LoginActivity.ChatLoginTask;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.util.AsyncImageCache;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
+import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 
 import android.content.Intent;
@@ -50,9 +53,9 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 			hideCustomDialog();
 			if("OK".equals(result.getResult()) && chatRegister){
 				Toast.makeText(RegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
-				MyApplication.myUserName = account;
-				MyApplication.myPwd = pwd;
-				MyApplication.myNick = userInfo.getUserName();
+				InfoShared mShared = new InfoShared(RegisterActivity.this);
+				mShared.saveInfo(account, pwd, Constants.RoleUser);
+				mShared.setUserNick(userInfo.getUserName());
 				Intent mIntent = new Intent();
 				mIntent.putExtra("login_success", true);
 				setResult(1, mIntent);

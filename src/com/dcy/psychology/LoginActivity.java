@@ -36,7 +36,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				Toast.makeText(LoginActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}else {
 				Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
-				saveInfo(result.getLoginState());
+				InfoShared mShared = new InfoShared(LoginActivity.this);
+				mShared.saveInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState());
 				Intent mIntent = new Intent();
 				mIntent.putExtra("login_success", true);
 				setResult(0, mIntent);
@@ -115,19 +116,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		default:
 			break;
 		}
-	}
-	
-	private void saveInfo(String role){
-		String account = accountET.getText().toString();
-		String pwd = pwdET.getText().toString();
-		InfoShared mInfo = new InfoShared(LoginActivity.this);
-		mInfo.setUserName(account);
-		mInfo.setUserPwd(pwd);
-		mInfo.setUserRole(role);
-		MyApplication.myUserName = account;
-		MyApplication.myPwd = pwd;
-		MyApplication.myUserRole = role;
-		new ChatLoginTask(this).execute(account, pwd);
 	}
 	
 	private boolean checkInput(){

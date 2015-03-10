@@ -58,7 +58,7 @@ public class ChatAdapter extends BaseAdapter {
 		}
 		ChatItemModel item = mDataList.get(position);
 		mHolder.mContentView.setText(item.getContext());
-		if(item.isMine()){
+		if(!item.isMine()){
 			mHolder.mContentView.setGravity(Gravity.LEFT);
 			mHolder.mContentView.setPadding(0, 0, padding, 0);
 			mHolder.mLeftView.setVisibility(View.VISIBLE);

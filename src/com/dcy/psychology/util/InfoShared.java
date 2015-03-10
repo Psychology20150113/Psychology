@@ -1,11 +1,15 @@
 package com.dcy.psychology.util;
 
+import com.dcy.psychology.MyApplication;
+import com.dcy.psychology.LoginActivity.ChatLoginTask;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class InfoShared {
 	private final String InfoSharedName = "app_info_1.0";
 	private SharedPreferences mShared;
+	private Context mContext;
 	
 	private final String UserName = "info_name";
 	private final String UserPwd = "info_pwd";
@@ -14,8 +18,9 @@ public class InfoShared {
 	
 	public String ThemeFormat = "Theme%s_%d";
 	
-	public InfoShared(Context mContext) {
-		mShared = mContext.getSharedPreferences(InfoSharedName, Context.MODE_PRIVATE);
+	public InfoShared(Context context) {
+		this.mContext = context;
+		mShared = context.getSharedPreferences(InfoSharedName, Context.MODE_PRIVATE);
 	}
 	
 	public void setUserName(String userName){
@@ -56,6 +61,16 @@ public class InfoShared {
 	
 	public int getInt(String key){
 		return mShared.getInt(key, 0);
+	}
+	
+	public void saveInfo(String account, String pwd, String role){
+		setUserName(account);
+		setUserPwd(pwd);
+		setUserRole(role);
+		MyApplication.myUserName = account;
+		MyApplication.myPwd = pwd;
+		MyApplication.myUserRole = role;
+		new ChatLoginTask(mContext).execute(account, pwd);
 	}
 	
 	public void clearInfo(){

@@ -8,7 +8,9 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Message;
 
+import android.content.Context;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -30,10 +32,14 @@ public class IMManager {
 	
 	public boolean registerIM(String username , String password){
 		try {
+			Log.i("chat", "register connection start");
 			connection.connect();
+			Log.i("chat", "register connection end");
 			if(connection.isConnected()){
+				Log.i("chat", "register start");
 				AccountManager manager = new AccountManager(connection);
 				manager.createAccount(username, password);
+				Log.i("chat", "register end");
 				return true;
 			}
 		} catch (XMPPException e) {
@@ -48,12 +54,12 @@ public class IMManager {
 				Log.i("chat", "login connect start");
 				connection.connect();
 				Log.i("chat", "login connect end");
-				if(connection.isConnected()){
-					Log.i("chat", "login start");
-					connection.login(username, password);
-					Log.i("chat", "login end");
-					return true;
-				}
+			}
+			if(connection.isConnected() && TextUtils.isEmpty(connection.getUser())){
+				Log.i("chat", "login start");
+				connection.login(username, password);
+				Log.i("chat", "login end");
+				return true;
 			}
 		} catch (XMPPException e) {
 			Log.i("chat", "login exception : " + e.getMessage());
@@ -78,7 +84,7 @@ public class IMManager {
 	}
 	
 	public void getChatMessage(final Handler mHandler, String chatJID){
-		if(!connection.isConnected()){
+		if(!connection.isConnected() || TextUtils.isEmpty(connection.getUser())){
 			return;
 		}
 		mChat = connection.getChatManager().createChat(chatJID, new MessageListener() {
@@ -91,7 +97,8 @@ public class IMManager {
 	
 	public boolean pushChatMessage(String message){
 		try {
-			if(mChat == null)
+			if(mChat == null || !connection.isConnected() || 
+					TextUtils.isEmpty(connection.getUser()))
 				return false;
 			mChat.sendMessage(message);
 			return true;

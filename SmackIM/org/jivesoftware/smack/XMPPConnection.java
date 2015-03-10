@@ -585,9 +585,9 @@ public class XMPPConnection {
      * @return a chat manager instance for this connection.
      */
     public synchronized ChatManager getChatManager() {
-        if (this.chatManager == null) {
+        //if (this.chatManager == null) {
             this.chatManager = new ChatManager(this);
-        }
+        //}
         return this.chatManager;
     }
 
