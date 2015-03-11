@@ -28,6 +28,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setTopTitle(R.string.app_name);
+		setTitleViewColor(getResources().getColor(R.color.brown));
 		setContentView(R.layout.activity_slide_main_layout);
 		initView();
 		getFragmentManager().beginTransaction().add(R.id.container, new SlideMainFragment()).commit();

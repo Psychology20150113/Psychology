@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class BaseActivity extends Activity {
 	private LinearLayout rootView;
+	private View mTitleView;
 	private TextView mTitleText;
 	protected LayoutInflater mInflater;
 	protected Resources mResources;
@@ -48,8 +49,8 @@ public class BaseActivity extends Activity {
 		mResources = getResources();
 		rootView = new LinearLayout(this);
 		rootView.setOrientation(LinearLayout.VERTICAL);
-		View titleView = mInflater.inflate(R.layout.custom_title_layout, rootView);
-		initTitleView(titleView);
+		mTitleView = mInflater.inflate(R.layout.custom_title_layout, rootView);
+		initTitleView();
 	}
 	
 	@Override
@@ -64,13 +65,13 @@ public class BaseActivity extends Activity {
 		super.setContentView(rootView);
 	}
 	
-	private void initTitleView(View titleView){
-		mTitleText = (TextView) titleView.findViewById(R.id.top_title_tv);
-		mTopRightText = (TextView) titleView.findViewById(R.id.top_right_tv);
+	private void initTitleView(){
+		mTitleText = (TextView) mTitleView.findViewById(R.id.top_title_tv);
+		mTopRightText = (TextView) mTitleView.findViewById(R.id.top_right_tv);
 		mTopRightText.setOnClickListener(mClickListener);
-		mLeftView = (ImageView) titleView.findViewById(R.id.top_left_iv);
+		mLeftView = (ImageView) mTitleView.findViewById(R.id.top_left_iv);
 		mLeftView.setOnClickListener(mClickListener);
-		mRightView = (ImageView) titleView.findViewById(R.id.top_right_iv);
+		mRightView = (ImageView) mTitleView.findViewById(R.id.top_right_iv);
 		mRightView.setOnClickListener(mClickListener);
 	}
 	
@@ -97,6 +98,14 @@ public class BaseActivity extends Activity {
 	public void setRightView(int resId){
 		mRightView.setVisibility(View.VISIBLE);
 		mRightView.setImageResource(resId);
+	}
+	
+	public void hideTitleView(){
+		mTitleView.setVisibility(View.GONE);
+	}
+	
+	public void setTitleViewColor(int color){
+		mTitleView.setBackgroundColor(color);
 	}
 	
 	public void onRightTextClick(){};

@@ -11,7 +11,7 @@ public class SqlConstants {
 	
 	public static final String CreateTableSql = 
 			"create table if not exists records(_id integer primary key,"
-			+ "itemIndex text,"
+			+ "itemIndex integer,"
 			+ "mission text not null,"
 			+ "description text,"
 			+ "time text)";

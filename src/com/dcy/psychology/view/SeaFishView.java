@@ -70,10 +70,10 @@ public class SeaFishView extends ViewGroup {
 		int fishRes = 0;
 		switch (item.getType()) {
 		case 0:
-			fishRes = R.drawable.icon_fish_one;
+			fishRes = R.drawable.icon_fish_one_selector;
 			break;
 		case 1:
-			fishRes = R.drawable.icon_fish_two;
+			fishRes = R.drawable.icon_fish_two_selector;
 			break;
 		default:
 			break;
@@ -113,8 +113,11 @@ public class SeaFishView extends ViewGroup {
 	private OnClickListener fishClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			if(!isOprationMode)
+			if(!isOprationMode || v == mSelectView)
 				return;
+			if(mSelectView != null)
+				mSelectView.setSelected(false);
+			v.setSelected(true);
 			mSelectView = v;
 		}
 	};

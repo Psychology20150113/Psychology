@@ -2,20 +2,18 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
-import com.dcy.psychology.adapter.ChatAdapter;
-import com.dcy.psychology.model.ChatItemModel;
-import com.dcy.psychology.util.IMManager;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.dcy.psychology.adapter.ChatAdapter;
+import com.dcy.psychology.model.ChatItemModel;
+import com.dcy.psychology.util.IMManager;
 
 public class ChatIMActivity extends BaseActivity implements OnClickListener{
 	private ListView mListView;
@@ -32,6 +30,7 @@ public class ChatIMActivity extends BaseActivity implements OnClickListener{
 				mModel.setContext(msg.obj.toString());
 				mModel.setTime(System.currentTimeMillis());
 				mDataList.add(mModel);
+				mListView.setSelection(mDataList.size());
 				mAdapter.notifyDataSetChanged();
 				break;
 

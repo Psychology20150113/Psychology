@@ -46,6 +46,7 @@ public class SeaGameResultActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.complete_iv:
+			startActivity(new Intent(this, SeaGameActivity.class));
 			finish();
 			break;
 
