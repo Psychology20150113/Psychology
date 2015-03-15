@@ -71,6 +71,7 @@ public class GrowDetailView extends LinearLayout {
 	private DbHelper mDbHelper;
 	
 	private String key;
+	private int mLibType;
 	private int themeIndex;
 	private int mLevel;
 	private InfoShared mShared;
@@ -87,7 +88,7 @@ public class GrowDetailView extends LinearLayout {
 		mRadioButtonParams = new LayoutParams(LayoutParams.MATCH_PARENT, (int)(40*dm.density));
 		mAverageParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1);
 		mAverageParams.setMargins((int)(10*dm.density), 0, 0,(int)(10 * dm.density));
-		mDbHelper = new DbHelper(mContext, SqlConstants.DBName, 1, SqlConstants.CreateTableSql);
+		mDbHelper = new DbHelper(mContext, SqlConstants.DBName, SqlConstants.DbVersion, SqlConstants.CreateTableSql);
 	}
 
 	public GrowDetailView(Context context) {
@@ -117,6 +118,8 @@ public class GrowDetailView extends LinearLayout {
 	public void setContent(GrowModelBean bean){
 		type = bean.getType();
 		mission = bean.getMission();
+		if(TextUtils.isEmpty(mission) || TextUtils.isEmpty(type))
+			return;
 		dailyMax = bean.getDailyMax();
 		if(GrowModelBean.Type_Link.equals(bean.getType())){
 			
@@ -172,6 +175,7 @@ public class GrowDetailView extends LinearLayout {
 		this.mLevel = level;
 		this.savedLevel = mShared.getInt(key);
 		this.themeIndex = themeIndex;
+		this.mLibType = isSpecial ? 1 : 0;
 	}
 
 	private void initWriteLayout(GrowModelBean bean) {
@@ -226,7 +230,7 @@ public class GrowDetailView extends LinearLayout {
 					return;
 				}
 			}
-			item.setIndexString(String.valueOf(historyCount + 1));
+			item.setIndex(historyCount + 1);
 			historyCount ++;
 			insertDataToDb(item, type, mission);
 			Toast.makeText(mContext, R.string.complete_once, Toast.LENGTH_SHORT).show();
@@ -277,7 +281,7 @@ public class GrowDetailView extends LinearLayout {
 				mTabLeftView.setSelected(true);
 				mTabRightView.setSelected(false);
 				GrowWriteItem item = new GrowWriteItem();
-				item.setIndexString(String.valueOf(historyCount + 1));
+				item.setIndex(historyCount + 1);
 				item.setContent(String.format("%s^%s", mTabLeftView.getTag().toString(),
 						mInputEt.getText().toString()));
 				historyCount ++;
@@ -356,7 +360,7 @@ public class GrowDetailView extends LinearLayout {
 				Toast.makeText(mContext, R.string.please_choose_degree, Toast.LENGTH_SHORT).show();
 				return;
 			}
-			item.setIndexString(String.format("第%d次  ", historyCount + 1));
+			item.setIndex(historyCount + 1);
 			historyCount ++ ;
 			insertDataToDb(item, type, mission);
 			Toast.makeText(mContext, R.string.complete_once, Toast.LENGTH_SHORT).show();
@@ -380,8 +384,13 @@ public class GrowDetailView extends LinearLayout {
 			mutiMissionList = new ArrayList<RadioGroup>();
 			for(int i = 0 ; i < bean.getMissionDetail().size() ; i++){
 				View itemView = mInflater.inflate(R.layout.item_mission_check_layout, null);
-				((TextView)itemView.findViewById(R.id.mission_detail_tv)).setText(String.format(
-						"%d %s----%s", i+1 ,bean.getMissionTips().get(i) , bean.getMissionDetail().get(i)));
+				if(bean.getMissionTips() != null){
+					((TextView)itemView.findViewById(R.id.mission_detail_tv)).setText(String.format(
+							"%d %s----%s", i+1 ,bean.getMissionTips().get(i) , bean.getMissionDetail().get(i)));
+				} else {
+					((TextView)itemView.findViewById(R.id.mission_detail_tv)).setText(String.format(
+							"%d %s", i+1 , bean.getMissionDetail().get(i)));
+				}
 				((TextView)itemView.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle());
 				RadioGroup itemGroup = (RadioGroup) itemView.findViewById(R.id.check_rg);
 				itemGroup.setOrientation(VERTICAL);
@@ -441,7 +450,7 @@ public class GrowDetailView extends LinearLayout {
 			GrowWriteItem item = new GrowWriteItem();
 			item.setDegree(pass && goodPoint >= mutiMissionList.size() - 1 ? 
 					mResources.getString(R.string.complete_mission) : mResources.getString(R.string.fail_mission));
-			item.setIndexString(String.format("第%d次  ", historyCount + 1));
+			item.setIndex(historyCount + 1);
 			historyCount ++;
 			insertDataToDb(item, type, mission);
 			Toast.makeText(mContext, R.string.complete_once, Toast.LENGTH_SHORT).show();
@@ -465,7 +474,7 @@ public class GrowDetailView extends LinearLayout {
 	
 	private void insertDataToDb(GrowWriteItem item , String type , String mission){
 		ContentValues values = new ContentValues();
-		values.put(SqlConstants.IndexKey, item.getIndexString());
+		values.put(SqlConstants.IndexKey, item.getIndex());
 		values.put(SqlConstants.MissionKey, mission);
 		if(GrowModelBean.Type_Write.equals(type)){
 			if(TextUtils.isEmpty(item.getDegree())){
@@ -478,6 +487,10 @@ public class GrowDetailView extends LinearLayout {
 		}else if(GrowModelBean.Type_MutiWrite.equals(type)){
 			values.put(SqlConstants.DescriptionKey, item.getContent());
 		}
+		values.put(SqlConstants.MissionTypeKey, type);
+		values.put(SqlConstants.LibTypeKey, mLibType);
+		values.put(SqlConstants.ThemeIndexKey, themeIndex);
+		values.put(SqlConstants.LevelKey, mLevel);
 		values.put(SqlConstants.TimeKey, Calendar.getInstance().getTimeInMillis());
 		mDbHelper.insert(SqlConstants.TableName, values);
 	}
@@ -495,7 +508,7 @@ public class GrowDetailView extends LinearLayout {
 		if(GrowModelBean.Type_Write.equals(type)){
 			while (cursor.moveToNext()) {
 				GrowWriteItem item = new GrowWriteItem();
-				item.setIndexString(cursor.getString(
+				item.setIndex(cursor.getInt(
 						cursor.getColumnIndex(SqlConstants.IndexKey)));
 				String content = cursor.getString(
 						cursor.getColumnIndex(SqlConstants.DescriptionKey));
@@ -511,7 +524,7 @@ public class GrowDetailView extends LinearLayout {
 		}else if(GrowModelBean.Type_SingleMission.equals(type) || GrowModelBean.Type_MutiMission.equals(type)){
 			while (cursor.moveToNext()) {
 				GrowWriteItem item = new GrowWriteItem();
-				item.setIndexString(cursor.getString(
+				item.setIndex(cursor.getInt(
 						cursor.getColumnIndex(SqlConstants.IndexKey)));
 				item.setDegree(cursor.getString(
 						cursor.getColumnIndex(SqlConstants.DescriptionKey)));

@@ -2,11 +2,6 @@ package com.dcy.psychology.view;
 
 import java.util.ArrayList;
 
-import com.baidu.platform.comapi.map.m;
-import com.dcy.psychology.R;
-import com.dcy.psychology.gsonbean.GameFishBean;
-import com.dcy.psychology.gsonbean.GameFishBean.Fish;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -15,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+
+import com.dcy.psychology.R;
+import com.dcy.psychology.gsonbean.GameFishBean;
+import com.dcy.psychology.gsonbean.GameFishBean.Fish;
 
 public class SeaFishView extends ViewGroup {
 	private ArrayList<Fish> fishData;

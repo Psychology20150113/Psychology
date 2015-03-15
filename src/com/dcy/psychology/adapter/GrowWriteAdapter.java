@@ -66,12 +66,13 @@ public class GrowWriteAdapter extends BaseAdapter {
 			mHolder = (Holder) viewHolder.getTag();
 		}
 		GrowWriteItem item = mDataList.get(position);
-		if(TextUtils.isEmpty(item.getIndexString())){
-			mHolder.indexText.setText(showCountString ? String.format("第%d次  ", position + 1) : 
-				String.valueOf(position + 1));
-		}else {
-			mHolder.indexText.setText(item.getIndexString());
-		}
+//		if(TextUtils.isEmpty(item.getIndexString())){
+//			mHolder.indexText.setText(showCountString ? String.format("第%d次  ", position + 1) : 
+//				String.valueOf(position + 1));
+//		}else {
+//			mHolder.indexText.setText(item.getIndexString());
+//		}
+		mHolder.indexText.setText(String.valueOf(position + 1));
 		if(!TextUtils.isEmpty(item.getContent())){
 			mHolder.contentText.setText(item.getContent());	
 		}else {

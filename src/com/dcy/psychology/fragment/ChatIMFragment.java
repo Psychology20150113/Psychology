@@ -1,26 +1,32 @@
-package com.dcy.psychology;
+package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
 
+import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.ChatAdapter;
 import com.dcy.psychology.model.ChatItemModel;
 import com.dcy.psychology.util.IMManager;
 
-public class ChatIMActivity extends BaseActivity implements OnClickListener{
+public class ChatIMFragment extends Fragment implements OnClickListener{
 	private ListView mListView;
 	private EditText mEditText;
 	private ChatAdapter mAdapter;
 	private ArrayList<ChatItemModel> mDataList = new ArrayList<ChatItemModel>();
 	private IMManager mManager;
+	private Context mContext;
 	private Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -41,27 +47,27 @@ public class ChatIMActivity extends BaseActivity implements OnClickListener{
 	};
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_chat_layout);
-		initView();
-		setTopTitle("1@114.215.179.130");
 		mManager = IMManager.getInstance();
-		new Handler().postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				mManager.getChatMessage(mHandler, "1@114.215.179.130");
-			}
-		}, 3000);
+		mManager.getChatMessage(mHandler, "1@114.215.179.130");
+		mContext = getActivity();
 	}
 	
-	private void initView(){
-		mListView = (ListView) findViewById(R.id.chat_lv);
-		mAdapter = new ChatAdapter(this, mDataList);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.activity_chat_layout, null);
+		initView(view);
+		return view;
+	}
+	
+	private void initView(View view){
+		mListView = (ListView) view.findViewById(R.id.chat_lv);
+		mAdapter = new ChatAdapter(mContext, mDataList);
 		mListView.setAdapter(mAdapter);
-		mEditText = (EditText) findViewById(R.id.input_et);
-		findViewById(R.id.send_btn).setOnClickListener(this);
+		mEditText = (EditText) view.findViewById(R.id.input_et);
+		view.findViewById(R.id.send_btn).setOnClickListener(this);
 	}
 	
 	@Override
@@ -69,7 +75,7 @@ public class ChatIMActivity extends BaseActivity implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.send_btn:
 			if(TextUtils.isEmpty(mEditText.getText())){
-				Toast.makeText(this, R.string.please_input, Toast.LENGTH_SHORT).show();
+				Toast.makeText(mContext, R.string.please_input, Toast.LENGTH_SHORT).show();
 				return;
 			}
 			if(mManager.pushChatMessage(mEditText.getText().toString())){
@@ -82,7 +88,7 @@ public class ChatIMActivity extends BaseActivity implements OnClickListener{
 				mListView.setSelection(mDataList.size());
 				mEditText.setText("");
 			}else {
-				Toast.makeText(this, R.string.send_msg_failed, Toast.LENGTH_SHORT).show();
+				Toast.makeText(mContext, R.string.send_msg_failed, Toast.LENGTH_SHORT).show();
 			}
 			break;
 		default:

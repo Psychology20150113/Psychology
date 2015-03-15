@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -49,7 +50,9 @@ public class BaseActivity extends Activity {
 		mResources = getResources();
 		rootView = new LinearLayout(this);
 		rootView.setOrientation(LinearLayout.VERTICAL);
-		mTitleView = mInflater.inflate(R.layout.custom_title_layout, rootView);
+		mTitleView = mInflater.inflate(R.layout.custom_title_layout, null);
+		rootView.addView(mTitleView, new LayoutParams(
+				LayoutParams.MATCH_PARENT, (int)(50 * mResources.getDisplayMetrics().density)));
 		initTitleView();
 	}
 	

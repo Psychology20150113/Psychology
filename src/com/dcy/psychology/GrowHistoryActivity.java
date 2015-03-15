@@ -32,7 +32,7 @@ public class GrowHistoryActivity extends BaseActivity {
 		setContentView(R.layout.activity_grow_history_layout);
 		setTopTitle(R.string.grow_history);
 		setRightView(R.drawable.icon_share);
-		mDbHelper = new DbHelper(this, SqlConstants.DBName, 1, SqlConstants.CreateTableSql);
+		mDbHelper = new DbHelper(this, SqlConstants.DBName, SqlConstants.DbVersion, SqlConstants.CreateTableSql);
 		bean = (GrowModelBean) getIntent().getSerializableExtra(Constants.GrowModelBean);
 		themeIndex = getIntent().getIntExtra(Constants.ThemeIndex, 0);
 		ListView mHistoryView = (ListView) findViewById(R.id.history_lv);
@@ -68,7 +68,7 @@ public class GrowHistoryActivity extends BaseActivity {
 				StringBuilder content = new StringBuilder();
 				if(dataList != null && dataList.size() > 0){
 					for(GrowWriteItem item : dataList){
-						content.append(item.getIndexString()).append("  ");
+						content.append(item.getIndex()).append("  ");
 						if(!TextUtils.isEmpty(item.getContent()))
 							content.append(item.getContent()).append("  ");
 						if(!TextUtils.isEmpty(item.getDegree()))
@@ -109,7 +109,7 @@ public class GrowHistoryActivity extends BaseActivity {
 		if(GrowModelBean.Type_Write.equals(type)){
 			while (cursor.moveToNext()) {
 				GrowWriteItem item = new GrowWriteItem();
-				item.setIndexString(cursor.getString(
+				item.setIndex(cursor.getInt(
 						cursor.getColumnIndex(SqlConstants.IndexKey)));
 				String content = cursor.getString(
 						cursor.getColumnIndex(SqlConstants.DescriptionKey));
@@ -125,7 +125,7 @@ public class GrowHistoryActivity extends BaseActivity {
 		}else if(GrowModelBean.Type_SingleMission.equals(type) || GrowModelBean.Type_MutiMission.equals(type)){
 			while (cursor.moveToNext()) {
 				GrowWriteItem item = new GrowWriteItem();
-				item.setIndexString(cursor.getString(
+				item.setIndex(cursor.getInt(
 						cursor.getColumnIndex(SqlConstants.IndexKey)));
 				item.setDegree(cursor.getString(
 						cursor.getColumnIndex(SqlConstants.DescriptionKey)));
@@ -134,7 +134,7 @@ public class GrowHistoryActivity extends BaseActivity {
 		}else if(GrowModelBean.Type_MutiWrite.equals(type)){
 			while (cursor.moveToNext()) {
 				GrowWriteItem item = new GrowWriteItem();
-				item.setIndexString(cursor.getString(
+				item.setIndex(cursor.getInt(
 						cursor.getColumnIndex(SqlConstants.IndexKey)));
 				String content = cursor.getString(
 						cursor.getColumnIndex(SqlConstants.DescriptionKey));

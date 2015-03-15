@@ -4,12 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     <LinearLayout 
-        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#ffffff">
-    </LinearLayout>
+	    <android.support.v4.view.ViewPager
+		    android:id="@+id/main_vp"
+		    android:layout_width="match_parent"
+		    android:layout_height="0dp"
+		    android:layout_weight="1"/>
+		<RadioGroup 
+		    android:id="@+id/tab_rg"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:checkedButton="@+id/tab_one_rb"
+		    android:orientation="horizontal">
+		    <RadioButton 
+		        android:id="@+id/tab_one_rb"
+		        style="@style/tab_button_style"
+		        android:drawableTop="@drawable/tab_icon_first_selector"
+		        android:text="@string/tab_one"/>
+		    <RadioButton 
+		        android:id="@+id/tab_two_rb"
+		        style="@style/tab_button_style"
+		        android:drawableTop="@drawable/tab_icon_second_selector"
+		        android:text="@string/tab_two"/>
+		    <RadioButton 
+		        android:id="@+id/tab_three_rb"
+		        style="@style/tab_button_style"
+		        android:drawableTop="@drawable/tab_icon_third_selector"
+		        android:text="@string/tab_mine"/>
+		</RadioGroup>
+	</LinearLayout>
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"

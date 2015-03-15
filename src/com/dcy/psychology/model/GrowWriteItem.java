@@ -1,15 +1,15 @@
 package com.dcy.psychology.model;
 
 public class GrowWriteItem {
-	private String indexString;
+	private int index;
 	private String content;
 	private String degree;
 	
-	public String getIndexString() {
-		return indexString;
+	public int getIndex() {
+		return index;
 	}
-	public void setIndexString(String indexString) {
-		this.indexString = indexString;
+	public void setIndex (int index) {
+		this.index = index;
 	}
 	public String getContent() {
 		return content;

@@ -8,14 +8,14 @@
         android:id="@+id/dialog_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/blue"
+        android:textColor="@color/brown"
         android:textSize="18sp"/>
 	<ImageView 
 	    android:layout_width="match_parent"
 	    android:layout_marginTop="10dp"
 	    android:layout_marginBottom="10dp"
 	    android:layout_height="1dp"
-	    android:background="@color/blue"/>
+	    android:background="@color/brown"/>
     <TextView 
         android:id="@+id/dialog_explain"
         android:layout_width="match_parent"

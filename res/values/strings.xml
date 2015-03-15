@@ -62,9 +62,9 @@
 	<string name="slide_point">我的积分</string>
 	<string name="slide_account">我的账户</string>
 	
-	<string name="tab_one">心灵成长</string>
-	<string name="tab_two">专业疗程</string>
-	<string name="tab_mine">个人中心</string>
+	<string name="tab_one">倾心一刻</string>
+	<string name="tab_two">个人成长</string>
+	<string name="tab_mine">百宝箱</string>
 	
 	<string name="login">登录</string>
 	<string name="register">注册</string>
