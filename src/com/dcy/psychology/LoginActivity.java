@@ -48,9 +48,14 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 
 	public static class ChatLoginTask extends AsyncTask<String, Void, Boolean>{
 		private Context mContext;
+		private Runnable finishTask;
 		
 		public ChatLoginTask(Context context) {
 			mContext = context;
+		}
+		
+		public void setRunnable(Runnable runnable){
+			this.finishTask = runnable;
 		}
 		
 		@Override
@@ -64,6 +69,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		protected void onPostExecute(Boolean result) {
 			if(!result)
 				Toast.makeText(mContext, R.string.login_chat_failed, Toast.LENGTH_SHORT).show();
+			if(finishTask != null)
+				finishTask.run();
 		}
 	}
 	

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.RectF;
@@ -23,9 +24,11 @@ public class CustomCircleView extends View{
 	private DisplayMetrics dm;
 	private Paint mPaint;
 	private Paint mTextPaint;
-	private final int outerWidth = 20;
+	private final int OuterWidth = 27;
+	private final String OuterColor = "#ffffff";
 	private float outerRatio;
-	private final int innerWidth = 10;
+	private final int InnerWidth = 15;
+	private final String InnerColor = "#61d3ea";
 	private float innerRatio;
 	private boolean haveData = false;
 	
@@ -39,7 +42,7 @@ public class CustomCircleView extends View{
 		mTextPaint = new Paint();
 		mTextPaint.setAntiAlias(true);
 		mTextPaint.setTextSize(50* dm.density);
-		mTextPaint.setColor(Color.BLUE);
+		mTextPaint.setColor(Color.parseColor(InnerColor));
 	}
 
 	public CustomCircleView(Context context) {
@@ -58,23 +61,25 @@ public class CustomCircleView extends View{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		if(haveData){
-			RectF mOuterRectF = new RectF((outerWidth/2)*dm.density, (outerWidth/2)*dm.density, 
-					getWidth() - (outerWidth/2)*dm.density, getWidth() - (outerWidth/2)*dm.density);
-			mPaint.setColor(Color.BLUE);
-			mPaint.setStrokeWidth(outerWidth * dm.density);
+			RectF mOuterRectF = new RectF((OuterWidth/2)*dm.density, (OuterWidth/2)*dm.density, 
+					getWidth() - (OuterWidth/2)*dm.density, getWidth() - (OuterWidth/2)*dm.density);
+			mPaint.setColor(Color.parseColor(OuterColor));
+			mPaint.setStrokeWidth(OuterWidth * dm.density);
 			canvas.drawArc(mOuterRectF, 0, 360*outerRatio, false, mPaint);
 			
-			float innerLength = getWidth() - outerWidth*dm.density - (innerWidth/2)*dm.density;
-			RectF mInnerRectF = new RectF(outerWidth*dm.density + (innerWidth/2)*dm.density, 
-					outerWidth*dm.density + (innerWidth/2)*dm.density, innerLength, innerLength);
-			mPaint.setColor(Color.RED);
-			mPaint.setStrokeWidth(innerWidth * dm.density);
+			float innerLength = getWidth() - OuterWidth*dm.density - (InnerWidth/2)*dm.density;
+			RectF mInnerRectF = new RectF(OuterWidth*dm.density + (InnerWidth/2)*dm.density, 
+					OuterWidth*dm.density + (InnerWidth/2)*dm.density, innerLength, innerLength);
+			mPaint.setColor(Color.parseColor(InnerColor));
+			mPaint.setStrokeWidth(InnerWidth * dm.density);
 			canvas.drawArc(mInnerRectF, 0, 360*innerRatio, false, mPaint);
 			
 			String content = (int)(innerRatio * 100) + "%";
 			int center = getWidth()/2;
 			canvas.drawText(content, center - mTextPaint.measureText(content)/2, 
 					center + getFrontHeight(mTextPaint)/2, mTextPaint);
+		
+			
 		}
 		
 	}

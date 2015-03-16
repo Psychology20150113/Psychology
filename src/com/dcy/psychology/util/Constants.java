@@ -25,6 +25,8 @@ public interface Constants {
 	public static final String ArticleWSDL = "http://114.215.179.130/WebService/WebServiceAPPArticle.asmx";
 
 	public static final int[] IdOfGrowMode = {1 , 2, 3 ,4};
+
+	public static final String ReceiverAction_CursorChange = "cursor_change";
 	
 	public static final String ThemeIndex = "themeIndex";
 	public static final String IsSpecial = "isSpecial";

@@ -48,6 +48,10 @@ public class IMManager {
 		return false;
 	}
 	
+	public boolean isLogined(){
+		return connection.isConnected() && !TextUtils.isEmpty(connection.getUser());
+	}
+	
 	public boolean loginIM(String username,String password){
 		try {
 			if(!connection.isConnected()){

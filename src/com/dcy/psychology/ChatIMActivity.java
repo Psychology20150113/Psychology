@@ -48,7 +48,6 @@ public class ChatIMActivity extends BaseActivity implements OnClickListener{
 		setTopTitle("1@114.215.179.130");
 		mManager = IMManager.getInstance();
 		new Handler().postDelayed(new Runnable() {
-			
 			@Override
 			public void run() {
 				mManager.getChatMessage(mHandler, "1@114.215.179.130");

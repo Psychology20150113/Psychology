@@ -493,6 +493,7 @@ public class GrowDetailView extends LinearLayout {
 		values.put(SqlConstants.LevelKey, mLevel);
 		values.put(SqlConstants.TimeKey, Calendar.getInstance().getTimeInMillis());
 		mDbHelper.insert(SqlConstants.TableName, values);
+		mContext.sendBroadcast(new Intent(Constants.ReceiverAction_CursorChange));
 	}
 	
 	private int getHistoryCount(String type, String mission){

@@ -2,8 +2,11 @@ package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -15,10 +18,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dcy.psychology.LoginActivity;
+import com.dcy.psychology.LoginActivity.ChatLoginTask;
+import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.ChatAdapter;
 import com.dcy.psychology.model.ChatItemModel;
 import com.dcy.psychology.util.IMManager;
+import com.dcy.psychology.view.CustomProgressDialog;
 
 public class ChatIMFragment extends Fragment implements OnClickListener{
 	private ListView mListView;
@@ -50,7 +57,12 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mManager = IMManager.getInstance();
-		mManager.getChatMessage(mHandler, "1@114.215.179.130");
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mManager.getChatMessage(mHandler, "1@114.215.179.130");
+			}
+		}, 3000);
 		mContext = getActivity();
 	}
 	
@@ -89,6 +101,27 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 				mEditText.setText("");
 			}else {
 				Toast.makeText(mContext, R.string.send_msg_failed, Toast.LENGTH_SHORT).show();
+				Builder mBuilder = new Builder(mContext);
+				mBuilder.setTitle(R.string.connect_failed)
+				.setMessage(R.string.connect_failed_msg)
+				.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						if(!mManager.isLogined()){
+							final CustomProgressDialog progressDialog = new CustomProgressDialog(mContext);
+							progressDialog.show();
+							ChatLoginTask task = new LoginActivity.ChatLoginTask(mContext);
+							task.setRunnable(new Runnable() {
+								@Override
+								public void run() {
+									progressDialog.dismiss();
+								}
+							});
+							task.execute(MyApplication.myUserName, MyApplication.myPwd);
+						}
+						mManager.getChatMessage(mHandler, "1@114.215.179.130");
+					}
+				}).setNegativeButton(R.string.cancel, null).show();
 			}
 			break;
 		default:
