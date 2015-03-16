@@ -5,6 +5,7 @@
     android:orientation="vertical" 
     android:background="#f2f2f2">
     <LinearLayout 
+        android:id="@+id/review_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -20,6 +21,12 @@
             android:layout_marginLeft="10dp"
             android:layout_height="match_parent"/>
     </LinearLayout>
+    <TextView 
+        android:id="@+id/result_tv"
+        style="@style/text_black18_style"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/review_ll"/>
     <ImageView 
         android:id="@+id/complete_iv"
         android:layout_width="40dp"

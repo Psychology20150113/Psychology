@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class SeaGameResultActivity extends Activity implements OnClickListener{
 	private ArrayList<String> rightColors;
@@ -40,6 +41,18 @@ public class SeaGameResultActivity extends Activity implements OnClickListener{
 		mineView.getLayoutParams().height = (int)(widthPixel * 1 / 2 / ratio_xy);
 		mineView.setData(bean , mineColors);
 		findViewById(R.id.complete_iv).setOnClickListener(this);
+		((TextView)findViewById(R.id.result_tv)).setText(checkResult());
+	}
+	
+	private String checkResult() {
+		if(mineColors == null || rightColors == null)
+			return "";
+		int mRightNum = 0;
+		for (int i = 0; i < mineColors.size(); i++) {
+			if (mineColors.get(i).equals(rightColors.get(i)))
+				mRightNum++;
+		}
+		return String.format(getString(R.string.point), mRightNum * 100 / 4);
 	}
 	
 	@Override
