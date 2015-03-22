@@ -13,6 +13,11 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="0dp"
 		    android:layout_weight="1"/>
+	    <ImageView 
+	        android:layout_width="match_parent"
+	        android:layout_height="1dp"
+	        android:background="@color/divider"
+	        android:layout_marginBottom="3dp"/>
 		<RadioGroup 
 		    android:id="@+id/tab_rg"
 		    android:layout_width="match_parent"

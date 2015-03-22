@@ -6,10 +6,10 @@
     android:padding="10dp">
     <ImageView 
         android:id="@+id/item_chat_left_iv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
         android:visibility="gone"
-        android:src="@drawable/ic_launcher"/>
+        android:src="@drawable/icon_chat_doctor"/>
 	<TextView 
 	    android:id="@+id/chat_content_tv"
 	    android:layout_width="0dp"
@@ -21,8 +21,8 @@
 	    android:textSize="20sp"/>
 	<ImageView 
         android:id="@+id/item_chat_right_iv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
         android:visibility="gone"
-        android:src="@drawable/ic_launcher"/>
+        android:src="@drawable/icon_chat_user"/>
 </LinearLayout>

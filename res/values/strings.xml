@@ -161,4 +161,5 @@
     <string name="send_msg_failed">发送失败</string>
     <string name="connect_failed">连接异常</string>
     <string name="connect_failed_msg">无法连接,请先登录,点击确定重新连接</string>
+    <string name="not_data_warning">请点击下方按钮进行训练</string>
 </resources>

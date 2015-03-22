@@ -43,7 +43,7 @@ public class PlamPictureDetailActivity extends BaseActivity {
 		try {
 			InputStream stream = manager.open(detailBean.getPicture());
 			mPicView.setImageBitmap(BitmapFactory.decodeStream(stream));
-			mContentText.setText(IOUtils.convertStreamToString(manager.open(detailBean.getPicture().replace(".jpg", ".txt"))));
+			mContentText.setText(IOUtils.convertStreamToString(manager.open(detailBean.getPicture().split("\\.")[0] + ".txt")));
 //			mContentText.setText(Utils.loadRawString(this, getResources().getIdentifier(detailBean.getContent(), "raw", getPackageName())));
 		} catch (IOException e) {
 			e.printStackTrace();

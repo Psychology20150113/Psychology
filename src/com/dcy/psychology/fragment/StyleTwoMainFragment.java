@@ -86,11 +86,11 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 			mLevel = mCursor.getInt(mCursor.getColumnIndex(SqlConstants.LevelKey));
 			themeIndex = mCursor.getInt(mCursor.getColumnIndex(SqlConstants.ThemeIndexKey));
 			itemIndex = mCursor.getInt(mCursor.getColumnIndex(SqlConstants.IndexKey));
-			if(jsonList == null){
+//			if(jsonList == null){
 				jsonList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, isSpecial ? 
 						R.raw.more_grow_train_lib : R.raw.grow_train_lib), 
 						new TypeToken<ArrayList<ArrayList<GrowModelBean>>>(){}.getType());
-			}
+//			}
 			bean = jsonList.get(themeIndex).get(mLevel);
 			break;
 		}
@@ -123,8 +123,10 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 		Intent mIntent = null;
 		switch (v.getId()) {
 		case R.id.circle_view:
-			if(bean == null)
+			if(bean == null){
+				Toast.makeText(mContext, R.string.not_data_warning, Toast.LENGTH_SHORT).show();
 				return;
+			}
 			mIntent = new Intent(mContext, GrowDetailActivity.class);
 			mIntent.putExtra(Constants.GrowModelBean, bean);
 			mIntent.putExtra(Constants.Level, mLevel);

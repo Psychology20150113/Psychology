@@ -420,18 +420,21 @@ public class GrowDetailView extends LinearLayout {
 				((Activity)mContext).finish();
 				return;
 			}
-			int goodPoint = 0;
-			boolean pass = true;
+//			int goodPoint = 0;
+//			boolean pass = true;
+			StringBuilder content = new StringBuilder();
 			for(int i = 0 ; i < mutiMissionList.size() ; i ++){
 				RadioGroup groupItem = mutiMissionList.get(i);
 				if(groupItem.getCheckedRadioButtonId() == -1){
 					Toast.makeText(mContext, R.string.please_choose_complete, Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if(((RadioButton)groupItem.getChildAt(0)).isChecked())
-					goodPoint ++;
-				if(((RadioButton)groupItem.getChildAt(groupItem.getChildCount() - 1)).isChecked())
-					pass = false;
+				RadioButton checkedItem = (RadioButton)groupItem.findViewById(groupItem.getCheckedRadioButtonId());
+				content.append(checkedItem.getText()).append("^");
+//				if(((RadioButton)groupItem.getChildAt(0)).isChecked())
+//					goodPoint ++;
+//				if(((RadioButton)groupItem.getChildAt(groupItem.getChildCount() - 1)).isChecked())
+//					pass = false;
 			}
 			if(dailyMax > 0 && !Constants.DebugMode){
 				Calendar mCalender = Calendar.getInstance();
@@ -448,8 +451,9 @@ public class GrowDetailView extends LinearLayout {
 				}
 			}
 			GrowWriteItem item = new GrowWriteItem();
-			item.setDegree(pass && goodPoint >= mutiMissionList.size() - 1 ? 
-					mResources.getString(R.string.complete_mission) : mResources.getString(R.string.fail_mission));
+//			item.setDegree(pass && goodPoint >= mutiMissionList.size() - 1 ? 
+//					mResources.getString(R.string.complete_mission) : mResources.getString(R.string.fail_mission));
+			item.setContent(content.substring(0, content.length() - 1));
 			item.setIndex(historyCount + 1);
 			historyCount ++;
 			insertDataToDb(item, type, mission);
@@ -482,9 +486,9 @@ public class GrowDetailView extends LinearLayout {
 			}else {
 				values.put(SqlConstants.DescriptionKey, String.format("%s^%s", item.getContent(),item.getDegree()));
 			}
-		}else if(GrowModelBean.Type_SingleMission.equals(type) || GrowModelBean.Type_MutiMission.equals(type)){
+		}else if(GrowModelBean.Type_SingleMission.equals(type)){
 			values.put(SqlConstants.DescriptionKey, item.getDegree());
-		}else if(GrowModelBean.Type_MutiWrite.equals(type)){
+		}else if(GrowModelBean.Type_MutiWrite.equals(type) || GrowModelBean.Type_MutiMission.equals(type)){
 			values.put(SqlConstants.DescriptionKey, item.getContent());
 		}
 		values.put(SqlConstants.MissionTypeKey, type);

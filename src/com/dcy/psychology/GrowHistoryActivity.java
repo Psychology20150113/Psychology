@@ -122,7 +122,7 @@ public class GrowHistoryActivity extends BaseActivity {
 				}
 				list.add(item);
 			}
-		}else if(GrowModelBean.Type_SingleMission.equals(type) || GrowModelBean.Type_MutiMission.equals(type)){
+		}else if(GrowModelBean.Type_SingleMission.equals(type)){
 			while (cursor.moveToNext()) {
 				GrowWriteItem item = new GrowWriteItem();
 				item.setIndex(cursor.getInt(
@@ -131,7 +131,8 @@ public class GrowHistoryActivity extends BaseActivity {
 						cursor.getColumnIndex(SqlConstants.DescriptionKey)));
 				list.add(item);
 			}
-		}else if(GrowModelBean.Type_MutiWrite.equals(type)){
+		}else if(GrowModelBean.Type_MutiWrite.equals(type) || GrowModelBean.Type_MutiMission.equals(type)){
+			StringBuilder contentString = new StringBuilder();
 			while (cursor.moveToNext()) {
 				GrowWriteItem item = new GrowWriteItem();
 				item.setIndex(cursor.getInt(
@@ -141,8 +142,12 @@ public class GrowHistoryActivity extends BaseActivity {
 				String[] splitContent = content.split("\\^");
 				if(splitContent.length < 2)
 					continue;
-				item.setContent(splitContent[0] + "\n" + splitContent[1]);
+				for(int i = 0 ; i < splitContent.length ; i ++){
+					contentString.append(splitContent[i]).append("\n");
+				}
+				item.setContent(contentString.substring(0, contentString.length() - 1));
 				list.add(item);
+				contentString.delete(0, contentString.length());
 			}
 		}
 		cursor.close();
