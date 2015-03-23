@@ -27,7 +27,7 @@ public class SlideAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		return mIconArray.length;
+		return 1;
 	}
 
 	@Override

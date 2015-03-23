@@ -33,10 +33,13 @@ public class GrowLevelChooseActivity extends BaseActivity implements OnClickList
 		setRightText(R.string.discussion);
 		themeIndex = getIntent().getIntExtra(Constants.ThemeIndex, 0);
 		isSpecial = getIntent().getBooleanExtra(Constants.IsSpecial, false);
-		ArrayList<ArrayList<GrowModelBean>> jsonList = MyApplication.mGson.fromJson(Utils.loadRawString(this, isSpecial ? 
-				R.raw.more_grow_train_lib : R.raw.grow_train_lib), 
-				new TypeToken<ArrayList<ArrayList<GrowModelBean>>>(){}.getType());
-		mModelList = jsonList.get(themeIndex);
+		mModelList = (ArrayList<GrowModelBean>)getIntent().getSerializableExtra(Constants.BeanList);
+		if(mModelList == null){
+			ArrayList<ArrayList<GrowModelBean>> jsonList = MyApplication.mGson.fromJson(Utils.loadRawString(this, isSpecial ? 
+					R.raw.more_grow_train_lib : R.raw.grow_train_lib), 
+					new TypeToken<ArrayList<ArrayList<GrowModelBean>>>(){}.getType());
+			mModelList = jsonList.get(themeIndex);
+		}
 		initView();
 	}
 	

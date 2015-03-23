@@ -82,7 +82,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		ListView slideView = (ListView) findViewById(R.id.drawer_lv);
 		slideView.setAdapter(new SlideAdapter(this));
 		slideView.setOnItemClickListener(this);
-		setLeftView(R.drawable.icon_user);
+		setLeftView(R.drawable.ic_launcher);
 		//setRightView(R.drawable.ic_launcher);
 		if(!TextUtils.isEmpty(MyApplication.myUserName)){
 			nameLayout.setVisibility(View.VISIBLE);

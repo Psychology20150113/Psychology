@@ -162,4 +162,8 @@
     <string name="connect_failed">连接异常</string>
     <string name="connect_failed_msg">无法连接,请先登录,点击确定重新连接</string>
     <string name="not_data_warning">请点击下方按钮进行训练</string>
+    <string name="please_wait">敬请期待</string>
+    <string name="game_rule">活动规则</string>
+    <string name="game_rule_detail">点击数字选择相应的关卡，请用7秒钟的时间记住不同位置的鱼的颜色，然后将看到的颜色复制到出来。点击相应的鱼，再点击下方的颜色即可为鱼着色。
+        							全部完成时，点击右上角的√即可查看得分。分数越高，说明一个人的短时记忆能力及注意力越高。</string>
 </resources>

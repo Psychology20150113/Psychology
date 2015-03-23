@@ -30,6 +30,7 @@ public interface Constants {
 	
 	public static final String ThemeIndex = "themeIndex";
 	public static final String IsSpecial = "isSpecial";
+	public static final String BeanList = "beanList";
 	public static final String Level = "level";
 	public static final String ThemeTitle = "themeTitle";
 	public static final String PictureBean = "pictureBean";

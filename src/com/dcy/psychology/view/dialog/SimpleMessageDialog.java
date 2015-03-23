@@ -14,7 +14,7 @@ public class SimpleMessageDialog extends Dialog implements android.view.View.OnC
 	
 	
 	public SimpleMessageDialog(Context context, String title, String message) {
-		super(context);
+		super(context, R.style.AppDialog);
 		this.title = title;
 		this.message = message;
 	}
@@ -25,6 +25,7 @@ public class SimpleMessageDialog extends Dialog implements android.view.View.OnC
 		((TextView)findViewById(R.id.dialog_title_tv)).setText(title);
 		((TextView)findViewById(R.id.dialog_message_tv)).setText(message);
 		findViewById(R.id.dialog_ok_tv).setOnClickListener(this);
+		setCanceledOnTouchOutside(false);
 	}
 	
 	@Override
@@ -33,7 +34,6 @@ public class SimpleMessageDialog extends Dialog implements android.view.View.OnC
 		case R.id.dialog_ok_tv:
 			dismiss();
 			break;
-
 		default:
 			break;
 		}

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TabCureFragment extends Fragment implements OnClickListener{
 	private Context mContext;
@@ -39,9 +40,12 @@ public class TabCureFragment extends Fragment implements OnClickListener{
 		switch (view.getId()) {
 		case R.id.problem_one_rl:
 			problemIndex = 0;
+			mIntent.putExtra("problem_index", problemIndex);
+			startActivity(mIntent);
 			break;
 		case R.id.problem_two_rl:
-			problemIndex = 1;
+			Toast.makeText(mContext, R.string.please_wait, Toast.LENGTH_SHORT).show();
+//			problemIndex = 1;
 			break;
 //		case R.id.problem_three_tv:
 //			problemIndex = 2;
@@ -49,7 +53,5 @@ public class TabCureFragment extends Fragment implements OnClickListener{
 		default:
 			break;
 		}
-		mIntent.putExtra("problem_index", problemIndex);
-		startActivity(mIntent);
 	}
 }

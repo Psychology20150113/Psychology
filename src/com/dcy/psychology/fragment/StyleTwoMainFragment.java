@@ -63,8 +63,10 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 		View view = inflater.inflate(R.layout.fragment_style2_main_layout, null);
 		mThemeNameView = (TextView)view.findViewById(R.id.theme_name_tv);
 		mThemeNameView.setText(isSpecial ? problemArray[themeIndex] : labelArray[themeIndex]);
+		mThemeNameView.setOnClickListener(this);
 		mLevelNameView = (TextView)view.findViewById(R.id.level_name_tv);
 		mLevelNameView.setText(bean == null ? "没有数据" : bean.getTitle());
+		mLevelNameView.setOnClickListener(this);
 		mCircleView = (CustomCircleView) view.findViewById(R.id.circle_view);
 		mCircleView.setData(outerRatio, innerRatio);
 		mCircleView.setOnClickListener(this);
@@ -122,6 +124,7 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 		Intent mIntent = null;
 		switch (v.getId()) {
+		case R.id.level_name_tv:
 		case R.id.circle_view:
 			if(bean == null){
 				Toast.makeText(mContext, R.string.not_data_warning, Toast.LENGTH_SHORT).show();
@@ -132,6 +135,12 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 			mIntent.putExtra(Constants.Level, mLevel);
 			mIntent.putExtra(Constants.IsSpecial, isSpecial);
 			mIntent.putExtra(Constants.ThemeIndex, themeIndex);
+			break;
+		case R.id.theme_name_tv:
+			mIntent = new Intent(mContext, GrowLevelChooseActivity.class);
+			mIntent.putExtra(Constants.BeanList, jsonList.get(themeIndex));
+			mIntent.putExtra(Constants.ThemeIndex, themeIndex);
+			mIntent.putExtra(Constants.IsSpecial, isSpecial);
 			break;
 		case R.id.platform_one_ll:
 			mIntent = new Intent(mContext, StudentGrowActivity.class);

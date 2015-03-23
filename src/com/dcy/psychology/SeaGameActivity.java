@@ -8,6 +8,7 @@ import com.dcy.psychology.gsonbean.GameFishBean.Fish;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.SeaChooseLayout;
 import com.dcy.psychology.view.SeaFishView;
+import com.dcy.psychology.view.dialog.SimpleMessageDialog;
 import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
@@ -33,6 +34,7 @@ public class SeaGameActivity extends Activity implements OnItemClickListener
 	private int mPrepareCountDownTime = 3;
 	private GameFishBean bean;
 	private ArrayList<GameFishBean> allList;
+	private ImageView mGameRuleView;
 	private ImageView mCountDownView;
 	private ImageView mCompleteView;
 	
@@ -53,6 +55,8 @@ public class SeaGameActivity extends Activity implements OnItemClickListener
 		GridView levelGridView = (GridView) findViewById(R.id.level_gv);
 		levelGridView.setAdapter(new GameSeaLevelChooseAdapter(this));
 		levelGridView.setOnItemClickListener(this);
+		mGameRuleView = (ImageView) findViewById(R.id.game_rule_iv);
+		mGameRuleView.setOnClickListener(this);
 		mCompleteView = (ImageView) findViewById(R.id.complete_iv);
 		mCompleteView.setOnClickListener(this);
 	}
@@ -109,6 +113,7 @@ public class SeaGameActivity extends Activity implements OnItemClickListener
 	};
 	
 	public void onItemClick(android.widget.AdapterView<?> parent, View view, int position, long id) {
+		mGameRuleView.setVisibility(View.GONE);
 		parent.setVisibility(View.GONE);
 		bean = allList.get(position);
 		mCountDownHandler.post(mCountDownTask);
@@ -129,7 +134,9 @@ public class SeaGameActivity extends Activity implements OnItemClickListener
 		case R.id.complete_iv:
 			turnToResult();
 			break;
-
+		case R.id.game_rule_iv:
+			new SimpleMessageDialog(this, getString(R.string.game_rule), getString(R.string.game_rule_detail)).show();
+			break;
 		default:
 			break;
 		}
