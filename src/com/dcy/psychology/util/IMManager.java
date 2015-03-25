@@ -75,6 +75,7 @@ public class IMManager {
 	public void logoutIM(){
 		if(connection.isConnected())
 			connection.disconnect();
+		mChat = null;
 	}
 	
 	public boolean addFriend(String friendName){

@@ -79,6 +79,8 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 		DbHelper mDbHelper = new DbHelper(mContext, SqlConstants.DBName, SqlConstants.DbVersion, SqlConstants.CreateTableSql);
 		Cursor mCursor = mDbHelper.query(SqlConstants.SelectNewRecordsSql);
 		if(mCursor.getCount() == 0){
+			jsonList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, R.raw.grow_train_lib), 
+					new TypeToken<ArrayList<ArrayList<GrowModelBean>>>(){}.getType());
 			Toast.makeText(mContext, "没有数据", Toast.LENGTH_LONG).show();
 			return;
 		}
@@ -88,14 +90,14 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 			mLevel = mCursor.getInt(mCursor.getColumnIndex(SqlConstants.LevelKey));
 			themeIndex = mCursor.getInt(mCursor.getColumnIndex(SqlConstants.ThemeIndexKey));
 			itemIndex = mCursor.getInt(mCursor.getColumnIndex(SqlConstants.IndexKey));
-//			if(jsonList == null){
-				jsonList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, isSpecial ? 
-						R.raw.more_grow_train_lib : R.raw.grow_train_lib), 
-						new TypeToken<ArrayList<ArrayList<GrowModelBean>>>(){}.getType());
-//			}
-			bean = jsonList.get(themeIndex).get(mLevel);
 			break;
 		}
+//		if(jsonList == null){
+			jsonList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, isSpecial ? 
+					R.raw.more_grow_train_lib : R.raw.grow_train_lib), 
+					new TypeToken<ArrayList<ArrayList<GrowModelBean>>>(){}.getType());
+//		}
+		bean = jsonList.get(themeIndex).get(mLevel);
 		if(jsonList == null)
 			return;
 		outerRatio = ((float)mLevel)/jsonList.get(themeIndex).size();

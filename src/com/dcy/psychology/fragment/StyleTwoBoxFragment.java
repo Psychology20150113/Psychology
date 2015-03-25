@@ -9,6 +9,7 @@ import com.dcy.psychology.R;
 import com.dcy.psychology.SeaGameActivity;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.adapter.HomeListAdapter;
+import com.dcy.psychology.adapter.HomeShowAllListAdapter;
 import com.dcy.psychology.gsonbean.GrowPictureBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
 import com.dcy.psychology.util.Constants;
@@ -28,14 +29,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
 public class StyleTwoBoxFragment extends Fragment implements 
 		OnClickListener,OnItemClickListener{
 	private Context mContext;
-	private PullRefreshListView mListView;
+	private ListView mListView;
 	private ArrayList<GrowPictureBean> dataList;
 	private ArrayList<GrowQuestionBean> questionList;
-	private HomeListAdapter mAdapter;
+	private HomeShowAllListAdapter mAdapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,33 +53,25 @@ public class StyleTwoBoxFragment extends Fragment implements
 		View view = inflater.inflate(R.layout.fragment_style2_box_layout, null);
 		view.findViewById(R.id.game_one_tv).setOnClickListener(this);
 		view.findViewById(R.id.game_two_tv).setOnClickListener(this);
-		mAdapter = new HomeListAdapter(mContext, dataList);
-		mListView = (PullRefreshListView) view.findViewById(R.id.pull_refresh_lv);
+		mAdapter = new HomeShowAllListAdapter(mContext, dataList);
+		mListView = (ListView) view.findViewById(R.id.pull_refresh_lv);
 		mListView.setAdapter(mAdapter);
 		mListView.setOnItemClickListener(this);
-		mListView.setonRefreshListener(mRefreshListener);
 		return view;
 	}
 	
-	private OnRefreshListener mRefreshListener = new OnRefreshListener() {
-		@Override
-		public void onRefresh() {
-			mAdapter.notifyDataSetChanged();
-			mListView.onRefreshComplete();
-		}
-	};
 	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		if((position-1) % mAdapter.getCount() == 1){
+		if(position >= dataList.size()){
 			Intent mIntent = new Intent(mContext, ThoughtReadingActivity.class);
-			mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get(mAdapter.getPageIndex()));
-			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[mAdapter.getPageIndex()]);
+			mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get(position - dataList.size()));
+			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[position - dataList.size()]);
 			startActivity(mIntent);
 		}else {
 			Intent mIntent = new Intent(mContext, PlamPictureDetailActivity.class);
-			mIntent.putExtra(Constants.PictureBean, (GrowPictureBean)mAdapter.getItem(position - 1));
+			mIntent.putExtra(Constants.PictureBean, dataList.get(position));
 			startActivity(mIntent);
 		}
 	}

@@ -39,7 +39,7 @@
 		    android:layout_marginLeft="20dp"
 		    android:gravity="center_vertical"
 		    android:layout_height="wrap_content"
-		    android:orientation="horizontal"/>
+		    android:orientation="vertical"/>
 	</LinearLayout>
 	<Button 
 	    android:id="@+id/commit_btn"
