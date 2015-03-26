@@ -1,23 +1,19 @@
 package com.dcy.psychology;
 
-import com.dcy.psychology.gsonbean.LoginBean;
-import com.dcy.psychology.util.AsyncImageCache;
-import com.dcy.psychology.util.IMManager;
-import com.dcy.psychology.util.InfoShared;
-import com.dcy.psychology.util.Utils;
-import com.dcy.psychology.view.CustomProgressDialog;
-
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.dcy.psychology.gsonbean.LoginBean;
+import com.dcy.psychology.util.IMManager;
+import com.dcy.psychology.util.InfoShared;
+import com.dcy.psychology.util.Utils;
 
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private EditText accountET;
