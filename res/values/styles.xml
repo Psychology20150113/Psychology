@@ -97,7 +97,7 @@
         <item name="android:background">#ffffff</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textColorHint">@color/tab_gray</item>
-        <item name="android:textCursorDrawable">@color/tab_gray</item>
+        <item name="android:cursorVisible">true</item>
     </style>
 	<!-- 进度框 -->
     <style name="CustomProgressDialog" parent="@android:style/Theme.Dialog">

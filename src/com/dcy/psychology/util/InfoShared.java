@@ -11,6 +11,7 @@ public class InfoShared {
 	private SharedPreferences mShared;
 	private Context mContext;
 	
+	private final String AppVersion = "info_version";
 	private final String UserName = "info_name";
 	private final String UserPwd = "info_pwd";
 	private final String UserNick = "info_nick";
@@ -21,6 +22,14 @@ public class InfoShared {
 	public InfoShared(Context context) {
 		this.mContext = context;
 		mShared = context.getSharedPreferences(InfoSharedName, Context.MODE_PRIVATE);
+	}
+	
+	public void setAppVersion(String version){
+		mShared.edit().putString(AppVersion, version).commit();
+	}
+	
+	public String getAppVersion(){
+		return mShared.getString(AppVersion, "");
 	}
 	
 	public void setUserName(String userName){

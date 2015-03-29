@@ -21,7 +21,7 @@
 	    <Button 
 	        android:id="@+id/theme_three_btn"
 	        style="@style/question_btn_style"
-	        android:text="@string/question_theme_two"/>
+	        android:text="@string/question_theme_three"/>
 	    <Button 
 	        android:id="@+id/theme_four_btn"
 	        style="@style/question_btn_style"
