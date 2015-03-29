@@ -386,10 +386,10 @@ public class GrowDetailView extends LinearLayout {
 				View itemView = mInflater.inflate(R.layout.item_mission_check_layout, null);
 				if(bean.getMissionTips() != null){
 					((TextView)itemView.findViewById(R.id.mission_detail_tv)).setText(String.format(
-							"%d %s----%s", i+1 ,bean.getMissionTips().get(i) , bean.getMissionDetail().get(i)));
+							"%d¡¢%s----%s", i+1 ,bean.getMissionTips().get(i) , bean.getMissionDetail().get(i)));
 				} else {
 					((TextView)itemView.findViewById(R.id.mission_detail_tv)).setText(String.format(
-							"%d %s", i+1 , bean.getMissionDetail().get(i)));
+							"%d¡¢%s", i+1 , bean.getMissionDetail().get(i)));
 				}
 				((TextView)itemView.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle());
 				RadioGroup itemGroup = (RadioGroup) itemView.findViewById(R.id.check_rg);

@@ -4,9 +4,12 @@ import org.jivesoftware.smack.AccountManager;
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.MessageListener;
+import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smack.packet.Packet;
 
 import android.content.Context;
 import android.os.Handler;
@@ -98,6 +101,19 @@ public class IMManager {
 				mHandler.sendMessage(mHandler.obtainMessage(1, message.getBody()));
 			}
 		});
+	}
+	
+	public void getPublicMessage(final Handler mHandler){
+		if(!connection.isConnected() || TextUtils.isEmpty(connection.getUser())){
+			return;
+		}
+		connection.addPacketListener(new PacketListener() {
+			@Override
+			public void processPacket(Packet packet) {
+				mHandler.sendMessage(mHandler.obtainMessage(1, 
+						((Message) packet).getBody()));
+			}
+		}, new PacketTypeFilter(Message.class));
 	}
 	
 	public boolean pushChatMessage(String message){
