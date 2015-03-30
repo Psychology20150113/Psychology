@@ -25,6 +25,7 @@ public class GrowHistoryActivity extends BaseActivity {
 	private DbHelper mDbHelper;
 	private ArrayList<GrowWriteItem> dataList;
 	private int themeIndex;
+	private int level;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class GrowHistoryActivity extends BaseActivity {
 		mDbHelper = new DbHelper(this, SqlConstants.DBName, SqlConstants.DbVersion, SqlConstants.CreateTableSql);
 		bean = (GrowModelBean) getIntent().getSerializableExtra(Constants.GrowModelBean);
 		themeIndex = getIntent().getIntExtra(Constants.ThemeIndex, 0);
+		level = getIntent().getIntExtra(Constants.Level, 0);
 		ListView mHistoryView = (ListView) findViewById(R.id.history_lv);
 		dataList = pullDbData(bean.getType(), bean.getMission());
 		GrowWriteAdapter mAdapter = new GrowWriteAdapter(this, dataList);
@@ -103,7 +105,7 @@ public class GrowHistoryActivity extends BaseActivity {
 	
 	private ArrayList<GrowWriteItem> pullDbData(String type, String mission){
 		ArrayList<GrowWriteItem> list = new ArrayList<GrowWriteItem>();
-		Cursor cursor = mDbHelper.query(SqlConstants.SelectSql, mission);
+		Cursor cursor = mDbHelper.query(SqlConstants.SelectSql, mission, String.valueOf(level));
 		if(cursor.getCount() == 0)
 			return list;
 		if(GrowModelBean.Type_Write.equals(type)){

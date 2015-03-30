@@ -186,7 +186,7 @@ public class GrowDetailView extends LinearLayout {
 		mRegreeRg = (RadioGroup) writeView.findViewById(R.id.check_rg);
 		mCheckLayout = (LinearLayout) writeView.findViewById(R.id.check_ll);
 		writeCount = bean.getCount();
-		historyCount = getHistoryCount(type, mission);
+		historyCount = getHistoryCount(mission, mLevel);
 		if(historyCount < writeCount){
 			if(TextUtils.isEmpty(bean.getCheckTitle())){
 				mCheckLayout.setVisibility(View.GONE);
@@ -258,7 +258,7 @@ public class GrowDetailView extends LinearLayout {
 		mTabRightView.setText(bean.getMissionDetail().get(1));
 		mInputEt = (EditText) view.findViewById(R.id.input_et);
 		writeCount = bean.getCount();
-		historyCount = getHistoryCount(type, mission);
+		historyCount = getHistoryCount(mission, mLevel);
 		if(historyCount >= writeCount){
 			mInputEt.setVisibility(View.GONE);
 		}
@@ -306,7 +306,7 @@ public class GrowDetailView extends LinearLayout {
 		((TextView)view.findViewById(R.id.mission_tv)).setText(bean.getMission());
 		writeCount = bean.getCount();
 		mCheckLayout = (LinearLayout) view.findViewById(R.id.check_layout);
-		historyCount = getHistoryCount(type, mission);
+		historyCount = getHistoryCount(mission, mLevel);
 		if(historyCount < writeCount){
 			((TextView) view.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle()+":");
 			mRegreeRg = (RadioGroup) view.findViewById(R.id.check_rg);
@@ -379,7 +379,7 @@ public class GrowDetailView extends LinearLayout {
 		((TextView)view.findViewById(R.id.mission_tv)).setText(bean.getMission());
 		writeCount = bean.getCount();
 		mCheckLayout = (LinearLayout) view.findViewById(R.id.check_layout);
-		historyCount = getHistoryCount(type, mission);
+		historyCount = getHistoryCount(mission, mLevel);
 		if(historyCount < writeCount){
 			mutiMissionList = new ArrayList<RadioGroup>();
 			for(int i = 0 ; i < bean.getMissionDetail().size() ; i++){
@@ -500,8 +500,8 @@ public class GrowDetailView extends LinearLayout {
 		mContext.sendBroadcast(new Intent(Constants.ReceiverAction_CursorChange));
 	}
 	
-	private int getHistoryCount(String type, String mission){
-		Cursor cursor = mDbHelper.query(SqlConstants.SelectSql, mission);
+	private int getHistoryCount(String mission, int level){
+		Cursor cursor = mDbHelper.query(SqlConstants.SelectSql, mission, String.valueOf(level));
 		return cursor.getCount();
 	}
 	

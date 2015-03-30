@@ -27,7 +27,7 @@ public class SqlConstants {
 	
 	public static final String SelectSql = 
 			"select itemIndex,description from records " +
-			"where mission = ?";
+			"where mission = ? and level = ?";
 	
 	public static final String SelectCountByTimeSql = 
 			"select itemIndex from records " + 
