@@ -37,8 +37,8 @@
             "type": "write",
             "title": "学会赞美",
             "comment": " 善待批评",
-            "mission": "记录别人批评指导你的话，请尽可能站在他的角度给个积极的分析。完成3人次。",
-            "count": 3
+            "mission": "记录别人批评指导你的话，请尽可能站在他的角度给个积极的分析。完成4人次。",
+            "count": 4
         },
         {
             "id": 5,
@@ -304,9 +304,9 @@
             "id": 3,
             "type": "mutiMission",
             "title": "拉近距离",
-            "comment": "一般人们容易喜欢上自己熟悉的人，所以先慢慢的让你对你熟悉起来吧（如果你们已经是朋友了，可直接跳过第3关和第4关）",
+            "comment": "一般人们容易喜欢上自己熟悉的人，所以先慢慢的让你对你熟悉起来吧",
             "mission": "让他/她熟悉你.",
-            "count": 30,
+            "count": 15,
             "dailyMax": 1,
             "missionTips": [
                 "吸引Ta的目光",
@@ -331,7 +331,7 @@
             "title": "正面接触",
             "comment": "更进一步",
             "mission": "经过一段时间后，开始和Ta进行更深入的接触吧。",
-            "count": 30,
+            "count": 15,
             "dailyMax": 1,
             "missionTips": [
                 "接触",
@@ -356,7 +356,7 @@
             "title": "独处",
             "comment": "想象一下你们的二人世界吧",
             "mission": "创造机会与Ｔａ共度二人世界。",
-            "count": 30,
+            "count": 15,
             "dailyMax": 1,
             "missionTips": [
                 "独处",
@@ -381,7 +381,7 @@
             "title": "惊喜",
             "comment": "无关其他，心情才是浪漫的重点",
             "mission": "不光女生喜欢浪漫惊喜，男生也一样喜欢，你的示好，会让对方的自信心极速爆棚。",
-            "count": 30,
+            "count": 15,
             "dailyMax": 1,
             "missionTips": [
                 "surprise",

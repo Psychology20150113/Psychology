@@ -11,7 +11,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 
 public class SplashActivity extends Activity {
-	private final int SplashTime = 1000;
+	private final int SplashTime = 1500;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

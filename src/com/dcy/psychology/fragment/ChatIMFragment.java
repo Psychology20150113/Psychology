@@ -34,6 +34,8 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 	private ArrayList<ChatItemModel> mDataList = new ArrayList<ChatItemModel>();
 	private IMManager mManager;
 	private Context mContext;
+	private String doctorAccount;
+	
 	private Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -60,10 +62,11 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				mManager.getChatMessage(mHandler, "1@114.215.179.130");
+				mManager.getChatMessage(mHandler, doctorAccount);
 			}
 		}, 3000);
 		mContext = getActivity();
+		doctorAccount = mContext.getResources().getString(R.string.doctor_account);
 	}
 	
 	@Override
@@ -119,7 +122,7 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 							});
 							task.execute(MyApplication.myUserName, MyApplication.myPwd);
 						}
-						mManager.getChatMessage(mHandler, "1@114.215.179.130");
+						mManager.getChatMessage(mHandler, doctorAccount);
 					}
 				}).setNegativeButton(R.string.cancel, null).show();
 			}
