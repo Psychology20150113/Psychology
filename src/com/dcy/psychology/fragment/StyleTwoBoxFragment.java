@@ -1,6 +1,8 @@
 package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.PlamPictureDetailActivity;
@@ -18,6 +20,7 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
 import com.google.gson.reflect.TypeToken;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -69,10 +72,16 @@ public class StyleTwoBoxFragment extends Fragment implements
 			mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get(position - dataList.size()));
 			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[position - dataList.size()]);
 			startActivity(mIntent);
+			Map<String, String> questionMap = new HashMap<String, String>();
+			questionMap.put("name", Constants.HomePageTestTitle[position - dataList.size()]);
+			MobclickAgent.onEvent(mContext, "test_without_theme", questionMap);
 		}else {
 			Intent mIntent = new Intent(mContext, PlamPictureDetailActivity.class);
 			mIntent.putExtra(Constants.PictureBean, dataList.get(position));
 			startActivity(mIntent);
+			Map<String, String> picMap = new HashMap<String, String>();
+			picMap.put("name", dataList.get(position).getTitle());
+			MobclickAgent.onEvent(mContext, "article_without_theme", picMap);
 		}
 	}
 	
@@ -81,9 +90,11 @@ public class StyleTwoBoxFragment extends Fragment implements
 		Intent mIntent = null;
 		switch (v.getId()) {
 		case R.id.game_one_tv:
+			MobclickAgent.onEvent(mContext, "color_fish");
 			mIntent = new Intent(mContext, SeaGameActivity.class);
 			break;
 		case R.id.game_two_tv:
+			MobclickAgent.onEvent(mContext, "mind_reading");
 			mIntent = new Intent(mContext, QuestionThemeChooseActivity.class);
 			break;
 		default:

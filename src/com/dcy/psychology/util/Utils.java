@@ -33,10 +33,12 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
+import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.CommentBean;
 import com.dcy.psychology.gsonbean.CommentDetailBean;
 import com.dcy.psychology.gsonbean.LoginBean;
 import com.dcy.psychology.gsonbean.RegisterBean;
+import com.dcy.psychology.gsonbean.SmsCodeBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.view.QuestionView;
 import com.google.gson.Gson;
@@ -145,6 +147,26 @@ public class Utils {
 			return new LoginBean();
 		}
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), LoginBean.class);
+	}
+	
+	public static SmsCodeBean sendSMS(String phoneNum){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.SendSMS);
+		request.addProperty("phoneNum", phoneNum);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new SmsCodeBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), SmsCodeBean.class);
+	}
+	
+	public static BasicBean getVerifySmsCode(String phoneNum, String smsCode, String userPwd){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.SendSMS);
+		request.addProperty("phoneNum", phoneNum);
+		request.addProperty("smsCode", smsCode);
+		request.addProperty("userPwd", userPwd);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
 	public static RegisterBean getRegisterResult(UserInfoModel user){

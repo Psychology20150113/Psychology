@@ -87,7 +87,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	
 	@Override
 	public void onRightTextClick() {
-		startActivityForResult(new Intent(this, RegisterActivity.class) , 0);
+		//startActivityForResult(new Intent(this, RegisterActivity.class) , 0);
+		startActivityForResult(new Intent(this, PhoneRegisterActivity.class) , 0);
 	}
 	
 	@Override

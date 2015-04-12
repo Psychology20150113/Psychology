@@ -5,6 +5,7 @@ import com.dcy.psychology.ProblemDirectoryActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ShowListActivity;
 import com.dcy.psychology.util.Constants;
+import com.umeng.analytics.MobclickAgent;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -51,6 +52,7 @@ public class TabCureFragment extends Fragment implements OnClickListener{
 //		Intent mIntent = new Intent(mContext, ProblemDirectoryActivity.class);
 		switch (view.getId()) {
 		case R.id.problem_one_rl:
+			MobclickAgent.onEvent(mContext, "depression");
 			chooseLayout.setVisibility(View.VISIBLE);
 			chooseLayout.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_in_from_right));
 //			problemIndex = 0;

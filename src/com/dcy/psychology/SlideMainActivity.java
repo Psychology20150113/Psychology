@@ -16,6 +16,7 @@ import com.dcy.psychology.fragment.TabMineFragment;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -194,6 +195,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		Intent mIntent;
 		switch (position) {
 		case 0:
+			MobclickAgent.onEvent(this, "black_hole");
 			mIntent = new Intent(this, BlackHoleActivity.class);
 			startActivity(mIntent);
 			break;

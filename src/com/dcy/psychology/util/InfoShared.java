@@ -16,6 +16,7 @@ public class InfoShared {
 	private final String UserPwd = "info_pwd";
 	private final String UserNick = "info_nick";
 	private final String UserRole = "info_role";
+	private final String UserPhoneNum = "info_phone";
 	
 	public String ThemeFormat = "Theme%s_%d";
 	
@@ -64,6 +65,14 @@ public class InfoShared {
 		return mShared.getString(UserRole, "");
 	}
 	
+	public void setPhoneNum(String phoneNum){
+		mShared.edit().putString(UserPhoneNum, phoneNum);
+	}
+	
+	public String getPhoneNum(){
+		return mShared.getString(UserPhoneNum, "");
+	}
+	
 	public void putInt(String key , int value){
 		mShared.edit().putInt(key, value).commit();
 	}
@@ -80,6 +89,16 @@ public class InfoShared {
 		MyApplication.myPwd = pwd;
 		MyApplication.myUserRole = role;
 		new ChatLoginTask(mContext).execute(account, pwd);
+	}
+	
+	public void savePhoneInfo(String phoneNum, String pwd, String role){
+		setPhoneNum(phoneNum);
+		setUserPwd(pwd);
+		setUserRole(role);
+		MyApplication.myPhoneNum = phoneNum;
+		MyApplication.myPwd = pwd;
+		MyApplication.myUserRole = role;
+//		new ChatLoginTask(mContext).execute(account, pwd);
 	}
 	
 	public void clearInfo(){

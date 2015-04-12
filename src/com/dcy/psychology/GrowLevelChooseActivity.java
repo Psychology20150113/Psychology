@@ -9,6 +9,7 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.GrowLevelView;
 import com.dcy.psychology.view.GrowLevelView.OnLevelClickListener;
 import com.google.gson.reflect.TypeToken;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -51,6 +52,7 @@ public class GrowLevelChooseActivity extends BaseActivity implements OnClickList
 
 	@Override
 	public void onRightTextClick() {
+		MobclickAgent.onEvent(this, "share_meeting");
 		Intent mIntent = new Intent(this, DiscussListActivity.class);
 		mIntent.putExtra("themeIndex", themeIndex);
 		startActivity(mIntent);

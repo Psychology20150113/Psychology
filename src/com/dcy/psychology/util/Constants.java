@@ -19,6 +19,8 @@ public interface Constants {
 	public static final String CommentItem = "CommentHertWeiBo";
 	public static final String GetCommentDetail = "GetCommentDetail";
 	public static final String InputBlackHole = "InputBlackHole";
+	public static final String SendSMS = "SendSMS";
+	public static final String VerifySmsCode = "VerifySmsCode";
 	public static final String ChangePwdMethod = "UpdateUserPwd";
 	
 	public static final String UserWSDL = "http://114.215.179.130/WebService/WebServiceAPPUser.asmx";

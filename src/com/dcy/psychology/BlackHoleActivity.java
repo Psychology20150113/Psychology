@@ -27,8 +27,10 @@ public class BlackHoleActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.throw_tv:
-			if(TextUtils.isEmpty(mInputEt.getText()))
+			if(TextUtils.isEmpty(mInputEt.getText())){
 				Toast.makeText(this, R.string.please_input, Toast.LENGTH_SHORT).show();
+				return;
+			}
 			showCustomDialog();
 			new InputTask().execute(mInputEt.getText().toString());
 			break;

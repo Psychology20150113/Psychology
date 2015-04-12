@@ -15,6 +15,7 @@ import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomCircleView;
 import com.google.gson.reflect.TypeToken;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
@@ -128,6 +129,7 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.level_name_tv:
 		case R.id.circle_view:
+			MobclickAgent.onEvent(mContext, "mainkey_to_mark");
 			if(bean == null){
 				Toast.makeText(mContext, R.string.not_data_warning, Toast.LENGTH_SHORT).show();
 				return;
@@ -139,15 +141,18 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 			mIntent.putExtra(Constants.ThemeIndex, themeIndex);
 			break;
 		case R.id.theme_name_tv:
+			MobclickAgent.onEvent(mContext, "mainkey_to_theme");
 			mIntent = new Intent(mContext, GrowLevelChooseActivity.class);
 			mIntent.putExtra(Constants.BeanList, jsonList.get(themeIndex));
 			mIntent.putExtra(Constants.ThemeIndex, themeIndex);
 			mIntent.putExtra(Constants.IsSpecial, isSpecial);
 			break;
 		case R.id.platform_one_ll:
+			MobclickAgent.onEvent(mContext, "happy_in_uni");
 			mIntent = new Intent(mContext, StudentGrowActivity.class);
 			break;
 		case R.id.platform_two_ll:
+			MobclickAgent.onEvent(mContext, "without_trouble");
 			mIntent = new Intent(mContext, PlatformTwoActivity.class);
 			break;
 		default:

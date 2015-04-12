@@ -1,8 +1,11 @@
 package com.dcy.psychology.adapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.dcy.psychology.R;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -107,6 +110,9 @@ public class StudentGrowPlatformAdapter extends BaseAdapter {
 			mDialog = mBuilder.create();
 			mDialog.show();*/
 			int position = (Integer) v.getTag();
+			Map<String, String> mThemeMap = new HashMap<String, String>();
+			mThemeMap.put("platform", mTitleArray[position]);
+			MobclickAgent.onEvent(mContext, "click_student_platform", mThemeMap);
 			if(position == mSelectPosition)
 				return;
 			if(mSelectPosition >= mListView.getFirstVisiblePosition() && mSelectPosition <= mListView.getLastVisiblePosition()){

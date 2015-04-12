@@ -26,6 +26,7 @@ import com.dcy.psychology.adapter.ChatAdapter;
 import com.dcy.psychology.model.ChatItemModel;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.view.CustomProgressDialog;
+import com.umeng.analytics.MobclickAgent;
 
 public class ChatIMFragment extends Fragment implements OnClickListener{
 	private ListView mListView;
@@ -94,6 +95,7 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 				return;
 			}
 			if(mManager.pushChatMessage(mEditText.getText().toString())){
+				MobclickAgent.onEvent(mContext, "chat");
 				ChatItemModel mModel = new ChatItemModel();
 				mModel.setMine(true);
 				mModel.setContext(mEditText.getText().toString());

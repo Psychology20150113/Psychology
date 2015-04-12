@@ -167,4 +167,7 @@
     <string name="game_rule">活动规则</string>
     <string name="game_rule_detail">点击数字选择相应的关卡，请用7秒钟的时间记住不同位置的鱼的颜色，然后将看到的颜色复制到出来。点击相应的鱼，再点击下方的颜色即可为鱼着色。
         							全部完成时，点击右上角的√即可查看得分。分数越高，说明一个人的短时记忆能力及注意力越高。</string>
+	<string name="input_phone">请输入手机号</string>
+	<string name="verfication_code">验证码</string>
+	<string name="get_verfication_code">请获取并输入验证码</string>
 </resources>

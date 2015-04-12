@@ -24,10 +24,8 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
-
-    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    
     <uses-sdk
         android:minSdkVersion="13"
         android:targetSdkVersion="17" />
@@ -39,8 +37,12 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         <!-- android:name="com.dcy.psychology.MainActivity" -->
+        <meta-data android:name="UMENG_APPKEY" android:value="55274676fd98c581c00005d8"/>
+		<meta-data android:value="Psychology" android:name="UMENG_CHANNEL"/>
+        
         <activity 
             android:name="com.dcy.psychology.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
 			<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -122,6 +124,11 @@
         </activity>
         <activity 
             android:name="com.dcy.psychology.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.PhoneRegisterActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>

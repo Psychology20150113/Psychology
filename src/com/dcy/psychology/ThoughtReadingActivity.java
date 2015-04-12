@@ -1,15 +1,23 @@
 package com.dcy.psychology;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import com.baidu.vi.MFE;
+import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean.AnswerBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean.OptionBean;
@@ -21,27 +29,6 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.PageIndicatorView;
 import com.dcy.psychology.view.QuestionView;
 import com.google.gson.reflect.TypeToken;
-
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class ThoughtReadingActivity extends Activity implements OnClickListener{
 
