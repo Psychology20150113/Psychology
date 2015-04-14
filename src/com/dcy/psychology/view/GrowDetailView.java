@@ -101,7 +101,7 @@ public class GrowDetailView extends LinearLayout {
 		protected String doInBackground(String... params) {
 			if(params.length < 1)
 				return null;
-			return Utils.publishComment(MyApplication.myUserName, params[0], Constants.IdOfGrowMode[themeIndex]);
+			return Utils.publishComment(MyApplication.myPhoneNum, params[0], Constants.IdOfGrowMode[themeIndex]);
 		}
 		
 		protected void onPostExecute(String result) {

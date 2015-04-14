@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.LoginActivity.ChatLoginTask;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
@@ -13,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -26,7 +28,7 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 	private EditText mSecondPwdEt;
 	private TextView mGetCodeText;
 	private InfoShared mShared;
-	private final int CountDownNum = 10;
+	private final int CountDownNum = 30;
 	private int mCountDownTime = CountDownNum;
 	private Handler mCountDownHandler = new Handler();
 	
@@ -61,7 +63,7 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 		
 		@Override
 		protected BasicBean doInBackground(String... arg0) {
-			return Utils.getVerifySmsCode(phoneNum, mShared.getPhoneNum(), pwd);
+			return Utils.getVerifySmsCode(phoneNum, mCodeEt.getText().toString(), pwd);
 		}
 		
 		@Override
@@ -71,6 +73,7 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 				mShared.savePhoneInfo(phoneNum, pwd, Constants.RoleUser);
 				new ChatRegisterTask().execute(phoneNum, pwd);
 			} else {
+				hideCustomDialog();
 				Toast.makeText(PhoneRegisterActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}
 		}
@@ -89,6 +92,7 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 				Toast.makeText(PhoneRegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
 				Intent mIntent = new Intent();
 				mIntent.putExtra("login_success", true);
+				new ChatLoginTask(PhoneRegisterActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
 				setResult(1, mIntent);
 				finish();
 			}
@@ -105,7 +109,7 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 		protected void onPostExecute(SmsCodeBean result) {
 			hideCustomDialog();
 			if(result.isResult()){
-				mShared.setPhoneNum(result.getVerifyCode());
+				Log.i("mylog", result.getVerifyCode());
 				mGetCodeText.setClickable(false);
 				mGetCodeText.setText("" + CountDownNum);
 				mCountDownHandler.postDelayed(mCountDownRunnable, 1000);
@@ -119,7 +123,6 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.get_code_tv:
-			Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
 			if(!checkPhone()){
 				return;
 			}
@@ -146,7 +149,9 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 			if(mCountDownTime > 0){
 				mCountDownHandler.postDelayed(mCountDownRunnable, 1000);
 			} else {
-				mGetCodeText.setText("OK");
+				mGetCodeText.setText(R.string.retry);
+				mGetCodeText.setClickable(true);
+				mCountDownTime = CountDownNum;
 			}
 		}
 	};

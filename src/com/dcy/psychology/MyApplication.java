@@ -34,10 +34,10 @@ public class MyApplication extends Application{
         AsyncImageCache.setDiskCacheCount(1024);                //1024 item
         AsyncImageCache.setMemoryCacheSize(1024 * 1024 * 10);    //10MB
         initAppInfo();
-        MobclickAgent.setDebugMode(true);
+//        MobclickAgent.setDebugMode(true);
         mGson = new Gson();
-        if(!TextUtils.isEmpty(myUserName)){
-        	new LoginActivity.ChatLoginTask(this).execute(myUserName, myPwd);
+        if(!TextUtils.isEmpty(myPhoneNum)){
+        	new LoginActivity.ChatLoginTask(this).execute(myPhoneNum, myPwd);
         }
 	}
 	

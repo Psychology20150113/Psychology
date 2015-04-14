@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
+import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.CommentBean;
 import com.dcy.psychology.gsonbean.CommentDetailBean;
 import com.dcy.psychology.util.Utils;
@@ -165,12 +166,12 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 		
 	}
 	
-	private class CommentItemTask extends AsyncTask<Object, Void, Boolean>{
+	private class CommentItemTask extends AsyncTask<Object, Void, BasicBean>{
 		int position;
 		String content;
 		int id;
 		@Override
-		protected Boolean doInBackground(Object... params) {
+		protected BasicBean doInBackground(Object... params) {
 			position = (Integer)params[0];
 			content = (String)params[1];
 			id = dataList.get(position).infoItem.getHeartWeiBoID();
@@ -178,7 +179,7 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 		}
 		
 		@Override
-		protected void onPostExecute(Boolean result) {
+		protected void onPostExecute(BasicBean result) {
 			hideCustomDialog();
 			if(dataList.get(position).detailItems == null){
 				showCustomDialog();
@@ -189,10 +190,10 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 			newItem.setHeartWeiBoID(id);
 			newItem.setReviewContent(content);
 			newItem.setReviewDate(mFormat.format(Calendar.getInstance().getTime()));
-			newItem.setReviewUserLoginName(MyApplication.myUserName);
+			newItem.setReviewUserLoginName(MyApplication.myPhoneNum);
 			dataList.get(position).detailItems.add(0, newItem);
 			mDetailAdapterList.get(position).notifyDataSetChanged();
-			Toast.makeText(mContext, result ? R.string.comment_success : R.string.comment_failed, 
+			Toast.makeText(mContext, result.isResult() ? R.string.comment_success : R.string.comment_failed, 
 					Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -206,7 +207,7 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 			new GetCommentDetailTask().execute(position);
 			break;
 		case R.id.item_comment_btn:
-			if(TextUtils.isEmpty(MyApplication.myUserName)){
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				Toast.makeText(mContext, R.string.please_login, Toast.LENGTH_SHORT).show();
 				return;
 			}

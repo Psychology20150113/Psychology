@@ -170,4 +170,5 @@
 	<string name="input_phone">请输入手机号</string>
 	<string name="verfication_code">验证码</string>
 	<string name="get_verfication_code">请获取并输入验证码</string>
+	<string name="retry">重试</string>
 </resources>

@@ -66,7 +66,7 @@ public class InfoShared {
 	}
 	
 	public void setPhoneNum(String phoneNum){
-		mShared.edit().putString(UserPhoneNum, phoneNum);
+		mShared.edit().putString(UserPhoneNum, phoneNum).commit();
 	}
 	
 	public String getPhoneNum(){
@@ -98,10 +98,11 @@ public class InfoShared {
 		MyApplication.myPhoneNum = phoneNum;
 		MyApplication.myPwd = pwd;
 		MyApplication.myUserRole = role;
-//		new ChatLoginTask(mContext).execute(account, pwd);
 	}
 	
 	public void clearInfo(){
+		String version = getAppVersion();
 		mShared.edit().clear().commit();
+		mShared.edit().putString(AppVersion, version).commit();
 	}
 }

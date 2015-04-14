@@ -33,7 +33,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			}else {
 				Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
 				InfoShared mShared = new InfoShared(LoginActivity.this);
-				mShared.saveInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState());
+				mShared.savePhoneInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState());
+				new ChatLoginTask(LoginActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
 				Intent mIntent = new Intent();
 				mIntent.putExtra("login_success", true);
 				setResult(0, mIntent);

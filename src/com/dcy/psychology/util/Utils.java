@@ -146,6 +146,7 @@ public class Utils {
 		if(result == null){
 			return new LoginBean();
 		}
+		Log.i("mylog", "login : " + result.getPropertyAsString(0));
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), LoginBean.class);
 	}
 	
@@ -155,17 +156,19 @@ public class Utils {
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new SmsCodeBean();
+		Log.i("mylog", "getCode : " + result.getPropertyAsString(0));
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), SmsCodeBean.class);
 	}
 	
 	public static BasicBean getVerifySmsCode(String phoneNum, String smsCode, String userPwd){
-		SoapObject request = new SoapObject(Constants.SpaceName, Constants.SendSMS);
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.VerifySmsCode);
 		request.addProperty("phoneNum", phoneNum);
 		request.addProperty("smsCode", smsCode);
 		request.addProperty("userPwd", userPwd);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new BasicBean();
+		Log.i("mylog", "register : " + result.getPropertyAsString(0));
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
@@ -218,15 +221,15 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<CommentBean>>(){}.getType());
 	}
 	
-	public static boolean commentItem(int id, String content){
+	public static BasicBean commentItem(int id, String content){
 		SoapObject request = new SoapObject(Constants.SpaceName, Constants.CommentItem);
 		request.addProperty("heartWeiBoID", id);
-		request.addProperty("reviewUserLoginName", MyApplication.myUserName);
+		request.addProperty("reviewUserLoginName", MyApplication.myPhoneNum);
 		request.addProperty("reviewContent", content);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
-			return false;
-		return Boolean.valueOf(result.getProperty(0).toString());
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
 	public static ArrayList<CommentDetailBean> getCommentDetail(int id){
@@ -238,13 +241,13 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<CommentDetailBean>>(){}.getType());
 	}
 	
-	public static boolean inputBlackHole(String input){
+	public static BasicBean inputBlackHole(String input){
 		SoapObject request = new SoapObject(Constants.SpaceName, Constants.InputBlackHole);
 		request.addProperty("blackHoleContext", input);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
-			return false;
-		return Boolean.valueOf(result.getPropertyAsString(0));
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
 	public static String getArticleList(){

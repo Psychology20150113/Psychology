@@ -51,7 +51,7 @@ public class GrowHistoryActivity extends BaseActivity {
 
 	@Override
 	public void onRightViewClick() {
-		if(TextUtils.isEmpty(MyApplication.myUserName)){
+		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			Toast.makeText(this, R.string.please_login, Toast.LENGTH_SHORT).show();
 			return;
 		}
@@ -89,7 +89,7 @@ public class GrowHistoryActivity extends BaseActivity {
 		protected String doInBackground(String... params) {
 			if(params.length < 1)
 				return null;
-			return Utils.publishComment(MyApplication.myUserName, params[0], Constants.IdOfGrowMode[themeIndex]);
+			return Utils.publishComment(MyApplication.myPhoneNum, params[0], Constants.IdOfGrowMode[themeIndex]);
 		}
 		
 		protected void onPostExecute(String result) {

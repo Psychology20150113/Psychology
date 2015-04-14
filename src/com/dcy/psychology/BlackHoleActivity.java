@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.util.Utils;
 
 import android.app.Activity;
@@ -39,11 +40,11 @@ public class BlackHoleActivity extends BaseActivity implements OnClickListener{
 		}
 	}
 	
-	private class InputTask extends AsyncTask<String, Void, Boolean>{
+	private class InputTask extends AsyncTask<String, Void, BasicBean>{
 		String inputString;
 		
 		@Override
-		protected Boolean doInBackground(String... params) {
+		protected BasicBean doInBackground(String... params) {
 			if(TextUtils.isEmpty(params[0]))
 				return null;
 			inputString = params[0];
@@ -51,10 +52,10 @@ public class BlackHoleActivity extends BaseActivity implements OnClickListener{
 		}
 		
 		@Override
-		protected void onPostExecute(Boolean result) {
+		protected void onPostExecute(BasicBean result) {
 			super.onPostExecute(result);
 			hideCustomDialog();
-			if(result){
+			if(result.isResult()){
 				mInputEt.setText("");
 				Toast.makeText(BlackHoleActivity.this, String.format(getString(R.string.black_hole_success), inputString), 
 						Toast.LENGTH_SHORT).show();

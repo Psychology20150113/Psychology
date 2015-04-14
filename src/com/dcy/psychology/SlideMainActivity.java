@@ -85,9 +85,9 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		slideView.setOnItemClickListener(this);
 		setLeftView(R.drawable.ic_launcher);
 		//setRightView(R.drawable.ic_launcher);
-		if(!TextUtils.isEmpty(MyApplication.myUserName)){
+		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			nameLayout.setVisibility(View.VISIBLE);
-			nameText.setText(MyApplication.myUserName);
+			nameText.setText(MyApplication.myPhoneNum);
 			loginLayout.setVisibility(View.GONE);
 		}
 		
@@ -209,7 +209,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		switch (resultCode) {
 		case 0:
 			nameLayout.setVisibility(View.VISIBLE);
-			nameText.setText(MyApplication.myUserName);
+			nameText.setText(MyApplication.myPhoneNum);
 			loginLayout.setVisibility(View.GONE);
 			break;
 

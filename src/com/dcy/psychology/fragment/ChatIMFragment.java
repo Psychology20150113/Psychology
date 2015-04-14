@@ -122,7 +122,7 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 									progressDialog.dismiss();
 								}
 							});
-							task.execute(MyApplication.myUserName, MyApplication.myPwd);
+							task.execute(MyApplication.myPhoneNum, MyApplication.myPwd);
 						}
 						mManager.getChatMessage(mHandler, doctorAccount);
 					}
