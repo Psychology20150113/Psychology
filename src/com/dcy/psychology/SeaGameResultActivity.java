@@ -52,7 +52,7 @@ public class SeaGameResultActivity extends Activity implements OnClickListener{
 			if (mineColors.get(i).equals(rightColors.get(i)))
 				mRightNum++;
 		}
-		return String.format(getString(R.string.point), mRightNum * 100 / 4);
+		return String.format(getString(R.string.point), mRightNum * 100 / mineColors.size());
 	}
 	
 	@Override

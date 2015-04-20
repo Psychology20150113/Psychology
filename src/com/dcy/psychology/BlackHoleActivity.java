@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.util.Utils;
+import com.dcy.psychology.view.BlackHoleView;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -14,15 +15,26 @@ import android.widget.Toast;
 
 public class BlackHoleActivity extends BaseActivity implements OnClickListener{
 	private EditText mInputEt;
+	private BlackHoleView mHoleView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_black_hole_layout);
 		setTopTitle(R.string.black_hole);
+		mHoleView = (BlackHoleView) findViewById(R.id.black_view);
+		mHoleView.setFinishRunnable(finishRunnable);
 		mInputEt = (EditText) findViewById(R.id.input_et);
 		findViewById(R.id.throw_tv).setOnClickListener(this);
 	}
+	
+	private Runnable finishRunnable = new Runnable() {
+		@Override
+		public void run() {
+			showCustomDialog();
+			new InputTask().execute(mInputEt.getText().toString());
+		}
+	};
 	
 	@Override
 	public void onClick(View v) {
@@ -32,8 +44,7 @@ public class BlackHoleActivity extends BaseActivity implements OnClickListener{
 				Toast.makeText(this, R.string.please_input, Toast.LENGTH_SHORT).show();
 				return;
 			}
-			showCustomDialog();
-			new InputTask().execute(mInputEt.getText().toString());
+			mHoleView.initText(mInputEt.getText().toString());
 			break;
 		default:
 			break;

@@ -186,6 +186,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		MyApplication.myUserName = "";
 		MyApplication.myPwd = "";
 		MyApplication.myNick = "";
+		MyApplication.myPhoneNum = "";
 		new InfoShared(this).clearInfo();
 	}
 	

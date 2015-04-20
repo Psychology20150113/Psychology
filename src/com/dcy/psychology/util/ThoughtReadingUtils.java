@@ -200,7 +200,7 @@ public class ThoughtReadingUtils {
 //					mResources.getString(R.string.answer_right), rightAnswer));
 			mHolder.rightAnswer.setText(rightAnswer);
 			mHolder.mineAnswer.setText(":" + mineAnswer);
-			boolean isRight = rightAnswer.equals(mineAnswer) || rightAnswer.equals(mineAnswer.replace(",", ""));
+			boolean isRight = rightAnswer.trim().equals(mineAnswer) || rightAnswer.trim().equals(mineAnswer.replace(",", ""));
 			mHolder.resultView.setImageResource(isRight? 
 					R.drawable.icon_right : R.drawable.icon_wrong);
 			mHolder.reasonImage.setOnClickListener(new OnClickListener() {

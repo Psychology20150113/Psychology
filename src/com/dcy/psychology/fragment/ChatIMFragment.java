@@ -105,28 +105,29 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 				mListView.setSelection(mDataList.size());
 				mEditText.setText("");
 			}else {
-				Toast.makeText(mContext, R.string.send_msg_failed, Toast.LENGTH_SHORT).show();
-				Builder mBuilder = new Builder(mContext);
-				mBuilder.setTitle(R.string.connect_failed)
-				.setMessage(R.string.connect_failed_msg)
-				.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						if(!mManager.isLogined()){
-							final CustomProgressDialog progressDialog = new CustomProgressDialog(mContext);
-							progressDialog.show();
-							ChatLoginTask task = new LoginActivity.ChatLoginTask(mContext);
-							task.setRunnable(new Runnable() {
-								@Override
-								public void run() {
-									progressDialog.dismiss();
-								}
-							});
-							task.execute(MyApplication.myPhoneNum, MyApplication.myPwd);
+				if(!mManager.isLogined()){
+					final CustomProgressDialog progressDialog = new CustomProgressDialog(mContext);
+					progressDialog.show();
+					ChatLoginTask task = new LoginActivity.ChatLoginTask(mContext);
+					task.setRunnable(new Runnable() {
+						@Override
+						public void run() {
+							progressDialog.dismiss();
 						}
-						mManager.getChatMessage(mHandler, doctorAccount);
-					}
-				}).setNegativeButton(R.string.cancel, null).show();
+					});
+					task.execute(MyApplication.myPhoneNum, MyApplication.myPwd);
+				}
+				mManager.getChatMessage(mHandler, doctorAccount);
+//				Toast.makeText(mContext, R.string.send_msg_failed, Toast.LENGTH_SHORT).show();
+//				Builder mBuilder = new Builder(mContext);
+//				mBuilder.setTitle(R.string.connect_failed)
+//				.setMessage(R.string.connect_failed_msg)
+//				.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						
+//					}
+//				}).setNegativeButton(R.string.cancel, null).show();
 			}
 			break;
 		default:
