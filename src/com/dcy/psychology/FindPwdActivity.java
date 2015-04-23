@@ -1,15 +1,12 @@
 package com.dcy.psychology;
 
-import com.dcy.psychology.LoginActivity.ChatLoginTask;
+import u.aly.br;
+
 import com.dcy.psychology.gsonbean.BasicBean;
-import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
-import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,7 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PhoneRegisterActivity extends BaseActivity implements OnClickListener{
+public class FindPwdActivity extends BaseActivity implements OnClickListener{
 	private EditText mPhoneEt;
 	private EditText mCodeEt;
 	private EditText mPwdEt;
@@ -35,75 +32,46 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_phone_register_layout);
+		setContentView(R.layout.activity_find_pwd_layout);
 		initView();
 		mShared = new InfoShared(this);
 	}
-
+	
 	private void initView(){
-		setTopTitle(R.string.register);
+		setTopTitle(R.string.find_pwd);
 		mPhoneEt = (EditText) findViewById(R.id.phone_et);
 		mCodeEt = (EditText) findViewById(R.id.code_et);
 		mPwdEt = (EditText) findViewById(R.id.password_et);
 		mSecondPwdEt = (EditText) findViewById(R.id.second_password_et);
 		mGetCodeText = (TextView) findViewById(R.id.get_code_tv);
 		mGetCodeText.setOnClickListener(this);
-		findViewById(R.id.register_tv).setOnClickListener(this);
-		findViewById(R.id.find_pwd_tv).setOnClickListener(this);
+		findViewById(R.id.change_ok_tv).setOnClickListener(this);
 	}
 	
-	private class RegisterTask extends AsyncTask<String, Void, BasicBean>{
-		private String phoneNum;
-		private String pwd;
-		
+	private class ChangePwdTask extends AsyncTask<String, Void, BasicBean>{
 		@Override
-		protected void onPreExecute() {
-			phoneNum = mPhoneEt.getText().toString();
-			pwd = mPwdEt.getText().toString();
-		}
-		
-		@Override
-		protected BasicBean doInBackground(String... arg0) {
-			return Utils.getVerifySmsCode(phoneNum, mCodeEt.getText().toString(), pwd);
+		protected BasicBean doInBackground(String... params) {
+			return Utils.getVerifyFindSmsCode(mPhoneEt.getText().toString(), 
+					mCodeEt.getText().toString(), mPwdEt.getText().toString());
 		}
 		
 		@Override
 		protected void onPostExecute(BasicBean result) {
-			super.onPostExecute(result);
-			if(result.isResult()){
-				mShared.savePhoneInfo(phoneNum, pwd, Constants.RoleUser);
-				new ChatRegisterTask().execute(phoneNum, pwd);
-			} else {
-				hideCustomDialog();
-				Toast.makeText(PhoneRegisterActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
-			}
-		}
-	}
-	
-	private class ChatRegisterTask extends AsyncTask<String, Void, Boolean>{
-		@Override
-		protected Boolean doInBackground(String... params) {
-			return IMManager.getInstance().registerIM(params[0], params[1]);
-		}
-		
-		@Override
-		protected void onPostExecute(Boolean result) {
 			hideCustomDialog();
-			if(result){
-				Toast.makeText(PhoneRegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
-				Intent mIntent = new Intent();
-				mIntent.putExtra("login_success", true);
-				new ChatLoginTask(PhoneRegisterActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
-				setResult(1, mIntent);
+			if(result.isResult()){
+				Toast.makeText(FindPwdActivity.this, R.string.change_ped_success, Toast.LENGTH_SHORT).show();
+				setResult(100);
 				finish();
+			} else {
+				Toast.makeText(FindPwdActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
 	
-	private class GetSmsCodeTask extends AsyncTask<String, Void, SmsCodeBean>{
+	private class GetFindSmsCodeTask extends AsyncTask<String, Void, SmsCodeBean>{
 		@Override
 		protected SmsCodeBean doInBackground(String... params) {
-			return Utils.sendSMS(mPhoneEt.getText().toString());
+			return Utils.sendFindSMS(mPhoneEt.getText().toString());
 		}
 		
 		@Override
@@ -115,45 +83,8 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 				mGetCodeText.setText("" + CountDownNum);
 				mCountDownHandler.postDelayed(mCountDownRunnable, 1000);
 			} else {
-				Toast.makeText(PhoneRegisterActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
+				Toast.makeText(FindPwdActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}
-		}
-	}
-	
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.get_code_tv:
-			if(!checkPhone()){
-				return;
-			}
-			showCustomDialog();
-			new GetSmsCodeTask().execute();
-			break;
-		case R.id.register_tv:
-			if(!checkInput()){
-				return;
-			}
-			showCustomDialog();
-			new RegisterTask().execute();
-			break;
-		case R.id.find_pwd_tv:
-			startActivityForResult(new Intent(this, FindPwdActivity.class), 0);
-			break;
-		default:
-			break;
-		}
-	}
-	
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		switch (resultCode) {
-		case 100:
-			finish();
-			break;
-		default:
-			break;
 		}
 	}
 	
@@ -171,6 +102,28 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 			}
 		}
 	};
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.get_code_tv:
+				if(!checkPhone()){
+					return;
+				}
+				showCustomDialog();
+				new GetFindSmsCodeTask().execute();
+				break;
+			case R.id.change_ok_tv:
+				if(!checkInput()){
+					return;
+				}
+				showCustomDialog();
+				new ChangePwdTask().execute();
+				break;
+			default:
+					break;
+			}
+	}
 	
 	private boolean checkPhone(){
 		if(TextUtils.isEmpty(mPhoneEt.getText())){

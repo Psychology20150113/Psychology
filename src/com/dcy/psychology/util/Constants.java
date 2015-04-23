@@ -20,7 +20,9 @@ public interface Constants {
 	public static final String GetCommentDetail = "GetCommentDetail";
 	public static final String InputBlackHole = "InputBlackHole";
 	public static final String SendSMS = "SendSMS";
+	public static final String SendFindSMS = "SendSMSFindPwd";
 	public static final String VerifySmsCode = "VerifySmsCode";
+	public static final String VerifyFindSmsCode = "VerifySmsCodeFindPwd";
 	public static final String ChangePwdMethod = "UpdateUserPwd";
 	
 	public static final String UserWSDL = "http://114.215.179.130/WebService/WebServiceAPPUser.asmx";
@@ -50,7 +52,6 @@ public interface Constants {
 													{"时间管理能力测试"},{"恋爱配对测试"},{"自信"}};
 
 	public static final String[][] SpecialGrowTestTitle = {{"抑郁测试" , "抑郁自评" , "焦虑自评"}};
-	public static final String[] HomePageTestTitle = {"你容易成瘾吗？" , "你眼中乌云密布还是希望闪烁？" ,"你会怒不可遏吗？","你孤独吗？"};
-	
-	
+	public static final String[] HomePageTestTitle = {"你容易成瘾吗？" , "你眼中乌云密布还是希望闪烁？" ,"你会怒不可遏吗？","你孤独吗？",
+													"自控力测量", "你会患冠心病吗？", "你能读懂身体语言吗?", "你的幽默感怎么样?"};
 }

@@ -118,6 +118,11 @@
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.FindPwdActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity 
             android:name="com.dcy.psychology.StudentGrowActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize">

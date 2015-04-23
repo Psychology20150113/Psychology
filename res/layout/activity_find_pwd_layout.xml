@@ -39,7 +39,7 @@
 	    android:id="@+id/password_et"
 	    style="@style/edit_style"
 	    android:layout_marginTop="10dp"
-	    android:hint="@string/password"
+	    android:hint="@string/change_pwd"
 	    android:inputType="textPassword"/>
 	<EditText 
 	    android:id="@+id/second_password_et"
@@ -48,20 +48,13 @@
 	    android:hint="@string/password_second"
 	    android:inputType="textPassword"/>
 	<TextView 
-	    android:id="@+id/register_tv"
+	    android:id="@+id/change_ok_tv"
 	    android:layout_width="match_parent"
 	    android:layout_height="50dp"
 	    android:layout_marginTop="20dp"
 	    android:textSize="18sp"
 	    android:textColor="#ffffff"
-	    android:text="@string/register"
+	    android:text="@string/ok"
 	    android:gravity="center"
 	    android:background="@drawable/bg_save_btn_shape"/>
-	<TextView 
-	    android:id="@+id/find_pwd_tv"
-	    style="@style/text_black18_style"
-	    android:layout_marginTop="20dp"
-	    android:textColor="@color/bg_save_btn"
-	    android:text="@string/find_pwd"
-	    android:layout_gravity="right"/>
 </LinearLayout>

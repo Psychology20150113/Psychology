@@ -209,6 +209,9 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (resultCode) {
 		case 0:
+			if(data == null){
+				return;
+			}
 			nameLayout.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
 			loginLayout.setVisibility(View.GONE);

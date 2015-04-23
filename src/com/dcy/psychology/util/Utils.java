@@ -160,6 +160,16 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), SmsCodeBean.class);
 	}
 	
+	public static SmsCodeBean sendFindSMS(String phoneNum){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.SendFindSMS);
+		request.addProperty("phoneNum", phoneNum);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new SmsCodeBean();
+		Log.i("mylog", "getCode : " + result.getPropertyAsString(0));
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), SmsCodeBean.class);
+	}
+	
 	public static BasicBean getVerifySmsCode(String phoneNum, String smsCode, String userPwd){
 		SoapObject request = new SoapObject(Constants.SpaceName, Constants.VerifySmsCode);
 		request.addProperty("phoneNum", phoneNum);
@@ -169,6 +179,17 @@ public class Utils {
 		if(result == null)
 			return new BasicBean();
 		Log.i("mylog", "register : " + result.getPropertyAsString(0));
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+	}
+	
+	public static BasicBean getVerifyFindSmsCode(String phoneNum, String smsCode, String userPwd){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.VerifyFindSmsCode);
+		request.addProperty("phoneNum", phoneNum);
+		request.addProperty("smsCode", smsCode);
+		request.addProperty("userPwd", userPwd);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new BasicBean();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	

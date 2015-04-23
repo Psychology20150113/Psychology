@@ -24,6 +24,8 @@ public class HomeShowAllListAdapter extends BaseAdapter {
 	private AssetManager manager;
 	
 	private int[] picResArray = {R.drawable.icon_home_pic_text_01, R.drawable.icon_home_pic_text_02,
+			R.drawable.icon_home_pic_text_03, R.drawable.icon_home_pic_text_04,
+			R.drawable.icon_home_pic_text_01, R.drawable.icon_home_pic_text_02,
 			R.drawable.icon_home_pic_text_03, R.drawable.icon_home_pic_text_04};
 	
 	public HomeShowAllListAdapter(Context context , ArrayList<GrowPictureBean> dataList) {
