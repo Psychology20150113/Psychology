@@ -29,7 +29,7 @@ public class MyApplication extends Application{
 	public void onCreate() {
 		super.onCreate();
 		AsyncImageCache.setDiskCacheEnable(true);
-        AsyncImageCache.setDiskCacheDir(Utils.getSDPath()+"/Wallpapers/download/cache");
+        AsyncImageCache.setDiskCacheDir(Utils.getSDPath()+"/Psychology/download/cache");
         AsyncImageCache.setDiskCacheSize(1024 * 1024 * 50);     //50MB
         AsyncImageCache.setDiskCacheCount(1024);                //1024 item
         AsyncImageCache.setMemoryCacheSize(1024 * 1024 * 10);    //10MB

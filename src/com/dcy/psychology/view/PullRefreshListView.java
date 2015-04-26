@@ -67,7 +67,7 @@ public class PullRefreshListView extends ListView implements OnScrollListener {
 	private boolean isRefreshable;
 	private Calendar date;
 	private int i;
-	private String dateStr = "鍒氬垰";
+	private String dateStr = "刚刚";
 	private boolean isEnd = true;
 
 	public PullRefreshListView(Context context) {

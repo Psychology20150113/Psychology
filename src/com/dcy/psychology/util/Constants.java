@@ -12,7 +12,6 @@ public interface Constants {
 	public static final int PageCount = 8;
 	
 	public static final String LoginMethod = "Login"; 
-	public static final String GetArticleMethod = "GetArticleList";
 	public static final String RegisterUserMethod = "RegisterUser";
 	public static final String PublishComment = "PublishHeartWeiBo";
 	public static final String GetCommentList = "GetHeartWeiBoList";
@@ -23,6 +22,8 @@ public interface Constants {
 	public static final String SendFindSMS = "SendSMSFindPwd";
 	public static final String VerifySmsCode = "VerifySmsCode";
 	public static final String VerifyFindSmsCode = "VerifySmsCodeFindPwd";
+	public static final String GetArticleListMethod = "GetArticleList";
+	public static final String GetArticleInfo = "GetArticleInfo";
 	public static final String ChangePwdMethod = "UpdateUserPwd";
 	
 	public static final String UserWSDL = "http://114.215.179.130/WebService/WebServiceAPPUser.asmx";
@@ -39,6 +40,7 @@ public interface Constants {
 	public static final String ThemeTitle = "themeTitle";
 	public static final String PictureBean = "pictureBean";
 	public static final String GrowModelBean = "growModelBean";
+	public static final String OnlineArticleId = "onlineArticleId";
 	
 	public static final String RoleUser = "USER";
 	public static final String RoleDoctor = "DOCTOR";

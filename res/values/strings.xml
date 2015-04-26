@@ -174,4 +174,5 @@
 	<string name="retry">重试</string>
 	<string name="find_pwd">找回密码</string>
 	<string name="change_ped_success">修改密码成功，请重新登录</string>
+	<string name="online_pic">在线图文</string>
 </resources>

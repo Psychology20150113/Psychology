@@ -33,6 +33,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
+import com.dcy.psychology.gsonbean.ArticleBean;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.CommentBean;
 import com.dcy.psychology.gsonbean.CommentDetailBean;
@@ -96,11 +97,16 @@ public class Utils {
 	}
 	
 	private static SoapObject getResultFromRequest(SoapObject request) {
+		return getResultFromRequest(request, null);
+	}
+	
+	private static SoapObject getResultFromRequest(SoapObject request, String url) {
 		//生成调用WebService的SOAP请求
 		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER12);
 		envelope.bodyOut = request;
 		envelope.dotNet = true;
-		HttpTransportSE transportSE = new HttpTransportSE(Constants.UserWSDL, Constants.TimeOut);
+		HttpTransportSE transportSE = new HttpTransportSE(TextUtils.isEmpty(url) ? 
+				Constants.UserWSDL : url, Constants.TimeOut);
 		try {
 			//1.1版本需要使用第一个参数SoapAction(例http://114.215.179.130/Login),1.2不需要SoapAction
 			transportSE.call("", envelope);
@@ -271,25 +277,26 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
-	public static String getArticleList(){
-		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetArticleMethod);
-		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER10);
-		envelope.bodyOut = request;
-		envelope.dotNet = true;
-		HttpTransportSE transportSE = new HttpTransportSE(Constants.ArticleWSDL, Constants.TimeOut);
-		try {
-			transportSE.call("", envelope);
-		} catch (HttpResponseException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (XmlPullParserException e) {
-			e.printStackTrace();
-		}catch (Exception e) {
-			e.printStackTrace();
+	public static ArrayList<ArticleBean> getArticleList(int pageIndex){
+		if(pageIndex <= 0){
+			return new ArrayList<ArticleBean>();
 		}
-		SoapObject result = (SoapObject) envelope.bodyIn;
-		return "";
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetArticleListMethod);
+		request.addProperty("pageIndex", pageIndex);
+		request.addProperty("pgeSize", Constants.PageCount);
+		SoapObject result = getResultFromRequest(request, Constants.ArticleWSDL);
+		if(result == null)
+			return new ArrayList<ArticleBean>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<ArticleBean>>(){}.getType());
+	}
+	
+	public static ArticleBean getArticleInfo(int articleId){
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetArticleInfo);
+		request.addProperty("articleid", articleId);
+		SoapObject result = getResultFromRequest(request, Constants.ArticleWSDL);
+		if(result == null)
+			return new ArticleBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), ArticleBean.class);
 	}
 	
 	public static class MainTabAdapter extends PagerAdapter{

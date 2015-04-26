@@ -80,6 +80,10 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.OnlinePicActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
             android:name="com.dcy.psychology.BlackHoleActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">

@@ -6,14 +6,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
+import com.dcy.psychology.gsonbean.ArticleBean;
 import com.dcy.psychology.gsonbean.GrowPictureBean;
+import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IOUtils;
 import com.dcy.psychology.util.Utils;
+import com.dcy.psychology.util.AsyncImageCache.NetworkImageGenerator;
 
 import android.content.res.AssetManager;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +28,8 @@ public class PlamPictureDetailActivity extends BaseActivity {
 	private TextView mContentText;
 	private AssetManager manager;
 	private GrowPictureBean detailBean;
+	private int onlineArticalId = -1;
+	private AsyncImageCache mCache;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +41,19 @@ public class PlamPictureDetailActivity extends BaseActivity {
 		detailBean = (GrowPictureBean) getIntent().getSerializableExtra(Constants.PictureBean);
 		if(detailBean != null){
 			setTopTitle(detailBean.getTitle());
-			loadRes();
+			loadLocalRes();
+		} else {
+			onlineArticalId = getIntent().getIntExtra(Constants.OnlineArticleId, -1);
+			if(onlineArticalId == -1){
+				return;
+			}
+			mCache = AsyncImageCache.from(this);
+			showCustomDialog();
+			new LoadOnlineInfoTask().execute();
 		}
 	}
 	
-	private void loadRes(){
+	private void loadLocalRes(){
 		try {
 			InputStream stream = manager.open(detailBean.getPicture());
 			mPicView.setImageBitmap(BitmapFactory.decodeStream(stream));
@@ -47,6 +61,33 @@ public class PlamPictureDetailActivity extends BaseActivity {
 //			mContentText.setText(Utils.loadRawString(this, getResources().getIdentifier(detailBean.getContent(), "raw", getPackageName())));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if(mCache != null){
+			mCache.stop();
+		}
+	}
+	
+	private class LoadOnlineInfoTask extends AsyncTask<Void, Void, ArticleBean>{
+		@Override
+		protected ArticleBean doInBackground(Void... params) {
+			return Utils.getArticleInfo(onlineArticalId);
+		}
+		
+		@Override
+		protected void onPostExecute(ArticleBean result) {
+			hideCustomDialog();
+			if(result == null){
+				return;
+			}
+			setTopTitle(result.getArticleName());
+			mContentText.setText(result.getArticleContent());
+			mCache.displayImage(mPicView, R.drawable.ic_launcher, 
+					new AsyncImageCache.NetworkImageGenerator(result.getArticleImgUrl(), result.getArticleImgUrl()));
 		}
 	}
 }

@@ -45,7 +45,29 @@
 	</LinearLayout>
 	<ImageView 
 	    android:layout_width="match_parent"
-	    android:layout_height="1px"
+	    android:layout_height="1dp"
+	    android:background="@color/divider"/>
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#ffffff">
+	    <TextView 
+	        style="@style/text_black18_style"
+	        android:text="@string/title_pic"
+	        android:layout_marginLeft="10dp"
+	        android:layout_centerVertical="true"/>
+	    <TextView 
+	        android:id="@+id/online_pic_tv"
+	        style="@style/text_black18_style"
+	        android:padding="10dp"
+	        android:textColor="@color/bg_save_btn"
+	        android:text="@string/online_pic"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="10dp"/>
+	</RelativeLayout>
+	<ImageView 
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
 	    android:background="@color/divider"/>
 	<ListView
 	    android:id="@+id/pull_refresh_lv"

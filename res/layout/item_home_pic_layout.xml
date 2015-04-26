@@ -24,6 +24,7 @@
     	    android:background="#B2261D1B"
     	    android:textSize="12sp"
     	    android:paddingLeft="10dp"
+    	    android:text="@string/pic"
     	    android:layout_alignParentBottom="true"/>    
     </RelativeLayout>
 	<TextView 

@@ -4,24 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.dcy.psychology.MyApplication;
-import com.dcy.psychology.PlamPictureDetailActivity;
-import com.dcy.psychology.QuestionThemeChooseActivity;
-import com.dcy.psychology.R;
-import com.dcy.psychology.SeaGameActivity;
-import com.dcy.psychology.ThoughtReadingActivity;
-import com.dcy.psychology.adapter.HomeListAdapter;
-import com.dcy.psychology.adapter.HomeShowAllListAdapter;
-import com.dcy.psychology.gsonbean.GrowPictureBean;
-import com.dcy.psychology.gsonbean.GrowQuestionBean;
-import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.ThoughtReadingUtils;
-import com.dcy.psychology.util.Utils;
-import com.dcy.psychology.view.PullRefreshListView;
-import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
-import com.google.gson.reflect.TypeToken;
-import com.umeng.analytics.MobclickAgent;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +15,22 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+
+import com.dcy.psychology.MyApplication;
+import com.dcy.psychology.OnlinePicActivity;
+import com.dcy.psychology.PlamPictureDetailActivity;
+import com.dcy.psychology.QuestionThemeChooseActivity;
+import com.dcy.psychology.R;
+import com.dcy.psychology.SeaGameActivity;
+import com.dcy.psychology.ThoughtReadingActivity;
+import com.dcy.psychology.adapter.HomeShowAllListAdapter;
+import com.dcy.psychology.gsonbean.GrowPictureBean;
+import com.dcy.psychology.gsonbean.GrowQuestionBean;
+import com.dcy.psychology.util.Constants;
+import com.dcy.psychology.util.ThoughtReadingUtils;
+import com.dcy.psychology.util.Utils;
+import com.google.gson.reflect.TypeToken;
+import com.umeng.analytics.MobclickAgent;
 
 public class StyleTwoBoxFragment extends Fragment implements 
 		OnClickListener,OnItemClickListener{
@@ -60,6 +58,7 @@ public class StyleTwoBoxFragment extends Fragment implements
 		mListView = (ListView) view.findViewById(R.id.pull_refresh_lv);
 		mListView.setAdapter(mAdapter);
 		mListView.setOnItemClickListener(this);
+		view.findViewById(R.id.online_pic_tv).setOnClickListener(this);
 		return view;
 	}
 	
@@ -96,6 +95,9 @@ public class StyleTwoBoxFragment extends Fragment implements
 		case R.id.game_two_tv:
 			MobclickAgent.onEvent(mContext, "mind_reading");
 			mIntent = new Intent(mContext, QuestionThemeChooseActivity.class);
+			break;
+		case R.id.online_pic_tv:
+			mIntent = new Intent(mContext, OnlinePicActivity.class);
 			break;
 		default:
 			break;
