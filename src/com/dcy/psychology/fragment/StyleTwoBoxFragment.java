@@ -1,51 +1,39 @@
 package com.dcy.psychology.fragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.dcy.psychology.MyApplication;
+import com.dcy.psychology.AllTestActivity;
 import com.dcy.psychology.OnlinePicActivity;
-import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.QuestionThemeChooseActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.SeaGameActivity;
-import com.dcy.psychology.ThoughtReadingActivity;
-import com.dcy.psychology.adapter.HomeShowAllListAdapter;
-import com.dcy.psychology.gsonbean.GrowPictureBean;
-import com.dcy.psychology.gsonbean.GrowQuestionBean;
-import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.ThoughtReadingUtils;
+import com.dcy.psychology.gsonbean.ArticleBean;
+import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Utils;
-import com.google.gson.reflect.TypeToken;
 import com.umeng.analytics.MobclickAgent;
 
-public class StyleTwoBoxFragment extends Fragment implements 
-		OnClickListener,OnItemClickListener{
+public class StyleTwoBoxFragment extends Fragment implements OnClickListener{
 	private Context mContext;
-	private ListView mListView;
-	private ArrayList<GrowPictureBean> dataList;
-	private ArrayList<GrowQuestionBean> questionList;
-	private HomeShowAllListAdapter mAdapter;
+	private ImageView mNewPicView;
+	private TextView mNewPicTitleTv;
+	private TextView mNewPicSubTitleTv;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
-		dataList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, R.raw.homepage_pic_text_lib), new TypeToken<ArrayList<GrowPictureBean>>(){}.getType());
-		questionList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, R.raw.homepage_growquestionlib), new TypeToken<ArrayList<GrowQuestionBean>>(){}.getType());
+		new GetNewestArticleTask().execute();
 	}
 	
 	@Override
@@ -54,33 +42,33 @@ public class StyleTwoBoxFragment extends Fragment implements
 		View view = inflater.inflate(R.layout.fragment_style2_box_layout, null);
 		view.findViewById(R.id.game_one_tv).setOnClickListener(this);
 		view.findViewById(R.id.game_two_tv).setOnClickListener(this);
-		mAdapter = new HomeShowAllListAdapter(mContext, dataList);
-		mListView = (ListView) view.findViewById(R.id.pull_refresh_lv);
-		mListView.setAdapter(mAdapter);
-		mListView.setOnItemClickListener(this);
 		view.findViewById(R.id.online_pic_tv).setOnClickListener(this);
+		view.findViewById(R.id.tv_more_test).setOnClickListener(this);
+		view.findViewById(R.id.ll_new_pic).setOnClickListener(this);
+		view.findViewById(R.id.ll_new_test).setOnClickListener(this);
+		mNewPicView = (ImageView) view.findViewById(R.id.iv_new_thumb);
+		mNewPicTitleTv = (TextView) view.findViewById(R.id.tv_new_title);
+		mNewPicSubTitleTv = (TextView) view.findViewById(R.id.tv_new_subtitle);
 		return view;
 	}
 	
-	
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		if(position >= dataList.size()){
-			Intent mIntent = new Intent(mContext, ThoughtReadingActivity.class);
-			mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get(position - dataList.size()));
-			mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[position - dataList.size()]);
-			startActivity(mIntent);
-			Map<String, String> questionMap = new HashMap<String, String>();
-			questionMap.put("name", Constants.HomePageTestTitle[position - dataList.size()]);
-			MobclickAgent.onEvent(mContext, "test_without_theme", questionMap);
-		}else {
-			Intent mIntent = new Intent(mContext, PlamPictureDetailActivity.class);
-			mIntent.putExtra(Constants.PictureBean, dataList.get(position));
-			startActivity(mIntent);
-			Map<String, String> picMap = new HashMap<String, String>();
-			picMap.put("name", dataList.get(position).getTitle());
-			MobclickAgent.onEvent(mContext, "article_without_theme", picMap);
+	private class GetNewestArticleTask extends AsyncTask<Void, Void, ArticleBean>{
+		@Override
+		protected ArticleBean doInBackground(Void... params) {
+			return Utils.getNewestArticle();
+		}
+		
+		@Override
+		protected void onPostExecute(ArticleBean result) {
+			if(result == null){
+				return;
+			}
+			if(!TextUtils.isEmpty(result.getArticleSmallImgUrl())){
+				AsyncImageCache.from(mContext).displayImage(mNewPicView, R.drawable.ic_launcher, 
+						new AsyncImageCache.NetworkImageGenerator(result.getArticleSmallImgUrl(), result.getArticleSmallImgUrl()));
+			}
+			mNewPicTitleTv.setText(result.getArticleName());
+			mNewPicSubTitleTv.setText(result.getArticleName());
 		}
 	}
 	
@@ -98,6 +86,13 @@ public class StyleTwoBoxFragment extends Fragment implements
 			break;
 		case R.id.online_pic_tv:
 			mIntent = new Intent(mContext, OnlinePicActivity.class);
+			break;
+		case R.id.tv_more_test:
+			mIntent = new Intent(mContext, AllTestActivity.class);
+			break;
+		case R.id.ll_new_pic:
+			break;
+		case R.id.ll_new_test:
 			break;
 		default:
 			break;

@@ -2,14 +2,22 @@ package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +32,9 @@ import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.ChatAdapter;
 import com.dcy.psychology.model.ChatItemModel;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
+import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.umeng.analytics.MobclickAgent;
 
@@ -41,6 +51,9 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case 1:
+				if(msg.obj == null){
+					return;
+				}
 				ChatItemModel mModel = new ChatItemModel();
 				mModel.setMine(false);
 				mModel.setContext(msg.obj.toString());
@@ -49,7 +62,6 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 				mAdapter.notifyDataSetChanged();
 				mListView.setSelection(mDataList.size());
 				break;
-
 			default:
 				break;
 			}
@@ -59,15 +71,13 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mManager = IMManager.getInstance();
-		mHandler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				mManager.getChatMessage(mHandler, doctorAccount);
-			}
-		}, 3000);
 		mContext = getActivity();
+		mManager = IMManager.getInstance();
 		doctorAccount = mContext.getResources().getString(R.string.doctor_account);
+		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
+        	 new LoginActivity.ChatLoginTask(mContext).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
+		} 
+		mContext.registerReceiver(mLoginSuccessReceiver, new IntentFilter(Constants.ReceiverAction_LoginSuccess));
 	}
 	
 	@Override
@@ -77,6 +87,49 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 		initView(view);
 		return view;
 	}
+	
+	private class GetOnlineDoctorTask extends AsyncTask<Void, Void, String>{
+		@Override
+		protected String doInBackground(Void... params) {
+			return Utils.getOnlineDoctor("test");
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			if(TextUtils.isEmpty(result)){
+				return;
+			}
+			try {
+				JSONObject resultInfo = new JSONObject(result);
+				ChatItemModel mModel = new ChatItemModel();
+				mModel.setMine(false);
+				mModel.setContext(resultInfo.getString("info"));
+				mModel.setTime(System.currentTimeMillis());
+				mDataList.add(mModel);
+				mAdapter.notifyDataSetChanged();
+				doctorAccount = resultInfo.getString("doctor") + "@114.215.179.130";
+//				doctorAccount = "1@114.215.179.130";
+				mManager.getChatMessage(mHandler, doctorAccount);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		mContext.unregisterReceiver(mLoginSuccessReceiver);
+	}
+	
+	private BroadcastReceiver mLoginSuccessReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			if(Constants.ReceiverAction_LoginSuccess.equals(intent.getAction())){
+				new GetOnlineDoctorTask().execute();
+			}
+		}
+	};
 	
 	private void initView(View view){
 		mListView = (ListView) view.findViewById(R.id.chat_lv);
@@ -105,6 +158,11 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 				mListView.setSelection(mDataList.size());
 				mEditText.setText("");
 			}else {
+				if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+					Toast.makeText(mContext, R.string.please_login, Toast.LENGTH_SHORT).show();
+					mContext.startActivity(new Intent(mContext, LoginActivity.class));
+					return;
+				}
 				if(!mManager.isLogined()){
 					final CustomProgressDialog progressDialog = new CustomProgressDialog(mContext);
 					progressDialog.show();
@@ -117,7 +175,6 @@ public class ChatIMFragment extends Fragment implements OnClickListener{
 					});
 					task.execute(MyApplication.myPhoneNum, MyApplication.myPwd);
 				}
-				mManager.getChatMessage(mHandler, doctorAccount);
 //				Toast.makeText(mContext, R.string.send_msg_failed, Toast.LENGTH_SHORT).show();
 //				Builder mBuilder = new Builder(mContext);
 //				mBuilder.setTitle(R.string.connect_failed)

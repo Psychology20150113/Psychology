@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.dcy.psychology.FlowerGameChooseActivity;
-import com.dcy.psychology.HomePagePicActivity;
+import com.dcy.psychology.AllTestActivity;
 import com.dcy.psychology.MainActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.PlamPictureDetailActivity;
@@ -44,7 +44,7 @@ public class TabGrowthFragment extends Fragment implements OnClickListener,OnIte
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
-		dataList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, R.raw.homepage_pic_text_lib), new TypeToken<ArrayList<GrowPictureBean>>(){}.getType());
+		//dataList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, R.raw.homepage_pic_text_lib), new TypeToken<ArrayList<GrowPictureBean>>(){}.getType());
 		questionList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, R.raw.homepage_growquestionlib), new TypeToken<ArrayList<GrowQuestionBean>>(){}.getType());
 	}
 	
@@ -103,9 +103,9 @@ public class TabGrowthFragment extends Fragment implements OnClickListener,OnIte
 				((MainActivity)getActivity()).checkCureFragment();
 				break;
 			case R.id.show_all_ll:
-				mIntent = new Intent(mContext, HomePagePicActivity.class);
-				mIntent.putExtra("growpicturelist", dataList);
-				mIntent.putExtra("questionlist", questionList);
+//				mIntent = new Intent(mContext, HomePagePicActivity.class);
+//				mIntent.putExtra("growpicturelist", dataList);
+//				mIntent.putExtra("questionlist", questionList);
 				break;
 			default:
 				break;

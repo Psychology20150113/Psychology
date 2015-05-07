@@ -24,14 +24,17 @@ public interface Constants {
 	public static final String VerifyFindSmsCode = "VerifySmsCodeFindPwd";
 	public static final String GetArticleListMethod = "GetArticleList";
 	public static final String GetArticleInfo = "GetArticleInfo";
+	public static final String GetOnlineDoctor = "GetOnlineDoctor";
 	public static final String ChangePwdMethod = "UpdateUserPwd";
 	
 	public static final String UserWSDL = "http://114.215.179.130/WebService/WebServiceAPPUser.asmx";
 	public static final String ArticleWSDL = "http://114.215.179.130/WebService/WebServiceAPPArticle.asmx";
-
+	public static final String ClassWSDL = "http://114.215.179.130/webservice/WebServiceAppClass.asmx";
+	
 	public static final int[] IdOfGrowMode = {1 , 2, 3 ,4};
 
 	public static final String ReceiverAction_CursorChange = "cursor_change";
+	public static final String ReceiverAction_LoginSuccess = "login_success";
 	
 	public static final String ThemeIndex = "themeIndex";
 	public static final String IsSpecial = "isSpecial";

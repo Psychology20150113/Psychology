@@ -5,7 +5,8 @@
     android:orientation="vertical" >
     <LinearLayout 
 	    android:layout_width="match_parent"
-	    android:layout_height="87dp">
+	    android:layout_height="0dp"
+	    android:layout_weight="1">
 	    <LinearLayout 
 	        android:id="@+id/game_one_tv"
 	        android:layout_width="0dp"
@@ -14,12 +15,12 @@
 	        android:layout_height="match_parent"
 	        android:orientation="vertical">
 	        <ImageView 
-	            android:layout_width="40dp"
-	            android:layout_height="40dp"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
 	            android:src="@drawable/icon_brush"/>
 	        <TextView 
 	            style="@style/text_black20_style"
-	            android:layout_marginTop="10dp"
+	            android:layout_marginTop="5dp"
 	            android:text="@string/game_one"/>
 	    </LinearLayout>
 	    <ImageView 
@@ -34,12 +35,12 @@
 	        android:layout_height="match_parent"
 	        android:orientation="vertical">
 	        <ImageView 
-	            android:layout_width="40dp"
-	            android:layout_height="40dp"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
 	            android:src="@drawable/icon_brain"/>
 	        <TextView 
 	            style="@style/text_black20_style"
-	            android:layout_marginTop="10dp"
+	            android:layout_marginTop="5dp"
 	            android:text="@string/thought_reading"/>
 	    </LinearLayout>
 	</LinearLayout>
@@ -47,9 +48,15 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="1dp"
 	    android:background="@color/divider"/>
+	<ImageView 
+	    android:id="@+id/iv_open_class"
+	    android:layout_width="match_parent"
+	    android:layout_height="96dp"
+	    android:src="@drawable/icon_open_class"
+	    android:scaleType="fitCenter"/>
 	<RelativeLayout 
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
+	    android:layout_height="50dp"
 	    android:background="#ffffff">
 	    <TextView 
 	        style="@style/text_black18_style"
@@ -60,19 +67,132 @@
 	        android:id="@+id/online_pic_tv"
 	        style="@style/text_black18_style"
 	        android:padding="10dp"
-	        android:textColor="@color/bg_save_btn"
-	        android:text="@string/online_pic"
+	        android:text="@string/more"
 	        android:layout_alignParentRight="true"
+	        android:layout_centerVertical="true"
 	        android:layout_marginRight="10dp"/>
+	    <ImageView 
+	        android:layout_width="match_parent"
+	        android:layout_height="1dp"
+	        android:background="@color/divider"
+	        android:layout_alignParentBottom="true"/>
 	</RelativeLayout>
+	<LinearLayout 
+	    android:id="@+id/ll_new_pic"
+	    android:layout_width="match_parent"
+	    android:layout_height="75dp"
+	    android:background="#ffffff"
+	    android:layout_marginTop="10dp"
+	    android:layout_marginBottom="10dp"
+	    android:gravity="center_vertical" >
+	    <RelativeLayout 
+	        android:layout_width="108dp"
+	        android:layout_height="match_parent">
+	    	<ImageView 
+		        android:id="@+id/iv_new_thumb"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:scaleType="fitXY"/>
+	    	<TextView 
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="18dp"
+	    	    android:gravity="center_vertical"
+	    	    android:textColor="#ffffff"
+	    	    android:background="#B2261D1B"
+	    	    android:textSize="12sp"
+	    	    android:paddingLeft="10dp"
+	    	    android:text="@string/pic"
+	    	    android:layout_alignParentBottom="true"/>    
+	    </RelativeLayout>
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="10dp">
+			<TextView 
+			    android:id="@+id/tv_new_title"
+			    style="@style/text_black18_style"
+			    android:layout_height="0dp"
+			    android:layout_weight="1"
+			    android:gravity="center_vertical"/>	        
+	    	<TextView 
+	    	    android:id="@+id/tv_new_subtitle"
+	    	    style="@style/text_black18_style"
+			    android:layout_height="0dp"
+			    android:layout_weight="1"
+			    android:gravity="center_vertical"/>
+	    </LinearLayout>
+	</LinearLayout>
 	<ImageView 
 	    android:layout_width="match_parent"
 	    android:layout_height="1dp"
 	    android:background="@color/divider"/>
-	<ListView
-	    android:id="@+id/pull_refresh_lv"
+	<RelativeLayout 
 	    android:layout_width="match_parent"
-	    android:layout_height="0dp"
-	    android:layout_weight="1"
-	    android:layout_marginLeft="10dp"/>
+	    android:layout_height="50dp"
+	    android:background="#ffffff">
+	    <TextView 
+	        style="@style/text_black18_style"
+	        android:text="@string/title_test"
+	        android:layout_marginLeft="10dp"
+	        android:layout_centerVertical="true"/>
+	    <TextView 
+	        android:id="@+id/tv_more_test"
+	        style="@style/text_black18_style"
+	        android:padding="10dp"
+	        android:text="@string/more"
+	        android:layout_alignParentRight="true"
+	        android:layout_centerVertical="true"
+	        android:layout_marginRight="10dp"/>
+	    <ImageView 
+	        android:layout_width="match_parent"
+	        android:layout_height="1dp"
+	        android:background="@color/divider"
+	        android:layout_alignParentBottom="true"/>
+	</RelativeLayout>
+	<LinearLayout 
+	    android:id="@+id/ll_new_test"
+	    android:layout_width="match_parent"
+	    android:layout_height="75dp"
+	    android:background="#ffffff"
+	    android:layout_marginTop="10dp"
+	    android:layout_marginBottom="5dp"
+	    android:gravity="center_vertical" >
+	    <RelativeLayout 
+	        android:layout_width="108dp"
+	        android:layout_height="match_parent">
+	    	<ImageView 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:scaleType="fitXY"/>
+	    	<TextView 
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="18dp"
+	    	    android:gravity="center_vertical"
+	    	    android:textColor="#ffffff"
+	    	    android:background="#B2261D1B"
+	    	    android:textSize="12sp"
+	    	    android:paddingLeft="10dp"
+	    	    android:text="@string/test"
+	    	    android:layout_alignParentBottom="true"/>    
+	    </RelativeLayout>
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="10dp">
+			<TextView 
+			    style="@style/text_black18_style"
+			    android:layout_height="0dp"
+			    android:layout_weight="1"
+			    android:gravity="center_vertical"
+			    android:text="sadasdsadasd"/>	        
+	    	<TextView 
+	    	    style="@style/text_black18_style"
+			    android:layout_height="0dp"
+			    android:layout_weight="1"
+			    android:gravity="center_vertical"
+			    android:text="sdadadadsada"/>
+	    </LinearLayout>
+	</LinearLayout>
 </LinearLayout>

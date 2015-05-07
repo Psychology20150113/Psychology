@@ -5,11 +5,13 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.BlackHoleView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -44,6 +46,8 @@ public class BlackHoleActivity extends BaseActivity implements OnClickListener{
 				Toast.makeText(this, R.string.please_input, Toast.LENGTH_SHORT).show();
 				return;
 			}
+			((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE))
+				.hideSoftInputFromWindow(v.getWindowToken(), 0);
 			mHoleView.initText(mInputEt.getText().toString());
 			break;
 		default:

@@ -12,6 +12,7 @@ import com.dcy.psychology.util.Utils;
 
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class GrowHistoryActivity extends BaseActivity {
 	public void onRightViewClick() {
 		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			Toast.makeText(this, R.string.please_login, Toast.LENGTH_SHORT).show();
+			startActivity(new Intent(this, LoginActivity.class));
 			return;
 		}
 		final EditText editText = new EditText(this);

@@ -24,5 +24,11 @@
         android:text="@string/login"
         android:textSize="16sp"
         android:textColor="#ffffff"/>
-
+	<TextView 
+	    android:id="@+id/find_pwd_tv"
+	    style="@style/text_black18_style"
+	    android:layout_marginTop="20dp"
+	    android:textColor="@color/bg_save_btn"
+	    android:text="@string/find_pwd"
+	    android:layout_gravity="right"/>
 </LinearLayout>

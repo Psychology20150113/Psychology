@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dcy.psychology.gsonbean.LoginBean;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
@@ -68,6 +69,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				Toast.makeText(mContext, R.string.login_chat_failed, Toast.LENGTH_SHORT).show();
 			if(finishTask != null)
 				finishTask.run();
+			mContext.sendBroadcast(new Intent(Constants.ReceiverAction_LoginSuccess));
 		}
 	}
 	
@@ -84,6 +86,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		accountET = (EditText) findViewById(R.id.account_et);
 		pwdET = (EditText) findViewById(R.id.psw_et);
 		findViewById(R.id.login_btn).setOnClickListener(this);
+		findViewById(R.id.find_pwd_tv).setOnClickListener(this);
 	}
 	
 	@Override
@@ -101,7 +104,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				new LoginTask().execute();
 			}
 			break;
-
+		case R.id.find_pwd_tv:
+			startActivity(new Intent(this, FindPwdActivity.class));
+			break;
 		default:
 			break;
 		}

@@ -36,9 +36,6 @@ public class MyApplication extends Application{
         initAppInfo();
 //        MobclickAgent.setDebugMode(true);
         mGson = new Gson();
-        if(!TextUtils.isEmpty(myPhoneNum)){
-        	new LoginActivity.ChatLoginTask(this).execute(myPhoneNum, myPwd);
-        }
 	}
 	
 	private void initAppInfo(){

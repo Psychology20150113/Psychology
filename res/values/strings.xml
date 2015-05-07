@@ -111,7 +111,8 @@
 	<string name="test">测试</string>
 	<string name="pic">图文</string>
 	
-	<string name="title_pic">文章及测试题</string>
+	<string name="title_pic">心晴图文</string>
+	<string name="title_test">心晴测试</string>
 	
 	<string name="grow_platform_one">在全新环境中驰骋</string>
 	<string name="grow_platform_two">琐事缠身，学习爱好睡眠难平衡</string>
@@ -174,5 +175,5 @@
 	<string name="retry">重试</string>
 	<string name="find_pwd">找回密码</string>
 	<string name="change_ped_success">修改密码成功，请重新登录</string>
-	<string name="online_pic">在线图文</string>
+	<string name="online_pic">心晴短文</string>
 </resources>

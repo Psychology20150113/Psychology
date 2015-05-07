@@ -289,6 +289,20 @@ public class Utils {
 			return new ArrayList<ArticleBean>();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<ArticleBean>>(){}.getType());
 	}
+
+	public static ArticleBean getNewestArticle(){
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetArticleListMethod);
+		request.addProperty("pageIndex", 1);
+		request.addProperty("pgeSize", 1);
+		SoapObject result = getResultFromRequest(request, Constants.ArticleWSDL);
+		if(result == null)
+			return new ArticleBean();
+		ArrayList<ArticleBean> resultList = MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<ArticleBean>>(){}.getType());
+		if(resultList.size() > 0){
+			return resultList.get(0);
+		}
+		return new ArticleBean();
+	}
 	
 	public static ArticleBean getArticleInfo(int articleId){
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetArticleInfo);
@@ -297,6 +311,15 @@ public class Utils {
 		if(result == null)
 			return new ArticleBean();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), ArticleBean.class);
+	}
+	
+	public static String getOnlineDoctor(String userName){
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetOnlineDoctor);
+		request.addProperty("userName", userName);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return "";
+		return result.getPropertyAsString(0);
 	}
 	
 	public static class MainTabAdapter extends PagerAdapter{

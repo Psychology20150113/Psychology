@@ -9,12 +9,12 @@
     android:gravity="center_vertical" >
     <RelativeLayout 
         android:layout_width="108dp"
-        android:layout_height="60dp">
+        android:layout_height="75dp">
     	<ImageView 
 	        android:id="@+id/item_thumb_iv"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
-	        android:scaleType="fitXY"/>
+	        android:scaleType="centerInside"/>
     	<TextView 
     	    android:id="@+id/item_label_tv"
     	    android:layout_width="match_parent"

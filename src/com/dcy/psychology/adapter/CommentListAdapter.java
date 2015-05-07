@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
@@ -13,6 +14,7 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -209,6 +211,7 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 		case R.id.item_comment_btn:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				Toast.makeText(mContext, R.string.please_login, Toast.LENGTH_SHORT).show();
+				mContext.startActivity(new Intent(mContext, LoginActivity.class));
 				return;
 			}
 			((LinearLayout)v.getParent().getParent()).findViewById(R.id.item_comment_ll).setVisibility(View.VISIBLE);

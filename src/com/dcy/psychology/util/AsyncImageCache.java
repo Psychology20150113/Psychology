@@ -189,10 +189,11 @@ public class AsyncImageCache {
         }
         
         if (loadingImage != null) {
-            if (imageView.getBackground() == null) {
-                imageView.setBackgroundDrawable(loadingImage);
-            }
-            imageView.setImageDrawable(null);
+//            if (imageView.getBackground() == null) {
+//                imageView.setBackgroundDrawable(loadingImage);
+//            }
+//            imageView.setImageDrawable(null);
+        	imageView.setImageDrawable(loadingImage);
         }
         
         if (imageGenerator == null || imageGenerator.getTag() == null) {

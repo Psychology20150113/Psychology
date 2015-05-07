@@ -2,6 +2,8 @@ package com.dcy.psychology.fragment;
 
 import java.sql.NClob;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.R;
@@ -13,6 +15,7 @@ import com.dcy.psychology.view.CustomCircleView;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -89,6 +92,9 @@ public class OnlinePicFragment extends Fragment implements OnItemClickListener{
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		Map<String, String> picMap = new HashMap<String, String>();
+		picMap.put("name", mDataList.get(position - 1).getArticleName());
+		MobclickAgent.onEvent(mContext, "article_without_theme", picMap);
 		Intent mIntent = new Intent(mContext, PlamPictureDetailActivity.class);
 		mIntent.putExtra(Constants.OnlineArticleId, mDataList.get(position - 1).getArticleID());
 		startActivity(mIntent);

@@ -57,6 +57,9 @@ public class IMManager {
 	
 	public boolean loginIM(String username,String password){
 		try {
+			if(isLogined()){
+				return true;
+			}
 			if(!connection.isConnected()){
 				Log.i("chat", "login connect start");
 				connection.connect();

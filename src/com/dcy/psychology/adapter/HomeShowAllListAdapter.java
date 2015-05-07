@@ -1,16 +1,7 @@
 package com.dcy.psychology.adapter;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import com.dcy.psychology.R;
-import com.dcy.psychology.gsonbean.GrowPictureBean;
-import com.dcy.psychology.util.Constants;
-
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,34 +9,29 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dcy.psychology.R;
+import com.dcy.psychology.util.Constants;
+
 public class HomeShowAllListAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
-	private ArrayList<GrowPictureBean> dataList;
-	private AssetManager manager;
 	
 	private int[] picResArray = {R.drawable.icon_home_pic_text_01, R.drawable.icon_home_pic_text_02,
 			R.drawable.icon_home_pic_text_03, R.drawable.icon_home_pic_text_04,
-			R.drawable.icon_home_pic_text_01, R.drawable.icon_home_pic_text_02,
-			R.drawable.icon_home_pic_text_03, R.drawable.icon_home_pic_text_04};
+			R.drawable.icon_home_pic_text_05, R.drawable.icon_home_pic_text_06,
+			R.drawable.icon_home_pic_text_07, R.drawable.icon_home_pic_text_08};
 	
-	public HomeShowAllListAdapter(Context context , ArrayList<GrowPictureBean> dataList) {
+	public HomeShowAllListAdapter(Context context) {
 		mInflater = LayoutInflater.from(context);
-		manager = context.getAssets();
-		this.dataList = dataList;
 	}
 	
 	@Override
 	public int getCount() {
-		return dataList.size() + Constants.HomePageTestTitle.length;
+		return Constants.HomePageTestTitle.length;
 	}
 
 	@Override
 	public Object getItem(int position) {
-		if(position >= dataList.size()){
-			return Constants.HomePageTestTitle[position - dataList.size()];
-		}else {
-			return dataList.get(position);
-		}
+		return Constants.HomePageTestTitle[position];
 	}
 
 	@Override
@@ -66,20 +52,9 @@ public class HomeShowAllListAdapter extends BaseAdapter {
 		}else {
 			mHolder = (Holder) convertView.getTag();
 		}
-		if(position >= dataList.size()){
-			mHolder.mImageView.setImageResource(picResArray[position - dataList.size()]);
-			mHolder.mTextView.setText(Constants.HomePageTestTitle[position - dataList.size()]);
-			mHolder.mLabelView.setText(R.string.test);
-		}else {
-			GrowPictureBean item = dataList.get(position);
-			try {
-				mHolder.mImageView.setImageBitmap(BitmapFactory.decodeStream(manager.open(item.getPicture())));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			mHolder.mTextView.setText(item.getTitle());
-			mHolder.mLabelView.setText(R.string.pic);
-		}
+		mHolder.mImageView.setImageResource(picResArray[position]);
+		mHolder.mTextView.setText(Constants.HomePageTestTitle[position]);
+		mHolder.mLabelView.setText(R.string.test);
 		return convertView;
 	}
 
