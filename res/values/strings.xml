@@ -176,4 +176,6 @@
 	<string name="find_pwd">找回密码</string>
 	<string name="change_ped_success">修改密码成功，请重新登录</string>
 	<string name="online_pic">心晴短文</string>
+	<string name="share_success">分享成功</string>
+	<string name="share_failed">分享失败</string>
 </resources>
