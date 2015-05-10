@@ -178,4 +178,7 @@
 	<string name="online_pic">心晴短文</string>
 	<string name="share_success">分享成功</string>
 	<string name="share_failed">分享失败</string>
+	<string name="class_type_one">课堂教学</string>
+	<string name="class_type_two">家庭作业</string>
+	<string name="class_type_three">课堂游戏</string>
 </resources>

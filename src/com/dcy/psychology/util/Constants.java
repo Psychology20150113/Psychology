@@ -32,6 +32,9 @@ public interface Constants {
 	public static final String ClassWSDL = "http://114.215.179.130/webservice/WebServiceAppClass.asmx";
 	
 	public static final int[] IdOfGrowMode = {1 , 2, 3 ,4};
+	public static final int Id_Class_Teach = 1;
+	public static final int Id_Class_Homework = 2;
+	public static final int Id_Class_Game = 3;
 
 	public static final String ReceiverAction_CursorChange = "cursor_change";
 	public static final String ReceiverAction_LoginSuccess = "login_success";

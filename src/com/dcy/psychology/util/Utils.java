@@ -35,6 +35,7 @@ import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.ArticleBean;
 import com.dcy.psychology.gsonbean.BasicBean;
+import com.dcy.psychology.gsonbean.ClassBean;
 import com.dcy.psychology.gsonbean.CommentBean;
 import com.dcy.psychology.gsonbean.CommentDetailBean;
 import com.dcy.psychology.gsonbean.LoginBean;
@@ -311,6 +312,13 @@ public class Utils {
 		if(result == null)
 			return new ArticleBean();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), ArticleBean.class);
+	}
+	
+	public static ArrayList<ClassBean> getClassList(int pageIndex, int classId){
+		if(pageIndex <= 0){
+			return new ArrayList<ClassBean>();
+		}
+		return null;
 	}
 	
 	public static String getOnlineDoctor(String userName){

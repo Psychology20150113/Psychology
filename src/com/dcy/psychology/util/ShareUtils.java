@@ -31,10 +31,10 @@ import com.umeng.socialize.weixin.media.WeiXinShareContent;
  * Created by dcy123 on 2015/4/8.
  */
 public class ShareUtils {
-    public final String QQ_APP_ID = "1101848636";
-    public final String QQ_APP_KEY = "BgrsEQ0HvHV0UUPc";
-    public final String WX_APP_ID = "wx2f302ae144a1014c";
-    public final String WX_APP_SECRET = "bafcfe12a87f87b6b4d5f220a4b038a8";
+    public final String QQ_APP_ID = "1104507920";
+    public final String QQ_APP_KEY = "kTrmMvJXz3ipZkRn";
+    public final String WX_APP_ID = "wx89cc5db254b44a8d";
+    public final String WX_APP_SECRET = "c6c7fbb7f587b0b73a7ba491a217255d";
 
     private static ShareUtils mShare;
     private Activity mContext;

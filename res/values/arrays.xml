@@ -45,4 +45,9 @@
         <item>@string/slide_point</item>
         <item>@string/slide_account</item>
     </string-array>
+    <string-array name="class_type_array">
+        <item>@string/class_type_one</item>
+        <item>@string/class_type_two</item>
+        <item>@string/class_type_three</item>
+    </string-array>
 </resources>
