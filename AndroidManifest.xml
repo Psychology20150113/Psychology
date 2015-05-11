@@ -80,7 +80,15 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.OnlinePicActivity"
+            android:name="com.dcy.psychology.OnlinePicListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.BigOpenClassActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.ShowProblemActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 

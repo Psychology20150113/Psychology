@@ -12,9 +12,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dcy.psychology.AllTestActivity;
-import com.dcy.psychology.OnlinePicActivity;
+import com.dcy.psychology.LoginActivity;
+import com.dcy.psychology.MyApplication;
+import com.dcy.psychology.OnlinePicListActivity;
 import com.dcy.psychology.QuestionThemeChooseActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.SeaGameActivity;
@@ -42,6 +45,7 @@ public class StyleTwoBoxFragment extends Fragment implements OnClickListener{
 		View view = inflater.inflate(R.layout.fragment_style2_box_layout, null);
 		view.findViewById(R.id.game_one_tv).setOnClickListener(this);
 		view.findViewById(R.id.game_two_tv).setOnClickListener(this);
+		view.findViewById(R.id.iv_open_class).setOnClickListener(this);
 		view.findViewById(R.id.online_pic_tv).setOnClickListener(this);
 		view.findViewById(R.id.tv_more_test).setOnClickListener(this);
 		view.findViewById(R.id.ll_new_pic).setOnClickListener(this);
@@ -84,8 +88,16 @@ public class StyleTwoBoxFragment extends Fragment implements OnClickListener{
 			MobclickAgent.onEvent(mContext, "mind_reading");
 			mIntent = new Intent(mContext, QuestionThemeChooseActivity.class);
 			break;
+		case R.id.iv_open_class:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				Toast.makeText(mContext, R.string.please_login, Toast.LENGTH_SHORT).show();
+				mIntent = new Intent(mContext, LoginActivity.class);
+			} else {
+//				mIntent = new 
+			}
+			break;
 		case R.id.online_pic_tv:
-			mIntent = new Intent(mContext, OnlinePicActivity.class);
+			mIntent = new Intent(mContext, OnlinePicListActivity.class);
 			break;
 		case R.id.tv_more_test:
 			mIntent = new Intent(mContext, AllTestActivity.class);

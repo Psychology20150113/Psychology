@@ -20,7 +20,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.ArticleListAdapter;
+import com.dcy.psychology.adapter.ClassShowListAdapter;
 import com.dcy.psychology.gsonbean.ArticleBean;
+import com.dcy.psychology.gsonbean.ClassBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
@@ -28,22 +30,24 @@ import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
 import com.umeng.analytics.MobclickAgent;
 
-public class OnlinePicFragment extends Fragment implements OnItemClickListener{
+public class OnlineClassListFragment extends Fragment implements OnItemClickListener{
 	private Context mContext;
 	private CustomProgressDialog mDialog;
 	private int pageIndex = 1;
+	private int categoryId = 1;
 	private PullRefreshListView mListView;
-	private ArticleListAdapter mAdapter;
-	private ArrayList<ArticleBean> mDataList = new ArrayList<ArticleBean>();
+	private ClassShowListAdapter mAdapter;
+	private ArrayList<ClassBean> mDataList = new ArrayList<ClassBean>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
-		mAdapter = new ArticleListAdapter(mContext, mDataList);
+		mAdapter = new ClassShowListAdapter(mContext, mDataList);
 		mDialog = new CustomProgressDialog(mContext);
 		mDialog.show();
-		new GetArticleListTask().execute();
+		categoryId = getArguments().getInt(Constants.ClassCategoryId);
+		new GetClassListTask().execute();
 	}
 	
 	@Override
@@ -65,7 +69,7 @@ public class OnlinePicFragment extends Fragment implements OnItemClickListener{
 			pageIndex = 1;
 			mListView.onRefreshComplete();
 			mDialog.show();
-			new GetArticleListTask().execute();
+			new GetClassListTask().execute();
 		}
 	};
 	
@@ -76,7 +80,7 @@ public class OnlinePicFragment extends Fragment implements OnItemClickListener{
 				if(mListView.getLastVisiblePosition() == mListView.getCount() - 1){
 					pageIndex ++;
 					mDialog.show();
-					new GetArticleListTask().execute();
+					new GetClassListTask().execute();
 				}
 			}
 		}
@@ -91,21 +95,21 @@ public class OnlinePicFragment extends Fragment implements OnItemClickListener{
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Map<String, String> picMap = new HashMap<String, String>();
-		picMap.put("name", mDataList.get(position - 1).getArticleName());
+		picMap.put("name", mDataList.get(position - 1).getClassTitleName());
 		MobclickAgent.onEvent(mContext, "article_without_theme", picMap);
 		Intent mIntent = new Intent(mContext, PlamPictureDetailActivity.class);
-		mIntent.putExtra(Constants.OnlineArticleId, mDataList.get(position - 1).getArticleID());
+		mIntent.putExtra(Constants.OnlineClassId, mDataList.get(position - 1).getClassID());
 		startActivity(mIntent);
 	}
 	
-	private class GetArticleListTask extends AsyncTask<Void, Void, ArrayList<ArticleBean>>{
+	private class GetClassListTask extends AsyncTask<Void, Void, ArrayList<ClassBean>>{
 		@Override
-		protected ArrayList<ArticleBean> doInBackground(Void... params) {
-			return Utils.getArticleList(pageIndex);
+		protected ArrayList<ClassBean> doInBackground(Void... params) {
+			return Utils.getClassList(pageIndex, categoryId);
 		}
 		
 		@Override
-		protected void onPostExecute(ArrayList<ArticleBean> result) {
+		protected void onPostExecute(ArrayList<ClassBean> result) {
 			mDialog.dismiss();
 			if(result == null){
 				return;

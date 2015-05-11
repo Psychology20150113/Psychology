@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 import com.dcy.psychology.gsonbean.ArticleBean;
+import com.dcy.psychology.gsonbean.ClassBean;
 import com.dcy.psychology.gsonbean.GrowPictureBean;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
@@ -29,6 +30,7 @@ public class PlamPictureDetailActivity extends BaseActivity {
 	private AssetManager manager;
 	private GrowPictureBean detailBean;
 	private int onlineArticalId = -1;
+	private int onlineClassId = -1;
 	private AsyncImageCache mCache;
 	
 	@Override
@@ -44,12 +46,17 @@ public class PlamPictureDetailActivity extends BaseActivity {
 			loadLocalRes();
 		} else {
 			onlineArticalId = getIntent().getIntExtra(Constants.OnlineArticleId, -1);
-			if(onlineArticalId == -1){
+			onlineClassId = getIntent().getIntExtra(Constants.OnlineClassId, -1);
+			if(onlineArticalId == -1 && onlineClassId == -1){
 				return;
 			}
 			mCache = AsyncImageCache.from(this);
 			showCustomDialog();
-			new LoadOnlineInfoTask().execute();
+			if(onlineArticalId != -1){
+				new LoadOnlineInfoTask().execute();
+			} else if (onlineClassId != -1) {
+				new LoadOnlineClassInfoTask().execute();
+			}
 		}
 	}
 	
@@ -88,6 +95,25 @@ public class PlamPictureDetailActivity extends BaseActivity {
 			mContentText.setText(result.getArticleContent());
 			mCache.displayImage(mPicView, R.drawable.ic_launcher, 
 					new AsyncImageCache.NetworkImageGenerator(result.getArticleImgUrl(), result.getArticleImgUrl()));
+		}
+	}
+	
+	private class LoadOnlineClassInfoTask extends AsyncTask<Void, Void, ClassBean>{
+		@Override
+		protected ClassBean doInBackground(Void... params) {
+			return Utils.getClassInfo(onlineClassId);
+		}
+		
+		@Override
+		protected void onPostExecute(ClassBean result) {
+			hideCustomDialog();
+			if(result == null){
+				return;
+			}
+			setTopTitle(result.getClassTitleName());
+			mContentText.setText(result.getClassContent());
+			mCache.displayImage(mPicView, R.drawable.ic_launcher, 
+					new AsyncImageCache.NetworkImageGenerator(result.getClassImgUrl(), result.getClassImgUrl()));
 		}
 	}
 }

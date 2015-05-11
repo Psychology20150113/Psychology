@@ -7,6 +7,12 @@ public class ClassBean {
 	private String ClassSummary;
 	private String ClassSmallImgUrl;
 	private String ClassDate;
+	private int PublisherID;
+	private String PublisherName;
+	private String ClassContent;
+	private String ClassImgUrl;
+	private String ClassificationName;
+
 	public int getClassID() {
 		return ClassID;
 	}
@@ -42,5 +48,35 @@ public class ClassBean {
 	}
 	public void setClassDate(String classDate) {
 		ClassDate = classDate;
+	}
+	public int getPublisherID() {
+		return PublisherID;
+	}
+	public void setPublisherID(int publisherID) {
+		PublisherID = publisherID;
+	}
+	public String getPublisherName() {
+		return PublisherName;
+	}
+	public void setPublisherName(String publisherName) {
+		PublisherName = publisherName;
+	}
+	public String getClassContent() {
+		return ClassContent;
+	}
+	public void setClassContent(String classContent) {
+		ClassContent = classContent;
+	}
+	public String getClassImgUrl() {
+		return ClassImgUrl;
+	}
+	public void setClassImgUrl(String classImgUrl) {
+		ClassImgUrl = classImgUrl;
+	}
+	public String getClassificationName() {
+		return ClassificationName;
+	}
+	public void setClassificationName(String classificationName) {
+		ClassificationName = classificationName;
 	}
 }

@@ -314,11 +314,27 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), ArticleBean.class);
 	}
 	
-	public static ArrayList<ClassBean> getClassList(int pageIndex, int classId){
+	public static ArrayList<ClassBean> getClassList(int pageIndex, int classCategoryId){
 		if(pageIndex <= 0){
 			return new ArrayList<ClassBean>();
 		}
-		return null;
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetClassListMethod);
+		request.addProperty("pageIndex", pageIndex);
+		request.addProperty("pageSize", Constants.PageCount);
+		request.addProperty("classificationID", classCategoryId);
+		SoapObject result = getResultFromRequest(request, Constants.ClassWSDL);
+		if(result == null)
+			return new ArrayList<ClassBean>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<ClassBean>>(){}.getType());
+	}
+	
+	public static ClassBean getClassInfo(int classId){
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetArticleInfo);
+		request.addProperty("classid", classId);
+		SoapObject result = getResultFromRequest(request, Constants.ClassWSDL);
+		if(result == null)
+			return new ClassBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), ClassBean.class);
 	}
 	
 	public static String getOnlineDoctor(String userName){

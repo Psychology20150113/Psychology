@@ -193,15 +193,20 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		Intent mIntent;
+		Intent mIntent = null;
 		switch (position) {
 		case 0:
 			MobclickAgent.onEvent(this, "black_hole");
 			mIntent = new Intent(this, BlackHoleActivity.class);
-			startActivity(mIntent);
+			break;
+		case 1:
+			mIntent = new Intent(this, ShowProblemActivity.class);
 			break;
 		default:
 			break;
+		}
+		if(mIntent != null){
+			startActivity(mIntent);
 		}
 	}
 	
