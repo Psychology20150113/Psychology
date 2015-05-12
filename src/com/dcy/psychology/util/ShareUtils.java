@@ -39,7 +39,7 @@ public class ShareUtils {
     private static ShareUtils mShare;
     private Activity mContext;
     private UMSocialService mSocialController;
-    private String Share_Default_Title = "mechat";
+    private String Share_Default_Title;
 
     private enum Platform{
         Platform_QQ, Platform_Qzone, Platform_Circle, Platform_WX, Platform_Sina
@@ -47,6 +47,7 @@ public class ShareUtils {
 
     private ShareUtils(Activity context){
         this.mContext = context;
+        Share_Default_Title = mContext.getResources().getString(R.string.app_name);
         mSocialController = UMServiceFactory.getUMSocialService("com.umeng.share");
         UMQQSsoHandler umqqSsoHandler = new UMQQSsoHandler(mContext, QQ_APP_ID, QQ_APP_KEY);
         umqqSsoHandler.addToSocialSDK();

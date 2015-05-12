@@ -8,6 +8,7 @@ import com.dcy.psychology.db.SqlConstants;
 import com.dcy.psychology.gsonbean.GrowModelBean;
 import com.dcy.psychology.model.GrowWriteItem;
 import com.dcy.psychology.util.Constants;
+import com.dcy.psychology.util.ShareUtils;
 import com.dcy.psychology.util.Utils;
 
 import android.app.AlertDialog.Builder;
@@ -52,6 +53,29 @@ public class GrowHistoryActivity extends BaseActivity {
 
 	@Override
 	public void onRightViewClick() {
+		showSharePopupWindow();
+	}
+	
+	private String getShareContent(){
+		if(bean == null){
+			return "";
+		}
+		StringBuilder content = new StringBuilder();
+		if(dataList != null && dataList.size() > 0){
+			for(GrowWriteItem item : dataList){
+				content.append(item.getIndex()).append("  ");
+				if(!TextUtils.isEmpty(item.getContent()))
+					content.append(item.getContent()).append("  ");
+				if(!TextUtils.isEmpty(item.getDegree()))
+					content.append(item.getDegree());
+				content.append("\n");
+			}
+		}
+		return bean.getMission() + "\n" + content.toString();
+	}
+
+	@Override
+	protected void shareToOurs() {
 		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			Toast.makeText(this, R.string.please_login, Toast.LENGTH_SHORT).show();
 			startActivity(new Intent(this, LoginActivity.class));
@@ -69,22 +93,21 @@ public class GrowHistoryActivity extends BaseActivity {
 					Toast.makeText(GrowHistoryActivity.this, R.string.think_title, Toast.LENGTH_SHORT).show();
 					return;
 				}
-				StringBuilder content = new StringBuilder();
-				if(dataList != null && dataList.size() > 0){
-					for(GrowWriteItem item : dataList){
-						content.append(item.getIndex()).append("  ");
-						if(!TextUtils.isEmpty(item.getContent()))
-							content.append(item.getContent()).append("  ");
-						if(!TextUtils.isEmpty(item.getDegree()))
-							content.append(item.getDegree());
-						content.append("\n");
-					}
-				}
-				new PublishCommentTask().execute(bean.getMission() + "\n" + content.toString() + editText.getText().toString());
+				new PublishCommentTask().execute(getShareContent() + editText.getText().toString());
 			}
 		}).show();
 	}
-
+	
+	@Override
+	protected void shareToCircle() {
+		mShareUtils.shareToCircle(getShareContent());
+	}
+	
+	@Override
+	protected void shareToSina() {
+		mShareUtils.shareToSina(getShareContent());
+	}
+	
 	private class PublishCommentTask extends AsyncTask<String, Void, String>{
 
 		@Override

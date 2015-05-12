@@ -1,17 +1,22 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.util.ShareUtils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 public class BaseActivity extends Activity {
@@ -24,6 +29,8 @@ public class BaseActivity extends Activity {
 	private TextView mTopRightText;
 	private ImageView mLeftView;
 	private ImageView mRightView;
+	private PopupWindow mShareWindow;
+	protected ShareUtils mShareUtils;
 	
 	private OnClickListener mClickListener = new OnClickListener() {
 		@Override
@@ -141,4 +148,47 @@ public class BaseActivity extends Activity {
 		super.onPause();
 		MobclickAgent.onPause(this);
 	}
+	
+	protected void showSharePopupWindow(){
+		if(mShareWindow == null){
+			View shareView = mInflater.inflate(R.layout.popup_share_layout, null);
+			mShareWindow = new PopupWindow(shareView, LayoutParams.MATCH_PARENT, 
+					LayoutParams.WRAP_CONTENT);
+			mShareWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+			mShareWindow.setAnimationStyle(R.style.AnimBottom);
+			mShareWindow.setOutsideTouchable(true);
+			shareView.findViewById(R.id.iv_share_ours).setOnClickListener(mShareClickListener);
+			shareView.findViewById(R.id.iv_share_circle).setOnClickListener(mShareClickListener);
+			shareView.findViewById(R.id.iv_share_sina).setOnClickListener(mShareClickListener);
+		}
+		mShareWindow.showAtLocation(mTitleView, Gravity.BOTTOM, 0, 0);
+	}
+	
+	private OnClickListener mShareClickListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			if(mShareUtils == null){
+				mShareUtils = ShareUtils.getInstance(BaseActivity.this);
+			}
+			switch (v.getId()) {
+			case R.id.iv_share_ours:
+				shareToOurs();
+				break;
+			case R.id.iv_share_circle:
+				shareToCircle();
+				break;
+			case R.id.iv_share_sina:
+				shareToSina();
+				break;
+			default:
+				break;
+			}
+		}
+	};
+	
+	protected void shareToOurs(){};
+	
+	protected void shareToCircle(){};
+	
+	protected void shareToSina(){};
 }
