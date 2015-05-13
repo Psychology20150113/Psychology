@@ -314,6 +314,14 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), ArticleBean.class);
 	}
 	
+	public static ArrayList<ClassBean> getNewestClassList(){
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetNewestClassList);
+		SoapObject result = getResultFromRequest(request, Constants.ClassWSDL);
+		if(result == null)
+			return new ArrayList<ClassBean>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<ClassBean>>(){}.getType());
+	}
+	
 	public static ArrayList<ClassBean> getClassList(int pageIndex, int classCategoryId){
 		if(pageIndex <= 0){
 			return new ArrayList<ClassBean>();
@@ -329,7 +337,7 @@ public class Utils {
 	}
 	
 	public static ClassBean getClassInfo(int classId){
-		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetArticleInfo);
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetClassInfo);
 		request.addProperty("classid", classId);
 		SoapObject result = getResultFromRequest(request, Constants.ClassWSDL);
 		if(result == null)

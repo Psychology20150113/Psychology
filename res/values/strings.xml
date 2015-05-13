@@ -179,6 +179,9 @@
 	<string name="online_pic">心晴短文</string>
 	<string name="share_success">分享成功</string>
 	<string name="share_failed">分享失败</string>
+	<string name="newest_test_title">你的幽默感怎么样?</string>
+	<string name="newest_test_summury">你能读懂身体语言吗?你会患冠心病吗？</string>
+	<string name="open_class">开课啦</string>
 	<string name="class_type_one">课堂教学</string>
 	<string name="class_type_two">家庭作业</string>
 	<string name="class_type_three">课堂游戏</string>

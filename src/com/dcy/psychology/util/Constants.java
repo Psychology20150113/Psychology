@@ -24,6 +24,7 @@ public interface Constants {
 	public static final String VerifyFindSmsCode = "VerifySmsCodeFindPwd";
 	public static final String GetArticleListMethod = "GetArticleList";
 	public static final String GetArticleInfo = "GetArticleInfo";
+	public static final String GetNewestClassList = "GetNewestClassList";
 	public static final String GetClassListMethod = "GetClassList";
 	public static final String GetClassInfo = "GetClassInfo";
 	public static final String GetOnlineDoctor = "GetOnlineDoctor";

@@ -23,12 +23,14 @@
 			    style="@style/text_black18_style"
 			    android:layout_height="0dp"
 			    android:layout_weight="1"
+			    android:singleLine="true"
 			    android:gravity="center_vertical"/>	        
 	    	<TextView 
 	    	    android:id="@+id/item_tv_subtitle"
 	    	    style="@style/text_black18_style"
 			    android:layout_height="0dp"
 			    android:layout_weight="1"
+			    android:singleLine="true"
 			    android:gravity="center_vertical"/>
 	    </LinearLayout>
 	</LinearLayout>

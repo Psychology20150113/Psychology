@@ -52,8 +52,9 @@ public class HomeShowAllListAdapter extends BaseAdapter {
 		}else {
 			mHolder = (Holder) convertView.getTag();
 		}
-		mHolder.mImageView.setImageResource(picResArray[position]);
-		mHolder.mTextView.setText(Constants.HomePageTestTitle[position]);
+		int reversePos = picResArray.length -1 - position;
+		mHolder.mImageView.setImageResource(picResArray[reversePos]);
+		mHolder.mTextView.setText(Constants.HomePageTestTitle[reversePos]);
 		mHolder.mLabelView.setText(R.string.test);
 		return convertView;
 	}

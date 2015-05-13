@@ -40,9 +40,10 @@ public class AllTestActivity extends BaseActivity implements OnItemClickListener
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		int reversePos = questionList.size() - 1 - position;
 		Intent mIntent = new Intent(this, ThoughtReadingActivity.class);
-		mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get(position));
-		mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[position]);
+		mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, questionList.get(reversePos));
+		mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, Constants.HomePageTestTitle[reversePos]);
 		startActivity(mIntent);
 		Map<String, String> questionMap = new HashMap<String, String>();
 		questionMap.put("name", Constants.HomePageTestTitle[position]);

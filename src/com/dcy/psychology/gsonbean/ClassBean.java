@@ -11,6 +11,7 @@ public class ClassBean {
 	private String PublisherName;
 	private String ClassContent;
 	private String ClassImgUrl;
+	private int ClassificationID;
 	private String ClassificationName;
 
 	public int getClassID() {
@@ -72,6 +73,12 @@ public class ClassBean {
 	}
 	public void setClassImgUrl(String classImgUrl) {
 		ClassImgUrl = classImgUrl;
+	}
+	public int getClassificationID() {
+		return ClassificationID;
+	}
+	public void setClassificationID(int classificationID) {
+		ClassificationID = classificationID;
 	}
 	public String getClassificationName() {
 		return ClassificationName;

@@ -37,7 +37,7 @@ public class BigClassShowListAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		return classArray.length;
+		return mDateList.size() < classArray.length ? 0 : classArray.length;
 	}
 
 	@Override
@@ -87,7 +87,8 @@ public class BigClassShowListAdapter extends BaseAdapter {
 			switch (v.getId()) {
 			case R.id.tv_item_more:
 				mIntent = new Intent(mContext, OnlinePicListActivity.class);
-				mIntent.putExtra(Constants.ClassCategoryId, 1);
+				mIntent.putExtra(Constants.ClassCategoryId, mDateList.get(position).getClassificationID());
+				mIntent.putExtra(Constants.ClassCategoryName, mDateList.get(position).getClassificationName());
 				break;
 			case R.id.ll_item_open_class:
 				int classId = mDateList.get(position).getClassID();
