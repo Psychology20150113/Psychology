@@ -7,6 +7,7 @@ public class ArticleBean {
 	private String ArticleDate;
 	private int PublisherID;
 	private String PublisherName;
+	private String ArticleSummary;
 	private String ArticleContent;
 	private String ArticleImgUrl;
 	
@@ -45,6 +46,12 @@ public class ArticleBean {
 	}
 	public void setPublisherName(String publisherName) {
 		PublisherName = publisherName;
+	}
+	public String getArticleSummary() {
+		return ArticleSummary;
+	}
+	public void setArticleSummary(String articleSummary) {
+		ArticleSummary = articleSummary;
 	}
 	public String getArticleContent() {
 		return ArticleContent;

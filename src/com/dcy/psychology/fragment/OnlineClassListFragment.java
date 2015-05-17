@@ -38,6 +38,7 @@ public class OnlineClassListFragment extends Fragment implements OnItemClickList
 	private PullRefreshListView mListView;
 	private ClassShowListAdapter mAdapter;
 	private ArrayList<ClassBean> mDataList = new ArrayList<ClassBean>();
+	private boolean isRefresh = false;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class OnlineClassListFragment extends Fragment implements OnItemClickList
 			pageIndex = 1;
 			mListView.onRefreshComplete();
 			mDialog.show();
+			isRefresh = true;
 			new GetClassListTask().execute();
 		}
 	};
@@ -78,9 +80,13 @@ public class OnlineClassListFragment extends Fragment implements OnItemClickList
 		public void onScrollStateChanged(AbsListView view, int scrollState) {
 			if(scrollState == SCROLL_STATE_IDLE){
 				if(mListView.getLastVisiblePosition() == mListView.getCount() - 1){
-					pageIndex ++;
-					mDialog.show();
-					new GetClassListTask().execute();
+					if (isRefresh) {
+						isRefresh = false;
+					} else {
+						pageIndex ++;
+						mDialog.show();
+						new GetClassListTask().execute();
+					}
 				}
 			}
 		}

@@ -86,7 +86,7 @@ public class StyleTwoBoxFragment extends Fragment implements OnClickListener{
 			}
 			newestArticleId = result.getArticleID();
 			mNewPicTitleTv.setText(result.getArticleName());
-			mNewPicSubTitleTv.setText(result.getArticleName());
+			mNewPicSubTitleTv.setText(result.getArticleSummary());
 		}
 	}
 	

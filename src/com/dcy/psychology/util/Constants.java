@@ -34,7 +34,7 @@ public interface Constants {
 	public static final String ArticleWSDL = "http://114.215.179.130/WebService/WebServiceAPPArticle.asmx";
 	public static final String ClassWSDL = "http://114.215.179.130/webservice/WebServiceAppClass.asmx";
 	
-	public static final String Web_Problem_Url = "https://www.baidu.com";
+	public static final String Web_Problem_Url = "http://114.215.179.130/webservice/QandAInfo.html";
 	
 	public static final int[] IdOfGrowMode = {1 , 2, 3 ,4};
 	public static final int Id_Class_Teach = 1;
