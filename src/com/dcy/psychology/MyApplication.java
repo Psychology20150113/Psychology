@@ -8,6 +8,8 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import cn.jpush.android.api.JPushInterface;
+
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
@@ -33,6 +35,7 @@ public class MyApplication extends Application{
         AsyncImageCache.setDiskCacheSize(1024 * 1024 * 50);     //50MB
         AsyncImageCache.setDiskCacheCount(1024);                //1024 item
         AsyncImageCache.setMemoryCacheSize(1024 * 1024 * 10);    //10MB
+        JPushInterface.init(this);
         initAppInfo();
 //        MobclickAgent.setDebugMode(true);
         mGson = new Gson();

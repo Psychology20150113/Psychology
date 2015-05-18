@@ -40,7 +40,8 @@ public class ShareUtils {
     private Activity mContext;
     private UMSocialService mSocialController;
     private String Share_Default_Title;
-
+    private String Default_share_url = "http://openbox.mobilem.360.cn/qcms/view/t/detail?sid=2876507";
+    
     private enum Platform{
         Platform_QQ, Platform_Qzone, Platform_Circle, Platform_WX, Platform_Sina
     }
@@ -73,7 +74,7 @@ public class ShareUtils {
     }
 
     public void shareToCircle(String content){
-        shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, null);
+        shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, Default_share_url);
     }
 
     public void shareToQQ(String content){
@@ -85,7 +86,7 @@ public class ShareUtils {
     }
 
     public void shareToSina(String content){
-        shareToPlatform(Platform.Platform_Sina, Share_Default_Title, content, null);
+        shareToPlatform(Platform.Platform_Sina, Share_Default_Title, content, Default_share_url);
     }
 
     public void shareToMore(String content){
