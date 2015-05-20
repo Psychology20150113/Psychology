@@ -68,6 +68,10 @@ public class ShareUtils {
         }
         return mShare;
     }
+    
+    public UMSocialService getController(){
+    	return mSocialController;
+    }
 
     public void shareToWX(String content){
         shareToPlatform(Platform.Platform_WX, Share_Default_Title, content, null);

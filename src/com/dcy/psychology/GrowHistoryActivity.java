@@ -10,6 +10,7 @@ import com.dcy.psychology.model.GrowWriteItem;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.ShareUtils;
 import com.dcy.psychology.util.Utils;
+import com.umeng.socialize.sso.UMSsoHandler;
 
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -106,6 +107,15 @@ public class GrowHistoryActivity extends BaseActivity {
 	@Override
 	protected void shareToSina() {
 		mShareUtils.shareToSina(getShareContent());
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		UMSsoHandler ssoHandler = mShareUtils.getController().getConfig().getSsoHandler(requestCode) ;
+	    if(ssoHandler != null){
+	       ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+	    }
 	}
 	
 	private class PublishCommentTask extends AsyncTask<String, Void, String>{
