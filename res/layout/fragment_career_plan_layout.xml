@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include 
+        android:id="@+id/ll_complete_info"
+        layout="@layout/layout_perfect_info"/>
+    <LinearLayout 
+        android:id="@+id/ll_entry"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="#ffffff">
+        <TextView 
+            android:id="@+id/tv_student_entry"
+            android:layout_width="match_parent"
+            android:layout_height="133dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/student_entry"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:background="#f89816"/>
+        <TextView 
+            android:id="@+id/tv_teacher_entry"
+            android:layout_width="match_parent"
+            android:layout_height="133dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/teacher_entry"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:background="#3ab1d3"/>
+    </LinearLayout>
+
+</FrameLayout>

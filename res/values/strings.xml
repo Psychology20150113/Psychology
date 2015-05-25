@@ -74,7 +74,7 @@
 	<string name="password">密码</string>
 	<string name="change_pwd">重设密码</string>
 	<string name="password_second">确认密码</string>
-	<string name="nick">昵称(不填为账号)</string>
+	<string name="nick">名字</string>
 	<string name="age">年龄</string>
 	<string name="sex">性别</string>
 	<string name="phone">电话</string>
@@ -185,4 +185,6 @@
 	<string name="class_type_one">课堂教学</string>
 	<string name="class_type_two">家庭作业</string>
 	<string name="class_type_three">课堂游戏</string>
+	<string name="student_entry">心晴生入口>></string>
+	<string name="teacher_entry">心晴师入口>></string>
 </resources>
