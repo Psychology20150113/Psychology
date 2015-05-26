@@ -51,4 +51,53 @@
         <item>@string/class_type_two</item>
         <item>@string/class_type_three</item>
     </string-array>
+    <string-array name="xingzuo_array">
+        <item>@string/xingzuo_baiyang</item>
+        <item>@string/xingzuo_jinniu</item>
+        <item>@string/xingzuo_shuangzi</item>
+        <item>@string/xingzuo_jvxie</item>
+        <item>@string/xingzuo_shizi</item>
+        <item>@string/xingzuo_chunv</item>
+        <item>@string/xingzuo_tiancheng</item>
+        <item>@string/xingzuo_tianxie</item>
+        <item>@string/xingzuo_sheshou</item>
+        <item>@string/xingzuo_mojie</item>
+        <item>@string/xingzuo_shuiping</item>
+        <item>@string/xingzuo_shuangyu</item>
+    </string-array>
+    <string-array name="industry_array">
+        <item>@string/industry_one</item>
+        <item>@string/industry_two</item>
+        <item>@string/industry_three</item>
+        <item>@string/industry_five</item>
+        <item>@string/industry_six</item>
+        <item>@string/industry_seven</item>
+        <item>@string/industry_eight</item>
+        <item>@string/industry_nine</item>
+        <item>@string/industry_ten</item>
+        <item>@string/industry_eleven</item>
+        <item>@string/industry_twelve</item>
+        <item>@string/industry_thirteen</item>
+        <item>@string/industry_fourteen</item>
+        <item>@string/industry_fifteen</item>
+        <item>@string/industry_sixteen</item>
+        <item>@string/industry_seventeen</item>
+        <item>@string/industry_eighteen</item>
+    </string-array>
+    <string-array name="state_teacher_array">
+        <item>@string/state_teacher_one</item>
+        <item>@string/state_teacher_two</item>
+        <item>@string/state_teacher_three</item>
+        <item>@string/state_teacher_four</item>
+        <item>@string/state_teacher_five</item>
+        <item>@string/state_teacher_six</item>
+    </string-array>
+    <string-array name="state_student_array">
+        <item>@string/state_student_one</item>
+        <item>@string/state_student_two</item>
+        <item>@string/state_student_three</item>
+        <item>@string/state_student_four</item>
+        <item>@string/state_student_five</item>
+        <item>@string/state_student_six</item>
+    </string-array>
 </resources>

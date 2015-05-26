@@ -13,12 +13,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class CityDbHelper extends SQLiteOpenHelper{
+public class PreInstallDbHelper extends SQLiteOpenHelper{
 	private Context mContext;
 	private static final String DbName = "city.db";
 	private static final int DbVersion = 1;
 	
-	public CityDbHelper(Context context){
+	public PreInstallDbHelper(Context context){
 		super(context, DbName, null, DbVersion);
 		mContext = context;
 	}
@@ -30,6 +30,7 @@ public class CityDbHelper extends SQLiteOpenHelper{
 			Log.i("mylog", "start >>>>>>>>>>>>>>>>>>>>>>>");
 			executeSQL(db, mContext.getAssets().open("tbl_cities.sql"));
 			executeSQL(db, mContext.getAssets().open("tbl_provinces.sql"));
+			executeSQL(db, mContext.getAssets().open("tbl_university.sql"));
 			Log.i("mylog", "end <<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		} catch (IOException e1) {
 			e1.printStackTrace();

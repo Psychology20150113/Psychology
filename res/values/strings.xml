@@ -187,4 +187,83 @@
 	<string name="class_type_three">课堂游戏</string>
 	<string name="student_entry">心晴生入口>></string>
 	<string name="teacher_entry">心晴师入口>></string>
+	
+	<string name="xingzuo">星座</string>
+	<string name="xingzuo_baiyang">白羊座</string>
+	<string name="xingzuo_jinniu">金牛座</string>
+	<string name="xingzuo_shuangzi">双子座</string>
+	<string name="xingzuo_jvxie">巨蟹座</string>
+	<string name="xingzuo_shizi">狮子座</string>
+	<string name="xingzuo_chunv">处女座</string>
+	<string name="xingzuo_tiancheng">天秤座</string>
+	<string name="xingzuo_tianxie">天蝎座</string>
+	<string name="xingzuo_sheshou">射手座</string>
+	<string name="xingzuo_mojie">摩羯座</string>
+	<string name="xingzuo_shuiping">水瓶座</string>
+	<string name="xingzuo_shuangyu">双鱼座</string>
+	
+	<string name="household">户籍地</string>
+	<string name="diploma">文凭</string>
+	<string name="diploma_one">本科</string>
+	<string name="diploma_two">硕士</string>
+	<string name="diploma_three">博士</string>
+	<string name="diploma_four">其他</string>
+	
+	<string name="major">主修方向</string>
+	<string name="graduation_year">毕业年份</string>
+	<string name="isClassLeader">当过班长</string>
+	<string name="current_state">当前状态</string>
+	<string name="working_city">工作地点</string>
+	<string name="grade">等级</string>
+	<string name="hobbies">兴趣</string>
+	<string name="follow">跟随者</string>
+	
+	<string name="state_teacher_one">硕士</string>
+	<string name="state_teacher_two">博士</string>
+	<string name="state_teacher_three">白领</string>
+	<string name="state_teacher_four">企业家</string>
+	<string name="state_teacher_five">留学生</string>
+	<string name="state_teacher_six">公务员</string>
+
+	<string name="state_student_one">考研</string>
+	<string name="state_student_two">考博</string>
+	<string name="state_student_three">求职</string>
+	<string name="state_student_four">创业</string>
+	<string name="state_student_five">出国</string>
+	<string name="state_student_six">考公务员</string>
+
+	<string name="industry">行业</string>
+	<string name="industry_one">IT互联网</string>
+	<string name="industry_two">文化传媒</string>
+	<string name="industry_three">通信</string>
+	<string name="industry_four">金融</string>
+	<string name="industry_five">教育培训</string>
+	<string name="industry_six">医疗生物</string>
+	<string name="industry_seven">政府科研</string>
+	<string name="industry_eight">司法法律</string>
+	<string name="industry_nine">房产建筑</string>
+	<string name="industry_ten">服务业</string>
+	<string name="industry_eleven">轻工贸易</string>
+	<string name="industry_twelve">电子电气</string>
+	<string name="industry_thirteen">机械重工</string>
+	<string name="industry_fourteen">农林牧渔</string>
+	<string name="industry_fifteen">新能源</string>
+	<string name="industry_sixteen">物联网</string>
+	<string name="industry_seventeen">化工环保</string>
+	<string name="industry_eighteen">其他</string>
+
+	<string name="major_one">哲学</string>
+	<string name="major_two">经济学</string>
+	<string name="major_three">法学</string>
+	<string name="major_four">教育学</string>
+	<string name="major_five">文学</string>
+	<string name="major_six">历史学</string>
+	<string name="major_seven">理学</string>
+	<string name="major_eight">工学</string>
+	<string name="major_nine">农学</string>
+	<string name="major_ten">医学</string>
+	<string name="major_eleven">管理学</string>
+	<string name="major_twelve">艺术学</string>
+
+	
 </resources>
