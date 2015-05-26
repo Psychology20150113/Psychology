@@ -1,6 +1,7 @@
 package com.dcy.psychology.util;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -53,5 +54,18 @@ public class IOUtils {
 			}
 		}
 		return "";
+	}
+	
+	public static String readInputStream(InputStream inputStream)
+			throws IOException {
+		if(inputStream == null)
+			return "";
+		final ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		byte[] buffer = new byte[8 * 1024];
+		int n = 0;
+		while ((n = inputStream.read(buffer)) >= 0)
+			stream.write(buffer, 0, n);
+		inputStream.close();
+		return stream.toString();
 	}
 }
