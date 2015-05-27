@@ -100,4 +100,24 @@
         <item>@string/state_student_five</item>
         <item>@string/state_student_six</item>
     </string-array>
+    <string-array name="diploma_array">
+        <item>@string/diploma_one</item>
+        <item>@string/diploma_two</item>
+        <item>@string/diploma_three</item>
+        <item>@string/diploma_four</item>
+    </string-array>
+    <string-array name="major_array">
+        <item>@string/major_one</item>
+        <item>@string/major_two</item>
+        <item>@string/major_three</item>
+        <item>@string/major_four</item>
+        <item>@string/major_five</item>
+        <item>@string/major_six</item>
+        <item>@string/major_seven</item>
+        <item>@string/major_eight</item>
+        <item>@string/major_nine</item>
+        <item>@string/major_ten</item>
+        <item>@string/major_eleven</item>
+        <item>@string/major_twelve</item>
+    </string-array>
 </resources>

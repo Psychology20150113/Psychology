@@ -204,6 +204,7 @@
 	
 	<string name="household">户籍地</string>
 	<string name="diploma">文凭</string>
+	<string name="school">学校</string>
 	<string name="diploma_one">本科</string>
 	<string name="diploma_two">硕士</string>
 	<string name="diploma_three">博士</string>

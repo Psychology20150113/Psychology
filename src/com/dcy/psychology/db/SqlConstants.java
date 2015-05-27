@@ -35,4 +35,14 @@ public class SqlConstants {
 
 	public static final String SelectNewRecordsSql = 
 			"select * from records order by time desc";
+
+	/* pre_install_db */
+	public static final String SelectProvinceSql = 
+			"select * from tbl_provinces";
+	
+	public static final String SelectCitySql = 
+			"select * from tbl_cities where ProvinceID = ?";
+	
+	public static final String SelectUniversitySql = 
+			"select * from tbl_university where ProvinceID = ?";
 }

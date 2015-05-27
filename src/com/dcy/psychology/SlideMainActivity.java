@@ -6,6 +6,7 @@ import java.util.List;
 import com.dcy.psychology.adapter.SlideAdapter;
 import com.dcy.psychology.db.DbHelper;
 import com.dcy.psychology.db.SqlConstants;
+import com.dcy.psychology.fragment.CareerPlanFragment;
 import com.dcy.psychology.fragment.ChatIMFragment;
 import com.dcy.psychology.fragment.SlideMainFragment;
 import com.dcy.psychology.fragment.StyleTwoBoxFragment;
@@ -63,7 +64,8 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	
 	private void initData(){
 		dataFragment.add(new ChatIMFragment());
-		dataFragment.add(new StyleTwoMainFragment());
+//		dataFragment.add(new StyleTwoMainFragment());
+		dataFragment.add(new CareerPlanFragment());
 		dataFragment.add(new StyleTwoBoxFragment());
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		for(int i=0 ; i<dataFragment.size() ; i++){

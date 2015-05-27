@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import cn.jpush.android.api.JPushInterface;
 
+import com.dcy.psychology.db.PreInstallDbHelper;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
@@ -26,6 +27,7 @@ public class MyApplication extends Application{
 	public static String myUserRole;
 	public static String myNick;
 	public static Gson mGson;
+	public static PreInstallDbHelper preInstallDbHelper;
 	
 	@Override
 	public void onCreate() {
@@ -39,6 +41,7 @@ public class MyApplication extends Application{
         initAppInfo();
 //        MobclickAgent.setDebugMode(true);
         mGson = new Gson();
+        preInstallDbHelper = new PreInstallDbHelper(this);
 	}
 	
 	private void initAppInfo(){
