@@ -47,6 +47,8 @@ public class ThoughtReadingUtils {
 	
 	//homePage test
 	public static final String GrowBeanData = "com.dcy.psychology.GrowBeanData";
+	public static final String DNATest = "com.dcy.psychology.DNATest";
+	public static final String PointResult = "com.dcy.psychology.PointResult";
 	
 	public static ArrayList<QuestionModel> getRandomList(String json) {
 		try {

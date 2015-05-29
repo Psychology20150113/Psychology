@@ -47,11 +47,11 @@ public class QuestionView extends RelativeLayout implements
 		mQuestionType = questonType;
 	}
 	
-	public void setDate(String title, ArrayList<String> optionList) {
+	public void setDate(int index, String title, ArrayList<String> optionList) {
 		LinearLayout questionLayout = new LinearLayout(mContext);
 		questionLayout.setOrientation(LinearLayout.VERTICAL);
 		TextView titleView = new TextView(mContext);
-		titleView.setText("        " + title);
+		titleView.setText("        " + index + "." + title);
 		titleView.setLineSpacing(0, 1.2f);// (add , mul)
 		// titleView.setTextScaleX(0.5f);
 		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
@@ -94,9 +94,9 @@ public class QuestionView extends RelativeLayout implements
 		this.addView(questionLayout);
 	}
 
-	public void setDate(String title, ArrayList<String> optionList , ArrayList<Integer> pointList){
+	public void setDate(int index, String title, ArrayList<String> optionList , ArrayList<Integer> pointList){
 		this.pointList = pointList;
-		this.setDate(title, optionList);
+		this.setDate(index, title, optionList);
 	}
 
 	public int getPoint(){

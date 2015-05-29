@@ -120,4 +120,18 @@
         <item>@string/major_eleven</item>
         <item>@string/major_twelve</item>
     </string-array>
+    <string-array name="zhiye_array">
+        <item>@string/zhiye_one</item>
+        <item>@string/zhiye_two</item>
+        <item>@string/zhiye_three</item>
+        <item>@string/zhiye_four</item>
+        <item>@string/zhiye_five</item>
+        <item>@string/zhiye_six</item>
+    </string-array>
+    <string-array name="qizhi_array">
+        <item>@string/qizhi_one</item>
+        <item>@string/qizhi_two</item>
+        <item>@string/qizhi_three</item>
+        <item>@string/qizhi_four</item>
+    </string-array>
 </resources>

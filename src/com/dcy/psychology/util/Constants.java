@@ -29,6 +29,16 @@ public interface Constants {
 	public static final String GetClassInfo = "GetClassInfo";
 	public static final String GetOnlineDoctor = "GetOnlineDoctor";
 	public static final String ChangePwdMethod = "UpdateUserPwd";
+	public static final String PrefectInfoMethod = "PrefectUserInfo";
+	public static final String GetSpecificUserList = "GetSpecificUserList";
+	public static final String FollowSpecificUser = "FollowSpecificUser";
+	public static final String GetFollowSpecificUser = "GetFollowSpecificUser";
+	public static final String SaveTestResult = "SaveTestResult";
+	public static final String GetMatchResult = "GetSpecificUserMatch";
+	
+	public static final String Type_Zhiye_Test = "HollendTest";
+	public static final String Type_Qiazhi_Test = "TemperamentTest";
+	
 	
 	public static final String UserWSDL = "http://114.215.179.130/WebService/WebServiceAPPUser.asmx";
 	public static final String ArticleWSDL = "http://114.215.179.130/WebService/WebServiceAPPArticle.asmx";
@@ -63,6 +73,18 @@ public interface Constants {
 	public static final String PicType = "type_pic";
 	public static final String TestType = "type_test";
 	public static final String SpecialTestType = "type_special_type";
+	
+	public static final int[][] ZhiyeIndex = {{7, 19, 29, 39, 41, 51, 57, 5, 18, 40},
+											  {2, 13, 22, 36, 43, 14, 23, 44, 47, 48},
+											  {6, 8, 20, 30, 31, 42, 21, 55, 56, 58},
+											  {11, 24, 28, 35, 38, 46, 60, 3, 16, 25},
+											  {26, 37, 52, 59, 1, 12, 15, 27, 45, 53},
+											  {4, 9, 10, 17, 33, 34, 49, 50, 54, 32}};
+	
+	public static final int[][] QizhiIndex = {{2, 6, 9, 14, 17, 21, 27, 31, 36, 38, 42, 48, 50, 54, 58},
+											  {4, 8, 11, 16, 19, 23, 25, 29, 34, 40, 44, 46, 52, 56, 60},
+											  {1, 7, 10, 13, 18, 22, 26, 30, 33, 39, 43, 45, 49, 55, 57},
+											  {3, 5, 12, 15, 20, 24, 28, 32, 35, 37, 41, 47, 51, 53, 59}};
 	
 	public static final String[][] GrowTestTitle = {{"人际交往测试","人际交往诚信度测试","人际焦虑感测试","人际中的情绪测试"},
 													{"时间管理能力测试"},{"恋爱配对测试"},{"自信"}};

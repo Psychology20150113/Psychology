@@ -6,6 +6,15 @@
     <include 
         android:id="@+id/ll_complete_info"
         layout="@layout/layout_perfect_info"/>
+    <include 
+        android:id="@+id/ll_result_show"
+        android:visibility="gone"
+        layout="@layout/layout_show_test_result"/>
+    <com.dcy.psychology.view.PullRefreshListView 
+	    android:id="@+id/pull_refresh_lv"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_marginLeft="10dp"/>
     <LinearLayout 
         android:id="@+id/ll_entry"
         android:layout_width="match_parent"

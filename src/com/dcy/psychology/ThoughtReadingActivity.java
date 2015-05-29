@@ -53,6 +53,7 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 	private GrowQuestionBean gsonbean;
 	
 	private boolean isSpecial = false;
+	private boolean isDNATest = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +65,15 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 		initView();
 		gsonbean = (GrowQuestionBean) mIntent.getSerializableExtra(ThoughtReadingUtils.GrowBeanData);
 		if(gsonbean != null){
+			isDNATest = mIntent.getBooleanExtra(ThoughtReadingUtils.DNATest, false);
 			getQuestionList();
 			updateQuestionList();
-			mPageIndicator.setCount(mQuestionViewList.size());
-			mPageIndicator.updateIndicator(mCurrentPage);
+			if(isDNATest){
+				mPageIndicator.setVisibility(View.GONE);
+			} else {
+				mPageIndicator.setCount(mQuestionViewList.size());
+				mPageIndicator.updateIndicator(mCurrentPage);
+			}
 			isThoughtReading = false;
 		}else {
 			themeIndex = mIntent.getIntExtra(ThoughtReadingUtils.ThemeIndex, 0);
@@ -96,13 +102,14 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 
 	private void updateQuestionList() {
 		mQuestionViewList.removeAll(mQuestionViewList);
-		for (QuestionModel model : mQuestionModelList) {
+		for (int i = 0 ; i < mQuestionModelList.size() ; i ++) {
+			QuestionModel model = mQuestionModelList.get(i);
 			QuestionView view = new QuestionView(this);
 			view.setQuestionType(model.getQuestionType());
 			if(isThoughtReading){
-				view.setDate(model.getQuestionTitle(), model.getOptionList());
+				view.setDate( i + 1, model.getQuestionTitle(), model.getOptionList());
 			}else {
-				view.setDate(model.getQuestionTitle(), model.getOptionList(), model.getPoint());
+				view.setDate( i + 1, model.getQuestionTitle(), model.getOptionList(), model.getPoint());
 			}
 			mQuestionViewList.add(view);
 		}
@@ -215,6 +222,17 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 					finish();
 					return;
 				}else {
+					if(isDNATest){
+						ArrayList<Integer> pointList = new ArrayList<Integer>();
+						for(QuestionView item : mQuestionViewList){
+							pointList.add(item.getPoint());
+						}
+						Intent resultIntent = new Intent();
+						resultIntent.putIntegerArrayListExtra(ThoughtReadingUtils.PointResult, pointList);
+						setResult(100, resultIntent);
+						finish();
+						return;
+					}
 					if(gsonbean.getAnswer() == null){
 						return;
 					}

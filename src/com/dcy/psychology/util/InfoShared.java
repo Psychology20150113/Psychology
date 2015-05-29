@@ -17,6 +17,7 @@ public class InfoShared {
 	private final String UserNick = "info_nick";
 	private final String UserRole = "info_role";
 	private final String UserPhoneNum = "info_phone";
+	private final String PrefectInfo = "prefect_info";
 	
 	public String ThemeFormat = "Theme%s_%d";
 	
@@ -71,6 +72,14 @@ public class InfoShared {
 	
 	public String getPhoneNum(){
 		return mShared.getString(UserPhoneNum, "");
+	}
+	
+	public void setIsPrefectInfo(boolean prefectInfo){
+		mShared.edit().putBoolean(PrefectInfo, prefectInfo).commit();
+	}
+	
+	public boolean hasPrefectInfo(){
+		return mShared.getBoolean(PrefectInfo, false);
 	}
 	
 	public void putInt(String key , int value){

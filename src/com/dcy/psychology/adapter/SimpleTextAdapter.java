@@ -28,7 +28,7 @@ public class SimpleTextAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		return dataList.get(position);
+		return dataList.get(position).name;
 	}
 
 	@Override

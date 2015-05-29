@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,6 +42,7 @@ import com.dcy.psychology.gsonbean.CommentDetailBean;
 import com.dcy.psychology.gsonbean.LoginBean;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
+import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.view.QuestionView;
 import com.google.gson.Gson;
@@ -189,6 +191,25 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
+	public static BasicBean prefectUserInfo(Map<String, String> infoMap){
+		if(infoMap == null || TextUtils.isEmpty(MyApplication.myPhoneNum)){
+			return new BasicBean();
+		}
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.PrefectInfoMethod);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("userLoginName", MyApplication.myPhoneNum);
+		request.addProperty("userHeadUrl", "");
+		for(Entry<String, String> item : infoMap.entrySet()){
+			request.addProperty(item.getKey(), item.getValue());
+		}
+		SoapObject result = getResultFromRequest(request);
+		if(result == null){
+			return new BasicBean();
+		}
+		Log.i("mylog", "prefect info : " + result.getPropertyAsString(0));
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+	}
+	
 	public static BasicBean getVerifyFindSmsCode(String phoneNum, String smsCode, String userPwd){
 		SoapObject request = new SoapObject(Constants.SpaceName, Constants.VerifyFindSmsCode);
 		request.addProperty("phoneNum", phoneNum);
@@ -334,6 +355,66 @@ public class Utils {
 		if(result == null)
 			return new ArrayList<ClassBean>();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<ClassBean>>(){}.getType());
+	}
+	
+	public static ArrayList<SpecificUserBean> getSpecificUserList(int pageIndex){
+		if(pageIndex <= 0){
+			return new ArrayList<SpecificUserBean>();
+		}
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetSpecificUserList);
+		request.addProperty("pageIndex", pageIndex);
+		request.addProperty("pgeSize", Constants.PageCount);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new ArrayList<SpecificUserBean>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
+	}
+	
+	public static BasicBean followSpecificUser(long specificUserId){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.FollowSpecificUser);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("specificUserID", String.valueOf(specificUserId));
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+	}
+	
+	public static ArrayList<SpecificUserBean> getFollowSpecificUserList(int pageIndex){
+		if(pageIndex <= 0){
+			return new ArrayList<SpecificUserBean>();
+		}
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetFollowSpecificUser);
+		request.addProperty("pageIndex", pageIndex);
+		request.addProperty("pgeSize", Constants.PageCount);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new ArrayList<SpecificUserBean>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
+	}
+	
+	public static BasicBean saveTestResult(String type, String testResult){
+		if(TextUtils.isEmpty(type) || TextUtils.isEmpty(testResult) || TextUtils.isEmpty(MyApplication.myPhoneNum)){
+			return new BasicBean();
+		}
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.SaveTestResult);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("testTypeName", type);
+		request.addProperty("testResult", testResult);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+	}
+	
+	public static BasicBean getMatchResult(long specificId){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.GetSpecificUserList);
+		request.addProperty("UserPhone", MyApplication.myPhoneNum);
+		request.addProperty("specificUserIDList", String.valueOf(specificId));
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
 	public static ClassBean getClassInfo(int classId){
