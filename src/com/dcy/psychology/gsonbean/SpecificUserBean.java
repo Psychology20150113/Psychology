@@ -6,4 +6,8 @@ public class SpecificUserBean {
 	public String SpecificUserHeadUrl;
 	public String SpecificUserAchievement;
 	public String SpecificUserLifeMotto;
+	public String SpecificUserPhone;
+	public String SpecificUserHollendTest;
+	public String SpecificUserTemperamentTest;
+	public float MatchResult;
 }

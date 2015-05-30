@@ -23,7 +23,7 @@ public class MineActivity extends BaseActivity implements OnClickListener{
 		Intent mIntent = null;
 		switch (v.getId()) {
 		case R.id.tv_attention:
-//			mIntent = new Intent(this, );
+			mIntent = new Intent(this, GetFollowUsersActivity.class);
 			break;
 		case R.id.tv_dna:
 			mIntent = new Intent(this, ShowListActivity.class);

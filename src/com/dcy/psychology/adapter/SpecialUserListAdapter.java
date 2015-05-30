@@ -7,6 +7,7 @@ import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
+import com.dcy.psychology.view.dialog.ShareMatchDialog;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +25,17 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 	private Context mContext;
 	private ArrayList<SpecificUserBean> dataList;
 	private CustomProgressDialog mDialog;
+	private boolean canOpration = true;
 	
 	public SpecialUserListAdapter(Context mContext, ArrayList<SpecificUserBean> dataList){
+		this(mContext, dataList, true);
+	}
+	
+	public SpecialUserListAdapter(Context mContext, ArrayList<SpecificUserBean> dataList, boolean canOpration){
 		mInflater = LayoutInflater.from(mContext);
 		this.dataList = dataList;
 		this.mContext = mContext;
+		this.canOpration = canOpration;
 	}
 	
 	@Override
@@ -56,8 +64,12 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			mHolder.speakTv = (TextView) convertView.findViewById(R.id.tv_item_speak);
 			mHolder.attentionTv = (TextView) convertView.findViewById(R.id.tv_item_attention);
 			mHolder.testTv = (TextView) convertView.findViewById(R.id.tv_item_test);
-			mHolder.attentionTv.setOnClickListener(this);
-			mHolder.testTv.setOnClickListener(this);
+			if(canOpration){
+				mHolder.attentionTv.setOnClickListener(this);
+				mHolder.testTv.setOnClickListener(this);
+			} else {
+				convertView.findViewById(R.id.ll_item_opration).setVisibility(View.GONE);
+			}
 			convertView.setTag(mHolder);
 		} else {
 			mHolder = (Holder) convertView.getTag();
@@ -81,6 +93,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			new FollowTask().execute(specialId);
 			break;
 		case R.id.tv_item_test:
+			new GetMatchTask().execute(specialId);
 			break;
 		default:
 			break;
@@ -99,13 +112,22 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			mDialog.dismiss();
 	}
 	
-	private class GetMatchTask extends AsyncTask<Long, Void, BasicBean>{
+	private class GetMatchTask extends AsyncTask<Long, Void, ArrayList<SpecificUserBean>>{
 		@Override
-		protected BasicBean doInBackground(Long... params) {
+		protected ArrayList<SpecificUserBean> doInBackground(Long... params) {
 			if(params[0] == null){
 				return null;
 			}
 			return Utils.getMatchResult(params[0]);
+		}
+		
+		@Override
+		protected void onPostExecute(ArrayList<SpecificUserBean> result) {
+			hideCustomDialog();
+			if(result == null){
+				return;
+			}
+			new ShareMatchDialog(mContext, result.get(0).MatchResult).show();
 		}
 	}
 	

@@ -189,6 +189,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.GetFollowUsersActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
             android:name="com.dcy.psychology.DiscussListActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"

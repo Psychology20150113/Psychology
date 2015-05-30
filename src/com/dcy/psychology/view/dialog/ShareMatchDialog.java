@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.TextView;
 
 public class ShareMatchDialog extends Dialog implements android.view.View.OnClickListener{
-	private String matchPecent;
+	private float matchPecent;
 	
-	public ShareMatchDialog(Context context, String matchPecent) {
+	public ShareMatchDialog(Context context, float matchPecent) {
 		super(context, R.style.AppDialog);
 		this.matchPecent = matchPecent;
 	}
@@ -20,7 +20,7 @@ public class ShareMatchDialog extends Dialog implements android.view.View.OnClic
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dialog_share_match);
-		((TextView)findViewById(R.id.tv_dialog_result)).setText(matchPecent);
+		((TextView)findViewById(R.id.tv_dialog_result)).setText(String.valueOf(matchPecent));
 		findViewById(R.id.dialog_ok_tv).setOnClickListener(this);
 	}
 	

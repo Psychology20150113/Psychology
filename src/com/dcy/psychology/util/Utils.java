@@ -380,13 +380,12 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
-	public static ArrayList<SpecificUserBean> getFollowSpecificUserList(int pageIndex){
-		if(pageIndex <= 0){
-			return new ArrayList<SpecificUserBean>();
+	public static ArrayList<SpecificUserBean> getFollowSpecificUserList(){
+		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+			return null;
 		}
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetFollowSpecificUser);
-		request.addProperty("pageIndex", pageIndex);
-		request.addProperty("pgeSize", Constants.PageCount);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new ArrayList<SpecificUserBean>();
@@ -408,14 +407,14 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
-	public static BasicBean getMatchResult(long specificId){
-		SoapObject request = new SoapObject(Constants.SpaceName, Constants.GetSpecificUserList);
-		request.addProperty("UserPhone", MyApplication.myPhoneNum);
+	public static ArrayList<SpecificUserBean> getMatchResult(long specificId){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.GetMatchResult);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
 		request.addProperty("specificUserIDList", String.valueOf(specificId));
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
-			return new BasicBean();
-		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+			return new ArrayList<SpecificUserBean>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
 	}
 	
 	public static ClassBean getClassInfo(int classId){
