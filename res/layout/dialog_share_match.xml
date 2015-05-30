@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/bg_dialog_simple_shape">
+    <TextView 
+        style="@style/text_black20_style"
+        android:text="@string/match_test"/>
+    <TextView 
+        android:id="@+id/tv_dialog_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"/>
+    <TextView 
+	    android:id="@+id/dialog_ok_tv"
+	    android:layout_width="match_parent"
+	    android:layout_height="40dp"
+	    android:textColor="@color/brown"
+	    android:text="@string/ok"
+	    android:gravity="center"/>
+</LinearLayout>

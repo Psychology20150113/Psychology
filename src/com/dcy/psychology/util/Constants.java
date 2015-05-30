@@ -73,6 +73,7 @@ public interface Constants {
 	public static final String PicType = "type_pic";
 	public static final String TestType = "type_test";
 	public static final String SpecialTestType = "type_special_type";
+	public static final String DNAType = "type_dna";
 	
 	public static final int[][] ZhiyeIndex = {{7, 19, 29, 39, 41, 51, 57, 5, 18, 40},
 											  {2, 13, 22, 36, 43, 14, 23, 44, 47, 48},

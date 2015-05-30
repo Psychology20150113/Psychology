@@ -134,4 +134,8 @@
         <item>@string/qizhi_three</item>
         <item>@string/qizhi_four</item>
     </string-array>
+    <string-array name="dna_array">
+        <item>@string/Test_Hollend</item>
+        <item>@string/Test_Qizhi</item>
+    </string-array>
 </resources>

@@ -8,15 +8,19 @@ import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.adapter.SimpleTextAdapter;
+import com.dcy.psychology.adapter.SpecialUserListAdapter;
 import com.dcy.psychology.db.DbManager;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
+import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.model.IdAndName;
+import com.dcy.psychology.util.CalculateUtils;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.ThoughtReadingUtils;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.view.PullRefreshListView;
+import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
 import com.google.gson.reflect.TypeToken;
 
 import android.app.Fragment;
@@ -31,7 +35,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -72,7 +78,11 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	private View rootView;
 	private CustomProgressDialog mLoadingDialog;
 	private final int RequestCode_Test = 100;
+	private int pageIndex = 1;
 	private PullRefreshListView mListView;
+	private SpecialUserListAdapter mAdapter;
+	private ArrayList<SpecificUserBean> mDataList = new ArrayList<SpecificUserBean>();
+	private boolean isRefresh = false;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +90,10 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mContext = getActivity();
 		mResources = mContext.getResources();
 		mProvinceList = DbManager.getProvince();
+		mLoadingDialog = new CustomProgressDialog(mContext);
+		mAdapter = new SpecialUserListAdapter(mContext, mDataList);
+		mLoadingDialog.show();
+		new GetSpecialUserTask().execute();
 	}
 	
 	@Override
@@ -91,9 +105,47 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 //			view.findViewById(R.id.tv_student_entry).setOnClickListener(this);
 //			view.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
 //		}
+		mListView = (PullRefreshListView) rootView.findViewById(R.id.pull_refresh_lv);
+		mListView.setOnScrollListener(mScrollListener);
+		mListView.setonRefreshListener(mRefreshListener);
+		mListView.setAdapter(mAdapter);
 		initPerfectInfoView();
 		return rootView;
 	}
+	
+	private OnRefreshListener mRefreshListener = new OnRefreshListener() {
+		@Override
+		public void onRefresh() {
+			mDataList.removeAll(mDataList);
+			pageIndex = 1;
+			mListView.onRefreshComplete();
+			mLoadingDialog.show();
+			new GetSpecialUserTask().execute();
+			isRefresh = true;
+		}
+	};
+	
+	private OnScrollListener mScrollListener = new OnScrollListener() {
+		@Override
+		public void onScrollStateChanged(AbsListView view, int scrollState) {
+			if(scrollState == SCROLL_STATE_IDLE){
+				if(mListView.getLastVisiblePosition() == mListView.getCount() - 1){
+					if(isRefresh){
+						isRefresh = false;
+					} else {
+						pageIndex ++;
+						mLoadingDialog.show();
+						new GetSpecialUserTask().execute();
+					}
+				}
+			}
+		}
+		
+		@Override
+		public void onScroll(AbsListView view, int firstVisibleItem,
+				int visibleItemCount, int totalItemCount) {
+		}
+	};
 	
 	@Override
 	public void onClick(View v) {
@@ -128,14 +180,28 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			infoMap.put("grade", "");
 			infoMap.put("hobbies", hobbiesEt.getText().toString());
 			infoMap.put("follow", followEt.getText().toString());
-			if(mLoadingDialog == null){
-				mLoadingDialog = new CustomProgressDialog(mContext);
-			}
 			mLoadingDialog.show();
 			new PrefectInfoTask().execute();
 			break;
 		default:
 			break;
+		}
+	}
+	
+	private class GetSpecialUserTask extends AsyncTask<Void, Void, ArrayList<SpecificUserBean>>{
+		@Override
+		protected ArrayList<SpecificUserBean> doInBackground(Void... params) {
+			return Utils.getSpecificUserList(pageIndex);
+		}
+		
+		@Override
+		protected void onPostExecute(ArrayList<SpecificUserBean> result) {
+			mLoadingDialog.dismiss();
+			if(result == null){
+				return;
+			}
+			mDataList.addAll(result);
+			mAdapter.notifyDataSetChanged();
 		}
 	}
 	
@@ -196,30 +262,14 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			if(data == null){
 				return;
 			}
-			calculateZhiyeResult(data.getIntegerArrayListExtra(ThoughtReadingUtils.PointResult));
+			rootView.findViewById(R.id.ll_result_show).setVisibility(View.VISIBLE);
+			((TextView)rootView.findViewById(R.id.tv_result)).setText(
+					CalculateUtils.calculateZhiyeResult(mContext, data.getIntegerArrayListExtra(ThoughtReadingUtils.PointResult)));
 			break;
 
 		default:
 			break;
 		}
-	}
-	
-	private void calculateZhiyeResult(ArrayList<Integer> pointList){
-		if(pointList == null){
-			return;
-		}
-		rootView.findViewById(R.id.ll_result_show).setVisibility(View.VISIBLE);
-		String[] typeArray = mContext.getResources().getStringArray(R.array.zhiye_array);
-		int typePoint = 0;
-		StringBuilder resultBuilder = new StringBuilder();
-		for(int i = 0 ; i < typeArray.length; i ++){
-			for(int j = 0 ; j < Constants.ZhiyeIndex[i].length; j ++){
-				typePoint += pointList.get(Constants.ZhiyeIndex[i][j] - 1);
-			}
-			resultBuilder.append(typeArray[i]).append(typePoint).append("\n");
-			typePoint = 0;
-		}
-		((TextView)rootView.findViewById(R.id.tv_result)).setText(resultBuilder.toString());
 	}
 	
 	private void initPerfectInfoView(){

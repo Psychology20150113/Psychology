@@ -62,6 +62,11 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 //		getFragmentManager().beginTransaction().add(R.id.container, new SlideMainFragment()).commit();
 	}
 	
+	@Override
+	public void onRightTextClick() {
+		startActivity(new Intent(this, MineActivity.class));
+	}
+	
 	private void initData(){
 		dataFragment.add(new ChatIMFragment());
 //		dataFragment.add(new StyleTwoMainFragment());
@@ -76,6 +81,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	}
 	
 	private void initView() {
+		setRightText(R.string.mine);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		nameText = (TextView) findViewById(R.id.name_tv);
 		nameLayout = findViewById(R.id.name_ll);

@@ -111,6 +111,10 @@
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.MineActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
             android:name="com.dcy.psychology.FlowerGameChooseActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"

@@ -363,7 +363,7 @@ public class Utils {
 		}
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetSpecificUserList);
 		request.addProperty("pageIndex", pageIndex);
-		request.addProperty("pgeSize", Constants.PageCount);
+		request.addProperty("pageSize", Constants.PageCount);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new ArrayList<SpecificUserBean>();
@@ -393,7 +393,7 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
 	}
 	
-	public static BasicBean saveTestResult(String type, String testResult){
+	public static BasicBean saveTestResult(String type, String testResult, String allResult){
 		if(TextUtils.isEmpty(type) || TextUtils.isEmpty(testResult) || TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			return new BasicBean();
 		}
@@ -401,6 +401,7 @@ public class Utils {
 		request.addProperty("userPhone", MyApplication.myPhoneNum);
 		request.addProperty("testTypeName", type);
 		request.addProperty("testResult", testResult);
+		request.addProperty("allResult", allResult);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new BasicBean();

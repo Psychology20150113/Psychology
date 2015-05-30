@@ -284,5 +284,13 @@
 	<string name="qizhi_four">抑郁质</string>
 	
 	<string name="attention">关注</string>
+	<string name="attention_success">成功关注该心晴师</string>
 	<string name="reservation">预约</string>
+	<string name="match_test">匹配度测试</string>
+	<string name="mine">我的</string>
+	<string name="mine_info">我的信息</string>
+	<string name="mine_attention">我的关注</string>
+	<string name="mine_DNA">职业DNA</string>
+	<string name="Test_Hollend">霍兰德职业评测</string>
+	<string name="Test_Qizhi">气质评测</string>
 </resources>
