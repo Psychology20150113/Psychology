@@ -19,6 +19,7 @@ import com.dcy.psychology.util.Utils;
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private EditText accountET;
 	private EditText pwdET;
+	private String userRole;
 	
 	private class LoginTask extends AsyncTask<Void, Void, LoginBean>{
 		@Override
@@ -40,6 +41,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				mIntent.putExtra("login_success", true);
 				setResult(0, mIntent);
 				finish();
+				mShared.setUserRole(userRole);
+				MyApplication.myUserRole = userRole;
 			}
 		}
 	} 
@@ -78,6 +81,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_layout);
 		initView();
+		userRole = getIntent().getStringExtra(Constants.UserRole);
 	}
 	
 	private void initView(){

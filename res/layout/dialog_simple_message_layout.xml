@@ -9,7 +9,8 @@
         style="@style/text_black18_style"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:text="@string/warning_tips"/>
 	<ImageView 
 	    android:layout_width="match_parent"
 	    android:layout_height="1dp"
@@ -32,4 +33,26 @@
 	    android:textColor="@color/brown"
 	    android:text="@string/ok"
 	    android:gravity="center"/>
+	<LinearLayout 
+	    android:id="@+id/ll_two_buttons"
+	    android:layout_width="match_parent"
+	    android:layout_height="40dp"
+	    android:visibility="gone">
+	    <TextView 
+		    android:id="@+id/dialog_left_tv"
+		    android:layout_width="0dp"
+		    android:layout_weight="1"
+		    android:layout_height="match_parent"
+		    android:textColor="@color/green"
+		    android:text="@string/cancel"
+		    android:gravity="center"/>
+		<TextView 
+		    android:id="@+id/dialog_right_tv"
+		    android:layout_width="0dp"
+		    android:layout_weight="1"
+		    android:layout_height="match_parent"
+		    android:textColor="@color/brown"
+		    android:text="@string/ok"
+		    android:gravity="center"/>
+	</LinearLayout>
 </LinearLayout>

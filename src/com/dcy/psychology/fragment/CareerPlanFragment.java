@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ThoughtReadingActivity;
@@ -16,11 +17,13 @@ import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.model.IdAndName;
 import com.dcy.psychology.util.CalculateUtils;
 import com.dcy.psychology.util.Constants;
+import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.ThoughtReadingUtils;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
+import com.dcy.psychology.view.dialog.SimpleMessageDialog;
 import com.google.gson.reflect.TypeToken;
 
 import android.app.Fragment;
@@ -77,12 +80,15 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	private Map<String, String> infoMap = new HashMap<String, String>();
 	private View rootView;
 	private CustomProgressDialog mLoadingDialog;
-	private final int RequestCode_Test = 100;
+	private final int RequestCode_Test_Hollend = 100;
+	private final int RequestCode_Test_Qizhi = 101;
+	private final int RequestCode_Login = 102;
 	private int pageIndex = 1;
 	private PullRefreshListView mListView;
 	private SpecialUserListAdapter mAdapter;
 	private ArrayList<SpecificUserBean> mDataList = new ArrayList<SpecificUserBean>();
 	private boolean isRefresh = false;
+	private InfoShared mShared;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -92,24 +98,34 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mProvinceList = DbManager.getProvince();
 		mLoadingDialog = new CustomProgressDialog(mContext);
 		mAdapter = new SpecialUserListAdapter(mContext, mDataList);
-		mLoadingDialog.show();
-		new GetSpecialUserTask().execute();
+		mShared = new InfoShared(mContext);
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.fragment_career_plan_layout, null);
-//		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
-//			view.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
-//			view.findViewById(R.id.tv_student_entry).setOnClickListener(this);
-//			view.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
-//		}
 		mListView = (PullRefreshListView) rootView.findViewById(R.id.pull_refresh_lv);
 		mListView.setOnScrollListener(mScrollListener);
 		mListView.setonRefreshListener(mRefreshListener);
 		mListView.setAdapter(mAdapter);
 		initPerfectInfoView();
+		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+			rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
+			rootView.findViewById(R.id.tv_student_entry).setOnClickListener(this);
+			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
+		} else {
+			if(mShared.hasPrefectInfo()){
+				rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
+				if(MyApplication.myUserRole.equals(Constants.RoleTeacher)){
+					rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
+				} else {
+					mLoadingDialog.show();
+					new GetSpecialUserTask().execute();
+					mListView.setVisibility(View.VISIBLE);
+				}
+			}
+		}
 		return rootView;
 	}
 	
@@ -151,9 +167,14 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_student_entry:
-			
+			Intent mStudentIntent = new Intent(mContext, LoginActivity.class);
+			mStudentIntent.putExtra(Constants.UserRole, Constants.RoleUser);
+			startActivityForResult(mStudentIntent, RequestCode_Login);
 			break;
 		case R.id.tv_teacher_entry:
+			Intent mTeacherIntent = new Intent(mContext, LoginActivity.class);
+			mTeacherIntent.putExtra(Constants.UserRole, Constants.RoleTeacher);
+			startActivityForResult(mTeacherIntent, RequestCode_Login);
 			break;
 		case R.id.btn_prefect:
 			if(!checkInput()){
@@ -164,9 +185,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 					sexGroup.getCheckedRadioButtonId())).getText().toString());
 			infoMap.put("userAge", ageEt.getText().toString());
 			infoMap.put("userEmail", mailEt.getText().toString());
-			Log.i("mylog","xingzuo : " + mXingzuoSpinner.getSelectedItem().toString());
 			infoMap.put("constellation", mXingzuoSpinner.getSelectedItem().toString());
-			Log.i("mylog", "shengfen : " + mProvinceSpinner.getSelectedItem().toString());
 			infoMap.put("homeTownP", mProvinceSpinner.getSelectedItem().toString());
 			infoMap.put("homeTownC", mCitySpinner.getSelectedItem().toString());
 			infoMap.put("university", mUniversitySpinner.getSelectedItem().toString());
@@ -217,13 +236,28 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 				mLoadingDialog.dismiss();
 			}
 			if(result.isResult()){
-				GrowQuestionBean beanList = MyApplication.mGson.fromJson(
-						Utils.loadRawString(mContext, R.raw.test_qizhi), GrowQuestionBean.class);
-				Intent mIntent = new Intent(mContext, ThoughtReadingActivity.class);
-				mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, beanList);
-				mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, "DNA");
-				mIntent.putExtra(ThoughtReadingUtils.DNATest, true);
-				startActivityForResult(mIntent, RequestCode_Test);
+				mShared.setIsPrefectInfo(true);
+				rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
+				if(MyApplication.myUserRole.equals(Constants.RoleTeacher)){
+					rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
+				} else {
+					mListView.setVisibility(View.VISIBLE);
+					new GetSpecialUserTask().execute();
+				}
+				SimpleMessageDialog hollendDialog = new SimpleMessageDialog(mContext, getString(R.string.go_Test_Hollend));
+				hollendDialog.setSureClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						GrowQuestionBean beanList = MyApplication.mGson.fromJson(
+								Utils.loadRawString(mContext, R.raw.test_zhiye), GrowQuestionBean.class);
+						Intent mIntent = new Intent(mContext, ThoughtReadingActivity.class);
+						mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, beanList);
+						mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, getString(R.string.Test_Hollend));
+						mIntent.putExtra(ThoughtReadingUtils.DNATest, true);
+						startActivityForResult(mIntent, RequestCode_Test_Hollend);
+					}
+				});
+				hollendDialog.show();
 			} else {
 				Toast.makeText(mContext, result.getReason(), Toast.LENGTH_SHORT).show();
 			}
@@ -258,15 +292,55 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) {
-		case RequestCode_Test:
+		case RequestCode_Login:
+			if(data == null){
+				return;
+			} else {
+				rootView.findViewById(R.id.ll_entry).setVisibility(View.GONE);
+			}
+			break;
+		case RequestCode_Test_Hollend:
 			if(data == null){
 				return;
 			}
-			rootView.findViewById(R.id.ll_result_show).setVisibility(View.VISIBLE);
-			((TextView)rootView.findViewById(R.id.tv_result)).setText(
-					CalculateUtils.calculateZhiyeResult(mContext, data.getIntegerArrayListExtra(ThoughtReadingUtils.PointResult)));
+			HashMap<String, String> resultMap = CalculateUtils.calculateZhiyeResult(mContext, 
+					data.getIntegerArrayListExtra(ThoughtReadingUtils.PointResult));
+			if(resultMap == null){
+				return;
+			}
+			SimpleMessageDialog hollendShowDialog = new SimpleMessageDialog(mContext, getString(R.string.Test_Hollend), 
+					resultMap.get("showResult") + "\n" + resultMap.get("typeResult") + "\n" + getString(R.string.go_Test_Qizhi), 
+					getString(R.string.cancel), getString(R.string.ok));
+			hollendShowDialog.setSureClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					GrowQuestionBean beanList = MyApplication.mGson.fromJson(
+							Utils.loadRawString(mContext, R.raw.test_qizhi), GrowQuestionBean.class);
+					Intent mIntent = new Intent(mContext, ThoughtReadingActivity.class);
+					mIntent.putExtra(ThoughtReadingUtils.GrowBeanData, beanList);
+					mIntent.putExtra(ThoughtReadingUtils.ThemeTitle, getString(R.string.Test_Qizhi));
+					mIntent.putExtra(ThoughtReadingUtils.DNATest, true);
+					startActivityForResult(mIntent, RequestCode_Test_Qizhi);
+				}
+			});
+			hollendShowDialog.show();
+			new CalculateUtils.SaveTestResultTask(mContext, resultMap).execute();
+			mShared.setHollendResult(resultMap.get("typeResult"), resultMap.get("pointResult"));
 			break;
-
+		case RequestCode_Test_Qizhi:
+			if(data == null){
+				return;
+			}
+			HashMap<String, String> resultQiZhiMap = CalculateUtils.calculateQizhiResult(mContext, 
+					data.getIntegerArrayListExtra(ThoughtReadingUtils.PointResult));
+			if(resultQiZhiMap == null){
+				return;
+			}
+			new SimpleMessageDialog(mContext, getString(R.string.Test_Qizhi), 
+					resultQiZhiMap.get("showResult") + "\n" + resultQiZhiMap.get("typeResult")).show();
+			mShared.setQizhiResult(resultQiZhiMap.get("typeResult"), resultQiZhiMap.get("pointResult"));
+			new CalculateUtils.SaveTestResultTask(mContext, resultQiZhiMap).execute();
+			break;
 		default:
 			break;
 		}

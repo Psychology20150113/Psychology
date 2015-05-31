@@ -18,6 +18,10 @@ public class InfoShared {
 	private final String UserRole = "info_role";
 	private final String UserPhoneNum = "info_phone";
 	private final String PrefectInfo = "prefect_info";
+	private final String TestHollendResult = "hollend_result";
+	private final String TestHollendAllResult = "hollend_all_result";
+	private final String TestQiZhiResult = "qizhi_result";
+	private final String TestQiZhiAllResult = "qizhi_all_result";
 	
 	public String ThemeFormat = "Theme%s_%d";
 	
@@ -82,6 +86,23 @@ public class InfoShared {
 		return mShared.getBoolean(PrefectInfo, false);
 	}
 	
+	public void setHollendResult(String hollendResult, String allHollendResult){
+		mShared.edit().putString(TestHollendResult, hollendResult)
+			.putString(TestHollendAllResult, allHollendResult).commit();
+	}
+	
+	public String getHollendResult(){
+		return mShared.getString(TestHollendResult, "");
+	}
+	
+	public void setQizhiResult(String hollendResult, String allHollendResult){
+		mShared.edit().putString(TestQiZhiResult, hollendResult)
+			.putString(TestQiZhiAllResult, allHollendResult).commit();
+	}
+	
+	public String getQizhiResult(){
+		return mShared.getString(TestQiZhiResult, "");
+	}
 	public void putInt(String key , int value){
 		mShared.edit().putInt(key, value).commit();
 	}
@@ -110,8 +131,10 @@ public class InfoShared {
 	}
 	
 	public void clearInfo(){
+		boolean isPrefectInfo = hasPrefectInfo();
 		String version = getAppVersion();
 		mShared.edit().clear().commit();
-		mShared.edit().putString(AppVersion, version).commit();
+		mShared.edit().putString(AppVersion, version)
+			.putBoolean(PrefectInfo, isPrefectInfo).commit();
 	}
 }

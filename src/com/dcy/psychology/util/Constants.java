@@ -66,8 +66,9 @@ public interface Constants {
 	public static final String ClassCategoryId = "classCategoryId";
 	public static final String ClassCategoryName = "classCategoryName";
 	
+	public static final String UserRole = "user_role";
 	public static final String RoleUser = "USER";
-	public static final String RoleDoctor = "DOCTOR";
+	public static final String RoleTeacher = "TEACHER";
 	
 	public static final String ListType = "listType";
 	public static final String PicType = "type_pic";

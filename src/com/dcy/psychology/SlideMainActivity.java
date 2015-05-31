@@ -14,6 +14,7 @@ import com.dcy.psychology.fragment.StyleTwoMainFragment;
 import com.dcy.psychology.fragment.TabCureFragment;
 import com.dcy.psychology.fragment.TabGrowthFragment;
 import com.dcy.psychology.fragment.TabMineFragment;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
@@ -21,7 +22,10 @@ import com.umeng.analytics.MobclickAgent;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -58,6 +62,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		mTabNameArray = mResources.getStringArray(R.array.tab_name);
 		initData();
 		initView();
+		registerReceiver(mLoginReceiver, new IntentFilter(Constants.ReceiverAction_LoginSuccess));
 //		getFragmentManager().beginTransaction().add(R.id.container, new StyleTwoMainFragment()).commit();
 //		getFragmentManager().beginTransaction().add(R.id.container, new SlideMainFragment()).commit();
 	}
@@ -65,6 +70,12 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	@Override
 	public void onRightTextClick() {
 		startActivity(new Intent(this, MineActivity.class));
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unregisterReceiver(mLoginReceiver);
 	}
 	
 	private void initData(){
@@ -91,14 +102,13 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		ListView slideView = (ListView) findViewById(R.id.drawer_lv);
 		slideView.setAdapter(new SlideAdapter(this));
 		slideView.setOnItemClickListener(this);
-		setLeftView(R.drawable.ic_launcher);
+		setLeftView(R.drawable.icon_slide);
 		//setRightView(R.drawable.ic_launcher);
 		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			nameLayout.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
 			loginLayout.setVisibility(View.GONE);
 		}
-		
 		mViewPager = (ViewPager) findViewById(R.id.main_vp);
 		mViewPager.setAdapter(new Utils.MainTabAdapter(getFragmentManager(), dataFragment));
 		mViewPager.setOnPageChangeListener(mPageListener);
@@ -106,6 +116,17 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		mTabRadio.setOnCheckedChangeListener(mCheckedChangeListener);
 		mViewPager.setCurrentItem(1);
 	}
+	
+	private BroadcastReceiver mLoginReceiver = new BroadcastReceiver(){
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			if(Constants.ReceiverAction_LoginSuccess.equals(intent.getAction())){
+				nameLayout.setVisibility(View.VISIBLE);
+				nameText.setText(MyApplication.myPhoneNum);
+				loginLayout.setVisibility(View.GONE);
+			}
+		}
+	};
 	
 	private OnCheckedChangeListener mCheckedChangeListener = new OnCheckedChangeListener() {
 		@Override

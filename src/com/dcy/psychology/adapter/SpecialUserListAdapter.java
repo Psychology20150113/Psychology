@@ -127,7 +127,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			if(result == null){
 				return;
 			}
-			new ShareMatchDialog(mContext, result.get(0).MatchResult).show();
+			new ShareMatchDialog(mContext, result.get(0)).show();
 		}
 	}
 	
