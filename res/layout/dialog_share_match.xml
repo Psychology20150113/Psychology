@@ -3,12 +3,11 @@
     android:layout_width="300dp"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
     android:background="@drawable/bg_dialog_simple_shape">
     <TextView 
         style="@style/text_black20_style"
-        android:text="@string/match_test"
-        android:layout_gravity="center_horizontal"/>
+        android:text="@string/match_test"/>
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -39,6 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"/>
+    <ImageView 
+        android:id="@+id/iv_share_circle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/icon_share_circle"/>
     <TextView 
 	    android:id="@+id/dialog_ok_tv"
 	    android:layout_width="match_parent"

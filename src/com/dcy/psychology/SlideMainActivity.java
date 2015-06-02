@@ -11,6 +11,7 @@ import com.dcy.psychology.fragment.ChatIMFragment;
 import com.dcy.psychology.fragment.SlideMainFragment;
 import com.dcy.psychology.fragment.StyleTwoBoxFragment;
 import com.dcy.psychology.fragment.StyleTwoMainFragment;
+import com.dcy.psychology.fragment.TabChatFragment;
 import com.dcy.psychology.fragment.TabCureFragment;
 import com.dcy.psychology.fragment.TabGrowthFragment;
 import com.dcy.psychology.fragment.TabMineFragment;
@@ -79,7 +80,8 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	}
 	
 	private void initData(){
-		dataFragment.add(new ChatIMFragment());
+//		dataFragment.add(new ChatIMFragment());
+		dataFragment.add(new TabChatFragment());
 //		dataFragment.add(new StyleTwoMainFragment());
 		dataFragment.add(new CareerPlanFragment());
 		dataFragment.add(new StyleTwoBoxFragment());

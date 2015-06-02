@@ -25,6 +25,7 @@ import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.QuestionThemeChooseActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.SeaGameActivity;
+import com.dcy.psychology.StudentGrowActivity;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.gsonbean.ArticleBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
@@ -96,7 +97,7 @@ public class StyleTwoBoxFragment extends Fragment implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.game_one_tv:
 			MobclickAgent.onEvent(mContext, "color_fish");
-			mIntent = new Intent(mContext, SeaGameActivity.class);
+			mIntent = new Intent(mContext, StudentGrowActivity.class);
 			break;
 		case R.id.game_two_tv:
 			MobclickAgent.onEvent(mContext, "mind_reading");

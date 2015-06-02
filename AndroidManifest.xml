@@ -225,6 +225,12 @@
             android:theme="@style/Theme.UMDialog"
             android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
+        <activity 
+            android:name="com.siyanhui.mechat.application.wxapi.WXEntryActivity" 
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" 
+            android:screenOrientation="portrait" 
+            android:configChanges="keyboardHidden|orientation|screenSize" 
+            android:exported="true"/>
         <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"

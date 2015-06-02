@@ -35,6 +35,8 @@ public interface Constants {
 	public static final String GetFollowSpecificUser = "GetFollowSpecificUser";
 	public static final String SaveTestResult = "SaveTestResult";
 	public static final String GetMatchResult = "GetSpecificUserMatch";
+	public static final String RemoveSpecificUser = "RemoveSpecificUser";
+	public static final String GetUserInfo = "GetUserInfo";
 	
 	public static final String Type_Zhiye_Test = "HollendTest";
 	public static final String Type_Qiazhi_Test = "TemperamentTest";

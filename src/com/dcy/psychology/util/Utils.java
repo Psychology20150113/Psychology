@@ -43,6 +43,7 @@ import com.dcy.psychology.gsonbean.LoginBean;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
+import com.dcy.psychology.gsonbean.UserInfoBean;
 import com.dcy.psychology.model.UserInfoModel;
 import com.dcy.psychology.view.QuestionView;
 import com.google.gson.Gson;
@@ -362,6 +363,7 @@ public class Utils {
 			return new ArrayList<SpecificUserBean>();
 		}
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetSpecificUserList);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
 		request.addProperty("pageIndex", pageIndex);
 		request.addProperty("pageSize", Constants.PageCount);
 		SoapObject result = getResultFromRequest(request);
@@ -378,6 +380,25 @@ public class Utils {
 		if(result == null)
 			return new BasicBean();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+	}
+	
+	public static BasicBean cancelFollowSpecificUser(long specificUserId){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.RemoveSpecificUser);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("specificUserID", String.valueOf(specificUserId));
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+	}
+	
+	public static UserInfoBean getUserInfo(){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.GetUserInfo);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new UserInfoBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), UserInfoBean.class);
 	}
 	
 	public static ArrayList<SpecificUserBean> getFollowSpecificUserList(){

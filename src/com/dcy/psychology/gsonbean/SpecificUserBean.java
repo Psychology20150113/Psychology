@@ -9,5 +9,6 @@ public class SpecificUserBean {
 	public String SpecificUserPhone;
 	public String SpecificUserHollendTest;
 	public String SpecificUserTemperamentTest;
+	public boolean IsFollow;
 	public float MatchResult;
 }

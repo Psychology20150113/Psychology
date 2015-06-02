@@ -109,6 +109,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mListView.setOnScrollListener(mScrollListener);
 		mListView.setonRefreshListener(mRefreshListener);
 		mListView.setAdapter(mAdapter);
+		mListView.setEmptyView(rootView.findViewById(R.id.tv_empty_data));
 		initPerfectInfoView();
 		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
@@ -238,7 +239,8 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			if(result.isResult()){
 				mShared.setIsPrefectInfo(true);
 				rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
-				if(MyApplication.myUserRole.equals(Constants.RoleTeacher)){
+				if(!TextUtils.isEmpty(MyApplication.myUserRole) && 
+						MyApplication.myUserRole.equals(Constants.RoleTeacher)){
 					rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
 				} else {
 					mListView.setVisibility(View.VISIBLE);
@@ -374,7 +376,8 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 				android.R.layout.simple_spinner_dropdown_item, mResources.getStringArray(R.array.diploma_array)));
 		mStatusSpinner = (Spinner) rootView.findViewById(R.id.sp_state);
 		mStatusSpinner.setAdapter(new ArrayAdapter<String>(mContext, 
-				android.R.layout.simple_spinner_dropdown_item, mResources.getStringArray(R.array.state_student_array)));
+				android.R.layout.simple_spinner_dropdown_item, mResources.getStringArray(
+						Constants.RoleTeacher.equals(MyApplication.myUserRole) ? R.array.state_teacher_array : R.array.state_student_array)));
 		mSchoolCitySpinner = (Spinner) rootView.findViewById(R.id.sp_school_province);
 		mSchoolCitySpinner.setAdapter(mProvinceAdapter);
 		mSchoolCitySpinner.setOnItemSelectedListener(this);

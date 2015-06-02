@@ -14,7 +14,7 @@ import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 
 public class CalculateUtils {
-	public static String[] Code_Zhiye = {"I", "A", "S", "E", "C", "B"};
+	public static String[] Code_Zhiye = {"C", "R", "I", "E", "S", "A"};
 	public static final String Type_Hollend = "HollendTest";
 	public static final String Type_QiZhi = "TemperamentTest";
 			

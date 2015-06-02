@@ -64,9 +64,9 @@
 	<string name="slide_point">我的积分</string>
 	<string name="slide_account">我的账户</string>
 	
-	<string name="tab_one">倾心一刻</string>
+	<string name="tab_one">职业点拨</string>
 	<string name="tab_two">职业规划</string>
-	<string name="tab_mine">百宝箱</string>
+	<string name="tab_mine">心声宝典</string>
 	
 	<string name="login">登录</string>
 	<string name="register">注册</string>
@@ -284,7 +284,9 @@
 	<string name="qizhi_four">抑郁质</string>
 	
 	<string name="attention">关注</string>
+	<string name="cancel_attention">取消关注</string>
 	<string name="attention_success">成功关注该心晴师</string>
+	<string name="cancel_attention_success">成功取消关注该心晴师</string>
 	<string name="reservation">预约</string>
 	<string name="match_test">匹配度测试</string>
 	<string name="mine">我的</string>
@@ -298,4 +300,8 @@
 	<string name="Upload_Result_Success">上传测试成功</string>
 	<string name="Test_retry">重做</string>
 	<string name="warning_tips">温馨提示</string>
+	<string name="chat">聊天</string>
+	<string name="discuss">讨论</string>
+	<string name="share_format">我和%s的匹配度达到了</string>
+	<string name="network_error">无法获取数据，请检查网络</string>
 </resources>

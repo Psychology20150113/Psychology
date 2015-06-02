@@ -17,11 +17,11 @@
 	        <ImageView 
 	            android:layout_width="50dp"
 	            android:layout_height="50dp"
-	            android:src="@drawable/icon_brush"/>
+	            android:src="@drawable/icon_platform_one"/>
 	        <TextView 
 	            style="@style/text_black20_style"
 	            android:layout_marginTop="5dp"
-	            android:text="@string/game_one"/>
+	            android:text="@string/platform_one"/>
 	    </LinearLayout>
 	    <ImageView 
 	        android:layout_width="1px"

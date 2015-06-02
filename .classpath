@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="SmackIM"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="MPChartLib"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
