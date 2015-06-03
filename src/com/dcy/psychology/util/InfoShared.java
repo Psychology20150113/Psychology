@@ -18,6 +18,7 @@ public class InfoShared {
 	private final String UserRole = "info_role";
 	private final String UserPhoneNum = "info_phone";
 	private final String PrefectInfo = "prefect_info";
+	private final String TestHollendData = "hollend_data";
 	private final String TestHollendResult = "hollend_result";
 	private final String TestHollendAllResult = "hollend_all_result";
 	private final String TestQiZhiResult = "qizhi_result";
@@ -86,13 +87,17 @@ public class InfoShared {
 		return mShared.getBoolean(PrefectInfo, false);
 	}
 	
-	public void setHollendResult(String hollendResult, String allHollendResult){
-		mShared.edit().putString(TestHollendResult, hollendResult)
+	public void setHollendResult(String hollendData, String hollendResult, String allHollendResult){
+		mShared.edit().putString(TestHollendData, hollendData).putString(TestHollendResult, hollendResult)
 			.putString(TestHollendAllResult, allHollendResult).commit();
 	}
 	
 	public String getHollendResult(){
 		return mShared.getString(TestHollendResult, "");
+	}
+	
+	public String getHollendData(){
+		return mShared.getString(TestHollendData, "");
 	}
 	
 	public void setQizhiResult(String hollendResult, String allHollendResult){
@@ -121,20 +126,20 @@ public class InfoShared {
 		new ChatLoginTask(mContext).execute(account, pwd);
 	}
 	
-	public void savePhoneInfo(String phoneNum, String pwd, String role){
+	public void savePhoneInfo(String phoneNum, String pwd, String role, boolean isPrefectInfo){
 		setPhoneNum(phoneNum);
 		setUserPwd(pwd);
 		setUserRole(role);
+		setIsPrefectInfo(isPrefectInfo);
 		MyApplication.myPhoneNum = phoneNum;
 		MyApplication.myPwd = pwd;
 		MyApplication.myUserRole = role;
+		MyApplication.hasPrefectInfo = isPrefectInfo;
 	}
 	
 	public void clearInfo(){
-		boolean isPrefectInfo = hasPrefectInfo();
 		String version = getAppVersion();
 		mShared.edit().clear().commit();
-		mShared.edit().putString(AppVersion, version)
-			.putBoolean(PrefectInfo, isPrefectInfo).commit();
+		mShared.edit().putString(AppVersion, version).commit();
 	}
 }

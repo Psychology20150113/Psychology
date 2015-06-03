@@ -71,7 +71,7 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 		protected void onPostExecute(BasicBean result) {
 			super.onPostExecute(result);
 			if(result.isResult()){
-				mShared.savePhoneInfo(phoneNum, pwd, Constants.RoleUser);
+				mShared.savePhoneInfo(phoneNum, pwd, Constants.RoleUser, false);
 				new ChatRegisterTask().execute(phoneNum, pwd);
 			} else {
 				hideCustomDialog();

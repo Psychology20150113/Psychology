@@ -11,6 +11,7 @@ import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.ThoughtReadingUtils;
 import com.dcy.psychology.util.Utils;
+import com.dcy.psychology.view.dialog.ShowHolledDialog;
 import com.dcy.psychology.view.dialog.SimpleMessageDialog;
 import com.google.gson.reflect.TypeToken;
 
@@ -91,15 +92,27 @@ public class ShowListActivity extends BaseActivity implements OnItemClickListene
 			startActivity(mIntent);
 		}else if(Constants.DNAType.equals(type)){
 			if(!TextUtils.isEmpty(position == 0 ? mShared.getHollendResult() : mShared.getQizhiResult())){
-				SimpleMessageDialog dialog = new SimpleMessageDialog(this, getString(position == 0 ? R.string.Test_Hollend : R.string.Test_Qizhi), 
-						position == 0 ? mShared.getHollendResult() : mShared.getQizhiResult(), getString(R.string.ok), getString(R.string.Test_retry));
-				dialog.setSureClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						gotoDnaTest(position);
-					}
-				});
-				dialog.show();
+				if(position == 0){
+					ShowHolledDialog hollendDialog = new ShowHolledDialog(this, mShared.getHollendData(), mShared.getHollendResult());
+					hollendDialog.setButtonString(getString(R.string.ok), getString(R.string.Test_retry));
+					hollendDialog.setSureClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							gotoDnaTest(position);
+						}
+					});
+					hollendDialog.show();
+				} else {
+					SimpleMessageDialog dialog = new SimpleMessageDialog(this, getString(R.string.Test_Qizhi), 
+							mShared.getQizhiResult(), getString(R.string.ok), getString(R.string.Test_retry));
+					dialog.setSureClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							gotoDnaTest(position);
+						}
+					});
+					dialog.show();
+				}
 			} else {
 				gotoDnaTest(position);
 			}
@@ -130,10 +143,11 @@ public class ShowListActivity extends BaseActivity implements OnItemClickListene
 			if(resultMap == null){
 				return;
 			}
-			new SimpleMessageDialog(this, getString(R.string.Test_Hollend), 
-					resultMap.get("showResult") + "\n" + resultMap.get("typeResult")).show();
+			new ShowHolledDialog(this, resultMap.get("dataResult"), resultMap.get("typeResult")).show();
+//			new SimpleMessageDialog(this, getString(R.string.Test_Hollend), 
+//					resultMap.get("showResult") + "\n" + resultMap.get("typeResult")).show();
 			new CalculateUtils.SaveTestResultTask(this, resultMap).execute();
-			mShared.setHollendResult(resultMap.get("typeResult"), resultMap.get("pointResult"));
+			mShared.setHollendResult(resultMap.get("dataResult"), resultMap.get("typeResult"), resultMap.get("pointResult"));
 			break;
 		case RequestCode_Test_Qizhi:
 			if(data == null){

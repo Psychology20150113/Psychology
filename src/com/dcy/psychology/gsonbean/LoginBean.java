@@ -4,6 +4,7 @@ public class LoginBean {
 	private String Result;
 	private String Reason;
 	private String LoginState;
+	private boolean IsPrefectUserInfo;
 	
 	public String getResult() {
 		return Result;
@@ -22,5 +23,11 @@ public class LoginBean {
 	}
 	public void setLoginState(String loginState) {
 		LoginState = loginState;
+	}
+	public boolean isIsPrefectUserInfo() {
+		return IsPrefectUserInfo;
+	}
+	public void setIsPrefectUserInfo(boolean isPrefectUserInfo) {
+		IsPrefectUserInfo = isPrefectUserInfo;
 	}
 }

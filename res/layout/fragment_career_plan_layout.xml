@@ -3,9 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <include 
-        android:id="@+id/ll_complete_info"
-        layout="@layout/layout_perfect_info"/>
     <com.dcy.psychology.view.PullRefreshListView 
 	    android:id="@+id/pull_refresh_lv"
 	    android:layout_width="match_parent"
@@ -15,6 +12,9 @@
 	    android:visibility="gone"
 	    android:divider="@null"
 	    android:background="#ffffff"/>
+    <include 
+        android:id="@+id/ll_complete_info"
+        layout="@layout/layout_perfect_info"/>
     <TextView 
         android:id="@+id/tv_empty_data"
         android:layout_width="match_parent"

@@ -35,14 +35,14 @@ public class CalculateUtils {
 		}
 		String[] typeArray = mContext.getResources().getStringArray(R.array.zhiye_array);
 		int typePoint = 0;
-		StringBuilder resultBuilder = new StringBuilder();
+		StringBuilder dataBuilder = new StringBuilder();
 		ArrayList<PointItem> typeList = new ArrayList<CalculateUtils.PointItem>();
 		for(int i = 0 ; i < typeArray.length; i ++){
 			for(int j = 0 ; j < Constants.ZhiyeIndex[i].length; j ++){
 				typePoint += pointList.get(Constants.ZhiyeIndex[i][j] - 1);
 			}
 			typeList.add(new PointItem(typeArray[i], Code_Zhiye[i], typePoint));
-			resultBuilder.append(typeArray[i]).append(typePoint).append("\n");
+			dataBuilder.append(typePoint).append(",");
 			typePoint = 0;
 		}
 		StringBuilder pointBuilder = new StringBuilder();
@@ -67,7 +67,7 @@ public class CalculateUtils {
 		}
 		HashMap<String, String> resultMap = new HashMap<String, String>();
 		resultMap.put("testType", Type_Hollend);
-		resultMap.put("showResult", resultBuilder.substring(0, resultBuilder.length() - 1));
+		resultMap.put("dataResult", dataBuilder.substring(0, dataBuilder.length() - 1));
 		resultMap.put("pointResult", pointBuilder.substring(0, pointBuilder.length() - 1));
 		resultMap.put("typeResult", typeBuilder.toString());
 		return resultMap;

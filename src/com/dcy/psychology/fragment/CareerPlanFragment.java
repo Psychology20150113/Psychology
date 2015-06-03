@@ -23,6 +23,7 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
+import com.dcy.psychology.view.dialog.ShowHolledDialog;
 import com.dcy.psychology.view.dialog.SimpleMessageDialog;
 import com.google.gson.reflect.TypeToken;
 
@@ -116,10 +117,11 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			rootView.findViewById(R.id.tv_student_entry).setOnClickListener(this);
 			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
 		} else {
-			if(mShared.hasPrefectInfo()){
+			if(MyApplication.hasPrefectInfo){
 				rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
 				if(MyApplication.myUserRole.equals(Constants.RoleTeacher)){
 					rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
+					mListView.setVisibility(View.GONE);
 				} else {
 					mLoadingDialog.show();
 					new GetSpecialUserTask().execute();
@@ -310,10 +312,13 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			if(resultMap == null){
 				return;
 			}
-			SimpleMessageDialog hollendShowDialog = new SimpleMessageDialog(mContext, getString(R.string.Test_Hollend), 
-					resultMap.get("showResult") + "\n" + resultMap.get("typeResult") + "\n" + getString(R.string.go_Test_Qizhi), 
-					getString(R.string.cancel), getString(R.string.ok));
-			hollendShowDialog.setSureClickListener(new OnClickListener() {
+			ShowHolledDialog hollendDialog = new ShowHolledDialog(mContext, resultMap.get("dataResult"), resultMap.get("typeResult") + 
+					"\n" + getString(R.string.go_Test_Qizhi));
+			hollendDialog.setButtonString(getString(R.string.cancel), getString(R.string.ok));
+//			SimpleMessageDialog hollendShowDialog = new SimpleMessageDialog(mContext, getString(R.string.Test_Hollend), 
+//					resultMap.get("showResult") + "\n" + resultMap.get("typeResult") + "\n" + getString(R.string.go_Test_Qizhi), 
+//					getString(R.string.cancel), getString(R.string.ok));
+			hollendDialog.setSureClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					GrowQuestionBean beanList = MyApplication.mGson.fromJson(
@@ -325,9 +330,9 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 					startActivityForResult(mIntent, RequestCode_Test_Qizhi);
 				}
 			});
-			hollendShowDialog.show();
+			hollendDialog.show();
 			new CalculateUtils.SaveTestResultTask(mContext, resultMap).execute();
-			mShared.setHollendResult(resultMap.get("typeResult"), resultMap.get("pointResult"));
+			mShared.setHollendResult(resultMap.get("dataResult"), resultMap.get("typeResult"), resultMap.get("pointResult"));
 			break;
 		case RequestCode_Test_Qizhi:
 			if(data == null){

@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean.AnswerBean;
@@ -62,10 +63,10 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 		mResources = getResources();
 		Intent mIntent = getIntent();
 		themeTitle = mIntent.getStringExtra(ThoughtReadingUtils.ThemeTitle);
+		isDNATest = mIntent.getBooleanExtra(ThoughtReadingUtils.DNATest, false);
 		initView();
 		gsonbean = (GrowQuestionBean) mIntent.getSerializableExtra(ThoughtReadingUtils.GrowBeanData);
 		if(gsonbean != null){
-			isDNATest = mIntent.getBooleanExtra(ThoughtReadingUtils.DNATest, false);
 			getQuestionList();
 			updateQuestionList();
 			if(isDNATest){
@@ -211,6 +212,13 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 			updateView();
 			break;
 		case R.id.button_right:
+			if(isDNATest){
+				QuestionView currentView = mQuestionViewList.get(mCurrentPage);
+				if(!currentView.hasChooseAnswer()){
+					Toast.makeText(this, R.string.please_choose, Toast.LENGTH_SHORT).show();
+					return;
+				}
+			}
 			if(mCurrentPage == mQuestionViewList.size() - 1){
 				if(isThoughtReading){
 					Intent mIntent = new Intent(this, ThoughtReadingResultActivity.class);
@@ -260,6 +268,13 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 			updateView();
 			break;
 		case R.id.button_alone:
+			if(isDNATest){
+				QuestionView currentView = mQuestionViewList.get(mCurrentPage);
+				if(!currentView.hasChooseAnswer()){
+					Toast.makeText(this, R.string.please_choose, Toast.LENGTH_SHORT).show();
+					return;
+				}
+			}
 			mCurrentPage++;
 			updateView();
 			break;

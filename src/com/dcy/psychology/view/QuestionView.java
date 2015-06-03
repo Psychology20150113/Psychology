@@ -134,6 +134,14 @@ public class QuestionView extends RelativeLayout implements
 		return null;
 	}
 	
+	public boolean hasChooseAnswer(){
+		RadioGroup radioGroup = (RadioGroup) findViewWithTag(TAG_SINGLE);
+		if(radioGroup == null){
+			return false;
+		}
+		return radioGroup.getCheckedRadioButtonId() != -1;
+	}
+	
 	@Override
 	public void onCheckedChanged(CompoundButton arg0, boolean checked) {
 		Log.i("mylog", "ischeck" + checked);

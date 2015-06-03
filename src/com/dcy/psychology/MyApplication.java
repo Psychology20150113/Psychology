@@ -23,6 +23,7 @@ public class MyApplication extends Application{
 	
 	public static String myUserName;
 	public static String myPhoneNum;
+	public static boolean hasPrefectInfo;
 	public static String myPwd;
 	public static String myUserRole;
 	public static String myNick;
@@ -51,6 +52,7 @@ public class MyApplication extends Application{
 		myPwd = mShared.getUserPwd();
 		myNick = mShared.getUserNick();
 		myUserRole = mShared.getUserRole();
+		hasPrefectInfo = mShared.hasPrefectInfo();
 	}
 	
 }

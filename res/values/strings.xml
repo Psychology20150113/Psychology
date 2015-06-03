@@ -304,4 +304,5 @@
 	<string name="discuss">讨论</string>
 	<string name="share_format">我和%s的匹配度达到了</string>
 	<string name="network_error">无法获取数据，请检查网络</string>
+	<string name="please_choose">请选择</string>
 </resources>
