@@ -3,6 +3,7 @@ package com.dcy.psychology.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dcy.psychology.PersonalInfoActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.util.AsyncImageCache;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.view.dialog.ShareMatchDialog;
@@ -65,12 +68,13 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			mHolder.headerIv = (ImageView) convertView.findViewById(R.id.iv_header);
 			mHolder.nameTv = (TextView) convertView.findViewById(R.id.tv_item_name);
 			mHolder.achieveTv = (TextView) convertView.findViewById(R.id.tv_item_achieve);
-			mHolder.speakTv = (TextView) convertView.findViewById(R.id.tv_item_speak);
 			mHolder.attentionTv = (TextView) convertView.findViewById(R.id.tv_item_attention);
-			mHolder.testTv = (TextView) convertView.findViewById(R.id.tv_item_test);
+			mHolder.matchTv = (TextView) convertView.findViewById(R.id.tv_item_match);
+			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_user_info);
+			mHolder.infoLayout.setOnClickListener(lookInfoListener);
 			if(canOpration){
 				mHolder.attentionTv.setOnClickListener(this);
-				mHolder.testTv.setOnClickListener(this);
+				mHolder.matchTv.setOnClickListener(this);
 			} else {
 				convertView.findViewById(R.id.ll_item_opration).setVisibility(View.GONE);
 			}
@@ -83,11 +87,11 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 				new AsyncImageCache.NetworkImageGenerator(item.SpecificUserHeadUrl, item.SpecificUserHeadUrl));
 		mHolder.nameTv.setText(item.SpecificUserName);
 		mHolder.achieveTv.setText(item.SpecificUserAchievement);
-		mHolder.speakTv.setText(item.SpecificUserLifeMotto);
 		mHolder.attentionTv.setText(item.IsFollow ? R.string.cancel_attention : R.string.attention);
 		long specialUserID = dataList.get(position).SpecificUserID;
 		mHolder.attentionTv.setTag(specialUserID);
-		mHolder.testTv.setTag(specialUserID);
+		mHolder.matchTv.setTag(specialUserID);
+		mHolder.infoLayout.setTag(item.SpecificUserPhone);
 		return convertView;
 	}
 	
@@ -103,13 +107,23 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 				new FollowTask((TextView)v, true).execute(specialId);
 			}
 			break;
-		case R.id.tv_item_test:
+		case R.id.tv_item_match:
 			new GetMatchTask().execute(specialId);
 			break;
 		default:
 			break;
 		}
 	}
+	
+	private OnClickListener lookInfoListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			String phoneNum = (String)v.getTag();
+			Intent mIntent = new Intent(mContext, PersonalInfoActivity.class);
+			mIntent.putExtra(Constants.PhoneNum, phoneNum);
+			mContext.startActivity(mIntent);
+		}
+	};
 	
 	private void showCustomDialog(){
 		if(mDialog == null){
@@ -186,8 +200,8 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		ImageView headerIv;
 		TextView nameTv;
 		TextView achieveTv;
-		TextView speakTv;
 		TextView attentionTv;
-		TextView testTv;
+		TextView matchTv;
+		View infoLayout;
 	}
 }

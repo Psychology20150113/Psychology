@@ -67,6 +67,7 @@ public interface Constants {
 	public static final String OnlineClassId = "onlineClassId";
 	public static final String ClassCategoryId = "classCategoryId";
 	public static final String ClassCategoryName = "classCategoryName";
+	public static final String PhoneNum = "phoneNum";
 	
 	public static final String UserRole = "user_role";
 	public static final String RoleUser = "USER";

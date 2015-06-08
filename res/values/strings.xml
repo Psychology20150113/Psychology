@@ -220,7 +220,8 @@
 	<string name="isClassLeader">当过班长</string>
 	<string name="current_state">当前状态</string>
 	<string name="working_city">工作地点</string>
-	<string name="grade">等级</string>
+	<string name="working_city_user">向往城市坐标</string>
+	<string name="grade">大学职务</string>
 	<string name="hobbies">兴趣</string>
 	<string name="follow">崇拜谁</string>
 	
@@ -288,6 +289,7 @@
 	<string name="attention_success">成功关注该心晴师</string>
 	<string name="cancel_attention_success">成功取消关注该心晴师</string>
 	<string name="reservation">预约</string>
+	<string name="match">匹配</string>
 	<string name="match_test">匹配度测试</string>
 	<string name="mine">我的</string>
 	<string name="mine_info">我的信息</string>
@@ -305,4 +307,6 @@
 	<string name="share_format">我和%s的匹配度达到了</string>
 	<string name="network_error">无法获取数据，请检查网络</string>
 	<string name="please_choose">请选择</string>
+	<string name="peasonal_info">个人资料</string>
+	<string name="match_point">匹配度</string>
 </resources>

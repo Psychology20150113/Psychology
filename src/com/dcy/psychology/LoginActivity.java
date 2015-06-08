@@ -37,12 +37,12 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				InfoShared mShared = new InfoShared(LoginActivity.this);
 				mShared.savePhoneInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState(), result.isIsPrefectUserInfo());
 				new ChatLoginTask(LoginActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
+				mShared.setUserRole(userRole);
+				MyApplication.myUserRole = userRole;
 				Intent mIntent = new Intent();
 				mIntent.putExtra("login_success", true);
 				setResult(0, mIntent);
 				finish();
-				mShared.setUserRole(userRole);
-				MyApplication.myUserRole = userRole;
 			}
 		}
 	} 

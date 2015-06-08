@@ -21,7 +21,7 @@
 		<RadioGroup 
 		    android:id="@+id/tab_rg"
 		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
+		    android:layout_height="55dp"
 		    android:checkedButton="@+id/tab_one_rb"
 		    android:orientation="horizontal">
 		    <RadioButton 

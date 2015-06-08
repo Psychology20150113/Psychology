@@ -392,9 +392,9 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
-	public static UserInfoBean getUserInfo(){
+	public static UserInfoBean getUserInfo(String phoneNum){
 		SoapObject request = new SoapObject(Constants.SpaceName, Constants.GetUserInfo);
-		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("userPhone", phoneNum);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new UserInfoBean();

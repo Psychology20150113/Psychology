@@ -360,6 +360,9 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mailEt = (EditText) rootView.findViewById(R.id.mail_et);
 		gradurationYearEt = (EditText) rootView.findViewById(R.id.et_graduation_year);
 		workingEt = (EditText) rootView.findViewById(R.id.et_working);
+		if(!Constants.RoleUser.equals(MyApplication.myUserRole)){
+			workingEt.setHint(R.string.working_city);
+		}
 		hobbiesEt = (EditText) rootView.findViewById(R.id.et_hobbies);
 		gradeEt = (EditText) rootView.findViewById(R.id.et_grade);
 		followEt = (EditText) rootView.findViewById(R.id.et_follow);

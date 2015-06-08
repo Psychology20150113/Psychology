@@ -166,7 +166,7 @@
 		    android:id="@+id/et_working"
 		    android:layout_marginTop="10dp"
 		    style="@style/edit_style"
-		    android:hint="@string/working_city"/>
+		    android:hint="@string/working_city_user"/>
 		<LinearLayout 
 		    android:layout_width="match_parent"
 		    android:layout_height="40dp"

@@ -17,4 +17,8 @@
     <color name="bg_student_three">#b9ade9</color>
     <color name="bg_check_item">#ff9262</color>
     <color name="bg_save_btn">#ff6622</color>
+    
+    <color name="v2_orange">#ed823b</color>
+    <color name="v2_gray">#898989</color>
+    <color name="white">#ffffff</color>
 </resources>
