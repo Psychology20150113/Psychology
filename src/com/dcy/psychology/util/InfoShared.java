@@ -21,6 +21,7 @@ public class InfoShared {
 	private final String TestHollendData = "hollend_data";
 	private final String TestHollendResult = "hollend_result";
 	private final String TestHollendAllResult = "hollend_all_result";
+	private final String TestQizhiData = "qizhi_data";
 	private final String TestQiZhiResult = "qizhi_result";
 	private final String TestQiZhiAllResult = "qizhi_all_result";
 	
@@ -100,9 +101,13 @@ public class InfoShared {
 		return mShared.getString(TestHollendData, "");
 	}
 	
-	public void setQizhiResult(String hollendResult, String allHollendResult){
-		mShared.edit().putString(TestQiZhiResult, hollendResult)
-			.putString(TestQiZhiAllResult, allHollendResult).commit();
+	public void setQizhiResult(String qizhiData, String qizhiResult, String allQizhiResult){
+		mShared.edit().putString(TestQizhiData, qizhiData).putString(TestQiZhiResult, qizhiResult)
+			.putString(TestQiZhiAllResult, allQizhiResult).commit();
+	}
+	
+	public String getQizhiData(){
+		return mShared.getString(TestQizhiData, "");
 	}
 	
 	public String getQizhiResult(){

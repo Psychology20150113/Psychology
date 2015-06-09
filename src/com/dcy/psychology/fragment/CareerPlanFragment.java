@@ -117,17 +117,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			rootView.findViewById(R.id.tv_student_entry).setOnClickListener(this);
 			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
 		} else {
-			if(MyApplication.hasPrefectInfo){
-				rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
-				if(MyApplication.myUserRole.equals(Constants.RoleTeacher)){
-					rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
-					mListView.setVisibility(View.GONE);
-				} else {
-					mLoadingDialog.show();
-					new GetSpecialUserTask().execute();
-					mListView.setVisibility(View.VISIBLE);
-				}
-			}
+			loadListData();
 		}
 		return rootView;
 	}
@@ -240,6 +230,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			}
 			if(result.isResult()){
 				mShared.setIsPrefectInfo(true);
+				MyApplication.hasPrefectInfo = true;
 				rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
 				if(!TextUtils.isEmpty(MyApplication.myUserRole) && 
 						MyApplication.myUserRole.equals(Constants.RoleTeacher)){
@@ -301,6 +292,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 				return;
 			} else {
 				rootView.findViewById(R.id.ll_entry).setVisibility(View.GONE);
+				loadListData();
 			}
 			break;
 		case RequestCode_Test_Hollend:
@@ -345,11 +337,26 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			}
 			new SimpleMessageDialog(mContext, getString(R.string.Test_Qizhi), 
 					resultQiZhiMap.get("showResult") + "\n" + resultQiZhiMap.get("typeResult")).show();
-			mShared.setQizhiResult(resultQiZhiMap.get("typeResult"), resultQiZhiMap.get("pointResult"));
+			mShared.setQizhiResult(resultQiZhiMap.get("dataResult"), resultQiZhiMap.get("typeResult"), resultQiZhiMap.get("pointResult"));
 			new CalculateUtils.SaveTestResultTask(mContext, resultQiZhiMap).execute();
 			break;
 		default:
 			break;
+		}
+	}
+
+	private void loadListData() {
+		if(MyApplication.hasPrefectInfo){
+			rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
+			if(MyApplication.myUserRole.equals(Constants.RoleTeacher)){
+				rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
+				rootView.findViewById(R.id.tv_empty_data).setVisibility(View.GONE);
+				rootView.findViewById(R.id.ll_list).setVisibility(View.GONE);
+			} else {
+				mLoadingDialog.show();
+				new GetSpecialUserTask().execute();
+				rootView.findViewById(R.id.ll_list).setVisibility(View.VISIBLE);
+			}
 		}
 	}
 	

@@ -19,6 +19,7 @@
     <color name="bg_save_btn">#ff6622</color>
     
     <color name="v2_orange">#ed823b</color>
+    <color name="v2_divider">#ECE8E3</color>
     <color name="v2_gray">#898989</color>
     <color name="white">#ffffff</color>
 </resources>

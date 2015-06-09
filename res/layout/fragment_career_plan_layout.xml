@@ -3,16 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <com.dcy.psychology.view.PullRefreshListView 
-	    android:id="@+id/pull_refresh_lv"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:visibility="gone"
-	    android:divider="@null"
-	    android:background="#ffffff"/>
-    <include 
-        android:id="@+id/ll_complete_info"
-        layout="@layout/layout_perfect_info"/>
+    <LinearLayout 
+        android:id="@+id/ll_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/hot_teacher"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@color/v2_orange"/>
+		<com.dcy.psychology.view.PullRefreshListView 
+		    android:id="@+id/pull_refresh_lv"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:visibility="gone"
+		    android:divider="@null"
+		    android:background="#ffffff"/>        
+    </LinearLayout>
     <TextView 
         android:id="@+id/tv_empty_data"
         android:layout_width="match_parent"
@@ -21,6 +31,9 @@
         android:gravity="center"
         android:visibility="gone"
         android:textColor="@color/black"/>
+    <include 
+        android:id="@+id/ll_complete_info"
+        layout="@layout/layout_perfect_info"/>
     <TextView 
         android:id="@+id/tv_help"
         android:layout_width="match_parent"

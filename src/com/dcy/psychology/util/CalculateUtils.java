@@ -81,14 +81,14 @@ public class CalculateUtils {
 		}
 		String[] typeArray = mContext.getResources().getStringArray(R.array.qizhi_array);
 		int typePoint = 0;
-		StringBuilder resultBuilder = new StringBuilder();
+		StringBuilder dataBuilder = new StringBuilder();
 		ArrayList<PointItem> typeList = new ArrayList<CalculateUtils.PointItem>();
 		for(int i = 0 ; i < typeArray.length; i ++){
 			for(int j = 0 ; j < Constants.QizhiIndex[i].length; j ++){
 				typePoint += pointList.get(Constants.QizhiIndex[i][j] - 1);
 			}
 			typeList.add(new PointItem(typeArray[i], "", typePoint));
-			resultBuilder.append(typeArray[i]).append(typePoint).append("\n");
+			dataBuilder.append(typePoint).append(",");
 			typePoint = 0;
 		}
 		StringBuilder pointBuilder = new StringBuilder();
@@ -108,14 +108,14 @@ public class CalculateUtils {
 			}
 		});
 		StringBuilder typeBuilder = new StringBuilder();
-		for(int i = 0 ; i < 2 ; i ++){
-			typeBuilder.append(typeList.get(i).nameItem).append(",");
-		}
+//		for(int i = 0 ; i < 1 ; i ++){
+//			typeBuilder.append(typeList.get(i).nameItem).append(",");
+//		}
 		HashMap<String, String> resultMap = new HashMap<String, String>();
 		resultMap.put("testType", Type_QiZhi);
-		resultMap.put("showResult", resultBuilder.substring(0, resultBuilder.length() - 1));
+		resultMap.put("dataResult", dataBuilder.substring(0, dataBuilder.length() - 1));
 		resultMap.put("pointResult", pointBuilder.substring(0, pointBuilder.length() - 1));
-		resultMap.put("typeResult", typeBuilder.substring(0, typeBuilder.length() - 1));
+		resultMap.put("typeResult", typeList.get(0).nameItem);
 		return resultMap;
 	}
 	

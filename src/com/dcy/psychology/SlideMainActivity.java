@@ -70,7 +70,7 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	
 	@Override
 	public void onRightTextClick() {
-		startActivity(new Intent(this, MineActivity.class));
+		startActivity(new Intent(this, MineDnaActivity.class));
 	}
 	
 	@Override

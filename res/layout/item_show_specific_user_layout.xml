@@ -7,7 +7,7 @@
     <View 
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#ECE8E3"/>
+        android:background="@color/v2_divider"/>
     <LinearLayout 
         android:id="@+id/ll_item_user_info"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 	        android:src="@drawable/ic_launcher"/>
         <LinearLayout 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:orientation="vertical"
             android:layout_marginLeft="10dp">
             <LinearLayout 
@@ -39,6 +39,7 @@
                     <TextView 
 		                android:id="@+id/tv_item_achieve"
 		                style="@style/text_gray16_style"
+		                android:textSize="14sp"
 		                android:minLines="2"/>
                 </LinearLayout>
                 <LinearLayout 
@@ -57,7 +58,7 @@
                         android:background="@drawable/shape_orange_rect_round"/>
                 	<TextView 
                 	    style="@style/text_black20_style"
-                	    android:text="70%"/>
+                	    android:text="无"/>
                 </LinearLayout>
             </LinearLayout>
             <ImageView 
@@ -77,6 +78,7 @@
 			        android:drawableLeft="@drawable/icon_reservation"
 			        android:layout_height="match_parent"
 			        android:textColor="#666666"
+			        android:drawablePadding="5dp"
 			        android:gravity="center_vertical"
 			        android:text="@string/reservation"/>
                  <TextView 

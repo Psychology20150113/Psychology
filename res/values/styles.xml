@@ -34,8 +34,8 @@
 	    <item name="android:textColor">@color/color_white_gray_selector</item>
 		<item name="android:button">@null</item>
 		<item name="android:gravity">center</item>
-		<item name="android:paddingTop">15dp</item>
-		<item name="android:background">@drawable/shape_color_orange_white</item>
+		<item name="android:paddingTop">5dp</item>
+		<item name="android:background">@drawable/selector_color_orange_white</item>
 	</style>
     <style name="text_black18_style">
         <item name="android:layout_width">wrap_content</item>

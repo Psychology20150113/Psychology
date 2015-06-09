@@ -285,11 +285,12 @@
 	<string name="qizhi_four">抑郁质</string>
 	
 	<string name="attention">关注</string>
-	<string name="cancel_attention">取消关注</string>
+	<string name="cancel_attention">取消</string>
 	<string name="attention_success">成功关注该心晴师</string>
 	<string name="cancel_attention_success">成功取消关注该心晴师</string>
 	<string name="reservation">预约</string>
 	<string name="match">匹配</string>
+	<string name="mark">评分</string>
 	<string name="match_test">匹配度测试</string>
 	<string name="mine">我的</string>
 	<string name="mine_info">我的信息</string>
@@ -309,4 +310,10 @@
 	<string name="please_choose">请选择</string>
 	<string name="peasonal_info">个人资料</string>
 	<string name="match_point">匹配度</string>
+	<string name="hot_teacher">热门心晴师</string>
+	<string name="mine_dna">我的职业DNA</string>
+	<string name="mine_zhiye">您属于%s型职业人格</string>
+	<string name="mine_qizhi">你的气质属于%s</string>
+	<string name="retry_test">重新测试</string>
+	<string name="look_info">查看详情</string>
 </resources>
