@@ -316,4 +316,6 @@
 	<string name="mine_qizhi">你的气质属于%s</string>
 	<string name="retry_test">重新测试</string>
 	<string name="look_info">查看详情</string>
+	<string name="empty_zhiye">您未进行职业测试</string>
+	<string name="empty_qizhi">您未进行气质测试</string>
 </resources>
