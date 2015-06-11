@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dcy.psychology.DoctorPersonalInfo;
 import com.dcy.psychology.PersonalInfoActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
@@ -119,7 +120,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		@Override
 		public void onClick(View v) {
 			String phoneNum = (String)v.getTag();
-			Intent mIntent = new Intent(mContext, PersonalInfoActivity.class);
+			Intent mIntent = new Intent(mContext, DoctorPersonalInfo.class);
 			mIntent.putExtra(Constants.PhoneNum, phoneNum);
 			mContext.startActivity(mIntent);
 		}
