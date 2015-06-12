@@ -43,9 +43,11 @@
 		                android:minLines="2"/>
                 </LinearLayout>
                 <LinearLayout 
+                    android:id="@+id/ll_point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:gravity="center_horizontal">
                     <TextView 
                         style="@style/text_black16_style"
@@ -57,6 +59,7 @@
                         android:text="@string/match_point"
                         android:background="@drawable/shape_orange_rect_round"/>
                 	<TextView 
+                	    android:id="@+id/tv_match_point"
                 	    style="@style/text_black20_style"
                 	    android:text="无"/>
                 </LinearLayout>

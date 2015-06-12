@@ -29,6 +29,7 @@ public class MyApplication extends Application{
 	public static String myNick;
 	public static Gson mGson;
 	public static PreInstallDbHelper preInstallDbHelper;
+	public static MyApplication instance;
 	
 	@Override
 	public void onCreate() {
@@ -38,11 +39,16 @@ public class MyApplication extends Application{
         AsyncImageCache.setDiskCacheSize(1024 * 1024 * 50);     //50MB
         AsyncImageCache.setDiskCacheCount(1024);                //1024 item
         AsyncImageCache.setMemoryCacheSize(1024 * 1024 * 10);    //10MB
+        instance = this;
         JPushInterface.init(this);
         initAppInfo();
 //        MobclickAgent.setDebugMode(true);
         mGson = new Gson();
         preInstallDbHelper = new PreInstallDbHelper(this);
+	}
+	
+	public static Application getInstance(){
+		return instance;
 	}
 	
 	private void initAppInfo(){

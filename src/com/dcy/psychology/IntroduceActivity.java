@@ -11,11 +11,12 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class IntroduceActivity extends Activity implements OnClickListener{
-	private Button mButton;
+	private TextView mGoView;
 	private PageIndicatorView indicatorView;
-	private final int Count = 2;
+	private int mCount;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,15 @@ public class IntroduceActivity extends Activity implements OnClickListener{
 
 	private void initView() {
 		ViewPager pager = (ViewPager) findViewById(R.id.introduce_vp);
-		pager.setAdapter(new IntroducePageAdapter(this));
+		IntroducePageAdapter mAdapter = new IntroducePageAdapter(this);
+		pager.setAdapter(mAdapter);
 		pager.setOnPageChangeListener(mPageListener);
 		indicatorView = (PageIndicatorView) findViewById(R.id.page_indicator);
-		indicatorView.setCount(Count);
+		mCount = mAdapter.getCount();
+		indicatorView.setCount(mCount);
 		indicatorView.updateIndicator(0);
-		mButton = (Button) findViewById(R.id.go_btn);
-		mButton.setOnClickListener(this);
+		mGoView = (TextView) findViewById(R.id.go_btn);
+		mGoView.setOnClickListener(this);
 	}
 	
 	@Override
@@ -46,10 +49,10 @@ public class IntroduceActivity extends Activity implements OnClickListener{
 		@Override
 		public void onPageSelected(int position) {
 			indicatorView.updateIndicator(position);
-			if(position == Count - 1){
-				mButton.setVisibility(View.VISIBLE);
+			if(position == mCount - 1){
+				mGoView.setVisibility(View.VISIBLE);
 			} else {
-				mButton.setVisibility(View.GONE);
+				mGoView.setVisibility(View.GONE);
 			}
 		}
 		

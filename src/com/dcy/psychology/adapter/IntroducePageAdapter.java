@@ -13,7 +13,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 
 public class IntroducePageAdapter extends PagerAdapter {
-	private int[] resId = {R.drawable.bg_introduce_one, R.drawable.bg_introduce_two};
+	private int[] resId = {R.drawable.bg_introduce_one, R.drawable.bg_introduce_two, R.drawable.bg_introduce_three};
 	private ArrayList<View> mIntroduceView;
 	
 	public IntroducePageAdapter(Context mContext) {

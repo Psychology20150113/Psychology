@@ -37,6 +37,9 @@ public interface Constants {
 	public static final String GetMatchResult = "GetSpecificUserMatch";
 	public static final String RemoveSpecificUser = "RemoveSpecificUser";
 	public static final String GetUserInfo = "GetUserInfo";
+	public static final String GetQiniuToken = "GetUploadToken";
+	public static final String GetMatchestSpecificList = "GetMostSpecificUserMatch";
+	public static final String UpdataUserHeader = "UpdateUserHeadUrl";
 	
 	public static final String Type_Zhiye_Test = "HollendTest";
 	public static final String Type_Qiazhi_Test = "TemperamentTest";
@@ -68,6 +71,8 @@ public interface Constants {
 	public static final String ClassCategoryId = "classCategoryId";
 	public static final String ClassCategoryName = "classCategoryName";
 	public static final String PhoneNum = "phoneNum";
+	public static final String QizhiResult = "qizhiResult";
+	public static final String ZhiyeResult = "zhiyeResult";
 	
 	public static final String UserRole = "user_role";
 	public static final String RoleUser = "USER";

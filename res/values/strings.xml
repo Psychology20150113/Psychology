@@ -57,9 +57,9 @@
 	<string name="question_theme_eight">饭店</string>
 	<string name="slide_blackhole">宣泄黑洞</string>
 	<string name="slide_problem">常见问题</string>
-	<string name="slide_music">音乐主题</string>
-	<string name="slide_message">消息通知</string>
-	<string name="slide_discuss">我的讨论</string>
+	<string name="slide_music">我的关注</string>
+	<string name="slide_message">我的职业DNA</string>
+	<string name="slide_discuss">我的信息</string>
 	<string name="slide_love">我的收藏</string>
 	<string name="slide_point">我的积分</string>
 	<string name="slide_account">我的账户</string>
@@ -74,7 +74,7 @@
 	<string name="password">密码</string>
 	<string name="change_pwd">重设密码</string>
 	<string name="password_second">确认密码</string>
-	<string name="nick">名字</string>
+	<string name="nick">真实姓名</string>
 	<string name="age">年龄</string>
 	<string name="sex">性别</string>
 	<string name="phone">电话</string>
@@ -207,23 +207,24 @@
 	<string name="xingzuo_shuiping">水瓶座</string>
 	<string name="xingzuo_shuangyu">双鱼座</string>
 	
-	<string name="household">户籍地</string>
-	<string name="diploma">文凭</string>
+	<string name="avatar">头像</string>
+	<string name="household">籍贯</string>
+	<string name="diploma">学历</string>
 	<string name="school">学校</string>
 	<string name="diploma_one">本科</string>
 	<string name="diploma_two">硕士</string>
 	<string name="diploma_three">博士</string>
 	<string name="diploma_four">其他</string>
 	
-	<string name="major">主修方向</string>
+	<string name="major">专长</string>
 	<string name="graduation_year">毕业年份</string>
 	<string name="isClassLeader">当过班长</string>
-	<string name="current_state">当前状态</string>
+	<string name="current_state">状态</string>
 	<string name="working_city">工作地点</string>
 	<string name="working_city_user">向往城市坐标</string>
-	<string name="grade">大学职务</string>
-	<string name="hobbies">兴趣</string>
-	<string name="follow">崇拜谁</string>
+	<string name="grade">职务</string>
+	<string name="hobbies">兴趣方向</string>
+	<string name="follow">粉谁</string>
 	
 	<string name="state_teacher_one">硕士</string>
 	<string name="state_teacher_two">博士</string>
@@ -272,12 +273,12 @@
 	<string name="major_eleven">管理学</string>
 	<string name="major_twelve">艺术学</string>
 
-	<string name="zhiye_one">常规型</string>
-	<string name="zhiye_two">现实型</string>
-	<string name="zhiye_three">研究型</string>
-	<string name="zhiye_four">管理型</string>
-	<string name="zhiye_five">社会型</string>
-	<string name="zhiye_six">艺术型</string>
+	<string name="zhiye_one">常规型(C)</string>
+	<string name="zhiye_two">现实型(R)</string>
+	<string name="zhiye_three">研究型(I)</string>
+	<string name="zhiye_four">管理型(E)</string>
+	<string name="zhiye_five">社会型(S)</string>
+	<string name="zhiye_six">艺术型(A)</string>
 	
 	<string name="qizhi_one">多血质</string>
 	<string name="qizhi_two">胆汁质</string>
@@ -312,6 +313,8 @@
 	<string name="match_point">匹配度</string>
 	<string name="hot_teacher">热门心晴师</string>
 	<string name="mine_dna">我的职业DNA</string>
+	<string name="zhiye">职业人格</string>
+	<string name="qizhi">气质</string>
 	<string name="mine_zhiye">您属于%s型职业人格</string>
 	<string name="mine_qizhi">你的气质属于%s</string>
 	<string name="retry_test">重新测试</string>
@@ -319,4 +322,16 @@
 	<string name="empty_zhiye">您未进行职业测试</string>
 	<string name="empty_qizhi">您未进行气质测试</string>
 	<string name="doctor_info">背景资料</string>
+	<string name="take_phone">拍照</string>
+    <string name="choose_album">从手机相册选择</string>
+    <string name="crop__saving">正在保存…</string>
+    <string name="crop__wait">请等待…</string>
+    <string name="crop__pick_error">图片资源不可用</string>
+    <string name="crop__done">确定</string>
+    <string name="crop__cancel">取消</string>
+    <string name="go_enter">立即体验</string>
+    <string name="detail_info">详细说明</string>
+    <string name="updata_header_success">上传头像成功</string>
+    <string name="updata_header_failed">上传头像失败</string>
+    <string name="error_role">您不是心情师,新切换到心晴生入口登录</string>
 </resources>

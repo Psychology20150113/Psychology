@@ -10,7 +10,7 @@
         android:textSize="20sp"
         android:gravity="center"
         android:textColor="#FFFFFF"
-        android:background="#06C7FF"/>
+        android:background="@color/v2_orange"/>
     <android.support.v4.view.ViewPager
         android:id="@+id/qiestion_vp"
         android:layout_width="match_parent"
@@ -18,6 +18,24 @@
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
+    <LinearLayout 
+        android:id="@+id/ll_progress"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:background="@drawable/shape_gray_rect">
+		<ProgressBar 
+		    android:id="@+id/pb_progress"
+	        android:layout_width="match_parent"
+	        android:layout_height="7dp"
+	        android:progress="0"
+	        style="@android:style/Widget.ProgressBar.Horizontal"
+	        android:progressDrawable="@drawable/bg_progress_bar"/>	        
+    </LinearLayout>
 	<LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="70dp"
@@ -42,8 +60,8 @@
 	            android:layout_gravity="center"
 	            android:text="@string/next_question"
 	            android:textSize="16sp"
-	            android:textColor="@color/txt_orange"
-	            android:background="@drawable/bg_blue_selector"/>
+	            android:textColor="@color/white"
+	            android:background="@color/v2_orange"/>
 	        <LinearLayout 
 	            android:id="@+id/button_layout"
 	            android:layout_width="wrap_content"
@@ -58,8 +76,8 @@
 	                android:layout_height="match_parent"
 	                android:text="@string/pre_question"
 	                android:textSize="16sp"
-	            	android:textColor="@color/txt_orange"
-	            	android:background="@drawable/bg_blue_selector"/>
+	            	android:textColor="@color/white"
+	            	android:background="@color/v2_orange"/>
 	            <Button 
 	                android:id="@+id/button_right"
 	                android:layout_width="130dp"
@@ -67,8 +85,8 @@
 	                android:layout_marginLeft="10dp"
 	                android:text="@string/next_question"
 	                android:textSize="16sp"
-	            	android:textColor="@color/txt_orange"
-	            	android:background="@drawable/bg_blue_selector"/>
+	            	android:textColor="@color/white"
+	            	android:background="@color/v2_orange"/>
 	        </LinearLayout>
 	    </FrameLayout>
 	</LinearLayout>

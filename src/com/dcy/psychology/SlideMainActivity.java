@@ -3,31 +3,12 @@ package com.dcy.psychology;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dcy.psychology.adapter.SlideAdapter;
-import com.dcy.psychology.db.DbHelper;
-import com.dcy.psychology.db.SqlConstants;
-import com.dcy.psychology.fragment.CareerPlanFragment;
-import com.dcy.psychology.fragment.ChatIMFragment;
-import com.dcy.psychology.fragment.SlideMainFragment;
-import com.dcy.psychology.fragment.StyleTwoBoxFragment;
-import com.dcy.psychology.fragment.StyleTwoMainFragment;
-import com.dcy.psychology.fragment.TabChatFragment;
-import com.dcy.psychology.fragment.TabCureFragment;
-import com.dcy.psychology.fragment.TabGrowthFragment;
-import com.dcy.psychology.fragment.TabMineFragment;
-import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.IMManager;
-import com.dcy.psychology.util.InfoShared;
-import com.dcy.psychology.util.Utils;
-import com.umeng.analytics.MobclickAgent;
-
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -36,13 +17,22 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.dcy.psychology.adapter.SlideAdapter;
+import com.dcy.psychology.fragment.CareerPlanFragment;
+import com.dcy.psychology.fragment.StyleTwoBoxFragment;
+import com.dcy.psychology.fragment.TabChatFragment;
+import com.dcy.psychology.util.Constants;
+import com.dcy.psychology.util.IMManager;
+import com.dcy.psychology.util.InfoShared;
+import com.dcy.psychology.util.Utils;
+import com.umeng.analytics.MobclickAgent;
 
 public class SlideMainActivity extends BaseActivity implements OnItemClickListener
 		,OnClickListener{
@@ -69,11 +59,6 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	}
 	
 	@Override
-	public void onRightTextClick() {
-		startActivity(new Intent(this, MineDnaActivity.class));
-	}
-	
-	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		unregisterReceiver(mLoginReceiver);
@@ -94,7 +79,6 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	}
 	
 	private void initView() {
-		setRightText(R.string.mine);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		nameText = (TextView) findViewById(R.id.name_tv);
 		nameLayout = findViewById(R.id.name_ll);
@@ -233,6 +217,26 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		case 1:
 			mIntent = new Intent(this, ShowProblemActivity.class);
 			break;
+		case 2:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+				mIntent = new Intent(this, GetFollowUsersActivity.class);
+			}
+			break;
+		case 3:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+				mIntent = new Intent(this, MineDnaActivity.class);
+			}
+			break;
+		case 4:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+				mIntent = new Intent(this, PersonalInfoActivity.class);
+			}
 		default:
 			break;
 		}

@@ -7,7 +7,7 @@
         android:id="@+id/rg_tab"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:checkedButton="@+id/rb_chat"
+        android:checkedButton="@+id/rb_mark"
         android:orientation="horizontal">
         <RadioButton 
             android:id="@+id/rb_mark"

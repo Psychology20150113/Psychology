@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.fragment.MatchestSpecicalUserFragment;
 import com.dcy.psychology.fragment.MineMarkFragment;
 import com.dcy.psychology.fragment.NewChatIMFragment;
 import com.dcy.psychology.util.Utils;
@@ -25,12 +26,13 @@ public class MineDnaActivity extends BaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mine_dna_layout);
+		setTopTitle(R.string.mine_dna);
 		initView();
 	}
 
 	private void initView() {
 		dataFragment.add(new MineMarkFragment());
-		dataFragment.add(new NewChatIMFragment());
+		dataFragment.add(new MatchestSpecicalUserFragment());
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		for(int i=0 ; i<dataFragment.size() ; i++){
 			transaction.add(R.id.vp_mine_dna, dataFragment.get(i));

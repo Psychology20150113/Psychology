@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import com.dcy.psychology.MyApplication;
+
+import android.os.Environment;
+import android.widget.Toast;
+
 public class IOUtils {
 	
 	public static String convertStreamToString(InputStream is) {
@@ -68,4 +73,27 @@ public class IOUtils {
 		inputStream.close();
 		return stream.toString();
 	}
+	
+	public static File getExternalDir() {
+        if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            Toast.makeText(MyApplication.getInstance(), "«Î≤Â»ÎSDø®", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        File external = Environment.getExternalStorageDirectory();
+        if (external == null)
+            return null;
+        File ext = new File(Environment.getExternalStorageDirectory(),"Psychology");
+        if(ext != null && !ext.exists()){
+            ext.mkdirs();
+        }
+        return ext;
+    }
+	
+	public static File getExternalTempFile(){
+        File dir = getExternalDir();
+        if(dir == null){
+            return null;
+        }
+        return new File(dir, System.currentTimeMillis() + ".png");
+    }
 }

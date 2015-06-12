@@ -27,7 +27,7 @@ public class SlideAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		return 2;
+		return 5;
 	}
 
 	@Override

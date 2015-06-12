@@ -54,9 +54,11 @@ public class QuestionView extends RelativeLayout implements
 		titleView.setText("        " + index + "." + title);
 		titleView.setLineSpacing(0, 1.2f);// (add , mul)
 		// titleView.setTextScaleX(0.5f);
-		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-				mResources.getDimensionPixelSize(R.dimen.txt_size_20));
+		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_20);
+		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 		questionLayout.addView(titleView);
+		android.view.ViewGroup.LayoutParams buttonParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 
+				mResources.getDimensionPixelSize(R.dimen.title_height));
 		switch (mQuestionType) {
 		case Type_Grow:
 		case Type_Single:
@@ -64,6 +66,8 @@ public class QuestionView extends RelativeLayout implements
 			radioGroup.setTag(TAG_SINGLE);
 			for (int i = 0; i < optionList.size(); i++) {
 				RadioButton rb = new RadioButton(mContext);
+				rb.setLayoutParams(buttonParams);
+				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 				rb.setText(optionList.get(i));
 				rb.setOnCheckedChangeListener(this);
 				radioGroup.addView(rb);

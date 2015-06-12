@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -73,6 +74,8 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			mHolder.matchTv = (TextView) convertView.findViewById(R.id.tv_item_match);
 			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_user_info);
 			mHolder.infoLayout.setOnClickListener(lookInfoListener);
+			mHolder.pointLayout = convertView.findViewById(R.id.ll_point);
+			mHolder.pointTv = (TextView) convertView.findViewById(R.id.tv_match_point);
 			if(canOpration){
 				mHolder.attentionTv.setOnClickListener(this);
 				mHolder.matchTv.setOnClickListener(this);
@@ -93,6 +96,10 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		mHolder.attentionTv.setTag(specialUserID);
 		mHolder.matchTv.setTag(specialUserID);
 		mHolder.infoLayout.setTag(item.SpecificUserPhone);
+		if(!TextUtils.isEmpty(String.valueOf(item.MatchResult)) && item.MatchResult != 0){
+			mHolder.pointLayout.setVisibility(View.VISIBLE);
+			mHolder.pointTv.setText(String.valueOf(item.MatchResult));
+		}
 		return convertView;
 	}
 	
@@ -203,6 +210,8 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		TextView achieveTv;
 		TextView attentionTv;
 		TextView matchTv;
+		TextView pointTv;
+		View pointLayout;
 		View infoLayout;
 	}
 }

@@ -16,6 +16,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 	private boolean isSpecial = false;
 	private boolean isDNATest = false;
 	
+	private ProgressBar mProgressBar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,6 +101,10 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 		mButtonLayout = findViewById(R.id.button_layout);
 		mAloneButton.setOnClickListener(this);
 		mNextButton.setOnClickListener(this);
+		mProgressBar = (ProgressBar) findViewById(R.id.pb_progress);
+		if(isDNATest){
+			findViewById(R.id.ll_progress).setVisibility(View.VISIBLE);
+		}
 	}
 
 	private void updateQuestionList() {
@@ -188,6 +194,9 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 	};
 	
 	private void updateView(){
+		if(isDNATest){
+			mProgressBar.setProgress(mCurrentPage * 100 / 60);
+		}
 		mViewPager.setCurrentItem(mCurrentPage);
 		mPageIndicator.updateIndicator(mCurrentPage);
 		if(mCurrentPage == 0){

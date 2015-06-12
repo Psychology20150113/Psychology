@@ -33,12 +33,14 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			if("NO".equals(result.getResult())){
 				Toast.makeText(LoginActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}else {
+				if(userRole != null && !Constants.RoleUser.equals(userRole) && Constants.RoleUser.equals(result.getLoginState())){
+					Toast.makeText(LoginActivity.this, R.string.error_role, Toast.LENGTH_SHORT).show();
+					return;
+				}
 				Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
 				InfoShared mShared = new InfoShared(LoginActivity.this);
 				mShared.savePhoneInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState(), result.isIsPrefectUserInfo());
 				new ChatLoginTask(LoginActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
-				mShared.setUserRole(userRole);
-				MyApplication.myUserRole = userRole;
 				Intent mIntent = new Intent();
 				mIntent.putExtra("login_success", true);
 				setResult(0, mIntent);
@@ -80,13 +82,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_layout);
-		initView();
 		userRole = getIntent().getStringExtra(Constants.UserRole);
+		initView();
 	}
 	
 	private void initView(){
 		setTopTitle(R.string.login);
-		setRightText(R.string.register);
+		if(userRole == null || Constants.RoleUser.equals(userRole)){
+			setRightText(R.string.register);
+		}
 		accountET = (EditText) findViewById(R.id.account_et);
 		pwdET = (EditText) findViewById(R.id.psw_et);
 		findViewById(R.id.login_btn).setOnClickListener(this);

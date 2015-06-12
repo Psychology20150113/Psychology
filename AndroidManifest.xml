@@ -197,7 +197,15 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.DetailTestResultActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
             android:name="com.dcy.psychology.PersonalInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.dcy.psychology.view.crop.CropImageActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 

@@ -2,8 +2,11 @@ package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.DetailTestResultActivity;
 import com.dcy.psychology.MineActivity;
 import com.dcy.psychology.R;
+import com.dcy.psychology.ShowListActivity;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.view.MyMarkerView;
 import com.github.mikephil.charting.charts.RadarChart;
@@ -12,6 +15,7 @@ import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -58,7 +62,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 		mChart.getLegend().setEnabled(false);
 		if(!TextUtils.isEmpty(mShared.getHollendResult())){
 			((TextView)view.findViewById(R.id.tv_zhiye)).setText(String.format(
-					getString(R.string.mine_qizhi), mShared.getHollendResult()));
+					getString(R.string.mine_zhiye), mShared.getHollendResult()));
 			dataArray = mShared.getHollendData().split(",");
 			setData();
 		} else {
@@ -91,15 +95,22 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
+		Intent mIntent = null;
 		switch (v.getId()) {
 		case R.id.tv_look_info:
+			mIntent = new Intent(mContext, DetailTestResultActivity.class);
+			mIntent.putExtra(Constants.QizhiResult, mShared.getQizhiResult());
+			mIntent.putExtra(Constants.ZhiyeResult, mShared.getHollendResult());
 			break;
 		case R.id.tv_test:
-			startActivity(new Intent(mContext, MineActivity.class));
+			((Activity)mContext).finish();
+			mIntent = new Intent(mContext, ShowListActivity.class);
+			mIntent.putExtra(Constants.ListType, Constants.DNAType);
 			break;
 		default:
 			break;
 		}
+		startActivity(mIntent);
 	}
 	
 	public void setData() {

@@ -413,6 +413,19 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
 	}
 	
+	public static ArrayList<SpecificUserBean> getMatchestSpecificUserList(){
+		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+			return null;
+		}
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetMatchestSpecificList);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("count", 3);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new ArrayList<SpecificUserBean>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
+	}
+	
 	public static BasicBean saveTestResult(String type, String testResult, String allResult){
 		if(TextUtils.isEmpty(type) || TextUtils.isEmpty(testResult) || TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			return new BasicBean();
@@ -445,6 +458,24 @@ public class Utils {
 		if(result == null)
 			return new ClassBean();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), ClassBean.class);
+	}
+	
+	public static String getQiniuToken(){
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetQiniuToken);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return "";
+		return result.getPropertyAsString(0);
+	}
+	
+	public static BasicBean updataHeaderUrl(String url){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.UpdataUserHeader);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("userHeadUrl", url);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new BasicBean();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
 	}
 	
 	public static String getOnlineDoctor(String userName){
