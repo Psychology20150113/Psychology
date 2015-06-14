@@ -37,6 +37,7 @@
 	        android:progressDrawable="@drawable/bg_progress_bar"/>	        
     </LinearLayout>
 	<LinearLayout 
+	    android:id="@+id/ll_opration"
 	    android:layout_width="match_parent"
 	    android:layout_height="70dp"
 	    android:background="@android:color/darker_gray"

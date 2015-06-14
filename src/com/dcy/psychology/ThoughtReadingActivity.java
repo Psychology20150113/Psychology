@@ -13,10 +13,16 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -104,6 +110,8 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 		mProgressBar = (ProgressBar) findViewById(R.id.pb_progress);
 		if(isDNATest){
 			findViewById(R.id.ll_progress).setVisibility(View.VISIBLE);
+			findViewById(R.id.ll_opration).setVisibility(View.GONE);
+			mViewPager.setOnTouchListener(mTouchListener);
 		}
 	}
 
@@ -112,6 +120,9 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 		for (int i = 0 ; i < mQuestionModelList.size() ; i ++) {
 			QuestionModel model = mQuestionModelList.get(i);
 			QuestionView view = new QuestionView(this);
+			if(isDNATest){
+				view.setOnCheckedListener(mItemCheckedListener);
+			}
 			view.setQuestionType(model.getQuestionType());
 			if(isThoughtReading){
 				view.setDate( i + 1, model.getQuestionTitle(), model.getOptionList());
@@ -177,6 +188,35 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 		return mAnswerMap;
 	}
 	
+	private OnCheckedChangeListener mItemCheckedListener = new OnCheckedChangeListener() {
+		@Override
+		public void onCheckedChanged(RadioGroup group, int checkedId) {
+			mCurrentPage ++;
+			updateView();
+		}
+	};
+	
+	private OnTouchListener mTouchListener = new OnTouchListener() {
+		private float xPos;
+		
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			switch (event.getAction()) {
+			case MotionEvent.ACTION_DOWN:
+				xPos = event.getX();
+				break;
+			case MotionEvent.ACTION_MOVE:
+				if(event.getX() < xPos && !mQuestionViewList.get(mCurrentPage).hasChooseAnswer()){
+					return true;
+				}
+				break;
+			default:
+				break;
+			}
+			return false;
+		}
+	};
+	
 	private OnPageChangeListener mPageListener = new OnPageChangeListener() {
 		@Override
 		public void onPageSelected(int postion) {
@@ -194,22 +234,23 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 	};
 	
 	private void updateView(){
+		mViewPager.setCurrentItem(mCurrentPage);
 		if(isDNATest){
 			mProgressBar.setProgress(mCurrentPage * 100 / 60);
-		}
-		mViewPager.setCurrentItem(mCurrentPage);
-		mPageIndicator.updateIndicator(mCurrentPage);
-		if(mCurrentPage == 0){
-			mAloneButton.setVisibility(View.VISIBLE);
-			mButtonLayout.setVisibility(View.GONE);
-		}else if(mCurrentPage == mQuestionViewList.size() - 1){
-			mAloneButton.setVisibility(View.GONE);
-			mButtonLayout.setVisibility(View.VISIBLE);
-			mNextButton.setText("完成");
-		}else {
-			mAloneButton.setVisibility(View.GONE);
-			mButtonLayout.setVisibility(View.VISIBLE);
-			mNextButton.setText(R.string.next_question);
+		} else {
+			mPageIndicator.updateIndicator(mCurrentPage);
+			if(mCurrentPage == 0){
+				mAloneButton.setVisibility(View.VISIBLE);
+				mButtonLayout.setVisibility(View.GONE);
+			}else if(mCurrentPage == mQuestionViewList.size() - 1){
+				mAloneButton.setVisibility(View.GONE);
+				mButtonLayout.setVisibility(View.VISIBLE);
+				mNextButton.setText("完成");
+			}else {
+				mAloneButton.setVisibility(View.GONE);
+				mButtonLayout.setVisibility(View.VISIBLE);
+				mNextButton.setText(R.string.next_question);
+			}
 		}
 	}
 	
@@ -221,13 +262,6 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 			updateView();
 			break;
 		case R.id.button_right:
-			if(isDNATest){
-				QuestionView currentView = mQuestionViewList.get(mCurrentPage);
-				if(!currentView.hasChooseAnswer()){
-					Toast.makeText(this, R.string.please_choose, Toast.LENGTH_SHORT).show();
-					return;
-				}
-			}
 			if(mCurrentPage == mQuestionViewList.size() - 1){
 				if(isThoughtReading){
 					Intent mIntent = new Intent(this, ThoughtReadingResultActivity.class);

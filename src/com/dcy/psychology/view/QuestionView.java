@@ -13,15 +13,14 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class QuestionView extends RelativeLayout implements
-		OnCheckedChangeListener {
+public class QuestionView extends RelativeLayout{
 
 	private Context mContext;
 	private QuestionType mQuestionType;
@@ -32,6 +31,7 @@ public class QuestionView extends RelativeLayout implements
 	private final String TAG_CHECKBOX = "com.dcy.psychology.view.checkbox";
 	
 	private ArrayList<Integer> pointList;
+	private OnCheckedChangeListener mCheckedChangeListener;
 	
 	public QuestionView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -45,6 +45,10 @@ public class QuestionView extends RelativeLayout implements
 
 	public void setQuestionType(QuestionType questonType) {
 		mQuestionType = questonType;
+	}
+	
+	public void setOnCheckedListener(OnCheckedChangeListener listener){
+		this.mCheckedChangeListener = listener;
 	}
 	
 	public void setDate(int index, String title, ArrayList<String> optionList) {
@@ -64,12 +68,14 @@ public class QuestionView extends RelativeLayout implements
 		case Type_Single:
 			RadioGroup radioGroup = new RadioGroup(mContext);
 			radioGroup.setTag(TAG_SINGLE);
+			if(mCheckedChangeListener != null){
+				radioGroup.setOnCheckedChangeListener(mCheckedChangeListener);
+			}
 			for (int i = 0; i < optionList.size(); i++) {
 				RadioButton rb = new RadioButton(mContext);
 				rb.setLayoutParams(buttonParams);
 				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 				rb.setText(optionList.get(i));
-				rb.setOnCheckedChangeListener(this);
 				radioGroup.addView(rb);
 			}
 			questionLayout.addView(radioGroup);
@@ -83,7 +89,6 @@ public class QuestionView extends RelativeLayout implements
 				itemLayout.setOrientation(LinearLayout.HORIZONTAL);
 				CheckBox itemBox = new CheckBox(mContext);
 				itemBox.setTag(TAG_CHECKBOX);
-				itemBox.setOnCheckedChangeListener(this);
 				TextView itemText = new TextView(mContext);
 				itemText.setText(optionList.get(i));
 				itemLayout.addView(itemBox);
@@ -144,10 +149,5 @@ public class QuestionView extends RelativeLayout implements
 			return false;
 		}
 		return radioGroup.getCheckedRadioButtonId() != -1;
-	}
-	
-	@Override
-	public void onCheckedChanged(CompoundButton arg0, boolean checked) {
-		Log.i("mylog", "ischeck" + checked);
 	}
 }
