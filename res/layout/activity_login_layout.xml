@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bg_blue_selector"
+        android:background="@color/v2_orange"
         android:text="@string/login"
         android:textSize="16sp"
         android:textColor="#ffffff"/>

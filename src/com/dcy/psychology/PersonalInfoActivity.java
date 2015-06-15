@@ -6,6 +6,7 @@ import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,19 +30,98 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 		mHeaderView.setOnClickListener(this);
 		setTopTitle(R.string.peasonal_info);
 		mCache = AsyncImageCache.from(this);
+		setListener();
 		showCustomDialog();
 		new GetInfoTask().execute();
 	}
 	
+	private void setListener(){
+		findViewById(R.id.rl_name).setOnClickListener(this);
+		findViewById(R.id.rl_mail).setOnClickListener(this);
+		findViewById(R.id.rl_sex).setOnClickListener(this);
+		findViewById(R.id.rl_age).setOnClickListener(this);
+		findViewById(R.id.rl_xingzuo).setOnClickListener(this);
+		findViewById(R.id.rl_household).setOnClickListener(this);
+		findViewById(R.id.rl_working_city).setOnClickListener(this);
+		findViewById(R.id.rl_diploma).setOnClickListener(this);
+		findViewById(R.id.rl_school).setOnClickListener(this);
+		findViewById(R.id.rl_year).setOnClickListener(this);
+		findViewById(R.id.rl_state).setOnClickListener(this);
+		findViewById(R.id.rl_major).setOnClickListener(this);
+		findViewById(R.id.rl_industry).setOnClickListener(this);
+	}
+	
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.iv_header:
+		if(v.getId() == R.id.iv_header){
 			showChoosePicPopupView();
+			return;
+		}
+		Intent mIntent = new Intent(this, EditInfoActivity.class);
+		switch (v.getId()) {
+		case R.id.rl_name:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.nick));
+			mIntent.putExtra(Constants.Params, "userName");
+			break;
+		case R.id.rl_mail:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.mail));
+			mIntent.putExtra(Constants.Params, "userEmail");
+			break;
+		case R.id.rl_sex:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.sex));
+			mIntent.putExtra(Constants.Params, "userSex");
+			break;
+		case R.id.rl_age:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.age));
+			mIntent.putExtra(Constants.Params, "userAge");
+			break;
+		case R.id.rl_xingzuo:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.xingzuo));
+			mIntent.putExtra(Constants.Params, "constellation");
+			break;
+		case R.id.rl_household:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.household));
+			mIntent.putExtra(Constants.Params, "home");
+			break;
+		case R.id.rl_working_city:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.working_city));
+			mIntent.putExtra(Constants.Params, "workingCity");
+			break;
+		case R.id.rl_diploma:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.diploma));
+			mIntent.putExtra(Constants.Params, "diploma");
+			break;
+		case R.id.rl_school:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.school));
+			mIntent.putExtra(Constants.Params, "university");
+			break;
+		case R.id.rl_year:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.graduation_year));
+			mIntent.putExtra(Constants.Params, "graduationYear");
+			break;
+		case R.id.rl_state:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.current_state));
+			mIntent.putExtra(Constants.Params, "currentState");
+			break;
+		case R.id.rl_major:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.major));
+			mIntent.putExtra(Constants.Params, "major");
+			break;
+		case R.id.rl_industry:
+			mIntent.putExtra(Constants.TitleName, getString(R.string.industry));
+			mIntent.putExtra(Constants.Params, "industry");
 			break;
 		default:
 			break;
 		}
+		startActivityForResult(mIntent, 100);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		showCustomDialog();
+		new GetInfoTask().execute();
 	}
 	
 	@Override
@@ -100,6 +180,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 		mCache.displayImage((ImageView) findViewById(R.id.iv_header), R.drawable.ic_launcher, 
 				new AsyncImageCache.NetworkImageGenerator(infoBean.UserHeadUrl, infoBean.UserHeadUrl));
 		((TextView)findViewById(R.id.tv_name)).setText(infoBean.UserName);
+		((TextView)findViewById(R.id.tv_mail)).setText(infoBean.UserEmail);
 		((TextView)findViewById(R.id.tv_sex)).setText(infoBean.UserSex);
 		((TextView)findViewById(R.id.tv_age)).setText(infoBean.UserAge);
 		((TextView)findViewById(R.id.tv_xingzuo)).setText(infoBean.Constellation);
@@ -110,8 +191,6 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 		((TextView)findViewById(R.id.tv_major)).setText(infoBean.Major);
 		((TextView)findViewById(R.id.tv_state)).setText(infoBean.CurrentState);
 		((TextView)findViewById(R.id.tv_working_city)).setText(infoBean.WorkingCity);
-		((TextView)findViewById(R.id.tv_grade)).setText(infoBean.Grade);
-		((TextView)findViewById(R.id.tv_hobbies)).setText(infoBean.Hobbies);
-		((TextView)findViewById(R.id.tv_follow)).setText(infoBean.Follow);
+		((TextView)findViewById(R.id.tv_industry)).setText(infoBean.Industry);
 	}
 }

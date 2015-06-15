@@ -121,6 +121,7 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 			QuestionModel model = mQuestionModelList.get(i);
 			QuestionView view = new QuestionView(this);
 			if(isDNATest){
+				view.setIsDna();
 				view.setOnCheckedListener(mItemCheckedListener);
 			}
 			view.setQuestionType(model.getQuestionType());
@@ -149,7 +150,6 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 				gsonbean = allList.get(growThemeIndex).get(growGroupIndex);
 				getQuestionList();
 			}
-			
 			return null;
 		}
 

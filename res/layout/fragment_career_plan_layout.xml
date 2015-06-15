@@ -51,6 +51,7 @@
         android:paddingRight="10dp"
         android:visibility="gone"
         android:orientation="vertical"
+        android:clickable="true"
         android:background="#ffffff">
         <TextView 
             android:id="@+id/tv_student_entry"
@@ -73,5 +74,4 @@
             android:textColor="#ffffff"
             android:background="#3ab1d3"/>
     </LinearLayout>
-
 </FrameLayout>

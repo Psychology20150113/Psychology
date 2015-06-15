@@ -114,6 +114,10 @@
             android:name="com.dcy.psychology.MineActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity 
+            android:name="com.dcy.psychology.EditInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
          <activity 
             android:name="com.dcy.psychology.MineDnaActivity"
             android:screenOrientation="portrait">

@@ -12,7 +12,12 @@
 		    android:id="@+id/nick_et"
 		    android:layout_marginTop="10dp"
 		    style="@style/edit_style"
-		    android:hint="@string/nick"/>   
+		    android:hint="@string/nick"/>
+		<EditText 
+		    android:id="@+id/mail_et"
+		    android:layout_marginTop="10dp"
+		    style="@style/edit_style"
+		    android:hint="@string/mail"/>   
 		<LinearLayout 
 		    android:layout_width="match_parent"
 		    android:layout_height="50dp"
@@ -60,11 +65,6 @@
 		        android:hint="@string/age"
 		        android:inputType="number"/>
 		</LinearLayout>
-		<EditText 
-		    android:id="@+id/mail_et"
-		    android:layout_marginTop="10dp"
-		    style="@style/edit_style"
-		    android:hint="@string/mail"/>
 		<LinearLayout 
 		    android:layout_width="match_parent"
 		    android:layout_height="40dp"
@@ -162,11 +162,25 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="match_parent"/>
 		</LinearLayout>
-		<EditText 
-		    android:id="@+id/et_working"
+		<LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="40dp"
 		    android:layout_marginTop="10dp"
-		    style="@style/edit_style"
-		    android:hint="@string/working_city_user"/>
+		    android:gravity="center_vertical">
+		    <TextView 
+		        style="@style/text_black18_style"
+		        android:text="@string/working_city"/>
+		    <Spinner 
+		        android:id="@+id/sp_working_province"
+		        android:layout_width="0dp"
+		        android:layout_weight="1"
+		        android:layout_height="match_parent"/>
+		    <Spinner 
+		        android:id="@+id/sp_working_city"
+		        android:layout_width="0dp"
+		        android:layout_weight="1"
+		        android:layout_height="match_parent"/>
+		</LinearLayout>
 		<LinearLayout 
 		    android:layout_width="match_parent"
 		    android:layout_height="40dp"
@@ -180,27 +194,12 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="match_parent"/>
 		</LinearLayout>
-		<EditText 
-		    android:id="@+id/et_grade"
-		    android:layout_marginTop="10dp"
-		    style="@style/edit_style"
-		    android:hint="@string/grade"/>
-		<EditText 
-		    android:id="@+id/et_hobbies"
-		    android:layout_marginTop="10dp"
-		    style="@style/edit_style"
-		    android:hint="@string/hobbies"/>
-		<EditText 
-		    android:id="@+id/et_follow"
-		    android:layout_marginTop="10dp"
-		    style="@style/edit_style"
-		    android:hint="@string/follow"/>
 		<Button 
 	        android:id="@+id/btn_prefect"
 	        android:layout_width="match_parent"
 	        android:layout_height="50dp"
 	        android:layout_marginTop="10dp"
-	        android:background="@drawable/bg_blue_selector"
+	        android:background="@color/v2_orange"
 	        android:text="@string/ok"
 	        android:textSize="16sp"
 	        android:textColor="#ffffff"/>

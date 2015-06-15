@@ -37,11 +37,11 @@
         <item>@string/label_platform_four</item>
     </string-array>
     <string-array name="slide_item_array">
-        <item>@string/slide_blackhole</item>
-        <item>@string/slide_problem</item>
         <item>@string/slide_music</item>
         <item>@string/slide_message</item>
         <item>@string/slide_discuss</item>
+        <item>@string/slide_problem</item>
+        <item>@string/slide_blackhole</item>
         <item>@string/slide_love</item>
         <item>@string/slide_point</item>
         <item>@string/slide_account</item>

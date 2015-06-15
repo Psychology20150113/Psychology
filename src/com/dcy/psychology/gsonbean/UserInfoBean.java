@@ -23,6 +23,7 @@ public class UserInfoBean {
 //	public String IsClassLeader;
 	public String HollendTest;
 	public String TemperamentTest;
+	public String UserResume;
 	public String Hobbies;
 	public String Follow;
 	public String FollowSpecificUser;

@@ -28,6 +28,7 @@ import com.dcy.psychology.adapter.SlideAdapter;
 import com.dcy.psychology.fragment.CareerPlanFragment;
 import com.dcy.psychology.fragment.StyleTwoBoxFragment;
 import com.dcy.psychology.fragment.TabChatFragment;
+import com.dcy.psychology.fragment.WaitingFragment;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
@@ -66,8 +67,9 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	
 	private void initData(){
 //		dataFragment.add(new ChatIMFragment());
-		dataFragment.add(new TabChatFragment());
+//		dataFragment.add(new TabChatFragment());
 //		dataFragment.add(new StyleTwoMainFragment());
+		dataFragment.add(new WaitingFragment());
 		dataFragment.add(new CareerPlanFragment());
 		dataFragment.add(new StyleTwoBoxFragment());
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -210,33 +212,34 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 			long id) {
 		Intent mIntent = null;
 		switch (position) {
+//		case 0:
+//			MobclickAgent.onEvent(this, "black_hole");
+//			mIntent = new Intent(this, BlackHoleActivity.class);
+//			break;
 		case 0:
-			MobclickAgent.onEvent(this, "black_hole");
-			mIntent = new Intent(this, BlackHoleActivity.class);
-			break;
-		case 1:
-			mIntent = new Intent(this, ShowProblemActivity.class);
-			break;
-		case 2:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
 				mIntent = new Intent(this, GetFollowUsersActivity.class);
 			}
 			break;
-		case 3:
+		case 1:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
 				mIntent = new Intent(this, MineDnaActivity.class);
 			}
 			break;
-		case 4:
+		case 2:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
 				mIntent = new Intent(this, PersonalInfoActivity.class);
 			}
+			break;
+		case 3:
+			mIntent = new Intent(this, ShowProblemActivity.class);
+			break;
 		default:
 			break;
 		}

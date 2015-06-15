@@ -73,6 +73,9 @@ public interface Constants {
 	public static final String PhoneNum = "phoneNum";
 	public static final String QizhiResult = "qizhiResult";
 	public static final String ZhiyeResult = "zhiyeResult";
+	public static final String Params = "params";
+	public static final String TitleName = "title_name";
+	public static final String Result = "result_name";
 	
 	public static final String UserRole = "user_role";
 	public static final String RoleUser = "USER";

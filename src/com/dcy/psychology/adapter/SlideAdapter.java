@@ -15,8 +15,8 @@ public class SlideAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private String[] mSlideArray;
 	private int[] mIconArray = {
-			R.drawable.icon_slide_one , R.drawable.icon_slide_problem, R.drawable.icon_slide_two , 
-			R.drawable.icon_slide_three, R.drawable.icon_slide_four , R.drawable.icon_slide_five ,
+			R.drawable.icon_slide_two , R.drawable.icon_slide_three, R.drawable.icon_slide_four , 
+			R.drawable.icon_slide_five , R.drawable.icon_slide_problem, R.drawable.icon_slide_one ,
 			R.drawable.icon_slide_six, R.drawable.icon_slide_seven
 	};
 	
@@ -27,7 +27,7 @@ public class SlideAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		return 5;
+		return 4;
 	}
 
 	@Override

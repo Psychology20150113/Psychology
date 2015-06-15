@@ -199,7 +199,6 @@ public class Utils {
 		SoapObject request = new SoapObject(Constants.SpaceName, Constants.PrefectInfoMethod);
 		request.addProperty("userPhone", MyApplication.myPhoneNum);
 		request.addProperty("userLoginName", MyApplication.myPhoneNum);
-		request.addProperty("userHeadUrl", "");
 		for(Entry<String, String> item : infoMap.entrySet()){
 			request.addProperty(item.getKey(), item.getValue());
 		}
@@ -426,7 +425,7 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
 	}
 	
-	public static BasicBean saveTestResult(String type, String testResult, String allResult){
+	public static BasicBean saveTestResult(String type, String testResult, String allResult, String itemScores){
 		if(TextUtils.isEmpty(type) || TextUtils.isEmpty(testResult) || TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			return new BasicBean();
 		}
@@ -435,6 +434,7 @@ public class Utils {
 		request.addProperty("testTypeName", type);
 		request.addProperty("testResult", testResult);
 		request.addProperty("allResult", allResult);
+		request.addProperty("speciesScores", itemScores);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new BasicBean();
@@ -577,6 +577,12 @@ public class Utils {
 	public static boolean validatePhoneNumber(String phoneNumber) {
 		Pattern pattern = Pattern.compile("^((13[0-9])|(15[0-9])|(18[0-9]))\\d{8}$");
 		Matcher m = pattern.matcher(phoneNumber);
+		return m.matches();
+	}
+	
+	public static boolean validateEmail(String email){
+		Pattern pattern = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
+		Matcher m = pattern.matcher(email);
 		return m.matches();
 	}
 	

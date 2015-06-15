@@ -55,11 +55,11 @@
 	<string name="question_theme_five">眼睛的心理</string>    
 	<string name="question_theme_seven">课堂心理学</string>
 	<string name="question_theme_eight">饭店</string>
-	<string name="slide_blackhole">宣泄黑洞</string>
-	<string name="slide_problem">常见问题</string>
 	<string name="slide_music">我的关注</string>
 	<string name="slide_message">我的职业DNA</string>
 	<string name="slide_discuss">我的信息</string>
+	<string name="slide_problem">常见问题</string>
+	<string name="slide_blackhole">宣泄黑洞</string>
 	<string name="slide_love">我的收藏</string>
 	<string name="slide_point">我的积分</string>
 	<string name="slide_account">我的账户</string>
@@ -84,9 +84,6 @@
 	<string name="account_empty">账号不能为空</string>
 	<string name="name_empty">名字不能为空</string>
 	<string name="mail_empty">邮箱不能为空</string>
-	<string name="year_empty">毕业时间不能为空</string>
-	<string name="working_empty">工作城市不能为空</string>
-	<string name="age_empty">年龄不能为空</string>
 	<string name="pwd_empty">密码不能为空</string>
 	<string name="pwd_makesure">请确认密码</string>
 	<string name="pwd_diff">两次密码输入不一致</string>
@@ -218,13 +215,8 @@
 	
 	<string name="major">专长</string>
 	<string name="graduation_year">毕业年份</string>
-	<string name="isClassLeader">当过班长</string>
 	<string name="current_state">状态</string>
-	<string name="working_city">工作地点</string>
-	<string name="working_city_user">向往城市坐标</string>
-	<string name="grade">职务</string>
-	<string name="hobbies">兴趣方向</string>
-	<string name="follow">粉谁</string>
+	<string name="working_city">所在城市</string>
 	
 	<string name="state_teacher_one">硕士</string>
 	<string name="state_teacher_two">博士</string>
@@ -334,4 +326,8 @@
     <string name="updata_header_success">上传头像成功</string>
     <string name="updata_header_failed">上传头像失败</string>
     <string name="error_role">您不是心情师,新切换到心晴生入口登录</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="format_change_info">更改%s</string>
+    <string name="change_failed">更改失败</string>
 </resources>

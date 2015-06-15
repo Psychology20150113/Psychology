@@ -10,7 +10,9 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -32,6 +34,7 @@ public class QuestionView extends RelativeLayout{
 	
 	private ArrayList<Integer> pointList;
 	private OnCheckedChangeListener mCheckedChangeListener;
+	private boolean isDnaTest = false;
 	
 	public QuestionView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -51,9 +54,14 @@ public class QuestionView extends RelativeLayout{
 		this.mCheckedChangeListener = listener;
 	}
 	
+	public void setIsDna(){
+		isDnaTest = true;
+	}
+	
 	public void setDate(int index, String title, ArrayList<String> optionList) {
 		LinearLayout questionLayout = new LinearLayout(mContext);
 		questionLayout.setOrientation(LinearLayout.VERTICAL);
+		questionLayout.setGravity(Gravity.CENTER);
 		TextView titleView = new TextView(mContext);
 		titleView.setText("        " + index + "." + title);
 		titleView.setLineSpacing(0, 1.2f);// (add , mul)
@@ -63,6 +71,11 @@ public class QuestionView extends RelativeLayout{
 		questionLayout.addView(titleView);
 		android.view.ViewGroup.LayoutParams buttonParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 
 				mResources.getDimensionPixelSize(R.dimen.title_height));
+		LinearLayout.LayoutParams dnaParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		dnaParams.topMargin = mResources.getDimensionPixelSize(R.dimen.title_height);
+		RadioGroup.LayoutParams rightParams = new RadioGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		rightParams.leftMargin = mResources.getDimensionPixelSize(R.dimen.title_height);
+		int itemColor = getResources().getColor(R.color.color_orange_gray_selector);
 		switch (mQuestionType) {
 		case Type_Grow:
 		case Type_Single:
@@ -71,11 +84,27 @@ public class QuestionView extends RelativeLayout{
 			if(mCheckedChangeListener != null){
 				radioGroup.setOnCheckedChangeListener(mCheckedChangeListener);
 			}
+			if(isDnaTest){
+				radioGroup.setOrientation(LinearLayout.HORIZONTAL);
+				radioGroup.setGravity(Gravity.CENTER);
+				radioGroup.setLayoutParams(dnaParams);
+			}
 			for (int i = 0; i < optionList.size(); i++) {
 				RadioButton rb = new RadioButton(mContext);
-				rb.setLayoutParams(buttonParams);
 				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
-				rb.setText(optionList.get(i));
+				if(isDnaTest){
+					rb.setButtonDrawable(null);
+					rb.setText(i == 0 ? R.string.yes : R.string.no);
+					rb.setGravity(Gravity.CENTER);
+					rb.setTextColor(itemColor);
+					rb.setBackgroundResource(R.drawable.bg_circle_check_selector);
+					if(i == 1){
+						rb.setLayoutParams(rightParams);
+					}
+				} else {
+					rb.setText(optionList.get(i));
+					rb.setLayoutParams(buttonParams);
+				}
 				radioGroup.addView(rb);
 			}
 			questionLayout.addView(radioGroup);

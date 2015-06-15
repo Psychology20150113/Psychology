@@ -25,6 +25,7 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 	private TextView nameTv;
 	private ImageView headerView;
 	private TextView achieveView;
+	private TextView mInfoView;
 	private AsyncImageCache mAsyncImageCache;
 	private Context mContext;
 	private long specialId;
@@ -125,6 +126,7 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		nameTv = (TextView) findViewById(R.id.tv_item_name);
 		headerView = (ImageView) findViewById(R.id.iv_header);
 		achieveView = (TextView) findViewById(R.id.tv_item_achieve);
+		mInfoView = (TextView) findViewById(R.id.tv_doctor_info);
 		findViewById(R.id.tv_item_match).setOnClickListener(this);
 		findViewById(R.id.tv_item_attention).setOnClickListener(this);
 	}
@@ -151,6 +153,6 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		achieveView.setText(result.UserAchievement);
 		mAsyncImageCache.displayImage(headerView, R.drawable.ic_launcher, 
 				new AsyncImageCache.NetworkImageGenerator(result.UserHeadUrl, result.UserHeadUrl));
+		mInfoView.setText(result.UserResume);
 	}
-	
 }

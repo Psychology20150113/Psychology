@@ -59,10 +59,6 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	private EditText ageEt;
 	private EditText mailEt;
 	private EditText gradurationYearEt;
-	private EditText workingEt;
-	private EditText hobbiesEt;
-	private EditText gradeEt;
-	private EditText followEt;
 	private Spinner mIndustrySpinner;
 	private Spinner mXingzuoSpinner;
 	private Spinner mProvinceSpinner;
@@ -71,6 +67,8 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	private Spinner mStatusSpinner;
 	private Spinner mSchoolCitySpinner;
 	private Spinner mUniversitySpinner;
+	private Spinner mWorkingProvinceSpinner;
+	private Spinner mWorkingCitySpinner;
 	private Spinner mMajorSpinner;
 	private ArrayList<IdAndName> mProvinceList;
 	private SimpleTextAdapter mProvinceAdapter;
@@ -78,6 +76,8 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	private SimpleTextAdapter mCityAdapter;
 	private ArrayList<IdAndName> mUniversityList = new ArrayList<IdAndName>();
 	private SimpleTextAdapter mUniversityAdapter;
+	private ArrayList<IdAndName> mWorkingCityList = new ArrayList<IdAndName>();
+	private SimpleTextAdapter mWorkingCityAdapter;
 	private Map<String, String> infoMap = new HashMap<String, String>();
 	private View rootView;
 	private CustomProgressDialog mLoadingDialog;
@@ -186,12 +186,9 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			infoMap.put("major", mMajorSpinner.getSelectedItem().toString());
 			infoMap.put("graduationYear", gradurationYearEt.getText().toString());
 			infoMap.put("currentState", mStatusSpinner.getSelectedItem().toString());
-			infoMap.put("workingCity", workingEt.getText().toString());
+			infoMap.put("workingCity", mWorkingProvinceSpinner.getSelectedItem().toString() + " " + 
+					mWorkingCitySpinner.getSelectedItem().toString());
 			infoMap.put("industry", mIndustrySpinner.getSelectedItem().toString());
-			infoMap.put("isClassLeader", "");
-			infoMap.put("grade", "");
-			infoMap.put("hobbies", hobbiesEt.getText().toString());
-			infoMap.put("follow", followEt.getText().toString());
 			mLoadingDialog.show();
 			new PrefectInfoTask().execute();
 			break;
@@ -267,6 +264,11 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			mCityList.removeAll(mCityList);
 			mCityList.addAll(DbManager.getCity(mProvinceList.get(position).id));
 			mCityAdapter.notifyDataSetChanged();
+			break;
+		case R.id.sp_working_province:
+			mWorkingCityList.removeAll(mWorkingCityList);
+			mWorkingCityList.addAll(DbManager.getCity(mProvinceList.get(position).id));
+			mWorkingCityAdapter.notifyDataSetChanged();
 			break;
 		case R.id.sp_school_province:
 			mUniversityList.removeAll(mUniversityList);
@@ -366,13 +368,6 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		ageEt = (EditText) rootView.findViewById(R.id.age_et);
 		mailEt = (EditText) rootView.findViewById(R.id.mail_et);
 		gradurationYearEt = (EditText) rootView.findViewById(R.id.et_graduation_year);
-		workingEt = (EditText) rootView.findViewById(R.id.et_working);
-		if(!Constants.RoleUser.equals(MyApplication.myUserRole)){
-			workingEt.setHint(R.string.working_city);
-		}
-		hobbiesEt = (EditText) rootView.findViewById(R.id.et_hobbies);
-		gradeEt = (EditText) rootView.findViewById(R.id.et_grade);
-		followEt = (EditText) rootView.findViewById(R.id.et_follow);
 		mIndustrySpinner = (Spinner) rootView.findViewById(R.id.sp_industry);
 		mIndustrySpinner.setAdapter(new ArrayAdapter<String>(mContext, 
 				android.R.layout.simple_spinner_dropdown_item, mResources.getStringArray(R.array.industry_array)));
@@ -402,33 +397,24 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mMajorSpinner = (Spinner) rootView.findViewById(R.id.sp_major);
 		mMajorSpinner.setAdapter(new ArrayAdapter<String>(mContext, 
 				android.R.layout.simple_spinner_dropdown_item, mResources.getStringArray(R.array.major_array)));
+		mWorkingProvinceSpinner = (Spinner) rootView.findViewById(R.id.sp_working_province);
+		mWorkingProvinceSpinner.setAdapter(mProvinceAdapter);
+		mWorkingProvinceSpinner.setOnItemSelectedListener(this);
+		mWorkingCitySpinner = (Spinner) rootView.findViewById(R.id.sp_working_city);
+		mWorkingCityAdapter = new SimpleTextAdapter(mContext, mWorkingCityList);
+		mWorkingCitySpinner.setAdapter(mWorkingCityAdapter);
 		rootView.findViewById(R.id.btn_prefect).setOnClickListener(this);
 	}
 	
 	private boolean checkInput(){
 		if(TextUtils.isEmpty(nickEt.getText())){
-			Toast.makeText(mContext, R.string.account_empty, Toast.LENGTH_SHORT).show();
+			Toast.makeText(mContext, R.string.name_empty, Toast.LENGTH_SHORT).show();
 			nickEt.requestFocus();
 			return false;
 		}
 		if(TextUtils.isEmpty(mailEt.getText())){
 			Toast.makeText(mContext, R.string.mail_empty, Toast.LENGTH_SHORT).show();
 			mailEt.requestFocus();
-			return false;
-		}
-		if(TextUtils.isEmpty(gradurationYearEt.getText())){
-			Toast.makeText(mContext, R.string.year_empty, Toast.LENGTH_SHORT).show();
-			gradurationYearEt.requestFocus();
-			return false;
-		}
-		if(TextUtils.isEmpty(workingEt.getText())){
-			Toast.makeText(mContext, R.string.working_empty, Toast.LENGTH_SHORT).show();
-			workingEt.requestFocus();
-			return false;
-		}
-		if(TextUtils.isEmpty(ageEt.getText())){
-			Toast.makeText(mContext, R.string.age_empty, Toast.LENGTH_SHORT).show();
-			ageEt.requestFocus();
 			return false;
 		}
 		if(!TextUtils.isEmpty(ageEt.getText())){

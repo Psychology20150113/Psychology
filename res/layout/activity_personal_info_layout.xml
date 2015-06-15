@@ -27,6 +27,7 @@
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_name"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="13dp"
@@ -44,6 +45,25 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_mail" 
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/white">
+        	<TextView 
+	            style="@style/text_black16_style"
+	            android:text="@string/mail"
+	            android:layout_centerVertical="true"/>    
+        	<TextView 
+        	    android:id="@+id/tv_mail"
+        	    style="@style/text_gray16_style"
+        	    android:layout_alignParentRight="true"
+        	    android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout 
+            android:id="@+id/rl_sex"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
@@ -61,6 +81,7 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_age"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
@@ -78,6 +99,7 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_xingzuo"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
@@ -95,6 +117,7 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_household"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
@@ -112,9 +135,28 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_working_city"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/white">
+        	<TextView 
+	            style="@style/text_black16_style"
+	            android:text="@string/working_city"
+	            android:layout_centerVertical="true"/>    
+        	<TextView 
+        	    android:id="@+id/tv_working_city"
+        	    style="@style/text_gray16_style"
+        	    android:layout_alignParentRight="true"
+        	    android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout 
+            android:id="@+id/rl_diploma"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="13dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:background="@color/white">
@@ -129,6 +171,7 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_school"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
@@ -146,6 +189,7 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_year"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
@@ -163,9 +207,10 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
+            android:id="@+id/rl_state"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="1dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:background="@color/white">
@@ -180,57 +225,7 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:background="@color/white">
-        	<TextView 
-	            style="@style/text_black16_style"
-	            android:text="@string/working_city_user"
-	            android:layout_centerVertical="true"/>    
-        	<TextView 
-        	    android:id="@+id/tv_working_city"
-        	    style="@style/text_gray16_style"
-        	    android:layout_alignParentRight="true"
-        	    android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:background="@color/white">
-        	<TextView 
-	            style="@style/text_black16_style"
-	            android:text="@string/hobbies"
-	            android:layout_centerVertical="true"/>    
-        	<TextView 
-        	    android:id="@+id/tv_hobbies"
-        	    style="@style/text_gray16_style"
-        	    android:layout_alignParentRight="true"
-        	    android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:background="@color/white">
-        	<TextView 
-	            style="@style/text_black16_style"
-	            android:text="@string/grade"
-	            android:layout_centerVertical="true"/>    
-        	<TextView 
-        	    android:id="@+id/tv_grade"
-        	    style="@style/text_gray16_style"
-        	    android:layout_alignParentRight="true"
-        	    android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <RelativeLayout 
+            android:id="@+id/rl_major"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
@@ -247,20 +242,20 @@
         	    android:layout_alignParentRight="true"
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
-        <RelativeLayout 
+		<RelativeLayout 
+		    android:id="@+id/rl_industry"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
-            android:layout_marginBottom="20dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:background="@color/white">
         	<TextView 
 	            style="@style/text_black16_style"
-	            android:text="@string/follow"
+	            android:text="@string/industry"
 	            android:layout_centerVertical="true"/>    
         	<TextView 
-        	    android:id="@+id/tv_follow"
+        	    android:id="@+id/tv_industry"
         	    style="@style/text_gray16_style"
         	    android:layout_alignParentRight="true"
         	    android:layout_centerVertical="true"/>

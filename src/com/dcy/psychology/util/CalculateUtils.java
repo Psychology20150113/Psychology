@@ -134,7 +134,7 @@ public class CalculateUtils {
 				return null;
 			}
 			return Utils.saveTestResult(resultMap.get("testType"), resultMap.get("typeResult")
-					, resultMap.get("pointResult"));
+					, resultMap.get("pointResult"), resultMap.get("dataResult"));
 		}
 		
 		@Override
