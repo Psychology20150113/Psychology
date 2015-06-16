@@ -4,21 +4,26 @@ import java.util.ArrayList;
 
 import com.dcy.psychology.DetailTestResultActivity;
 import com.dcy.psychology.MineActivity;
+import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ShowListActivity;
+import com.dcy.psychology.gsonbean.UserInfoBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;
+import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.MyMarkerView;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.umeng.socialize.controller.c;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -34,6 +39,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 	private RadarChart mChart;
 	private String[] dataArray;
 	private String[] careerArray;
+	private View rootView;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,50 +52,94 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_mine_mark_layout, null);
-		view.findViewById(R.id.tv_look_info).setOnClickListener(this);
-		view.findViewById(R.id.tv_test).setOnClickListener(this);
-		initZhiyeView(view);
-		initQizhiView(view);
-		return view;
+		rootView = inflater.inflate(R.layout.fragment_mine_mark_layout, null);
+		rootView.findViewById(R.id.tv_look_info).setOnClickListener(this);
+		rootView.findViewById(R.id.tv_test).setOnClickListener(this);
+		initZhiyeView();
+		initQizhiView();
+		if(TextUtils.isEmpty(mShared.getHollendResult()) && TextUtils.isEmpty(mShared.getQizhiResult())){
+			new GetInfoTask().execute();
+		}
+		return rootView;
 	}
 
-	private void initZhiyeView(View view) {
-		mChart = (RadarChart) view.findViewById(R.id.view_chart);
+	private void initZhiyeView() {
+		mChart = (RadarChart) rootView.findViewById(R.id.view_chart);
 		mChart.setMarkerView(new MyMarkerView(mContext, R.layout.custom_marker_view));
 		mChart.setDescription("");
 		mChart.getYAxis().setEnabled(false);
 		mChart.getLegend().setEnabled(false);
 		if(!TextUtils.isEmpty(mShared.getHollendResult())){
-			((TextView)view.findViewById(R.id.tv_zhiye)).setText(String.format(
+			((TextView)rootView.findViewById(R.id.tv_zhiye)).setText(String.format(
 					getString(R.string.mine_zhiye), mShared.getHollendResult()));
 			dataArray = mShared.getHollendData().split(",");
 			setData();
 		} else {
-			view.findViewById(R.id.tv_empty_zhiye).setVisibility(View.VISIBLE);
-			view.findViewById(R.id.tv_zhiye).setVisibility(View.GONE);
+			rootView.findViewById(R.id.tv_empty_zhiye).setVisibility(View.VISIBLE);
+			rootView.findViewById(R.id.tv_zhiye).setVisibility(View.GONE);
 			mChart.setVisibility(View.GONE);
 		}
 	}
 	
-	private void initQizhiView(View view){
+	private void initQizhiView(){
 		if(!TextUtils.isEmpty(mShared.getQizhiResult())){
 			String[] mQizhiData = mShared.getQizhiData().split(",");
-			if(mQizhiData.length != 4){
+			setQizhiData(mQizhiData);
+		} else {
+			rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.GONE);
+			rootView.findViewById(R.id.tv_empty_qizhi).setVisibility(View.VISIBLE);
+		}
+	}
+
+	private void setQizhiData(String[] mQizhiData) {
+		if(mQizhiData.length != 4){
+			return;
+		}
+		((ProgressBar)rootView.findViewById(R.id.pb_qizhi_one)).setProgress(Integer.parseInt(mQizhiData[0]) * 100 / 15 );
+		((ProgressBar)rootView.findViewById(R.id.pb_qizhi_two)).setProgress(Integer.parseInt(mQizhiData[1]) * 100 / 15 );
+		((ProgressBar)rootView.findViewById(R.id.pb_qizhi_three)).setProgress(Integer.parseInt(mQizhiData[2]) * 100 / 15);
+		((ProgressBar)rootView.findViewById(R.id.pb_qizhi_four)).setProgress(Integer.parseInt(mQizhiData[3]) * 100 / 15 );
+		((TextView)rootView.findViewById(R.id.tv_point_one)).setText(mQizhiData[0]);
+		((TextView)rootView.findViewById(R.id.tv_point_two)).setText(mQizhiData[1]);
+		((TextView)rootView.findViewById(R.id.tv_point_three)).setText(mQizhiData[2]);
+		((TextView)rootView.findViewById(R.id.tv_point_four)).setText(mQizhiData[3]);
+		((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
+	}
+	
+	private class GetInfoTask extends AsyncTask<Void, Void, UserInfoBean> {
+		@Override
+		protected UserInfoBean doInBackground(Void... params) {
+			return Utils.getUserInfo(MyApplication.myPhoneNum);
+		}
+		
+		@Override
+		protected void onPostExecute(UserInfoBean result) {
+			if(result == null){
 				return;
 			}
-			((ProgressBar)view.findViewById(R.id.pb_qizhi_one)).setProgress(Integer.parseInt(mQizhiData[0]) * 100 / 15 );
-			((ProgressBar)view.findViewById(R.id.pb_qizhi_two)).setProgress(Integer.parseInt(mQizhiData[1]) * 100 / 15 );
-			((ProgressBar)view.findViewById(R.id.pb_qizhi_three)).setProgress(Integer.parseInt(mQizhiData[2]) * 100 / 15);
-			((ProgressBar)view.findViewById(R.id.pb_qizhi_four)).setProgress(Integer.parseInt(mQizhiData[3]) * 100 / 15 );
-			((TextView)view.findViewById(R.id.tv_point_one)).setText(mQizhiData[0]);
-			((TextView)view.findViewById(R.id.tv_point_two)).setText(mQizhiData[1]);
-			((TextView)view.findViewById(R.id.tv_point_three)).setText(mQizhiData[2]);
-			((TextView)view.findViewById(R.id.tv_point_four)).setText(mQizhiData[3]);
-			((TextView)view.findViewById(R.id.tv_qizhi)).setText(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
-		} else {
-			view.findViewById(R.id.ll_qizhi_show).setVisibility(View.GONE);
-			view.findViewById(R.id.tv_empty_qizhi).setVisibility(View.VISIBLE);
+			if(!TextUtils.isEmpty(result.HollendTestSpeciesScores)){
+				dataArray = result.HollendTestSpeciesScores.split(",");
+				if(dataArray != null && dataArray.length == 6){
+					((TextView)rootView.findViewById(R.id.tv_zhiye)).setText(String.format(
+							getString(R.string.mine_zhiye), result.HollendTest));
+					setData();
+					rootView.findViewById(R.id.tv_empty_zhiye).setVisibility(View.GONE);
+					rootView.findViewById(R.id.tv_zhiye).setVisibility(View.VISIBLE);
+					mChart.setVisibility(View.VISIBLE);
+					mShared.setHollendResult(result.HollendTestSpeciesScores, 
+							result.HollendTest, "");
+				}
+			}
+			if(!TextUtils.isEmpty(result.TemperamentTestSpeciesScores)){
+				String[] qizhiArray = result.TemperamentTestSpeciesScores.split(",");
+				if(qizhiArray != null && qizhiArray.length == 4){
+					setQizhiData(qizhiArray);
+					rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.VISIBLE);
+					rootView.findViewById(R.id.tv_empty_qizhi).setVisibility(View.GONE);
+					mShared.setQizhiResult(result.TemperamentTestSpeciesScores, 
+							result.TemperamentTest, "");
+				}
+			}
 		}
 	}
 	

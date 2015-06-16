@@ -80,6 +80,10 @@ public class ShareUtils {
     public void shareToCircle(String content){
         shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, Default_share_url);
     }
+    
+    public void shareToCircle(String content, String url){
+        shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, url);
+    }
 
     public void shareToQQ(String content){
         shareToPlatform(Platform.Platform_QQ, Share_Default_Title, content, null);

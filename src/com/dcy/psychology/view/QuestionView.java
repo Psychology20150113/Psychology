@@ -7,6 +7,7 @@ import com.dcy.psychology.util.ThoughtReadingUtils.QuestionType;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -62,6 +63,7 @@ public class QuestionView extends RelativeLayout{
 		LinearLayout questionLayout = new LinearLayout(mContext);
 		questionLayout.setOrientation(LinearLayout.VERTICAL);
 		questionLayout.setGravity(Gravity.CENTER);
+		questionLayout.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		TextView titleView = new TextView(mContext);
 		titleView.setText("        " + index + "." + title);
 		titleView.setLineSpacing(0, 1.2f);// (add , mul)
@@ -76,6 +78,7 @@ public class QuestionView extends RelativeLayout{
 		RadioGroup.LayoutParams rightParams = new RadioGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		rightParams.leftMargin = mResources.getDimensionPixelSize(R.dimen.title_height);
 		int itemColor = getResources().getColor(R.color.color_orange_gray_selector);
+		Drawable transparentDrawable = getResources().getDrawable(android.R.color.transparent);
 		switch (mQuestionType) {
 		case Type_Grow:
 		case Type_Single:
@@ -93,7 +96,7 @@ public class QuestionView extends RelativeLayout{
 				RadioButton rb = new RadioButton(mContext);
 				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 				if(isDnaTest){
-					rb.setButtonDrawable(null);
+					rb.setButtonDrawable(transparentDrawable);
 					rb.setText(i == 0 ? R.string.yes : R.string.no);
 					rb.setGravity(Gravity.CENTER);
 					rb.setTextColor(itemColor);

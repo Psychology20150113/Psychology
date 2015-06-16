@@ -23,6 +23,8 @@ public class UserInfoBean {
 //	public String IsClassLeader;
 	public String HollendTest;
 	public String TemperamentTest;
+	public String HollendTestSpeciesScores;
+	public String TemperamentTestSpeciesScores;
 	public String UserResume;
 	public String Hobbies;
 	public String Follow;
@@ -33,5 +35,4 @@ public class UserInfoBean {
 	public String PwdAnswer;
 	public String UserRegisterDate;
 	public String RoleName;
-	
 }

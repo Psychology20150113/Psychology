@@ -84,6 +84,7 @@
 	<string name="account_empty">账号不能为空</string>
 	<string name="name_empty">名字不能为空</string>
 	<string name="mail_empty">邮箱不能为空</string>
+	<string name="mail_format_error">邮箱格式错误</string>
 	<string name="pwd_empty">密码不能为空</string>
 	<string name="pwd_makesure">请确认密码</string>
 	<string name="pwd_diff">两次密码输入不一致</string>

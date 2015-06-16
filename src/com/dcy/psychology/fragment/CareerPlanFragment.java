@@ -417,6 +417,11 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			mailEt.requestFocus();
 			return false;
 		}
+		if(!Utils.validateEmail(mailEt.getText().toString())){
+			Toast.makeText(mContext, R.string.mail_format_error, Toast.LENGTH_SHORT).show();
+			mailEt.requestFocus();
+			return false;
+		}
 		if(!TextUtils.isEmpty(ageEt.getText())){
 			int age = Integer.valueOf(ageEt.getText().toString());
 			if(age < 1 || age > 200){

@@ -114,14 +114,23 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 		default:
 			break;
 		}
-		startActivityForResult(mIntent, 100);
+		startActivityForResult(mIntent, 1000);
 	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		showCustomDialog();
-		new GetInfoTask().execute();
+		switch (requestCode) {
+		case 1000:
+			if(data != null){
+				showCustomDialog();
+				new GetInfoTask().execute();
+			}
+			break;
+
+		default:
+			break;
+		}
 	}
 	
 	@Override

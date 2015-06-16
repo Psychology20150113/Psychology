@@ -193,6 +193,17 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 		public void onCheckedChanged(RadioGroup group, int checkedId) {
 			mCurrentPage ++;
 			updateView();
+			if(isDNATest && mCurrentPage == mQuestionViewList.size()){
+				ArrayList<Integer> pointList = new ArrayList<Integer>();
+				for(QuestionView item : mQuestionViewList){
+					pointList.add(item.getPoint());
+				}
+				Intent resultIntent = new Intent();
+				resultIntent.putIntegerArrayListExtra(ThoughtReadingUtils.PointResult, pointList);
+				setResult(100, resultIntent);
+				finish();
+				return;
+			}
 		}
 	};
 	
@@ -273,17 +284,6 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 					finish();
 					return;
 				}else {
-					if(isDNATest){
-						ArrayList<Integer> pointList = new ArrayList<Integer>();
-						for(QuestionView item : mQuestionViewList){
-							pointList.add(item.getPoint());
-						}
-						Intent resultIntent = new Intent();
-						resultIntent.putIntegerArrayListExtra(ThoughtReadingUtils.PointResult, pointList);
-						setResult(100, resultIntent);
-						finish();
-						return;
-					}
 					if(gsonbean.getAnswer() == null){
 						return;
 					}

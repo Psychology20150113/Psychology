@@ -1,5 +1,6 @@
 package com.dcy.psychology.view.dialog;
 
+import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.util.ShareUtils;
@@ -15,6 +16,7 @@ public class ShareMatchDialog extends Dialog implements android.view.View.OnClic
 	private SpecificUserBean itemBean;
 	private ShareUtils mShareUtils;
 	private Context mContext;
+	private String shareUrl = "http://114.215.179.130/webservice/share.html?userphone=%s&specificuserid=%s&matchresult=%s";
 	
 	public ShareMatchDialog(Context context, SpecificUserBean bean) {
 		super(context, R.style.AppDialog);
@@ -42,7 +44,8 @@ public class ShareMatchDialog extends Dialog implements android.view.View.OnClic
 			break;
 		case R.id.iv_share_circle:
 			mShareUtils.shareToCircle(String.format
-					(mContext.getString(R.string.share_format), itemBean.SpecificUserName) + itemBean.MatchResult + "%");
+					(mContext.getString(R.string.share_format), itemBean.SpecificUserName) + itemBean.MatchResult + "%",
+					String.format(shareUrl, MyApplication.myPhoneNum, itemBean.SpecificUserID, itemBean.MatchResult));
 			break;
 		default:
 			break;
