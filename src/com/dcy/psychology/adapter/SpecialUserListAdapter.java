@@ -98,7 +98,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		mHolder.infoLayout.setTag(item.SpecificUserPhone);
 		if(!TextUtils.isEmpty(String.valueOf(item.MatchResult)) && item.MatchResult != 0){
 			mHolder.pointLayout.setVisibility(View.VISIBLE);
-			mHolder.pointTv.setText(String.valueOf(item.MatchResult));
+			mHolder.pointTv.setText(String.valueOf((int)item.MatchResult) + "%");
 		}
 		return convertView;
 	}

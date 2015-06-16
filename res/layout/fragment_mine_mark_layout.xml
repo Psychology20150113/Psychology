@@ -7,11 +7,13 @@
     android:gravity="center_horizontal">
     <com.github.mikephil.charting.charts.RadarChart
         android:id="@+id/view_chart"
-        android:layout_width="240dp"
-        android:layout_height="240dp"/>
+        android:layout_width="230dp"
+        android:layout_height="230dp"/>
     <TextView 
         android:id="@+id/tv_zhiye"
-        style="@style/text_black18_style"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        style="@style/text_black16_style"/>
     <TextView 
         android:id="@+id/tv_empty_zhiye"
         style="@style/text_black18_style"
@@ -141,7 +143,9 @@
 		</LinearLayout>
 		<TextView 
 	        android:id="@+id/tv_qizhi"
-	        style="@style/text_black18_style"/>    
+	        android:layout_marginTop="5dp"
+        	android:layout_marginBottom="5dp"
+	        style="@style/text_black16_style"/>    
 	</LinearLayout>
 	<TextView 
         android:id="@+id/tv_empty_qizhi"

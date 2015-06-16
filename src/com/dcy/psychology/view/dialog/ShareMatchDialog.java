@@ -44,8 +44,8 @@ public class ShareMatchDialog extends Dialog implements android.view.View.OnClic
 			break;
 		case R.id.iv_share_circle:
 			mShareUtils.shareToCircle(String.format
-					(mContext.getString(R.string.share_format), itemBean.SpecificUserName) + itemBean.MatchResult + "%",
-					String.format(shareUrl, MyApplication.myPhoneNum, itemBean.SpecificUserID, itemBean.MatchResult));
+					(mContext.getString(R.string.share_format), itemBean.MatchResult, itemBean.SpecificUserName),
+					itemBean.SpecificUserHeadUrl,String.format(shareUrl, MyApplication.myPhoneNum, itemBean.SpecificUserID, itemBean.MatchResult));
 			break;
 		default:
 			break;

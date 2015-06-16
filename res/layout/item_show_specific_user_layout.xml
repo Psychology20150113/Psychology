@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:gravity="center_vertical">
-        <ImageView 
+        <com.dcy.psychology.view.CornerImageView 
 	        android:id="@+id/iv_header"
 	        android:layout_width="83dp"
 	        android:layout_height="83dp"

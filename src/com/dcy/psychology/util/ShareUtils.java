@@ -74,27 +74,27 @@ public class ShareUtils {
     }
 
     public void shareToWX(String content){
-        shareToPlatform(Platform.Platform_WX, Share_Default_Title, content, null);
+        shareToPlatform(Platform.Platform_WX, Share_Default_Title, content, null,null);
     }
 
     public void shareToCircle(String content){
-        shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, Default_share_url);
+        shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, null,Default_share_url);
     }
     
-    public void shareToCircle(String content, String url){
-        shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, url);
+    public void shareToCircle(String title, String imageUrl, String url){
+        shareToPlatform(Platform.Platform_Circle, title, "", imageUrl, url);
     }
 
     public void shareToQQ(String content){
-        shareToPlatform(Platform.Platform_QQ, Share_Default_Title, content, null);
+        shareToPlatform(Platform.Platform_QQ, Share_Default_Title, content, null, null);
     }
 
     public void shareToQzone(String content){
-        shareToPlatform(Platform.Platform_Qzone, Share_Default_Title, content, null);
+        shareToPlatform(Platform.Platform_Qzone, Share_Default_Title, content, null, null);
     }
 
     public void shareToSina(String content){
-        shareToPlatform(Platform.Platform_Sina, Share_Default_Title, content, Default_share_url);
+        shareToPlatform(Platform.Platform_Sina, Share_Default_Title, content, null,Default_share_url);
     }
 
     public void shareToMore(String content){
@@ -104,7 +104,7 @@ public class ShareUtils {
         mContext.startActivity(mIntent);
     }
 
-    private void shareToPlatform(Platform platform, String title, String content, String url){
+    private void shareToPlatform(Platform platform, String title, String content, String imageurl, String url){
         BaseShareContent contentObject = null;
         SHARE_MEDIA platformType = null;
         switch (platform) {
@@ -134,7 +134,11 @@ public class ShareUtils {
         if(!TextUtils.isEmpty(url)){
             contentObject.setTargetUrl(url);
         }
-        contentObject.setShareImage(new UMImage(mContext, R.drawable.ic_launcher));
+        if(!TextUtils.isEmpty(imageurl)){
+        	contentObject.setShareImage(new UMImage(mContext, imageurl));
+        } else {
+        	contentObject.setShareImage(new UMImage(mContext, R.drawable.ic_launcher));
+		}
         mSocialController.setShareMedia(contentObject);
         mSocialController.postShare(mContext, platformType, umShareListener);
     }

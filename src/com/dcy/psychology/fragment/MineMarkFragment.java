@@ -23,9 +23,13 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -70,8 +74,10 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 		mChart.getYAxis().setEnabled(false);
 		mChart.getLegend().setEnabled(false);
 		if(!TextUtils.isEmpty(mShared.getHollendResult())){
-			((TextView)rootView.findViewById(R.id.tv_zhiye)).setText(String.format(
+			SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(
 					getString(R.string.mine_zhiye), mShared.getHollendResult()));
+			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 3, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			((TextView)rootView.findViewById(R.id.tv_zhiye)).setText(spanBuilder);
 			dataArray = mShared.getHollendData().split(",");
 			setData();
 		} else {
@@ -103,7 +109,9 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 		((TextView)rootView.findViewById(R.id.tv_point_two)).setText(mQizhiData[1]);
 		((TextView)rootView.findViewById(R.id.tv_point_three)).setText(mQizhiData[2]);
 		((TextView)rootView.findViewById(R.id.tv_point_four)).setText(mQizhiData[3]);
-		((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
+		SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
+		spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 6, 9, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 	}
 	
 	private class GetInfoTask extends AsyncTask<Void, Void, UserInfoBean> {
@@ -177,8 +185,8 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
         	yVals1.add(new Entry(Float.valueOf(dataArray[i]), i));
         }
         RadarDataSet set1 = new RadarDataSet(yVals1, "Set 1");
-        set1.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        set1.setDrawFilled(true);
+        set1.setColor(getResources().getColor(R.color.v2_orange));
+        set1.setDrawFilled(false);
         set1.setLineWidth(2f);
         RadarData data = new RadarData(careerArray, set1);
         data.setValueTextSize(8f);
