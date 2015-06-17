@@ -100,6 +100,25 @@ public class Utils {
 		return stringBuffer.toString();
 	}
 	
+	public static boolean isHighVersion(String oldVersion , String newVersion){
+        if(oldVersion.equals(newVersion))
+            return false;
+        String[] oldArray = oldVersion.split("\\.");
+        String[] newArray = newVersion.split("\\.");
+        if(newArray.length != 3)
+            return false;
+        for(int i = 0 ; i < newArray.length ; i ++){
+            if(Integer.parseInt(newArray[i]) > Integer.parseInt(oldArray[i])){
+                return true;
+            }else if(Integer.parseInt(newArray[i]) == Integer.parseInt(oldArray[i])){
+                continue;
+            }else {
+                return false;
+            }
+        }
+        return false;
+    }
+	
 	private static SoapObject getResultFromRequest(SoapObject request) {
 		return getResultFromRequest(request, null);
 	}
@@ -279,6 +298,14 @@ public class Utils {
 		if(result == null)
 			return new BasicBean();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+	}
+	
+	public static String checkAppVersion(){
+		SoapObject request = new SoapObject(Constants.SpaceName, Constants.CheckAppVersion);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return "";
+		return result.getPropertyAsString(0);
 	}
 	
 	public static ArrayList<CommentDetailBean> getCommentDetail(int id){

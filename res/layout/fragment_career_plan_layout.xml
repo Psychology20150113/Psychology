@@ -21,7 +21,7 @@
 		    android:layout_height="match_parent"
 		    android:visibility="gone"
 		    android:divider="@null"
-		    android:background="#ffffff"/>        
+		    android:background="@color/v2_divider"/>        
     </LinearLayout>
     <TextView 
         android:id="@+id/tv_empty_data"

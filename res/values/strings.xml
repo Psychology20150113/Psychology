@@ -331,4 +331,10 @@
     <string name="no">否</string>
     <string name="format_change_info">更改%s</string>
     <string name="change_failed">更改失败</string>
+    <string name="network_disconnect">请检查网络</string>
+    <string name="check_version">检查更新</string>
+    <string name="have_new_version">发现新版本</string>
+    <string name="cancel_update">暂不更新</string>
+    <string name="update_now">立即更新</string>
+    <string name="downloading">正在下载中,已完成%d%%</string>
 </resources>

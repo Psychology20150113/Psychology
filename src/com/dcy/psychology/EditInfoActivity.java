@@ -146,6 +146,10 @@ public class EditInfoActivity extends BaseActivity implements OnItemSelectedList
 				finish();
 				return;
 			} else {
+				if("userEmail".equals(param) && !Utils.validateEmail(mEditText.getText().toString())){
+					Toast.makeText(this, R.string.mail_format_error, Toast.LENGTH_SHORT).show();
+					return;
+				}
 				hashMap.put(param, mEditText.getText().toString());
 			} 
 			break;

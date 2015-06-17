@@ -3,17 +3,24 @@ package com.dcy.psychology;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import com.dcy.psychology.fragment.TabCureFragment;
 import com.dcy.psychology.fragment.TabGrowthFragment;
 import com.dcy.psychology.fragment.TabMineFragment;
+import com.dcy.psychology.service.DownloadApkService;
+import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
+import com.dcy.psychology.view.dialog.SimpleMessageDialog;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RadioGroup;
@@ -38,6 +45,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		mTabNameArray = mResources.getStringArray(R.array.tab_name);
 		initData();
 		initView();
+		new CheckVersionTask().execute();
 	}
 
 	private void initData(){
@@ -61,6 +69,41 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		mLoginText = (TextView) findViewById(R.id.login_tv);
 		mLoginText.setOnClickListener(this);
 		findViewById(R.id.register_tv).setOnClickListener(this);
+	}
+	
+	private class CheckVersionTask extends AsyncTask<Void, Void, String>{
+		@Override
+		protected String doInBackground(Void... params) {
+			return Utils.checkAppVersion();
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			if(TextUtils.isEmpty(result)){
+				return;
+			}
+			try {
+				final JSONObject resultJson = new JSONObject(result);
+				if(Utils.isHighVersion(new InfoShared(MainActivity.this).getAppVersion(), resultJson.getString("NewVersion"))){
+					SimpleMessageDialog mDialog = new SimpleMessageDialog(MainActivity.this, getString(R.string.have_new_version), 
+							resultJson.getString("UpdateInfo"), getString(R.string.cancel_update), getString(R.string.update_now));
+					mDialog.setSureClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							try {
+								Intent mIntent = new Intent(MainActivity.this, DownloadApkService.class);
+				                mIntent.putExtra(DownloadApkService.URL_KEY, resultJson.getString("NewVersionDownloadUrl"));
+				                MainActivity.this.startService(mIntent);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+					mDialog.show();
+				}
+			} catch (Exception e) {
+			}
+		}
 	}
 	
 	public void checkCureFragment(){

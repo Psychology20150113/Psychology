@@ -40,6 +40,7 @@ public interface Constants {
 	public static final String GetQiniuToken = "GetUploadToken";
 	public static final String GetMatchestSpecificList = "GetMostSpecificUserMatch";
 	public static final String UpdataUserHeader = "UpdateUserHeadUrl";
+	public static final String CheckAppVersion = "CheckAppVersion";
 	
 	public static final String Type_Zhiye_Test = "HollendTest";
 	public static final String Type_Qiazhi_Test = "TemperamentTest";
