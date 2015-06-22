@@ -27,6 +27,7 @@ public class MyApplication extends Application{
 	public static String myPwd;
 	public static String myUserRole;
 	public static String myNick;
+	public static String myHeadUrl;
 	public static Gson mGson;
 	public static PreInstallDbHelper preInstallDbHelper;
 	public static MyApplication instance;
@@ -58,6 +59,7 @@ public class MyApplication extends Application{
 		myPwd = mShared.getUserPwd();
 		myNick = mShared.getUserNick();
 		myUserRole = mShared.getUserRole();
+		myHeadUrl = mShared.getHeaderUrl();
 		hasPrefectInfo = mShared.hasPrefectInfo();
 	}
 	

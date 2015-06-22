@@ -29,9 +29,4 @@
         android:layout_marginRight="20dp"
         android:visibility="gone"
         android:layout_alignParentRight="true"/>
-    <ImageView 
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"
-        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

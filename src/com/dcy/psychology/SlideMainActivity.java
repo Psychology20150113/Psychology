@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -29,29 +30,31 @@ import com.dcy.psychology.fragment.CareerPlanFragment;
 import com.dcy.psychology.fragment.StyleTwoBoxFragment;
 import com.dcy.psychology.fragment.TabChatFragment;
 import com.dcy.psychology.fragment.WaitingFragment;
+import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.umeng.analytics.MobclickAgent;
 
-public class SlideMainActivity extends BaseActivity implements OnItemClickListener
-		,OnClickListener{
+public class SlideMainActivity extends BaseActivity implements OnClickListener{
 	DrawerLayout drawerLayout;
 	private TextView nameText;
-	private View nameLayout;
-	private View loginLayout;
+	private TextView loginOutText;
+	private View nameInfoLayout;
 	
 	private ViewPager mViewPager;
 	private List<Fragment> dataFragment = new ArrayList<Fragment>();
 	private RadioGroup mTabRadio;
 	private String[] mTabNameArray;
+	private AsyncImageCache mCache;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setTopTitle(R.string.app_name);
 		setContentView(R.layout.activity_slide_main_layout);
 		mTabNameArray = mResources.getStringArray(R.array.tab_name);
+		mCache = AsyncImageCache.from(this);
 		initData();
 		initView();
 		registerReceiver(mLoginReceiver, new IntentFilter(Constants.ReceiverAction_LoginSuccess));
@@ -83,19 +86,22 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	private void initView() {
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		nameText = (TextView) findViewById(R.id.name_tv);
-		nameLayout = findViewById(R.id.name_ll);
-		loginLayout = findViewById(R.id.login_ll);
-		loginLayout.setOnClickListener(this);
-		findViewById(R.id.logout_tv).setOnClickListener(this);
-		ListView slideView = (ListView) findViewById(R.id.drawer_lv);
-		slideView.setAdapter(new SlideAdapter(this));
-		slideView.setOnItemClickListener(this);
+		nameInfoLayout = findViewById(R.id.rl_name_info);
+		nameInfoLayout.setOnClickListener(this);
+		loginOutText = (TextView)findViewById(R.id.tv_loginout);
+		loginOutText.setOnClickListener(this);
+		if(!TextUtils.isEmpty(MyApplication.myHeadUrl)){
+			mCache.displayImage((ImageView)findViewById(R.id.iv_header), R.drawable.ic_launcher, 
+					new AsyncImageCache.NetworkImageGenerator(MyApplication.myHeadUrl, MyApplication.myHeadUrl));
+		}
+		findViewById(R.id.tv_slide_attention).setOnClickListener(this);
+		findViewById(R.id.tv_slide_dna).setOnClickListener(this);
+		findViewById(R.id.tv_slide_message).setOnClickListener(this);
+		findViewById(R.id.tv_slide_problem).setOnClickListener(this);
 		setLeftView(R.drawable.icon_slide);
-		//setRightView(R.drawable.ic_launcher);
 		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
-			nameLayout.setVisibility(View.VISIBLE);
+			loginOutText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
-			loginLayout.setVisibility(View.GONE);
 		}
 		mViewPager = (ViewPager) findViewById(R.id.main_vp);
 		mViewPager.setAdapter(new Utils.MainTabAdapter(getFragmentManager(), dataFragment));
@@ -109,9 +115,8 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			if(Constants.ReceiverAction_LoginSuccess.equals(intent.getAction())){
-				nameLayout.setVisibility(View.VISIBLE);
 				nameText.setText(MyApplication.myPhoneNum);
-				loginLayout.setVisibility(View.GONE);
+				loginOutText.setVisibility(View.VISIBLE);
 			}
 		}
 	};
@@ -184,18 +189,52 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.logout_tv:
+		if(v.getId() == R.id.tv_loginout){
 			clearInfo();
 			IMManager.getInstance().logoutIM();
-			loginLayout.setVisibility(View.VISIBLE);
-			nameLayout.setVisibility(View.GONE);
+			nameText.setText(R.string.login_now);
+			loginOutText.setVisibility(View.GONE);
+			if(!TextUtils.isEmpty(MyApplication.myHeadUrl)){
+				((ImageView)findViewById(R.id.iv_header)).setImageResource(R.drawable.icon_slide_default_header);
+			}
+			return;
+		} else if(v.getId() == R.id.rl_name_info){
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				startActivityForResult(new Intent(this , LoginActivity.class), 0);
+			}
+			return;
+		}
+		Intent mIntent = null;
+		switch (v.getId()) {
+		case R.id.tv_slide_attention:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+				mIntent = new Intent(this, GetFollowUsersActivity.class);
+			}
 			break;
-		case R.id.login_ll:
-			startActivityForResult(new Intent(this , LoginActivity.class), 0);
+		case R.id.tv_slide_dna:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+				mIntent = new Intent(this, MineDnaActivity.class);
+			}
+			break;
+		case R.id.tv_slide_message:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+				mIntent = new Intent(this, PersonalInfoActivity.class);
+			}
+			break;
+		case R.id.tv_slide_problem:
+			mIntent = new Intent(this, ShowProblemActivity.class);
 			break;
 		default:
 			break;
+		}
+		if(mIntent != null){
+			startActivity(mIntent);
 		}
 	}
 	
@@ -208,58 +247,15 @@ public class SlideMainActivity extends BaseActivity implements OnItemClickListen
 	}
 	
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		Intent mIntent = null;
-		switch (position) {
-//		case 0:
-//			MobclickAgent.onEvent(this, "black_hole");
-//			mIntent = new Intent(this, BlackHoleActivity.class);
-//			break;
-		case 0:
-			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
-				mIntent = new Intent(this, LoginActivity.class);
-			} else {
-				mIntent = new Intent(this, GetFollowUsersActivity.class);
-			}
-			break;
-		case 1:
-			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
-				mIntent = new Intent(this, LoginActivity.class);
-			} else {
-				mIntent = new Intent(this, MineDnaActivity.class);
-			}
-			break;
-		case 2:
-			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
-				mIntent = new Intent(this, LoginActivity.class);
-			} else {
-				mIntent = new Intent(this, PersonalInfoActivity.class);
-			}
-			break;
-		case 3:
-			mIntent = new Intent(this, ShowProblemActivity.class);
-			break;
-		default:
-			break;
-		}
-		if(mIntent != null){
-			startActivity(mIntent);
-		}
-	}
-	
-	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (resultCode) {
 		case 0:
 			if(data == null){
 				return;
 			}
-			nameLayout.setVisibility(View.VISIBLE);
+			loginOutText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
-			loginLayout.setVisibility(View.GONE);
 			break;
-
 		default:
 			break;
 		}

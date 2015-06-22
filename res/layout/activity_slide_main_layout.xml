@@ -40,7 +40,9 @@
 		        android:text="@string/tab_mine"/>
 		</RadioGroup>
 	</LinearLayout>
-    <LinearLayout 
+	<include 
+	    layout="@layout/layout_slide_menu"/>
+    <!-- <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#1E1918"
@@ -103,5 +105,5 @@
 	        android:id="@+id/drawer_lv"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"/>
-    </LinearLayout>
+    </LinearLayout> -->
 </android.support.v4.widget.DrawerLayout>
