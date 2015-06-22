@@ -17,6 +17,7 @@ public class InfoShared {
 	private final String UserNick = "info_nick";
 	private final String UserRole = "info_role";
 	private final String UserPhoneNum = "info_phone";
+	private final String UserHeaderUrl = "info_header_url";
 	private final String PrefectInfo = "prefect_info";
 	private final String TestHollendData = "hollend_data";
 	private final String TestHollendResult = "hollend_result";
@@ -78,6 +79,14 @@ public class InfoShared {
 	
 	public String getPhoneNum(){
 		return mShared.getString(UserPhoneNum, "");
+	}
+	
+	public void setHeaderUrl(String url){
+		mShared.edit().putString(UserHeaderUrl, url).commit();
+	}
+	
+	public String getHeaderUrl(){
+		return mShared.getString(UserHeaderUrl, "");
 	}
 	
 	public void setIsPrefectInfo(boolean prefectInfo){

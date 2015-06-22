@@ -9,10 +9,11 @@
         android:layout_height="30dp"
         android:layout_marginLeft="20dp"
         android:layout_centerVertical="true"
-        android:scaleType="fitCenter"/>
+        android:scaleType="centerInside"/>
     <TextView 
         android:id="@+id/top_title_tv"
         style="@style/text_white18_style"
+        android:textSize="20sp"
         android:layout_centerInParent="true"/>
     <TextView 
         android:id="@+id/top_right_tv"

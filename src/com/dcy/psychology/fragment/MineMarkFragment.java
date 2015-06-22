@@ -91,6 +91,9 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 		if(!TextUtils.isEmpty(mShared.getQizhiResult())){
 			String[] mQizhiData = mShared.getQizhiData().split(",");
 			setQizhiData(mQizhiData);
+			SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
+			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 6, 9, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 		} else {
 			rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.GONE);
 			rootView.findViewById(R.id.tv_empty_qizhi).setVisibility(View.VISIBLE);
@@ -109,9 +112,6 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 		((TextView)rootView.findViewById(R.id.tv_point_two)).setText(mQizhiData[1]);
 		((TextView)rootView.findViewById(R.id.tv_point_three)).setText(mQizhiData[2]);
 		((TextView)rootView.findViewById(R.id.tv_point_four)).setText(mQizhiData[3]);
-		SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
-		spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 6, 9, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 	}
 	
 	private class GetInfoTask extends AsyncTask<Void, Void, UserInfoBean> {
@@ -142,6 +142,9 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 				String[] qizhiArray = result.TemperamentTestSpeciesScores.split(",");
 				if(qizhiArray != null && qizhiArray.length == 4){
 					setQizhiData(qizhiArray);
+					SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), result.TemperamentTest));
+					spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 6, 9, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+					((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 					rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.VISIBLE);
 					rootView.findViewById(R.id.tv_empty_qizhi).setVisibility(View.GONE);
 					mShared.setQizhiResult(result.TemperamentTestSpeciesScores, 

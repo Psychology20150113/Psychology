@@ -3,6 +3,7 @@ package com.dcy.psychology.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -81,8 +82,18 @@ public class ShareUtils {
         shareToPlatform(Platform.Platform_Circle, Share_Default_Title, content, Default_share_url);
     }
     
-    public void shareToCircle(String title, String url){
-        shareToPlatform(Platform.Platform_Circle, title, "", url);
+    public void shareToCircle(String title, Bitmap mBitmap, String url){
+        BaseShareContent mShareContent = new CircleShareContent();
+        mShareContent.setTitle(title);
+        mShareContent.setShareContent(title);
+        mShareContent.setTargetUrl(url);
+        if(mBitmap != null){
+        	mShareContent.setShareImage(new UMImage(mContext, mBitmap));
+        } else {
+        	mShareContent.setShareImage(new UMImage(mContext, R.drawable.ic_launcher));
+		}
+        mSocialController.setShareMedia(mShareContent);
+        mSocialController.postShare(mContext, SHARE_MEDIA.WEIXIN_CIRCLE, umShareListener);
     }
 
     public void shareToQQ(String content){
@@ -103,7 +114,7 @@ public class ShareUtils {
         mIntent.setType("text/plain");
         mContext.startActivity(mIntent);
     }
-
+    
     private void shareToPlatform(Platform platform, String title, String content, String url){
         BaseShareContent contentObject = null;
         SHARE_MEDIA platformType = null;

@@ -337,4 +337,8 @@
     <string name="cancel_update">暂不更新</string>
     <string name="update_now">立即更新</string>
     <string name="downloading">正在下载中,已完成%d%%</string>
+    <string name="my">我</string>
+    <string name="tip_match">你未来可以成为他，用分享记录吧！</string>
+    <string name="match_format">匹配度\n%s%%</string>
+    <string name="share_to">分享到:</string>
 </resources>

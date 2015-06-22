@@ -26,7 +26,7 @@ public class CornerImageView extends ImageView {
     private static final int TYPE_CIRCLE = 0;  
     private static final int TYPE_ROUND = 1; 
     
-    private static final int BODER_RADIUS_DEFAULT = 10;  
+    private static final int BODER_RADIUS_DEFAULT = 7;  
     private int mBorderRadius;  
     private Paint mBitmapPaint;  
     private int mRadius;  

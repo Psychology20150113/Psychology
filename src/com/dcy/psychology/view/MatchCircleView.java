@@ -18,42 +18,37 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
-public class CustomCircleView extends View{
+public class MatchCircleView extends View{
 
 	private Context mContext;
 	private DisplayMetrics dm;
 	private Paint mPaint;
-	private Paint mTextPaint;
-	private final int OuterWidth = 27;
-	private final String OuterColor = "#ffffff";
-	private float outerRatio;
-	private final int InnerWidth = 15;
-	private final String InnerColor = "#61d3ea";
-	private float innerRatio;
+	private final int OuterWidth = 3;
+	private final String OuterColor = "#ed823b";
+	private float ratio;
+	private final int InnerWidth = 1;
+	private final String InnerColor = "#b5b5b6";
 	private boolean haveData = false;
+	private String matchFormat;
 	
-	public CustomCircleView(Context context, AttributeSet attrs) {
+	public MatchCircleView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		mContext = context;
 		dm = getResources().getDisplayMetrics();
+		matchFormat = getResources().getString(R.string.match_format);
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
 		mPaint.setStyle(Style.STROKE);
-		mTextPaint = new Paint();
-		mTextPaint.setAntiAlias(true);
-		mTextPaint.setTextSize(16* dm.density);
-		mTextPaint.setColor(Color.parseColor(InnerColor));
 	}
 
-	public CustomCircleView(Context context) {
+	public MatchCircleView(Context context) {
 		this(context, null);
 	}
 	
-	public void setData(float outerRatio, float innerRatio){
-		if(outerRatio < 0 || innerRatio < 0)
+	public void setData(float ratio){
+		if(ratio < 0)
 			return;
-		this.outerRatio = outerRatio;
-		this.innerRatio = innerRatio;
+		this.ratio = ratio;
 		haveData = true;
 		invalidate();
 	}
@@ -65,23 +60,15 @@ public class CustomCircleView extends View{
 					getWidth() - (OuterWidth/2)*dm.density, getWidth() - (OuterWidth/2)*dm.density);
 			mPaint.setColor(Color.parseColor(OuterColor));
 			mPaint.setStrokeWidth(OuterWidth * dm.density);
-			canvas.drawArc(mOuterRectF, 0, 360*outerRatio, false, mPaint);
-			
-			float innerLength = getWidth() - OuterWidth*dm.density - (InnerWidth/2)*dm.density;
-			RectF mInnerRectF = new RectF(OuterWidth*dm.density + (InnerWidth/2)*dm.density, 
-					OuterWidth*dm.density + (InnerWidth/2)*dm.density, innerLength, innerLength);
+			canvas.drawArc(mOuterRectF, -90 + 180 * (1 - ratio), 360 * ratio, false, mPaint);
 			mPaint.setColor(Color.parseColor(InnerColor));
+			canvas.drawArc(mOuterRectF, 270 - 180 * (1 - ratio), 360 * (1 - ratio), false, mPaint);
+//			float innerLength = getWidth() - 70*dm.density - (InnerWidth/2)*dm.density;
+//			RectF mInnerRectF = new RectF(70*dm.density + (InnerWidth/2)*dm.density, 
+//					70*dm.density + (InnerWidth/2)*dm.density, innerLength, innerLength);
 			mPaint.setStrokeWidth(InnerWidth * dm.density);
-			canvas.drawArc(mInnerRectF, 0, 360*innerRatio, false, mPaint);
-			
-			String content = (int)(innerRatio * 100) + "%";
-			int center = getWidth()/2;
-			canvas.drawText(content, center - mTextPaint.measureText(content)/2, 
-					center + getFrontHeight(mTextPaint)/2, mTextPaint);
-		
-			
+			canvas.drawCircle(getWidth()/2, getHeight()/2, 42*dm.density, mPaint);
 		}
-		
 	}
 	
 	private float getFrontHeight(Paint paint){

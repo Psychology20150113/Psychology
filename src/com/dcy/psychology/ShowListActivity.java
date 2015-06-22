@@ -158,8 +158,7 @@ public class ShowListActivity extends BaseActivity implements OnItemClickListene
 			if(resultQiZhiMap == null){
 				return;
 			}
-			new SimpleMessageDialog(this, getString(R.string.Test_Qizhi), 
-					resultQiZhiMap.get("showResult") + "\n" + resultQiZhiMap.get("typeResult")).show();
+			new SimpleMessageDialog(this, getString(R.string.Test_Qizhi), String.format(getString(R.string.mine_qizhi), resultQiZhiMap.get("typeResult"))).show();
 			mShared.setQizhiResult(resultQiZhiMap.get("dataResult"), resultQiZhiMap.get("typeResult"), resultQiZhiMap.get("pointResult"));
 			new CalculateUtils.SaveTestResultTask(this, resultQiZhiMap).execute();
 			break;

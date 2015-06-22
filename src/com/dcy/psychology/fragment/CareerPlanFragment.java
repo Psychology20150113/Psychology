@@ -337,8 +337,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			if(resultQiZhiMap == null){
 				return;
 			}
-			new SimpleMessageDialog(mContext, getString(R.string.Test_Qizhi), 
-					resultQiZhiMap.get("showResult") + "\n" + resultQiZhiMap.get("typeResult")).show();
+			new SimpleMessageDialog(mContext, getString(R.string.Test_Qizhi), String.format(getString(R.string.mine_qizhi), resultQiZhiMap.get("typeResult"))).show();
 			mShared.setQizhiResult(resultQiZhiMap.get("dataResult"), resultQiZhiMap.get("typeResult"), resultQiZhiMap.get("pointResult"));
 			new CalculateUtils.SaveTestResultTask(mContext, resultQiZhiMap).execute();
 			break;

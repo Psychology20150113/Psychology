@@ -4,6 +4,7 @@ import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.UserInfoBean;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
+import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 
 import android.content.Intent;
@@ -21,11 +22,13 @@ import android.widget.Toast;
 public class PersonalInfoActivity extends BaseActivity implements OnClickListener{
 	private AsyncImageCache mCache;
 	private ImageView mHeaderView;
+	private InfoShared mShared;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_personal_info_layout);
+		mShared = new InfoShared(this);
 		mHeaderView = (ImageView) findViewById(R.id.iv_header);
 		mHeaderView.setOnClickListener(this);
 		setTopTitle(R.string.peasonal_info);
@@ -145,11 +148,14 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 	}
 	
 	private class UploadHeaderUrl extends AsyncTask<String, Void, BasicBean>{
+		String paramsUrl;
+		
 		@Override
 		protected BasicBean doInBackground(String... params) {
 			if(TextUtils.isEmpty(params[0])){
 				return null;
 			}
+			paramsUrl = params[0];
 			return Utils.updataHeaderUrl(params[0]);
 		}
 		
@@ -160,6 +166,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 				return;
 			}
 			if(result.isResult()){
+				mShared.setHeaderUrl(paramsUrl);
 				Toast.makeText(PersonalInfoActivity.this, 
 						R.string.updata_header_success, Toast.LENGTH_SHORT).show();
 			} else {
@@ -181,6 +188,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnClickListene
 			if(result == null){
 				return;
 			}
+			mShared.setHeaderUrl(result.UserHeadUrl);
 			setInfoData(result);
 		}
 	}
