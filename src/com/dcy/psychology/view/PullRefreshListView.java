@@ -10,6 +10,7 @@ import com.dcy.psychology.util.Utils;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -63,7 +64,8 @@ public class PullRefreshListView extends ListView implements OnScrollListener {
 	private boolean isBack;
 
 	private OnRefreshListener refreshListener;
-
+	private OnScrollListener mScrollListener;
+	
 	private boolean isRefreshable;
 	private Calendar date;
 	private int i;
@@ -124,13 +126,24 @@ public class PullRefreshListView extends ListView implements OnScrollListener {
 		state = DONE;
 		isRefreshable = false;
 	}
+	
+	public void setScrollListener(OnScrollListener listener){
+		this.mScrollListener = listener;
+	}
 
+	@Override
 	public void onScroll(AbsListView arg0, int firstVisiableItem, int arg2,
 			int arg3) {
 		firstItemIndex = firstVisiableItem;
+		if(mScrollListener != null){
+			mScrollListener.onScroll(arg0, firstVisiableItem, arg2, arg3);
+		}
 	}
 
 	public void onScrollStateChanged(AbsListView arg0, int arg1) {
+		if(mScrollListener != null){
+			mScrollListener.onScrollStateChanged(arg0, arg1);
+		}
 	}
 
 	public boolean onTouchEvent(MotionEvent event) {
@@ -171,7 +184,6 @@ public class PullRefreshListView extends ListView implements OnScrollListener {
 				int tempY = (int) event.getY();
 
 				if (!isRecored && firstItemIndex == 0) {
-
 					isRecored = true;
 					startY = tempY;
 				}

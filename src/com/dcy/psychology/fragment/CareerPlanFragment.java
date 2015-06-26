@@ -107,7 +107,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.fragment_career_plan_layout, null);
 		mListView = (PullRefreshListView) rootView.findViewById(R.id.pull_refresh_lv);
-		mListView.setOnScrollListener(mScrollListener);
+		mListView.setScrollListener(mScrollListener);
 		mListView.setonRefreshListener(mRefreshListener);
 		mListView.setAdapter(mAdapter);
 		mListView.setEmptyView(rootView.findViewById(R.id.tv_empty_data));
