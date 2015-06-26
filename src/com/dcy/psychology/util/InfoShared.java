@@ -25,6 +25,8 @@ public class InfoShared {
 	private final String TestQizhiData = "qizhi_data";
 	private final String TestQiZhiResult = "qizhi_result";
 	private final String TestQiZhiAllResult = "qizhi_all_result";
+	private final String LastIsDoctor = "last_is_doctor";
+	
 	
 	public String ThemeFormat = "Theme%s_%d";
 	
@@ -122,6 +124,15 @@ public class InfoShared {
 	public String getQizhiResult(){
 		return mShared.getString(TestQiZhiResult, "");
 	}
+	
+	public void setLastIsDoctor(boolean isDoctor){
+		mShared.edit().putBoolean(LastIsDoctor, isDoctor).commit();
+	}
+	
+	public boolean lastIsDoctor(){
+		return mShared.getBoolean(LastIsDoctor, false);
+	}
+	
 	public void putInt(String key , int value){
 		mShared.edit().putInt(key, value).commit();
 	}
@@ -153,7 +164,9 @@ public class InfoShared {
 	
 	public void clearInfo(){
 		String version = getAppVersion();
+		boolean lastIsDoctor = lastIsDoctor();
 		mShared.edit().clear().commit();
-		mShared.edit().putString(AppVersion, version).commit();
+		mShared.edit().putString(AppVersion, version).
+			putBoolean(LastIsDoctor, lastIsDoctor).commit();
 	}
 }

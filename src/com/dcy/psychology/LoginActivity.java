@@ -33,12 +33,16 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			if("NO".equals(result.getResult())){
 				Toast.makeText(LoginActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}else {
-				if(userRole != null && !Constants.RoleUser.equals(userRole) && Constants.RoleUser.equals(result.getLoginState())){
-					Toast.makeText(LoginActivity.this, R.string.error_role, Toast.LENGTH_SHORT).show();
-					return;
+				InfoShared mShared = new InfoShared(LoginActivity.this);
+				if(userRole != null && !Constants.RoleUser.equals(userRole)){
+					if(Constants.RoleUser.equals(result.getLoginState())){
+						Toast.makeText(LoginActivity.this, R.string.error_role, Toast.LENGTH_SHORT).show();
+						return;
+					} else {
+						mShared.setLastIsDoctor(true);
+					}
 				}
 				Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
-				InfoShared mShared = new InfoShared(LoginActivity.this);
 				mShared.savePhoneInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState(), result.isIsPrefectUserInfo());
 				new ChatLoginTask(LoginActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
 				Intent mIntent = new Intent();

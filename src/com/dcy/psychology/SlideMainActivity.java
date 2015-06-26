@@ -200,7 +200,11 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			return;
 		} else if(v.getId() == R.id.rl_name_info){
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
-				startActivityForResult(new Intent(this , LoginActivity.class), 0);
+				Intent loginIntent = new Intent(this , LoginActivity.class);
+				if(new InfoShared(this).lastIsDoctor()){
+					loginIntent.putExtra(Constants.UserRole, Constants.RoleTeacher);
+				}
+				startActivityForResult(loginIntent, 0);
 			}
 			return;
 		}
