@@ -602,7 +602,7 @@ public class Utils {
 	}
 	
 	public static boolean validatePhoneNumber(String phoneNumber) {
-		Pattern pattern = Pattern.compile("^((13[0-9])|(15[0-9])|(18[0-9]))\\d{8}$");
+		Pattern pattern = Pattern.compile("^((13[0-9])|(15[0-9])|(18[0-9])|(17[0-9]))\\d{8}$");
 		Matcher m = pattern.matcher(phoneNumber);
 		return m.matches();
 	}

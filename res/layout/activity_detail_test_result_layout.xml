@@ -39,6 +39,7 @@
 		    style="@style/text_black16_style"
 		    android:textColor="#666666"
 		    android:layout_marginTop="3dp"
+		    android:padding="5dp"
 		    android:layout_marginBottom="20dp"
 		    android:background="@color/white"/>        
     </LinearLayout>

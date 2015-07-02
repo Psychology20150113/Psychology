@@ -58,7 +58,7 @@ public class OnlineClassListFragment extends Fragment implements OnItemClickList
 		mListView = (PullRefreshListView) view.findViewById(R.id.pull_refresh_lv);
 		mListView.setOnItemClickListener(this);
 		mListView.setonRefreshListener(mRefreshListener);
-		mListView.setOnScrollListener(mScrollListener);
+		mListView.setScrollListener(mScrollListener);
 		mListView.setAdapter(mAdapter);
 		return view;
 	}
