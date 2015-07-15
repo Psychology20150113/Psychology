@@ -190,7 +190,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
         RadarDataSet set1 = new RadarDataSet(yVals1, "Set 1");
         set1.setColor(getResources().getColor(R.color.v2_orange));
         set1.setDrawFilled(false);
-        set1.setLineWidth(2f);
+        set1.setLineWidth(2f);//橙色线条的宽度
         RadarData data = new RadarData(careerArray, set1);
         data.setValueTextSize(8f);
         data.setDrawValues(false);

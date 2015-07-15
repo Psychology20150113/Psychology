@@ -66,15 +66,15 @@ public class QuestionView extends RelativeLayout{
 		questionLayout.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		TextView titleView = new TextView(mContext);
 		titleView.setText("        " + index + "." + title);
-		titleView.setLineSpacing(0, 1.2f);// (add , mul)
+		titleView.setLineSpacing(0, 1.2f);// (add , mul)行间距的设置
 		// titleView.setTextScaleX(0.5f);
-		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_20);
+		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_20);// 字体大小
 		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 		questionLayout.addView(titleView);
 		android.view.ViewGroup.LayoutParams buttonParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 
 				mResources.getDimensionPixelSize(R.dimen.title_height));
 		LinearLayout.LayoutParams dnaParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-		dnaParams.topMargin = mResources.getDimensionPixelSize(R.dimen.title_height);
+		dnaParams.topMargin = mResources.getDimensionPixelSize(R.dimen.a_height);//圆圈的高度
 		RadioGroup.LayoutParams rightParams = new RadioGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		rightParams.leftMargin = mResources.getDimensionPixelSize(R.dimen.title_height);
 		int itemColor = getResources().getColor(R.color.color_orange_gray_selector);
@@ -94,7 +94,7 @@ public class QuestionView extends RelativeLayout{
 			}
 			for (int i = 0; i < optionList.size(); i++) {
 				RadioButton rb = new RadioButton(mContext);
-				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
+				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);// 圆圈内字体大小
 				if(isDnaTest){
 					rb.setButtonDrawable(transparentDrawable);
 					rb.setText(i == 0 ? R.string.yes : R.string.no);

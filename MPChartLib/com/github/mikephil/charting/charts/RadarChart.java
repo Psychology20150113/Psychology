@@ -33,10 +33,10 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
     private float mInnerWebLineWidth = 1.5f;
 
     /** color for the main web lines */
-    private int mWebColor = Color.rgb(122, 122, 122);
+    private int mWebColor = Color.rgb(122, 122, 122);//六芒星边上6根线的颜色
 
     /** color for the inner web */
-    private int mWebColorInner = Color.rgb(122, 122, 122);
+    private int mWebColorInner = Color.rgb(122, 122, 122);//六芒星内变线的颜色
 
     /** transparency the grid is drawn with (0-255) */
     private int mWebAlpha = 150;

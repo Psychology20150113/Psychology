@@ -11,6 +11,24 @@
         android:layout_marginTop="20dp"
         android:hint="@string/input_phone"
         android:inputType="phone"/>
+
+    <EditText
+        android:id="@+id/password_et"
+        style="@style/edit_style"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" >
+
+        <requestFocus />
+    </EditText>
+
+	<EditText 
+	    android:id="@+id/second_password_et"
+	    style="@style/edit_style"
+	    android:layout_marginTop="10dp"
+	    android:hint="@string/password_second"
+	    android:inputType="textPassword"/>
 	<LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="50dp"
@@ -35,18 +53,6 @@
 	        android:textColor="#ffffff"
 	        android:background="@drawable/bg_red_checked_shape"/>
 	</LinearLayout>
-	<EditText 
-	    android:id="@+id/password_et"
-	    style="@style/edit_style"
-	    android:layout_marginTop="10dp"
-	    android:hint="@string/password"
-	    android:inputType="textPassword"/>
-	<EditText 
-	    android:id="@+id/second_password_et"
-	    style="@style/edit_style"
-	    android:layout_marginTop="10dp"
-	    android:hint="@string/password_second"
-	    android:inputType="textPassword"/>
 	<TextView 
 	    android:id="@+id/register_tv"
 	    android:layout_width="match_parent"

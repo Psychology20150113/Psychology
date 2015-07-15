@@ -92,6 +92,59 @@
             android:name="com.dcy.psychology.OnlinePicListActivity"
             android:screenOrientation="portrait">
         </activity>
+        
+        
+        
+        
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.mine_yueliao"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.advance"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.underway"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.help"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.about"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.feedback"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.relation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.yueliao"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.howuse"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.submitsuccess"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <activity 
             android:name="com.dcy.psychology.BigOpenClassActivity"
             android:screenOrientation="portrait">

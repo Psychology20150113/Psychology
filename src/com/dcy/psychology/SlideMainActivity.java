@@ -30,6 +30,7 @@ import com.dcy.psychology.fragment.CareerPlanFragment;
 import com.dcy.psychology.fragment.StyleTwoBoxFragment;
 import com.dcy.psychology.fragment.TabChatFragment;
 import com.dcy.psychology.fragment.WaitingFragment;
+import com.dcy.psychology.fragment.Zhiyedianbofragment;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
@@ -72,7 +73,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 //		dataFragment.add(new ChatIMFragment());
 //		dataFragment.add(new TabChatFragment());
 //		dataFragment.add(new StyleTwoMainFragment());
-		dataFragment.add(new WaitingFragment());
+		dataFragment.add(new Zhiyedianbofragment());
 		dataFragment.add(new CareerPlanFragment());
 		dataFragment.add(new StyleTwoBoxFragment());
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
