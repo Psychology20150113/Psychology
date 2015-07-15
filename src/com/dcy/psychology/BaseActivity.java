@@ -14,7 +14,6 @@ import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
 import com.umeng.analytics.MobclickAgent;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
