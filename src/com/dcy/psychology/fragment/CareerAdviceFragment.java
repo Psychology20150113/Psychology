@@ -9,9 +9,9 @@ import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.xinzeng.advance;
 import com.dcy.psychology.xinzeng.help;
-import com.dcy.psychology.xinzeng.mine_yueliao;
-import com.dcy.psychology.xinzeng.underway;
-import com.dcy.psychology.xinzeng.yueliao;
+import com.dcy.psychology.xinzeng.Mine_talkabout;
+import com.dcy.psychology.xinzeng.Underway;
+import com.dcy.psychology.xinzeng.Talkabout;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 
-public class Zhiyedianbofragment extends Fragment implements OnClickListener{
+public class CareerAdviceFragment extends Fragment implements OnClickListener{
 	
 
 	private Context mContext;
@@ -37,10 +37,10 @@ public class Zhiyedianbofragment extends Fragment implements OnClickListener{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View view = inflater.inflate(R.layout.zhiyedianbo, null);
-		view.findViewById(R.id.mine_yueliao).setOnClickListener(this);
-		view.findViewById(R.id.advance).setOnClickListener(this);
-		view.findViewById(R.id.underway).setOnClickListener(this);
+		View view = inflater.inflate(R.layout.fragment_career_advice, null);
+		view.findViewById(R.id.btn_mine_talkabout).setOnClickListener(this);
+		view.findViewById(R.id.btn_advance).setOnClickListener(this);
+		view.findViewById(R.id.btn_underway).setOnClickListener(this);
 		return view;
 	}
 
@@ -49,15 +49,15 @@ public class Zhiyedianbofragment extends Fragment implements OnClickListener{
 		// TODO 自动生成的方法存根
 		Intent nIntent = null;
 		switch (v.getId()) {
-		case R.id.mine_yueliao:
-			nIntent = new Intent(mContext, mine_yueliao.class);
+		case R.id.btn_mine_talkabout:
+			nIntent = new Intent(mContext, Mine_talkabout.class);
 			
 			break;
-		case R.id.advance:
+		case R.id.btn_advance:
 			nIntent = new Intent(mContext, advance.class);
 			break;
-		case R.id.underway:
-			nIntent = new Intent(mContext, underway.class);
+		case R.id.btn_underway:
+			nIntent = new Intent(mContext, Underway.class);
 			break;
 		
 		}

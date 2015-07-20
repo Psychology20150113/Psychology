@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/howuse"
+        android:id="@+id/btn_howuse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -16,7 +16,7 @@
         android:text="@string/howuse" />
 
     <Button
-        android:id="@+id/relation"
+        android:id="@+id/btn_relation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -26,7 +26,7 @@
         android:text="@string/relation" />
 
     <Button
-        android:id="@+id/feedback"
+        android:id="@+id/btn_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
         android:text="@string/feedback" />
 
     <Button
-        android:id="@+id/about"
+        android:id="@+id/btn_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

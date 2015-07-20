@@ -25,8 +25,6 @@ import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
 import com.dcy.psychology.view.dialog.ShowHolledDialog;
 import com.dcy.psychology.view.dialog.SimpleMessageDialog;
-import com.google.gson.reflect.TypeToken;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -112,19 +110,23 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mListView.setAdapter(mAdapter);
 		mListView.setEmptyView(rootView.findViewById(R.id.tv_empty_data));
 		initPerfectInfoView();
-		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+		if(TextUtils.isEmpty(MyApplication.myPhoneNum))
+		{
 			rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
 			rootView.findViewById(R.id.tv_student_entry).setOnClickListener(this);
 			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
-		} else {
+		} else 
+		{
 			loadListData();
 		}
 		return rootView;
 	}
 	
-	private OnRefreshListener mRefreshListener = new OnRefreshListener() {
+	private OnRefreshListener mRefreshListener = new OnRefreshListener() 
+	{
 		@Override
-		public void onRefresh() {
+		public void onRefresh() 
+		{
 			mDataList.removeAll(mDataList);
 			pageIndex = 1;
 			mListView.onRefreshComplete();
@@ -170,7 +172,8 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			startActivityForResult(mTeacherIntent, RequestCode_Login);
 			break;
 		case R.id.btn_prefect:
-			if(!checkInput()){
+			if(!checkInput())
+			{
 				return;
 			}
 			infoMap.put("userName", nickEt.getText().toString());

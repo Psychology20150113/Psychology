@@ -5,6 +5,11 @@
     <color name="txt_orange">#ff6c00</color>
     <color name="blue">#5500ff00</color>
     <color name="divider">#dedede</color>
+    
+    <color name="blacks">#000000</color>
+    
+     
+     
     <color name="green">#0ed3bf</color>
     <color name="brown">#ff6622</color>
     <color name="tab_gray">#888888</color>

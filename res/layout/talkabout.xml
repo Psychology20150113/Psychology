@@ -16,7 +16,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/hope"
+            android:id="@+id/tv_hope"
             style="@style/text_black18_style"
             android:layout_width="match_parent"
             android:gravity="center"
@@ -24,26 +24,23 @@
             android:text="@string/hope" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/et_suggest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:text="@string/liru" >
         </EditText>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LinearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/LinearLayout1"
         android:layout_marginTop="20dp"
         android:background="#ffffff"
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/convenience"
+            android:id="@+id/tv_convenience"
             style="@style/text_black18_style"
             android:layout_width="match_parent"
             android:gravity="center"
@@ -56,7 +53,7 @@
             android:orientation="horizontal" >
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/ed_time1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -66,7 +63,7 @@
                 android:text="11/11" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/ed_time2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -81,7 +78,7 @@
             android:orientation="horizontal" >
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/ed_time3"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.15"
@@ -94,7 +91,7 @@
             </EditText>
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/ed_time4"
                 android:layout_width="154dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -113,7 +110,7 @@
         	android:layout_marginBottom="57dp" >
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        

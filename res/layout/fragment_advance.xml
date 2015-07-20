@@ -6,12 +6,12 @@
     android:orientation="vertical" 
     android:background="#efefef">
 
-   <fragment 
-        android:name="com.dcy.psychology.fragment.AdvanceFragment"
-        android:id="@+id/fm_Advance"
+   <ListView
+        android:id="@+id/lv_advance"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        />
+        android:layout_height="match_parent"
+        android:background="@color/v2_divider"
+        android:divider="@null" >
+    </ListView>
 
 </LinearLayout>

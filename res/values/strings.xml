@@ -295,17 +295,17 @@
 	<string name="howuse">如何使用</string>
 	<string name="relation">联系我们</string>
 	<string name="feedback">用户反馈</string>
-	<string name="mine_yueliao">我的约聊</string>
+	<string name="mine_talkabout">我的约聊</string>
 	<string name="advance">预告</string>
 	<string name="underway">进行中</string>
-	<string name="yiyueliao">已约聊</string>
+	<string name="toldabout">已约聊</string>
 	<string name="apply">申请约聊</string>
 	<string name="hope">希望请教的问题 (30-300字):</string>
 	<string name="liru">例如:</string>
 	<string name="convenience">方便聊天的时间</string>
 	<string name="submit">提交</string>
 	<string name="submitsuccess">提交成功</string>
-	<string name="submitsuccess2">匹配度越高，资料填写的越详细被导师选中的概率会更高哦！一旦被导师钦点成功，心晴管家会及时电话提醒您，就算没有选上也不要灰心，参与直播互动也能学到很多，而且可以增加下一次被选中的概率！！！</string>
+	<string name="suggest">匹配度越高，资料填写的越详细被导师选中的概率会更高哦！一旦被导师钦点成功，心晴管家会及时电话提醒您，就算没有选上也不要灰心，参与直播互动也能学到很多，而且可以增加下一次被选中的概率！！！</string>
 	<string name="goback">回到主页</string>
 	
 	

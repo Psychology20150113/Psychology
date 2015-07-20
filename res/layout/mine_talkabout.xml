@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 如何使用页面 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <ImageView 
+
+    <fragment
+        android:id="@+id/fm_talk_about"
+        android:name="com.dcy.psychology.fragment.Mine_talkaboutFragment"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"/>
-    
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>
