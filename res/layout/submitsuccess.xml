@@ -8,7 +8,7 @@
     
     
         <TextView
-            android:id="@+id/submitsuccess"
+            android:id="@+id/tv_submitsuccess"
             style="@style/text_black18_style"
             android:layout_width="match_parent"
             android:gravity="center"
@@ -17,13 +17,13 @@
             android:text="@string/submitsuccess" 
             />
         <TextView
-            android:id="@+id/submitsuccess2"
+            android:id="@+id/tv_suggest"
             style="@style/text_black18_style"
             android:layout_width="match_parent"
-            android:layout_below="@+id/submitsuccess"
+            android:layout_below="@+id/tv_submitsuccess"
             android:padding="15dp"
             android:textSize="15sp"
-            android:text="@string/submitsuccess2" 
+            android:text="@string/suggest" 
             />
          <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         	android:layout_marginBottom="57dp" >
 
   		  <Button
-	        android:id="@+id/goback"
+	        android:id="@+id/btn_goback"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	       

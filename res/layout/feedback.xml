@@ -38,7 +38,7 @@
  	</LinearLayout>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/mail_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10" >
@@ -62,9 +62,10 @@
         />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btn_submit"
         android:layout_width="104dp"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:layout_marginTop="150dip"
         android:layout_gravity="center"
         android:text="提交" />

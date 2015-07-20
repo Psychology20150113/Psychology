@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import com.dcy.psychology.fragment.MatchestSpecicalUserFragment;
 import com.dcy.psychology.fragment.MineMarkFragment;
-import com.dcy.psychology.fragment.NewChatIMFragment;
 import com.dcy.psychology.util.Utils;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -27,6 +27,7 @@ public class MineDnaActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mine_dna_layout);
 		setTopTitle(R.string.mine_dna);
+		
 		initView();
 	}
 

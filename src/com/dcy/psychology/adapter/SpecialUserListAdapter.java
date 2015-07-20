@@ -96,6 +96,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		mHolder.attentionTv.setTag(specialUserID);
 		mHolder.matchTv.setTag(specialUserID);
 		mHolder.infoLayout.setTag(item.SpecificUserPhone);
+		//匹配度的显隐
 		if(!TextUtils.isEmpty(String.valueOf(item.MatchResult)) && item.MatchResult != 0){
 			mHolder.pointLayout.setVisibility(View.VISIBLE);
 			mHolder.pointTv.setText(String.valueOf((int)item.MatchResult) + "%");
@@ -104,14 +105,19 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 	}
 	
 	@Override
-	public void onClick(View v) {
+	public void onClick(View v) 
+	{
 		long specialId = (Long)v.getTag();
 		showCustomDialog();
-		switch (v.getId()) {
+		switch (v.getId()) 
+		{
 		case R.id.tv_item_attention:
-			if(mContext.getResources().getString(R.string.attention).equals(((TextView)v).getText())){
+			if(mContext.getResources().getString(R.string.attention).equals(((TextView)v).getText()))
+			{
 				new FollowTask((TextView)v, false).execute(specialId);
-			} else {
+			} 
+			else 
+			{
 				new FollowTask((TextView)v, true).execute(specialId);
 			}
 			break;
@@ -122,7 +128,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			break;
 		}
 	}
-	
+	//触摸跳转到查看心晴师详情
 	private OnClickListener lookInfoListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -194,7 +200,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 					Toast.makeText(mContext, R.string.cancel_attention_success, Toast.LENGTH_SHORT).show();
 				} else {
 					mTextView.setText(R.string.cancel_attention);
-					Toast.makeText(mContext, R.string.attention_success, Toast.LENGTH_SHORT).show();
+					Toast.makeText(mContext, R.string.attention_success, Toast.LENGTH_SHORT).show();//��ע��ȡ��Ի������ʾ
 				}
 			} else {
 				Toast.makeText(mContext, result.getReason(), Toast.LENGTH_SHORT).show();

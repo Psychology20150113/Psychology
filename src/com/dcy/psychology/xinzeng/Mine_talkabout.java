@@ -10,18 +10,13 @@ import android.view.View.OnClickListener;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 
-public class mine_yueliao extends BaseActivity implements OnClickListener{
+public class Mine_talkabout extends BaseActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mine_yueliao);
-		setTopTitle(R.string.mine_yueliao);
-		findViewById(R.id.yiyueliao).setOnClickListener(this);
+		setContentView(R.layout.mine_talkabout);
+		setTopTitle(R.string.mine_talkabout);
 	}
 
-	@Override
-	public void onClick(View v) {
-		// TODO 自动生成的方法存根
-		
-	}
+	
 }

@@ -16,7 +16,7 @@ public class submitsuccess extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.submitsuccess);
 		setTopTitle(R.string.apply);
-		findViewById(R.id.goback).setOnClickListener(this);
+		findViewById(R.id.btn_goback).setOnClickListener(this);
 		
 	}
 	

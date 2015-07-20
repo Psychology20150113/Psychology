@@ -97,7 +97,7 @@
         
         
         <activity 
-            android:name="com.dcy.psychology.xinzeng.mine_yueliao"
+            android:name="com.dcy.psychology.xinzeng.Mine_talkabout"
             android:screenOrientation="portrait">
         </activity>
         <activity 
@@ -105,7 +105,11 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.underway"
+            android:name="com.dcy.psychology.xinzeng.Underway"
+            android:screenOrientation="portrait">
+        </activity>
+          <activity 
+            android:name="com.dcy.psychology.fragment.UnderwayFragment"
             android:screenOrientation="portrait">
         </activity>
         <activity 
@@ -125,7 +129,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.yueliao"
+            android:name="com.dcy.psychology.xinzeng.Talkabout"
             android:screenOrientation="portrait">
         </activity>
         <activity 

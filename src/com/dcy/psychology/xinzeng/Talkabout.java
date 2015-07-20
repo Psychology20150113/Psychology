@@ -8,14 +8,14 @@ import android.view.View.OnClickListener;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 
-public class yueliao extends BaseActivity implements OnClickListener{
+public class Talkabout extends BaseActivity implements OnClickListener{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.yueliao);
+		setContentView(R.layout.talkabout);
 		setTopTitle(R.string.apply);
-		findViewById(R.id.submit).setOnClickListener(this);
+		findViewById(R.id.btn_submit).setOnClickListener(this);
 		
 	}
 	

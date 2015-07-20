@@ -6,22 +6,20 @@
     android:background="#efefef"
     android:orientation="vertical" >
     <ListView
-        android:id="@+id/lv_container"
+        android:id="@+id/lv_talkabout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:background="@color/v2_divider"
         android:divider="@null" >
     </ListView>
 
     <Button
-        android:id="@+id/yiyueliao"
+        android:id="@+id/btn_talkabout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#ffffff"
-        android:text="@string/yiyueliao" />
+        android:text="@string/toldabout" />
 
     
 

@@ -41,10 +41,12 @@
         android:textSize="18sp"
         android:textColor="#727171"
         android:text="@string/slide_attention"/>
-    <ImageView 
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/divider"/>
+        android:background="@color/divider" />
+
     <TextView 
         android:id="@+id/tv_slide_dna"
         android:layout_width="match_parent"
