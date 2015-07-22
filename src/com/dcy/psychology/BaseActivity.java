@@ -43,6 +43,7 @@ public class BaseActivity extends Activity {
 	private View mTitleView;
 	private TextView mTitleText;
 	protected LayoutInflater mInflater;
+	private View infoLayout;
 	protected Resources mResources;
 	private CustomProgressDialog mDialog;
 	private TextView mTopRightText;
@@ -65,7 +66,7 @@ public class BaseActivity extends Activity {
 			case R.id.top_right_tv:
 				onRightTextClick();
 				break;
-			case R.id.top_left_iv:
+			case R.id.ll_left:
 				onLeftViewClick();
 				break;
 			case R.id.top_right_iv:
@@ -260,7 +261,10 @@ public class BaseActivity extends Activity {
 		mTopRightText = (TextView) mTitleView.findViewById(R.id.top_right_tv);
 		mTopRightText.setOnClickListener(mClickListener);
 		mLeftView = (ImageView) mTitleView.findViewById(R.id.top_left_iv);
-		mLeftView.setOnClickListener(mClickListener);
+		//mLeftView.setOnClickListener(mClickListener);
+		mLeftView.setImageResource(R.drawable.icon_back);
+		infoLayout = mTitleView.findViewById(R.id.ll_left);
+		infoLayout.setOnClickListener(mClickListener);
 		mRightView = (ImageView) mTitleView.findViewById(R.id.top_right_iv);
 		mRightView.setOnClickListener(mClickListener);
 	}
@@ -304,7 +308,7 @@ public class BaseActivity extends Activity {
 	
 	public void onRightTextClick(){};
 	
-	public void onLeftViewClick(){};
+	public void onLeftViewClick(){finish();};
 	
 	public void onRightViewClick(){};
 	

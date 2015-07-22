@@ -38,7 +38,7 @@ import com.dcy.psychology.view.PageIndicatorView;
 import com.dcy.psychology.view.QuestionView;
 import com.google.gson.reflect.TypeToken;
 
-public class ThoughtReadingActivity extends Activity implements OnClickListener{
+public class ThoughtReadingActivity extends BaseActivity implements OnClickListener{
 
 	private Resources mResources;
 	private int mCurrentPage = 0;
@@ -95,7 +95,7 @@ public class ThoughtReadingActivity extends Activity implements OnClickListener{
 	}
 
 	private void initView() {
-		((TextView)findViewById(R.id.title_tv)).setText(themeTitle);
+		setTopTitle(themeTitle);;
 		mViewPager = (ViewPager) findViewById(R.id.qiestion_vp);
 		mAdapter = new QuestionAdapter(mQuestionViewList);
 		mViewPager.setAdapter(mAdapter);

@@ -8,12 +8,12 @@ import android.view.View.OnClickListener;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 
-public class Talkabout extends BaseActivity implements OnClickListener{
+public class TalkaboutActivity extends BaseActivity implements OnClickListener{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.talkabout);
+		setContentView(R.layout.activity_talkabout_layout);
 		setTopTitle(R.string.apply);
 		findViewById(R.id.btn_submit).setOnClickListener(this);
 		
@@ -22,7 +22,7 @@ public class Talkabout extends BaseActivity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		Intent mIntent = null;
-			mIntent = new Intent(this, submitsuccess.class);
+			mIntent = new Intent(this, SubmitsuccessActivity.class);
 		
 			startActivity(mIntent);
 		

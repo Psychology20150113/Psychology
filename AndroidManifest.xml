@@ -97,15 +97,15 @@
         
         
         <activity 
-            android:name="com.dcy.psychology.xinzeng.Mine_talkabout"
+            android:name="com.dcy.psychology.xinzeng.Mine_talkaboutActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.advance"
+            android:name="com.dcy.psychology.xinzeng.AdvanceActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.Underway"
+            android:name="com.dcy.psychology.xinzeng.UnderwayActivity"
             android:screenOrientation="portrait">
         </activity>
           <activity 
@@ -113,34 +113,41 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.help"
+            android:name="com.dcy.psychology.xinzeng.HelpActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.about"
+            android:name="com.dcy.psychology.xinzeng.AboutActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.feedback"
+            android:name="com.dcy.psychology.xinzeng.FeedbackActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.relation"
+            android:name="com.dcy.psychology.xinzeng.RelationActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.Talkabout"
+            android:name="com.dcy.psychology.xinzeng.TalkaboutActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.howuse"
+            android:name="com.dcy.psychology.xinzeng.HowuseActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.dcy.psychology.xinzeng.submitsuccess"
+            android:name="com.dcy.psychology.xinzeng.SubmitsuccessActivity"
             android:screenOrientation="portrait">
         </activity>
-        
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.PersonalHomepage"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.view.dialog.IndividualDialog"
+            android:screenOrientation="portrait">
+        </activity>
         
         
         

@@ -74,7 +74,7 @@ public class TalkingAdapter extends BaseAdapter {
 			mHolder.surplus = (TextView)convertView.findViewById(R.id.tv_item_surplus);
 			mHolder.headerIv2 = (ImageView) convertView.findViewById(R.id.iv_te_header);
 			mHolder.nameTv2 = (TextView) convertView.findViewById(R.id.tv_item_tename);
-			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_yueliao);
+			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_talkabout);
 			mHolder.infoLayout.setOnClickListener(lookInfoListener);
 			convertView.setTag(mHolder);
 		} else {
