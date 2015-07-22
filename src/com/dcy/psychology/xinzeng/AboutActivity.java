@@ -8,13 +8,13 @@ import android.view.View.OnClickListener;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 
-public class relation extends BaseActivity {
+public class AboutActivity extends BaseActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.relation);
-		setTopTitle(R.string.relation);
+		setContentView(R.layout.about_layout);
+		setTopTitle(R.string.about);
 	}
 		
 }

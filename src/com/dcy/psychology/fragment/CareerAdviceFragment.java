@@ -1,18 +1,10 @@
 package com.dcy.psychology.fragment;
 
-import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.R;
-import com.dcy.psychology.adapter.SpecialUserListAdapter;
-import com.dcy.psychology.db.DbManager;
-import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.InfoShared;
-import com.dcy.psychology.view.CustomProgressDialog;
-import com.dcy.psychology.xinzeng.advance;
-import com.dcy.psychology.xinzeng.help;
-import com.dcy.psychology.xinzeng.Mine_talkabout;
-import com.dcy.psychology.xinzeng.Underway;
-import com.dcy.psychology.xinzeng.Talkabout;
-
+import com.dcy.psychology.view.dialog.IndividualDialog;
+import com.dcy.psychology.xinzeng.AboutActivity;
+import com.dcy.psychology.xinzeng.AdvanceActivity;
+import com.dcy.psychology.xinzeng.UnderwayActivity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -50,14 +42,14 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 		Intent nIntent = null;
 		switch (v.getId()) {
 		case R.id.btn_mine_talkabout:
-			nIntent = new Intent(mContext, Mine_talkabout.class);
+			nIntent = new Intent(mContext, IndividualDialog.class);
 			
 			break;
 		case R.id.btn_advance:
-			nIntent = new Intent(mContext, advance.class);
+			nIntent = new Intent(mContext, AdvanceActivity.class);
 			break;
 		case R.id.btn_underway:
-			nIntent = new Intent(mContext, Underway.class);
+			nIntent = new Intent(mContext, UnderwayActivity.class);
 			break;
 		
 		}

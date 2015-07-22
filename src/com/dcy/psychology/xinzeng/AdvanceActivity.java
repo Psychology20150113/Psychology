@@ -4,11 +4,11 @@ import android.os.Bundle;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 
-public class advance extends BaseActivity {
+public class AdvanceActivity extends BaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.advance);
+		setContentView(R.layout.advance_layout);
 		setTopTitle(R.string.advance);
 	}
 

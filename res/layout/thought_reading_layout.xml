@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <TextView 
+   <!--  <TextView 
         android:id="@+id/title_tv"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="20sp"
         android:gravity="center"
         android:textColor="#FFFFFF"
-        android:background="@color/v2_orange"/>
+        android:background="@color/v2_orange"/> -->
     <android.support.v4.view.ViewPager
         android:id="@+id/qiestion_vp"
         android:layout_width="match_parent"

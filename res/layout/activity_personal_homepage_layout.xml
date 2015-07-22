@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/v2_divider"/>
+
+    <LinearLayout
+        android:id="@+id/ll_personal_information"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:orientation="horizontal" >
+
+        	
+		  <TextView
+            android:id="@+id/tv_completeness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="15dp"
+            android:text="资料完成度 50%"
+            android:textSize="11sp" />
+          
+       
+          
+       
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+           <com.dcy.psychology.view.CornerImageView
+                android:id="@+id/iv_header"
+                android:layout_width="73dp"
+                android:layout_height="73dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_launcher" />
+            
+             <TextView
+                android:id="@+id/tv_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="爱吃水的鱼"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+        <LinearLayout 
+             android:id="@+id/ll_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="horizontal" >
+             
+           <ImageView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:background="@drawable/icon_attention"/>
+             <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="right"
+            android:text="编辑详细信息"
+            android:textSize="11sp" />
+            
+			</LinearLayout>
+			
+        </LinearLayout>
+         <ImageView 
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginRight="10dp"
+            	android:layout_marginLeft="10dp"
+                android:background="@color/divider"/>
+         
+         <LinearLayout 
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+             
+            <TextView
+            android:id="@+id/tv_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_attention"
+			android:drawablePadding="5dp"
+            android:layout_marginLeft="15dp"
+            android:padding="5dp"
+            android:text="1星用户"
+            android:textSize="11sp" />
+            
+            <LinearLayout 
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:gravity="right"
+             android:layout_marginRight="15dp"
+             android:orientation="horizontal">
+            
+            <TextView
+            android:id="@+id/tv_successtalk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_attention"
+			android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:text="成功约聊5位导师"
+            android:textSize="11sp" />
+            
+            <TextView
+            android:id="@+id/tv_told"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_attention"
+			android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:text="约过15位导师"
+            android:textSize="11sp" />
+              </LinearLayout>
+         </LinearLayout>
+         <View 
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/v2_divider"/>
+         
+          <LinearLayout 
+             android:layout_width="match_parent"
+             android:layout_height="146dp"
+             android:orientation="vertical">
+            
+             <RelativeLayout 
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="16dp"
+             android:orientation="horizontal">
+            
+		            <TextView
+		            android:id="@+id/tv_introduction"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerHorizontal="true" 
+		            android:text="个人简介"
+		            android:textSize="16sp" />
+		            
+		            
+		            <ImageView 
+               		android:layout_width="wrap_content"
+               		android:layout_height="wrap_content"
+               		android:layout_alignParentRight="true"
+               		android:layout_marginRight="14dp"
+              	 	android:background="@drawable/icon_attention"/>
+		       </RelativeLayout>
+            
+            <TextView
+            android:id="@+id/tv_resume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginLeft="23dp"
+            android:text="个人简介山东省大湿地阿斯顿第四实打实大师的萨达阿速达苏打死赛屌丝对哦啊苏"
+            android:textSize="16sp" />
+               
+           </LinearLayout>
+           <View 
+        	android:layout_width="match_parent"
+        	android:layout_height="5dp"
+       		android:background="@color/v2_divider"/>
+           
+           <LinearLayout 
+             android:layout_width="match_parent"
+             android:layout_height="87dp"
+             android:orientation="vertical">
+            
+             <RelativeLayout 
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="16dp"
+             android:orientation="horizontal">
+            
+		            <TextView
+		            android:id="@+id/tv_attentiontopic"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerHorizontal="true" 
+		            android:text="关注话题"
+		            android:textSize="16sp" />
+		            
+		            
+		            <ImageView 
+               		android:layout_width="wrap_content"
+               		android:layout_height="wrap_content"
+               		android:layout_alignParentRight="true"
+               		android:layout_marginRight="14dp"
+              	 	android:background="@drawable/icon_attention"/>
+		       </RelativeLayout>
+            
+               
+           </LinearLayout>
+
+</LinearLayout>

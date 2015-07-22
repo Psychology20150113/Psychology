@@ -8,13 +8,13 @@ import android.view.View.OnClickListener;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 
-public class feedback extends BaseActivity {
+public class HowuseActivity extends BaseActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.feedback);
-		setTopTitle(R.string.feedback);
+		setContentView(R.layout.activity_howuse_layout);
+		setTopTitle(R.string.howuse);
 	}
 		
 }

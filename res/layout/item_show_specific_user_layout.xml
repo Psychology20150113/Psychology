@@ -6,7 +6,7 @@
     android:background="#ffffff" >
     <View 
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:background="@color/v2_divider"/>
     <LinearLayout 
         android:id="@+id/ll_item_user_info"

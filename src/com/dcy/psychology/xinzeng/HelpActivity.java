@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 
-public class help extends BaseActivity implements OnClickListener{
+public class HelpActivity extends BaseActivity implements OnClickListener{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +26,16 @@ public class help extends BaseActivity implements OnClickListener{
 		Intent mIntent = null;
 		switch (v.getId()) {
 		case R.id.btn_about:
-			mIntent = new Intent(this, about.class);
+			mIntent = new Intent(this, AboutActivity.class);
 			break;
 		case R.id.btn_howuse:
-			mIntent = new Intent(this, howuse.class);
+			mIntent = new Intent(this, HowuseActivity.class);
 			break;
 		case R.id.btn_relation:
-			mIntent = new Intent(this, relation.class);
+			mIntent = new Intent(this, RelationActivity.class);
 			break;
 		case R.id.btn_feedback:
-			mIntent = new Intent(this, feedback.class);
+			mIntent = new Intent(this, FeedbackActivity.class);
 			break;
 		default:
 			break;

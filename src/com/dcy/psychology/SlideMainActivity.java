@@ -38,6 +38,7 @@ import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
+import com.dcy.psychology.xinzeng.PersonalHomepage;
 import com.umeng.analytics.MobclickAgent;
 
 public class SlideMainActivity extends BaseActivity implements OnClickListener{
@@ -97,6 +98,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			mCache.displayImage((ImageView)findViewById(R.id.iv_header), R.drawable.ic_launcher, 
 					new AsyncImageCache.NetworkImageGenerator(MyApplication.myHeadUrl, MyApplication.myHeadUrl));
 		}
+		findViewById(R.id.iv_header).setOnClickListener(this);
 		findViewById(R.id.tv_slide_attention).setOnClickListener(this);
 		findViewById(R.id.tv_slide_dna).setOnClickListener(this);
 		findViewById(R.id.tv_slide_message).setOnClickListener(this);
@@ -182,8 +184,15 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 	
 	@Override
 	public void onLeftViewClick() {
-		drawerLayout.openDrawer(Gravity.LEFT);
-	}
+		//drawerLayout.openDrawer(Gravity.LEFT);
+			if(drawerLayout.isDrawerOpen(Gravity.LEFT)){
+			
+				drawerLayout.closeDrawer(Gravity.LEFT);
+			}
+			else{
+				drawerLayout.openDrawer(Gravity.LEFT);
+			}
+		}
 	
 	@Override
 	public void onRightViewClick() {
@@ -213,6 +222,13 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		}
 		Intent mIntent = null;
 		switch (v.getId()) {
+		case R.id.iv_header:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+				mIntent = new Intent(this, PersonalHomepage.class);
+			}
+			break;
 		case R.id.tv_slide_attention:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);

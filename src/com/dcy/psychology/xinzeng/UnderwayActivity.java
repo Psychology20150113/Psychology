@@ -11,21 +11,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
 
-public class Underway extends BaseActivity
+public class UnderwayActivity extends BaseActivity
 {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.underway);
+        setContentView(R.layout.activity_underway_layout);
         setTopTitle(R.string.underway);
         
         
-        //�ڳ����м���Fragment
-    	/*FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        
-        transaction.add(R.id.linear,new Underway());
-        transaction.commit();*/
     }
 
 }
