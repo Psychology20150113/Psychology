@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.UserInfoBean;
 import com.dcy.psychology.util.AsyncImageCache;

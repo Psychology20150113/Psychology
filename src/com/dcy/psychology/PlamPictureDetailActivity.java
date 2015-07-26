@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.ArticleBean;
 import com.dcy.psychology.gsonbean.ClassBean;
 import com.dcy.psychology.gsonbean.GrowPictureBean;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="left"
@@ -29,68 +29,129 @@
         	<TextView 
         	    android:id="@+id/name_tv"
         	    style="@style/text_white16_style"
-        	    android:layout_marginTop="15dp"
+        	    android:layout_marginTop="12dp"
         	    android:text="@string/login_now"/>
+        	<TextView 
+        	    android:id="@+id/tv_loginout"
+        	    style="@style/text_white16_style"
+        	    android:layout_marginTop="9dp"
+        	    android:visibility="gone"
+        	    android:text="@string/quit"/>
         </LinearLayout>
     </RelativeLayout>
-    <TextView 
-        android:id="@+id/tv_slide_attention"
+    <LinearLayout 
+        android:id="@+id/ll_slide_attention"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:gravity="center">
+        <TextView 
+        android:id="@+id/tv_slide_attention"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="18sp"
+        android:drawableLeft="@drawable/icon_attention"
+        android:drawablePadding="8dp"
+        android:textSize="15sp"
         android:textColor="#727171"
         android:text="@string/slide_attention"/>
-
+        
+        
+    </LinearLayout>
+    
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:background="@color/divider" />
+     <LinearLayout 
+        android:id="@+id/ll_slide_dna"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
 
     <TextView 
         android:id="@+id/tv_slide_dna"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:drawableLeft="@drawable/icon_attention"
+		android:drawablePadding="5dp"
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="#727171"
         android:text="@string/slide_dna"/>
+     </LinearLayout>
     <ImageView 
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:background="@color/divider"/>
-    <TextView 
-        android:id="@+id/tv_slide_message"
+     <LinearLayout 
+        android:id="@+id/ll_slide_message"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:gravity="center">
+    <TextView 
+        android:id="@+id/tv_slide_message"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:drawableLeft="@drawable/icon_attention"
+		android:drawablePadding="5dp"
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="#727171"
         android:text="@string/slide_message"/>
+     </LinearLayout>
     <ImageView 
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:background="@color/divider"/>
-    <TextView 
-        android:id="@+id/tv_slide_problem"
+     <LinearLayout 
+        android:id="@+id/ll_slide_problem"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:gravity="center">
+    <TextView 
+        android:id="@+id/tv_slide_problem"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:drawableLeft="@drawable/icon_attention"
+		android:drawablePadding="5dp"
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="#727171"
         android:text="@string/slide_problem"/>
-    <ImageView 
+     </LinearLayout>
+    
+     <ImageView 
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"/>
+        android:layout_height="10dp"
+        android:background="@color/divider"/> 
+     <LinearLayout 
+        android:id="@+id/ll_help"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
     <TextView 
-        android:id="@+id/tv_loginout"
+        android:id="@+id/tv_help"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:drawableLeft="@drawable/icon_attention"
+		android:drawablePadding="5dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="#727171"
+        android:text="@string/help"/>
+    </LinearLayout>
+     <LinearLayout 
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+     <TextView 
+        android:id="@+id/tv_enter_careeradvice"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
+        android:background="#ed823b"
         android:layout_gravity="bottom"
         android:textSize="18sp"
         android:textColor="#727171"
-        android:visibility="gone"
-        android:text="@string/quit"/>
+        android:text="@string/enter_careeradvice"/> 
+     </LinearLayout>
 </LinearLayout>

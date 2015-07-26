@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:background="@color/v2_divider">
-    <include 
-        layout="@layout/item_show_specific_user_layout"/>
+
+    <include layout="@layout/item_show_specific_user_layout" />
+
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="40dp"

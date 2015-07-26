@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.GrowModelBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 申请约聊页面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/v2_divider"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical" 
+        android:layout_gravity="center">
+         <TextView 
+       
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:text="@string/hope"
+        android:gravity="center"
+        android:textSize="15sp"
+        />
+    	<ImageView 
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginRight="10dp"
+            	android:layout_marginLeft="10dp"
+                android:background="@color/divider"/>
+    	<TextView 
+       
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:padding="5dp"
+        android:text="@string/liru"
+        android:textSize="15sp"
+        />
+    </LinearLayout>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/v2_divider"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical" 
+        android:layout_gravity="center">
+    	  <TextView 
+       
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:text="@string/convenience"
+        android:gravity="center"
+        android:textSize="15sp"
+        />
+    	<ImageView 
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginRight="10dp"
+            	android:layout_marginLeft="10dp"
+                android:background="@color/divider"/>
+    	
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="208dp"
+        android:layout_height="51dp"
+        android:background="@drawable/bg_btn10"
+        android:layout_marginTop="50dip"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:text="@string/submit" />
+    <!-- 申请结果已隐藏 -->
+     <TextView 
+       
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:text="@string/apply_result"
+        android:gravity="center"
+        android:textSize="12sp"/>
+    
+    
+
+</LinearLayout>

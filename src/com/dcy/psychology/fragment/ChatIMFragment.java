@@ -26,8 +26,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.LoginActivity.ChatLoginTask;
+import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.ChatAdapter;

@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.HomeShowAllListAdapter;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
 import com.dcy.psychology.util.Constants;

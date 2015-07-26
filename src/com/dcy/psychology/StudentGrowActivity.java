@@ -3,6 +3,7 @@ package com.dcy.psychology;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.StudentGrowPlatformAdapter;
 import com.dcy.psychology.adapter.StudentGrowPlatformAdapter.OnPlatClickListener;
 import com.dcy.psychology.util.Constants;

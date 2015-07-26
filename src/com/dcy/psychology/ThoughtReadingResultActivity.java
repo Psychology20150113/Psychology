@@ -3,6 +3,7 @@ package com.dcy.psychology;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.model.QuestionModel;
 import com.dcy.psychology.util.ThoughtReadingUtils;
 import com.dcy.psychology.util.ThoughtReadingUtils.QuestionResultAdapter;

@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.IntroducePageAdapter;
 import com.dcy.psychology.view.PageIndicatorView;
 

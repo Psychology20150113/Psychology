@@ -15,26 +15,26 @@ public class HelpActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help_layout);
 		setTopTitle(R.string.help);
-		findViewById(R.id.btn_about).setOnClickListener(this);
-		findViewById(R.id.btn_howuse).setOnClickListener(this);
-		findViewById(R.id.btn_relation).setOnClickListener(this);
-		findViewById(R.id.btn_feedback).setOnClickListener(this);
+		findViewById(R.id.ll_about).setOnClickListener(this);
+		findViewById(R.id.ll_howuse).setOnClickListener(this);
+		findViewById(R.id.ll_relation).setOnClickListener(this);
+		findViewById(R.id.ll_feedback).setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View v) {
 		Intent mIntent = null;
 		switch (v.getId()) {
-		case R.id.btn_about:
+		case R.id.ll_about:
 			mIntent = new Intent(this, AboutActivity.class);
 			break;
-		case R.id.btn_howuse:
+		case R.id.ll_howuse:
 			mIntent = new Intent(this, HowuseActivity.class);
 			break;
-		case R.id.btn_relation:
+		case R.id.ll_relation:
 			mIntent = new Intent(this, RelationActivity.class);
 			break;
-		case R.id.btn_feedback:
+		case R.id.ll_feedback:
 			mIntent = new Intent(this, FeedbackActivity.class);
 			break;
 		default:

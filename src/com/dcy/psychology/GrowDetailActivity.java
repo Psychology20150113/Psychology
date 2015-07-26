@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.GrowModelBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.view.GrowDetailView;

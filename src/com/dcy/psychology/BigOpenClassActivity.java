@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.BigClassShowListAdapter;
 import com.dcy.psychology.gsonbean.ClassBean;
 import com.dcy.psychology.util.Utils;

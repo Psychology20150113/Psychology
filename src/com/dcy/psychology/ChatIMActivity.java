@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.ChatAdapter;
 import com.dcy.psychology.model.ChatItemModel;
 import com.dcy.psychology.util.IMManager;

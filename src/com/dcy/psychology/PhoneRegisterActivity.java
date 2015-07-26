@@ -1,5 +1,8 @@
 package com.dcy.psychology;
 
+import javax.crypto.spec.IvParameterSpec;
+
+import com.dcy.psychology.R;
 import com.dcy.psychology.LoginActivity.ChatLoginTask;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.RegisterBean;
@@ -18,6 +21,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +33,10 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 	private TextView mGetCodeText;
 	private InfoShared mShared;
 	private final int CountDownNum = 30;
+	private ImageView magree;
+	private ImageView mnoagree;
+	
+
 	private int mCountDownTime = CountDownNum;
 	private Handler mCountDownHandler = new Handler();
 	
@@ -47,9 +55,13 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 		mPwdEt = (EditText) findViewById(R.id.password_et);
 		mSecondPwdEt = (EditText) findViewById(R.id.second_password_et);
 		mGetCodeText = (TextView) findViewById(R.id.get_code_tv);
+		magree = (ImageView) findViewById(R.id.iv_agree);
+		mnoagree = (ImageView) findViewById(R.id.iv_noagree);
+		magree.setOnClickListener(this);
+		mnoagree.setOnClickListener(this);
 		mGetCodeText.setOnClickListener(this);
 		findViewById(R.id.register_tv).setOnClickListener(this);
-		findViewById(R.id.find_pwd_tv).setOnClickListener(this);
+		//findViewById(R.id.find_pwd_tv).setOnClickListener(this);
 	}
 	
 	private class RegisterTask extends AsyncTask<String, Void, BasicBean>{
@@ -137,8 +149,16 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 			showCustomDialog();
 			new RegisterTask().execute();
 			break;
-		case R.id.find_pwd_tv:
+		/*case R.id.find_pwd_tv:
 			startActivityForResult(new Intent(this, FindPwdActivity.class), 0);
+			break;*/
+		case R.id.iv_agree:
+			magree.setVisibility(View.GONE);
+			mnoagree.setVisibility(View.VISIBLE);
+			break;
+		case R.id.iv_noagree:
+			mnoagree.setVisibility(View.GONE);
+			magree.setVisibility(View.VISIBLE);
 			break;
 		default:
 			break;
