@@ -11,6 +11,7 @@ import android.widget.Toast;
 import cn.jpush.android.api.JPushInterface;
 
 import com.dcy.psychology.db.PreInstallDbHelper;
+import com.dcy.psychology.network.NetworkManager;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
@@ -30,7 +31,8 @@ public class MyApplication extends Application{
 	public static String myHeadUrl;
 	public static Gson mGson;
 	public static PreInstallDbHelper preInstallDbHelper;
-	public static MyApplication instance;
+	private static MyApplication instance;
+	private static NetworkManager mNetworkManager;
 	
 	@Override
 	public void onCreate() {
@@ -46,6 +48,13 @@ public class MyApplication extends Application{
 //        MobclickAgent.setDebugMode(true);
         mGson = new Gson();
         preInstallDbHelper = new PreInstallDbHelper(this);
+	}
+	
+	public NetworkManager getNetworkManager(){
+		if(mNetworkManager == null){
+			mNetworkManager = NetworkManager.getInstance(this);
+		}
+		return mNetworkManager;
 	}
 	
 	public static Application getInstance(){
