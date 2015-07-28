@@ -3,32 +3,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="@color/bg_gray"
-    android:padding="20dp">
-    <EditText 
+    android:background="#ffffff"
+    android:padding="23dp">
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/shape_orange_rect_round" 
+        android:orientation="vertical"  >
+         <EditText 
         android:id="@+id/account_et"
-        style="@style/edit_style"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#ffffff"
         android:hint="@string/account"/>
+         <ImageView 
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:layout_gravity="center_horizontal"
+             android:background="#faa66f"
+             />
     <EditText 
         android:id="@+id/psw_et"
-        style="@style/edit_style"
+         android:layout_width="match_parent"
+        android:layout_height="46dp"
+		android:background="#ffffff"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:hint="@string/password"
-        android:layout_marginTop="10dp"
         android:inputType="textPassword"/>
+    </LinearLayout>
     <Button 
         android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/v2_orange"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_login"
         android:text="@string/login"
         android:textSize="16sp"
         android:textColor="#ffffff"/>
-	<TextView 
-	    android:id="@+id/find_pwd_tv"
-	    style="@style/text_black18_style"
-	    android:layout_marginTop="20dp"
-	    android:textColor="@color/bg_save_btn"
-	    android:text="@string/find_pwd"
-	    android:layout_gravity="right"/>
+
+    <TextView
+        android:id="@+id/find_pwd_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#9fa0a0"
+        
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center"
+        android:text="@string/find_pwd" />
+    <!-- style="@style/text_black18_style" -->
+    <Button 
+        android:id="@+id/register_btn"
+        android:layout_width="171dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="107dp"
+        
+        android:background="@drawable/bg_register"
+        android:layout_gravity="center"
+        android:text="@string/register"
+        android:textSize="16sp"
+        android:textColor="#666465"/>
+
 </LinearLayout>

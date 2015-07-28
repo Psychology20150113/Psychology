@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import org.json.JSONObject;
+
+import com.dcy.psychology.R;
 import com.dcy.psychology.util.IOUtils;
 import com.dcy.psychology.util.ShareUtils;
 import com.dcy.psychology.util.Utils;

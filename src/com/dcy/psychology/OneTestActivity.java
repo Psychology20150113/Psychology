@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.view.MyMarkerView;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.data.Entry;

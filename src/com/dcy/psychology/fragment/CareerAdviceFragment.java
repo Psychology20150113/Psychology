@@ -29,7 +29,7 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View view = inflater.inflate(R.layout.fragment_career_advice, null);
+		View view = inflater.inflate(R.layout.fragment_career_advice_layout, null);
 		view.findViewById(R.id.btn_mine_talkabout).setOnClickListener(this);
 		view.findViewById(R.id.btn_advance).setOnClickListener(this);
 		view.findViewById(R.id.btn_underway).setOnClickListener(this);

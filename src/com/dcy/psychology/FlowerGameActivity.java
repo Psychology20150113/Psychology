@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.util.FlowerGameUtils;
 import com.dcy.psychology.view.FlowerChooseBtn;
 import com.dcy.psychology.view.FlowerChooseBtn.ChangeBackGroundListener;

@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.fragment.MatchestSpecicalUserFragment;
 import com.dcy.psychology.fragment.MineMarkFragment;
 import com.dcy.psychology.util.Utils;

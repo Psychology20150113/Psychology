@@ -25,6 +25,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.SlideAdapter;
 import com.dcy.psychology.fragment.CareerPlanFragment;
 import com.dcy.psychology.fragment.ChatIMFragment;
@@ -38,6 +39,7 @@ import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
+import com.dcy.psychology.xinzeng.HelpActivity;
 import com.dcy.psychology.xinzeng.PersonalHomepage;
 import com.umeng.analytics.MobclickAgent;
 
@@ -99,10 +101,11 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 					new AsyncImageCache.NetworkImageGenerator(MyApplication.myHeadUrl, MyApplication.myHeadUrl));
 		}
 		findViewById(R.id.iv_header).setOnClickListener(this);
-		findViewById(R.id.tv_slide_attention).setOnClickListener(this);
-		findViewById(R.id.tv_slide_dna).setOnClickListener(this);
-		findViewById(R.id.tv_slide_message).setOnClickListener(this);
-		findViewById(R.id.tv_slide_problem).setOnClickListener(this);
+		findViewById(R.id.ll_slide_attention).setOnClickListener(this);
+		findViewById(R.id.ll_slide_dna).setOnClickListener(this);
+		findViewById(R.id.ll_slide_message).setOnClickListener(this);
+		findViewById(R.id.ll_slide_problem).setOnClickListener(this);
+		findViewById(R.id.ll_help).setOnClickListener(this);
 		setLeftView(R.drawable.icon_slide);
 		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			loginOutText.setVisibility(View.VISIBLE);
@@ -229,29 +232,32 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 				mIntent = new Intent(this, PersonalHomepage.class);
 			}
 			break;
-		case R.id.tv_slide_attention:
+		case R.id.ll_slide_attention:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
 				mIntent = new Intent(this, GetFollowUsersActivity.class);
 			}
 			break;
-		case R.id.tv_slide_dna:
+		case R.id.ll_slide_dna:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
 				mIntent = new Intent(this, MineDnaActivity.class);
 			}
 			break;
-		case R.id.tv_slide_message:
+		case R.id.ll_slide_message:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
 				mIntent = new Intent(this, PersonalInfoActivity.class);
 			}
 			break;
-		case R.id.tv_slide_problem:
+		case R.id.ll_slide_problem:
 			mIntent = new Intent(this, ShowProblemActivity.class);
+			break;
+		case R.id.ll_help:
+			mIntent = new Intent(this, HelpActivity.class);
 			break;
 		default:
 			break;

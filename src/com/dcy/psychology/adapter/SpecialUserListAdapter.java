@@ -2,10 +2,12 @@ package com.dcy.psychology.adapter;
 
 import java.util.ArrayList;
 
+import android.R.string;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,8 +16,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.Activity;
 
 import com.dcy.psychology.DoctorPersonalInfo;
+import com.dcy.psychology.DoctorPersonalInfo2;
 import com.dcy.psychology.PersonalInfoActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
@@ -194,21 +198,52 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			if(result == null){
 				return;
 			}
-			if(result.isResult()){
-				if(isFollowed){
+			if(result.isResult())
+			{
+				//ToastÉèÖÃ£¬Í¬ÑùµÄÉèÖÃ»¹ÔÚDoctorPersonalInfoÖÐÓ¦ÓÃ
+				if(isFollowed)
+				{
 					mTextView.setText(R.string.attention);
-					Toast.makeText(mContext, R.string.cancel_attention_success, Toast.LENGTH_SHORT).show();
-				} else {
+					 Toast(R.string.cancel_attention_success);
+					//toast.makeText(mContext, R.string.cancel_attention_success, toast.LENGTH_SHORT).show();
+				} else 
+				{
 					mTextView.setText(R.string.cancel_attention);
-					Toast.makeText(mContext, R.string.attention_success, Toast.LENGTH_SHORT).show();//ï¿½ï¿½×¢ï¿½ï¿½È¡ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+					 Toast(R.string.attention_success);
+					//toast.makeText(mContext, R.string.attention_success, toast.LENGTH_SHORT).show();//ï¿½ï¿½×¢ï¿½ï¿½È¡ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 				}
-			} else {
-				Toast.makeText(mContext, result.getReason(), Toast.LENGTH_SHORT).show();
+			} else
+			{
+				LayoutInflater inflater = LayoutInflater.from(mContext);;
+		        View layout = inflater.inflate(R.layout.toast_layout,null);
+		        layout.getBackground().setAlpha(65);
+		        TextView text = (TextView) layout.findViewById(R.id.tvTextToast);
+		        text.setText(result.getReason());
+		        Toast toast = new Toast(mContext);
+		        toast.setGravity(Gravity.CENTER, 0, 0);
+		        toast.setDuration(Toast.LENGTH_SHORT);
+		       // toast.makeText(mContext, R.string.cancel_attention_success, toast.LENGTH_SHORT);
+		        toast.setView(layout);
+		        toast.show();
+				//toast.makeText(mContext, result.getReason(), toast.LENGTH_SHORT).show();
 			}
 		}
 	}
 	
-	
+	 private void Toast(int idT){
+		 LayoutInflater inflater = LayoutInflater.from(mContext);;
+         View layout = inflater.inflate(R.layout.toast_layout,null);
+         layout.getBackground().setAlpha(65);
+         TextView text = (TextView) layout.findViewById(R.id.tvTextToast);
+         text.setText(idT);
+         Toast toast = new Toast(mContext);
+         toast.setGravity(Gravity.CENTER, 0, 0);
+         toast.setDuration(Toast.LENGTH_SHORT);
+        // toast.makeText(mContext, R.string.cancel_attention_success, toast.LENGTH_SHORT);
+         toast.setView(layout);
+         toast.show();
+	 
+	 }
 	
 	private class Holder{
 		ImageView headerIv;

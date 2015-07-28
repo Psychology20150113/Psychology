@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.GameFishBean;
 import com.dcy.psychology.view.SeaFishView;
 

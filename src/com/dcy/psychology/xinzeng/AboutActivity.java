@@ -13,7 +13,7 @@ public class AboutActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.about_layout);
+		setContentView(R.layout.activity_about_layout);
 		setTopTitle(R.string.about);
 	}
 		

@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.LoginBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
@@ -92,20 +93,21 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	
 	private void initView(){
 		setTopTitle(R.string.login);
-		if(userRole == null || Constants.RoleUser.equals(userRole)){
+		/*if(userRole == null || Constants.RoleUser.equals(userRole)){
 			setRightText(R.string.register);
-		}
+		}*/
 		accountET = (EditText) findViewById(R.id.account_et);
 		pwdET = (EditText) findViewById(R.id.psw_et);
 		findViewById(R.id.login_btn).setOnClickListener(this);
+		findViewById(R.id.register_btn).setOnClickListener(this);
 		findViewById(R.id.find_pwd_tv).setOnClickListener(this);
 	}
 	
-	@Override
+	/*@Override
 	public void onRightTextClick() {
 		//startActivityForResult(new Intent(this, RegisterActivity.class) , 0);
 		startActivityForResult(new Intent(this, PhoneRegisterActivity.class) , 0);
-	}
+	}*/
 	
 	@Override
 	public void onClick(View view) {
@@ -118,6 +120,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			break;
 		case R.id.find_pwd_tv:
 			startActivity(new Intent(this, FindPwdActivity.class));
+			break;
+		case R.id.register_btn:
+			startActivity(new Intent(this, PhoneRegisterActivity.class));
 			break;
 		default:
 			break;

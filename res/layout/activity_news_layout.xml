@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/v2_divider"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+        <TextView 
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="题目题目"/>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+            <TextView 
+            android:id="@+id/tv_lable1"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+       		android:textSize="10sp"
+       		android:gravity="center"
+            android:background="@drawable/bg_label"
+            android:text="机械"/>
+             <TextView 
+            android:id="@+id/tv_lable2"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="8dp"
+       		android:textSize="10sp"
+       		android:gravity="center"
+            android:background="@drawable/bg_label"
+            android:text="教育"/>
+            
+        </LinearLayout>
+        
+        </LinearLayout>
+        
+    	 <TextView 
+    	    android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:lines="3"
+       		android:textSize="10sp"
+            android:text="教育"/>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+        <com.dcy.psychology.view.CornerImageView 
+	        android:id="@+id/iv_header"
+	        android:layout_width="25dp"
+	        android:layout_height="25dp"
+	        android:src="@drawable/ic_launcher"/>
+        <TextView 
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginLeft="8dp"
+            
+            android:layout_gravity="bottom"
+            android:text="题目题目"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="bottom"
+            android:text="20150725 13:00"
+            android:textSize="10sp" />
+        
+        </LinearLayout>
+         <ImageView 
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/divider"/>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right">
+        
+            <TextView 
+                android:id="@+id/tv_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:drawableLeft="@drawable/icon_attention"
+			    android:drawablePadding="5dp"
+			    android:text="0评论"
+                />
+            <TextView 
+                android:id="@+id/tv_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:drawableLeft="@drawable/icon_attention"
+			    android:drawablePadding="5dp"
+			    android:text="0分享"
+                />
+            <TextView 
+                android:id="@+id/tv_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:drawableLeft="@drawable/icon_attention"
+			    android:drawablePadding="5dp"
+			    android:text="0赞"
+                />
+        
+        </LinearLayout>
+        
+    
+
+</LinearLayout>

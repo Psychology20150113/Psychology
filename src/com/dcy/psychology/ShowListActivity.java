@@ -3,6 +3,7 @@ package com.dcy.psychology;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.ContentListAdapter;
 import com.dcy.psychology.gsonbean.GrowPictureBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;

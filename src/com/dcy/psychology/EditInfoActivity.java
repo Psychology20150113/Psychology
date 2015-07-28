@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import cn.jpush.android.api.e;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.SimpleTextAdapter;
 import com.dcy.psychology.db.DbManager;
 import com.dcy.psychology.gsonbean.BasicBean;

@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.CommentListAdapter;
 import com.dcy.psychology.gsonbean.CommentBean;
 import com.dcy.psychology.util.Constants;

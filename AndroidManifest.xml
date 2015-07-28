@@ -148,6 +148,10 @@
             android:name="com.dcy.psychology.view.dialog.IndividualDialog"
             android:screenOrientation="portrait">
         </activity>
+         <activity 
+            android:name="com.dcy.psychology.DoctorPersonalInfo2"
+            android:screenOrientation="portrait">
+        </activity>
         
         
         

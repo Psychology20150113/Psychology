@@ -5,37 +5,46 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:background="#efefef">
-    <TextView 
-       
+    <View 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-    
+        android:layout_height="10dp"
+        android:background="@color/v2_divider"/>
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:orientation="vertical" 
+        android:layout_gravity="center">
     <TextView 
        
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-         android:padding="15dp"
+         android:padding="12dp"
         android:text="心晴管家邮箱\nabcd@qq.com"
         android:gravity="center_horizontal"
-        android:textSize="20sp"
+        android:textSize="15sp"
         />
-    <TextView 
-       
+    </LinearLayout>
+    <View 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="10dp"
+        android:background="@color/v2_divider"/>
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:orientation="vertical" 
+        android:layout_gravity="center">
     <TextView 
        
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-         android:padding="15dp"
-        android:text="心晴管家客服电话\n400-0000-000"
+         android:padding="12dp"
+        android:text="@string/ourphone"
         android:gravity="center_horizontal"
-        android:textSize="20sp"
+        android:textSize="15sp"
         />
+    </LinearLayout>
     
 
 </LinearLayout>

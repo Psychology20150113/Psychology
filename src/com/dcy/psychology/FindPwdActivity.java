@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import u.aly.br;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
 import com.dcy.psychology.util.InfoShared;

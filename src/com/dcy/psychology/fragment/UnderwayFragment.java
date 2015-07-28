@@ -36,7 +36,7 @@ public class UnderwayFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_underway, null);
+		View view = inflater.inflate(R.layout.fragment_underway_layout, null);
 		ListView mListView = (ListView) view.findViewById(R.id.lv_underway);
 		mListView.setAdapter(mAdapter);
 		return view;

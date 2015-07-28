@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.GrowWriteAdapter;
 import com.dcy.psychology.db.DbHelper;
 import com.dcy.psychology.db.SqlConstants;

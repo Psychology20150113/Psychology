@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.fragment.TabCureFragment;
 import com.dcy.psychology.fragment.TabGrowthFragment;
 import com.dcy.psychology.fragment.TabMineFragment;

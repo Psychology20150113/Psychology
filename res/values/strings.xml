@@ -70,9 +70,11 @@
 	
 	<string name="login">登录</string>
 	<string name="register">注册</string>
-	<string name="account">账号</string>
-	<string name="password">密码</string>
-	<string name="change_pwd">重设密码</string>
+	<string name="account">请输入手机号</string>
+	<string name="password">请输入密码</string>
+	<string name="change_pwd">输入新密码</string>
+	<string name="change_pwd_second">请再次输入新密码</string>
+	
 	<string name="password_second">确认密码</string>
 	<string name="nick">真实姓名</string>
 	<string name="age">年龄</string>
@@ -149,7 +151,7 @@
 	<string name="personal_data">个人资料</string>
 	<string name="mine_account">我的账户</string>
 	<string name="mine_favorite">我的收藏</string>
-	<string name="quit">登出</string>
+	<string name="quit">退出登陆</string>
 	<string name="thinking">感想</string>
 	<string name="think_title">请输入感想</string>
 	<string name="publish_success">发表成功</string>
@@ -163,7 +165,7 @@
 	<string name="grow_history">关卡记录</string>
 	<string name="complete_once">成功训练一次</string>
 	<string name="please_login">请您先注册登录</string>
-	<string name="ok">确定</string>
+	<string name="ok">完成</string>
     <string name="cancel">取消</string>
     <string name="send_msg_failed">发送失败</string>
     <string name="connect_failed">连接异常</string>
@@ -174,8 +176,8 @@
     <string name="game_rule_detail">点击数字选择相应的关卡，请用7秒钟的时间记住不同位置的鱼的颜色，然后将看到的颜色复制出来。点击相应的鱼，再点击下方的颜色即可为鱼着色。
         							全部完成时，点击右上角的√即可查看得分。分数越高，说明一个人的短时记忆能力及注意力越高。</string>
 	<string name="input_phone">请输入手机号</string>
-	<string name="verfication_code">验证码</string>
-	<string name="get_verfication_code">请获取并输入验证码</string>
+	<string name="verfication_code">输入验证码</string>
+	<string name="get_verfication_code">发送验证码</string>
 	<string name="retry">重试</string>
 	<string name="find_pwd">找回密码</string>
 	<string name="change_ped_success">修改密码成功，请重新登录</string>
@@ -302,7 +304,7 @@
 	<string name="apply">申请约聊</string>
 	<string name="hope">希望请教的问题 (30-300字):</string>
 	<string name="liru">例如:</string>
-	<string name="convenience">方便聊天的时间</string>
+	<string name="convenience">方便聊天的时间:</string>
 	<string name="submit">提交</string>
 	<string name="submitsuccess">提交成功</string>
 	<string name="suggest">匹配度越高，资料填写的越详细被导师选中的概率会更高哦！一旦被导师钦点成功，心晴管家会及时电话提醒您，就算没有选上也不要灰心，参与直播互动也能学到很多，而且可以增加下一次被选中的概率！！！</string>
@@ -314,8 +316,30 @@
 	<string name="successtalk">成功约聊0位导师</string>
 	<string name="told">约过0位导师</string>
 	<string name="introduction">个人简介</string>
+	<string name="teintroduction">导师简介</string>
 	<string name="attentiontopic">关注话题</string>
 	<string name="example">10-50字 例如:</string>
+	<string name="recent">近期可约</string>
+	<string name="toldamount">0人聊过</string>
+	<string name="attentionamount">0人关注</string>
+	<string name="send">发送</string>
+	<string name="concerned">已关注</string>
+	<string name="applied">已申请</string>
+	<string name="real_time_information">实时资讯</string>
+	<string name="hot_topic">热门话题</string>
+	<string name="interest">感兴趣的</string>
+	<string name="your_email">您的邮箱:</string>
+	<string name="reply">我们会及时对您的意见和建议进行改进和回复</string>
+	<string name="write_advice">写下您对我们的意见和建议</string>
+	<string name="ourphone">心晴管家客服电话\n400-0000-000</string>
+	<string name="organiz_data">完善资料</string>
+	<string name="goto_talk">进入约聊室</string>
+	<string name="apply_result">由于导师的时间比较紧张，这次你没有被幸运地抽中，但是不要气馁，等待下一次机会重新申请，心晴管家会根据用户的申请次数提高用户被导师选中的概率，多关注导师的活动，编辑更多有意思的话题来吸引来吸引导师的注意，相信下一次你能成功地从导师那里得到你想要的东西</string>
+	<string name="code">验证码将以短信的形式发送给你，请注意查收</string>
+	<string name="agreement">用户协议</string>
+	<string name="privacy">隐私条款</string>
+	<string name="enter_careeradvice">进入职业点拨</string>
+	
 	
 	
 	

@@ -2,6 +2,7 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.gsonbean.UserInfoBean;
@@ -14,6 +15,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -105,7 +108,7 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		@Override
 		protected void onPostExecute(BasicBean result) {
 			hideCustomDialog();
-			if(result == null){
+			/*if(result == null){
 				return;
 			}
 			if(result.isResult()){
@@ -118,6 +121,34 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 				}
 			} else {
 				Toast.makeText(mContext, result.getReason(), Toast.LENGTH_SHORT).show();
+			}*/
+			if(result.isResult())
+			{
+				if(isFollowed)
+				{
+					mTextView.setText(R.string.attention);
+					 Toast(R.string.cancel_attention_success);
+					//toast.makeText(mContext, R.string.cancel_attention_success, toast.LENGTH_SHORT).show();
+				} else 
+				{
+					mTextView.setText(R.string.cancel_attention);
+					 Toast(R.string.attention_success);
+					//toast.makeText(mContext, R.string.attention_success, toast.LENGTH_SHORT).show();//��ע��ȡ��Ի������ʾ
+				}
+			} else
+			{
+				LayoutInflater inflater = LayoutInflater.from(mContext);;
+		        View layout = inflater.inflate(R.layout.toast_layout,null);
+		        layout.getBackground().setAlpha(65);
+		        TextView text = (TextView) layout.findViewById(R.id.tvTextToast);
+		        text.setText(result.getReason());
+		        Toast toast = new Toast(mContext);
+		        toast.setGravity(Gravity.CENTER, 0, 0);
+		        toast.setDuration(Toast.LENGTH_SHORT);
+		       // toast.makeText(mContext, R.string.cancel_attention_success, toast.LENGTH_SHORT);
+		        toast.setView(layout);
+		        toast.show();
+				//toast.makeText(mContext, result.getReason(), toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -148,6 +179,7 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		}
 	}
 	
+	
 	private void setInfoData(UserInfoBean result){
 		nameTv.setText(result.UserName);
 		achieveView.setText(result.UserAchievement);
@@ -155,4 +187,18 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 				new AsyncImageCache.NetworkImageGenerator(result.UserHeadUrl, result.UserHeadUrl));
 		mInfoView.setText(result.UserResume);
 	}
+	 private void Toast(int idT){
+		 LayoutInflater inflater = LayoutInflater.from(mContext);;
+         View layout = inflater.inflate(R.layout.toast_layout,null);
+         layout.getBackground().setAlpha(65);
+         TextView text = (TextView) layout.findViewById(R.id.tvTextToast);
+         text.setText(idT);
+         Toast toast = new Toast(mContext);
+         toast.setGravity(Gravity.CENTER, 0, 0);
+         toast.setDuration(Toast.LENGTH_SHORT);
+        // toast.makeText(mContext, R.string.cancel_attention_success, toast.LENGTH_SHORT);
+         toast.setView(layout);
+         toast.show();
+	 
+	 }
 }

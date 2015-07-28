@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.LoginActivity.ChatLoginTask;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.model.UserInfoModel;

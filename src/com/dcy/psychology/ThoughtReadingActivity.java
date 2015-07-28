@@ -26,6 +26,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean.AnswerBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean.OptionBean;
