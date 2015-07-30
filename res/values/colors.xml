@@ -28,7 +28,11 @@
     <color name="crop__selector_pressed">#1a000000</color>
     <color name="crop__selector_focused">#77000000</color>
     <color name="v2_orange">#ed823b</color>
+     <color name="v2_blue">#578fbe</color>
+    
     <color name="v2_divider">#ECE8E3</color>
     <color name="v2_gray">#898989</color>
     <color name="white">#ffffff</color>
+    <color name="questionbule">#F80909</color>
+    <color name="transparent">#99ffffff</color> 
 </resources>

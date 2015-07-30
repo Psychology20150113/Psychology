@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="#ffffff">
    <!--  <TextView 
         android:id="@+id/title_tv"
         android:layout_width="match_parent"
@@ -11,14 +12,7 @@
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:background="@color/v2_orange"/> -->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/qiestion_vp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-    <LinearLayout 
+<!--       <LinearLayout 
         android:id="@+id/ll_progress"
         android:layout_width="match_parent"
         android:layout_height="20dp"
@@ -26,16 +20,33 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:gravity="center_vertical"
-        android:visibility="gone"
-        android:background="@drawable/shape_gray_rect">
+        android:visibility="visible"
+        android:background="@drawable/shape_gray_rect"> -->
+        <View 
+	    android:layout_width="match_parent"
+	    android:layout_height="47dp"
+	    android:background="#ffffff"/>
 		<ProgressBar 
 		    android:id="@+id/pb_progress"
 	        android:layout_width="match_parent"
-	        android:layout_height="7dp"
+	        android:layout_height="2dp"
+	        android:visibility="gone"
+	        android:layout_marginLeft="31dp"
+        	android:layout_marginRight="31dp"
+        	android:background="@drawable/bg_progress"
 	        android:progress="0"
 	        style="@android:style/Widget.ProgressBar.Horizontal"
 	        android:progressDrawable="@drawable/bg_progress_bar"/>	        
-    </LinearLayout>
+<!--     </LinearLayout> -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/qiestion_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"/>
+    
 	<LinearLayout 
 	    android:id="@+id/ll_opration"
 	    android:layout_width="match_parent"

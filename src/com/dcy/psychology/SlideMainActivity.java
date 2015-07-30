@@ -29,6 +29,7 @@ import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.SlideAdapter;
 import com.dcy.psychology.fragment.CareerPlanFragment;
 import com.dcy.psychology.fragment.ChatIMFragment;
+import com.dcy.psychology.fragment.GetFollowUsersFragmentActivity;
 import com.dcy.psychology.fragment.StyleTwoBoxFragment;
 import com.dcy.psychology.fragment.StyleTwoMainFragment;
 import com.dcy.psychology.fragment.TabChatFragment;
@@ -40,12 +41,14 @@ import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.xinzeng.HelpActivity;
+import com.dcy.psychology.xinzeng.MineDoctorActivity;
 import com.dcy.psychology.xinzeng.PersonalHomepage;
 import com.umeng.analytics.MobclickAgent;
 
 public class SlideMainActivity extends BaseActivity implements OnClickListener{
 	DrawerLayout drawerLayout;
 	private TextView nameText;
+	//private TextView helpText;
 	private TextView loginOutText;
 	private View nameInfoLayout;
 	
@@ -93,6 +96,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		nameText = (TextView) findViewById(R.id.name_tv);
 		nameInfoLayout = findViewById(R.id.rl_name_info);
+		/*helpText=(TextView) findViewById(R.id.tv_help);
+		helpText.setText(MyApplication.myHeadUrl);*/
 		nameInfoLayout.setOnClickListener(this);
 		loginOutText = (TextView)findViewById(R.id.tv_loginout);
 		loginOutText.setOnClickListener(this);
@@ -106,6 +111,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		findViewById(R.id.ll_slide_message).setOnClickListener(this);
 		findViewById(R.id.ll_slide_problem).setOnClickListener(this);
 		findViewById(R.id.ll_help).setOnClickListener(this);
+		findViewById(R.id.tv_enter_careeradvice).setOnClickListener(this);
 		setLeftView(R.drawable.icon_slide);
 		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			loginOutText.setVisibility(View.VISIBLE);
@@ -198,7 +204,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		}
 	
 	@Override
-	public void onRightViewClick() {
+	public void onRightView2Click() {
 		startActivity(new Intent(this, ChatIMActivity.class));
 	}
 	
@@ -236,7 +242,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
-				mIntent = new Intent(this, GetFollowUsersActivity.class);
+				mIntent = new Intent(this, MineDoctorActivity.class);
 			}
 			break;
 		case R.id.ll_slide_dna:
@@ -258,6 +264,12 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			break;
 		case R.id.ll_help:
 			mIntent = new Intent(this, HelpActivity.class);
+			break;
+		case R.id.tv_enter_careeradvice:
+			int position = 0;
+			setTopTitle(mTabNameArray[position]);
+			mViewPager.setCurrentItem(position);
+			drawerLayout.closeDrawer(Gravity.LEFT);
 			break;
 		default:
 			break;

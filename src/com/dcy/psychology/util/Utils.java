@@ -445,7 +445,7 @@ public class Utils {
 		}
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetMatchestSpecificList);
 		request.addProperty("userPhone", MyApplication.myPhoneNum);
-		request.addProperty("count", 3);
+		request.addProperty("count",3);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
 			return new ArrayList<SpecificUserBean>();

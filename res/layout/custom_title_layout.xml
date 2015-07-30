@@ -3,18 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/title_height"
     android:background="@color/v2_orange" >
-   <LinearLayout 
-        android:id="@+id/ll_left"
-        android:layout_width="80dp"
-        android:layout_height="50dp">
+
         <ImageView 
         android:id="@+id/top_left_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:scaleType="centerInside"/>
-        </LinearLayout>
     <TextView 
         android:id="@+id/top_title_tv"
         style="@style/text_white18_style"
@@ -27,11 +22,20 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="20dp"/>
     <ImageView 
-        android:id="@+id/top_right_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/top_right_iv1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerVertical="true"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="50dp"
         android:visibility="gone"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:scaleType="centerInside"/>
+    <ImageView 
+        android:id="@+id/top_right_iv2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerInside"/>
 </RelativeLayout>

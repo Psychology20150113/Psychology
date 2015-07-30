@@ -70,7 +70,7 @@
 	
 	<string name="login">登录</string>
 	<string name="register">注册</string>
-	<string name="account">请输入手机号</string>
+	<string name="account">请输入账号   +86</string>
 	<string name="password">请输入密码</string>
 	<string name="change_pwd">输入新密码</string>
 	<string name="change_pwd_second">请再次输入新密码</string>
@@ -330,7 +330,7 @@
 	<string name="interest">感兴趣的</string>
 	<string name="your_email">您的邮箱:</string>
 	<string name="reply">我们会及时对您的意见和建议进行改进和回复</string>
-	<string name="write_advice">写下您对我们的意见和建议</string>
+	<string name="write_advice">意见和建议</string>
 	<string name="ourphone">心晴管家客服电话\n400-0000-000</string>
 	<string name="organiz_data">完善资料</string>
 	<string name="goto_talk">进入约聊室</string>
@@ -339,6 +339,8 @@
 	<string name="agreement">用户协议</string>
 	<string name="privacy">隐私条款</string>
 	<string name="enter_careeradvice">进入职业点拨</string>
+	<string name="mine_doctor">我的心晴师</string>
+	
 	
 	
 	
@@ -363,8 +365,8 @@
 	<string name="mine_dna">我的职业DNA</string>
 	<string name="zhiye">职业人格</string>
 	<string name="qizhi">气质</string>
-	<string name="mine_zhiye">您属于%s型职业人格</string>
-	<string name="mine_qizhi">你的气质属于%s</string>
+	<string name="mine_zhiye">&lt;您属于%s型职业人格&gt;</string>
+	<string name="mine_qizhi">&lt;你的气质属于%s&gt;</string>
 	<string name="retry_test">重新测试</string>
 	<string name="look_info">查看详情</string>
 	<string name="empty_zhiye">您未进行职业测试</string>

@@ -3,11 +3,16 @@ package com.dcy.psychology.view;
 import java.util.ArrayList;
 
 import com.dcy.psychology.R;
+import com.dcy.psychology.R.color;
 import com.dcy.psychology.util.ThoughtReadingUtils.QuestionType;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -61,11 +66,27 @@ public class QuestionView extends RelativeLayout{
 		questionLayout.setGravity(Gravity.CENTER);
 		questionLayout.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		TextView titleView = new TextView(mContext);
-		titleView.setText("        " + index + "." + title);
+	
+		titleView.setText (index + "." + title);
+		titleView.setTextColor(color.v2_gray);
 		titleView.setLineSpacing(0, 1.2f);// (add , mul)行间距的设置
+		SpannableStringBuilder builder = new SpannableStringBuilder(titleView.getText().toString());
 		// titleView.setTextScaleX(0.5f);
-		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_20);// 字体大小
+		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_16);// 字体大小
 		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
+		ForegroundColorSpan sp=new  ForegroundColorSpan(Color.parseColor("#2c60a9")); 
+		if(index<10)
+		{
+			
+			builder.setSpan(sp, 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+		}
+		else
+		{
+
+			builder.setSpan(sp, 0, 3, Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+		}
+		
+		titleView.setText (builder);
 		questionLayout.addView(titleView);
 		android.view.ViewGroup.LayoutParams buttonParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 
 				mResources.getDimensionPixelSize(R.dimen.title_height));

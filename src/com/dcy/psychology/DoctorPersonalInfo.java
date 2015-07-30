@@ -45,6 +45,8 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		if(!TextUtils.isEmpty(phoneNum)){
 			showCustomDialog();
 			new GetInfoTask().execute();
+			setRightView1(R.drawable.icon_attention);
+			setRightView2(R.drawable.icon_share1);
 		}
 	}
 	
@@ -52,10 +54,10 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		showCustomDialog();
 		switch (v.getId()) {
-		case R.id.tv_item_match:
+		case R.id.top_right_iv2:
 			new GetMatchTask().execute(specialId);
 			break;
-		case R.id.tv_item_attention:
+		case R.id.top_right_iv1:
 			if(mContext.getResources().getString(R.string.attention).equals(((TextView)v).getText())){
 				new FollowTask((TextView)v, false).execute(specialId);
 			} else {
@@ -158,8 +160,9 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		headerView = (ImageView) findViewById(R.id.iv_header);
 		achieveView = (TextView) findViewById(R.id.tv_item_achieve);
 		mInfoView = (TextView) findViewById(R.id.tv_doctor_info);
-		findViewById(R.id.tv_item_match).setOnClickListener(this);
-		findViewById(R.id.tv_item_attention).setOnClickListener(this);
+		findViewById(R.id.top_right_iv1).setOnClickListener(this);
+		
+		findViewById(R.id.top_right_iv2).setOnClickListener(this);
 	}
 	
 	private class GetInfoTask extends AsyncTask<Void, Void, UserInfoBean> {

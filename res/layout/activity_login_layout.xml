@@ -3,71 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="#ffffff"
+    android:background="#FEB97E"
     android:padding="23dp">
     
+    
+
+         <com.dcy.psychology.view.CornerImageView 
+	        android:id="@+id/iv_header"
+	        android:layout_width="63dp"
+	        android:layout_height="63dp"
+	        android:layout_marginTop="49dp"
+	        android:layout_gravity="center"
+	        android:src="@drawable/ic_launcher"/>
+
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="92dp"
-        android:background="@drawable/shape_orange_rect_round" 
+        android:layout_marginTop="48dp"
         android:orientation="vertical"  >
+         
          <EditText 
         android:id="@+id/account_et"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:background="#ffffff"
+       style="@style/login_edit_style"
+       android:layout_marginBottom="10dp"
         android:hint="@string/account"/>
          <ImageView 
              android:layout_width="match_parent"
-             android:layout_height="1dp"
-             android:layout_gravity="center_horizontal"
-             android:background="#faa66f"
-             />
+             android:layout_height="2dp"
+             android:background="#ffffff"/>
     <EditText 
         android:id="@+id/psw_et"
-         android:layout_width="match_parent"
-        android:layout_height="46dp"
-		android:background="#ffffff"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
+        style="@style/login_edit_style"
+        android:layout_marginBottom="10dp"
         android:hint="@string/password"
+       
         android:inputType="textPassword"/>
+    <ImageView 
+             android:layout_width="match_parent"
+             android:layout_height="2dp"
+             android:background="#ffffff"/>
     </LinearLayout>
+
     <Button 
         android:id="@+id/login_btn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/bg_login"
+      	style="@style/login_button_style"
         android:text="@string/login"
-        android:textSize="16sp"
-        android:textColor="#ffffff"/>
+        android:layout_marginTop="25dp"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/find_pwd_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#9fa0a0"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
         
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="13dp"
         android:layout_gravity="center"
         android:text="@string/find_pwd" />
     <!-- style="@style/text_black18_style" -->
     <Button 
         android:id="@+id/register_btn"
-        android:layout_width="171dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="107dp"
-        
-        android:background="@drawable/bg_register"
-        android:layout_gravity="center"
+       style="@style/login_button_style"
+       android:layout_marginTop="95dp"
         android:text="@string/register"
-        android:textSize="16sp"
-        android:textColor="#666465"/>
+        android:textSize="15sp"/>
 
 </LinearLayout>

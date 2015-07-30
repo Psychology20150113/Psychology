@@ -1,74 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_individual"
-    android:layout_width="336dp"
-    android:layout_height="214dp"
-    android:background="@drawable/bg_dialog_individual"
-    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
-    
-    <LinearLayout 
-        android:layout_width="317dp"
-        android:layout_height="192dp"
-        android:background="#ffffff"
-        android:orientation="vertical">
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="75dp"       
+        >
         <TextView
 		            android:id="@+id/tv_introduction"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:padding="7dp"
+		            android:padding="7dp"		
+		            android:layout_centerHorizontal="true"   
+		             android:layout_centerVertical="true"    
 		            android:layout_gravity="center"
-		            android:textColor="#000000"
+		            android:textColor="#343539"
 		            android:text="@string/introduction"
-		            android:textSize="15sp" />
+		            android:textSize="16sp" />
+         <ImageView
+            android:id="@+id/iv_close_dialog"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"     
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_close" />
+        
+    </RelativeLayout>
+    
+        
+       
         <TextView
 		            android:id="@+id/tv_example"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginLeft="13dp"
-		            android:textColor="#727171"
+		            android:layout_width="match_parent"
+		            android:layout_height="93dp"
+		            android:layout_marginLeft="39dp"
+		            android:layout_marginRight="39dp"
+		            android:layout_marginTop="6dp"
+		            android:textColor="#898989"
 		            android:text="@string/example"
 		            android:textSize="12sp" />
-         <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical">
+         <ImageView 
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#898989"/>
+       
 
         <EditText
             android:id="@+id/et_introduction"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:layout_marginRight="13dp"
-            android:layout_marginLeft="13dp"
-            android:textSize="12sp"
-            android:text=""
+            android:layout_height="301dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:gravity="left"
+            android:textSize="16sp"
+            android:textColor="#898989"
+            android:background="@null"
+            android:text="选择你感兴趣的话题选择你感兴趣的话题"
              >
             
         </EditText>
-        </LinearLayout>
+
          <ImageView 
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginRight="8dp"
-            	android:layout_marginLeft="8dp"
-            	android:layout_marginTop="8dp"
-                android:background="@color/divider"/>
+                android:background="#898989"/>
 
          <Button
              android:id="@+id/btn_save"
-             android:layout_width="33dp"
-             android:layout_height="21dp"
+             android:layout_width="60dp"
+             android:layout_height="40dp"
              android:layout_gravity="center"
-             android:layout_marginTop="8dp"
-             android:background="#8FCCD1"
+             android:layout_marginTop="106dp"
+             android:background="#5a90bf"
              android:gravity="center"
-             android:textSize="12sp"
+             android:textSize="16sp"
              android:textColor="#ffffff"
              android:text="保存" />
         
-    </LinearLayout>
     
      
 

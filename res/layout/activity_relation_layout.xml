@@ -7,22 +7,34 @@
     android:background="#efefef">
     <View 
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="11dp"
         android:background="@color/v2_divider"/>
      <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="100dp"
         android:orientation="vertical" 
+        android:background="#ffffff"
         android:layout_gravity="center">
     <TextView 
-       
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-         android:padding="12dp"
-        android:text="心晴管家邮箱\nabcd@qq.com"
-        android:gravity="center_horizontal"
-        android:textSize="15sp"
+        android:paddingTop="18dp"
+        android:paddingBottom="16dp"
+        android:text="心晴管家邮箱"
+        android:gravity="center"
+        android:textColor="#898989"
+        android:textSize="16sp"
+        />
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:text="xinqingguanjia@163.com"
+        android:padding="2dp"
+        android:gravity="center"
+        android:textColor="#343539"
+        android:textSize="20sp"
         />
     </LinearLayout>
     <View 
@@ -31,18 +43,29 @@
         android:background="@color/v2_divider"/>
      <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="100dp"
         android:orientation="vertical" 
+        android:background="#ffffff"
         android:layout_gravity="center">
     <TextView 
-       
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-         android:padding="12dp"
-        android:text="@string/ourphone"
-        android:gravity="center_horizontal"
-        android:textSize="15sp"
+        android:padding="18dp"
+        android:text="心晴管家客服电话"
+        android:gravity="center"
+        android:textColor="#898989"
+        android:textSize="16sp"
+        />
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:paddingBottom="18dp"
+        android:text="400-400-4000"
+        android:gravity="center"
+        android:textColor="#343539"
+        android:textSize="20sp"
         />
     </LinearLayout>
     

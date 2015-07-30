@@ -76,7 +76,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 		if(!TextUtils.isEmpty(mShared.getHollendResult())){
 			SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(
 					getString(R.string.mine_zhiye), mShared.getHollendResult()));
-			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 3, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_blue)), 4, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			((TextView)rootView.findViewById(R.id.tv_zhiye)).setText(spanBuilder);
 			dataArray = mShared.getHollendData().split(",");
 			setData();
@@ -92,7 +92,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 			String[] mQizhiData = mShared.getQizhiData().split(",");
 			setQizhiData(mQizhiData);
 			SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
-			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 6, 9, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_blue)), 7, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 		} else {
 			rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.GONE);
@@ -143,7 +143,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 				if(qizhiArray != null && qizhiArray.length == 4){
 					setQizhiData(qizhiArray);
 					SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), result.TemperamentTest));
-					spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_orange)), 6, 9, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+					spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue)), 7, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 					((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 					rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.VISIBLE);
 					rootView.findViewById(R.id.tv_empty_qizhi).setVisibility(View.GONE);
@@ -188,9 +188,9 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
         	yVals1.add(new Entry(Float.valueOf(dataArray[i]), i));
         }
         RadarDataSet set1 = new RadarDataSet(yVals1, "Set 1");
-        set1.setColor(getResources().getColor(R.color.v2_orange));
+        set1.setColor(getResources().getColor(R.color.v2_blue));
         set1.setDrawFilled(false);
-        set1.setLineWidth(2f);//橙色线条的宽度
+        set1.setLineWidth(5f);//橙色线条的宽度
         RadarData data = new RadarData(careerArray, set1);
         data.setValueTextSize(8f);
         data.setDrawValues(false);

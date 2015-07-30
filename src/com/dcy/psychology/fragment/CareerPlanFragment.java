@@ -23,6 +23,7 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
+import com.dcy.psychology.view.dialog.ShareMatchDialog;
 import com.dcy.psychology.view.dialog.ShowHolledDialog;
 import com.dcy.psychology.view.dialog.SimpleMessageDialog;
 import android.app.Fragment;

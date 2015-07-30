@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:gravity="center_horizontal">
                     <TextView 
                         style="@style/text_black16_style"
@@ -66,14 +66,37 @@
                 	    style="@style/text_black20_style"
                 	    android:text="无"/>
                 </LinearLayout>
+                 <LinearLayout 
+                    android:id="@+id/ll_now_apply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:gravity="center_horizontal">
+                    <TextView 
+                        style="@style/text_black16_style"
+                        android:paddingLeft="10dp"
+                        android:textSize="13sp"
+                        android:text="申请进行中"
+                        />
+                	<TextView 
+                	    android:id="@+id/tv_now_apply"
+                	    style="@style/text_black20_style"
+                	    android:paddingLeft="10dp"
+                	    android:paddingTop="10dp"
+                	    android:paddingBottom="10dp"
+                	    android:textSize="13sp"
+                	    android:text="已申请:1次"/>
+                </LinearLayout>
             </LinearLayout>
             <ImageView 
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/divider"/>
-            <LinearLayout 
+            <!-- <LinearLayout 
 			    android:id="@+id/ll_item_opration"
 			    android:layout_width="match_parent"
+			    android:visibility="visible"
 			    android:layout_height="30dp">
                  <TextView 
 			        android:id="@+id/tv_item_reservation"
@@ -108,7 +131,59 @@
 			        android:gravity="center_vertical"
 			        android:layout_height="match_parent"
 			        android:text="@string/attention"/>
+			</LinearLayout> -->
+			<LinearLayout 
+			    android:id="@+id/ll_item_lable"
+			    android:layout_width="match_parent"
+			    android:visibility="visible"
+			    android:layout_height="30dp">
+                <TextView 
+          		 android:id="@+id/tv_lable1"
+           		 android:layout_width="40dp"
+            	 android:layout_height="20dp"
+       			 android:textSize="10sp"
+       			 android:gravity="center"
+       			 android:layout_marginTop="5dp"
+          		 android:background="@drawable/bg_label"
+           		 android:text="机械"/>
+                 <TextView 
+            	android:id="@+id/tv_lable2"
+            	android:layout_width="40dp"
+            	android:layout_height="20dp"
+            	android:layout_marginLeft="5dp"
+            	 android:layout_marginTop="5dp"
+       			android:textSize="10sp"
+       			android:gravity="center"
+            	android:background="@drawable/bg_label"
+            	android:text="机械"/>
+                 <LinearLayout 
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:gravity="right">
+                      <TextView 
+			        android:id="@+id/tv_item_recent"
+			        android:layout_width="wrap_content"
+			        android:drawableLeft="@drawable/icon_attention"
+			        android:drawablePadding="5dp"
+			        android:textSize="10sp"
+			        android:layout_marginTop="5dp"
+			        android:textColor="@color/v2_orange"
+			        android:gravity="center"
+			        android:layout_height="match_parent"
+			        android:text="近期可约"/>
+                     
+                     
+                 </LinearLayout>			    
+                
 			</LinearLayout>
+			<TextView 
+            	android:id="@+id/tv_time"
+            	android:layout_width="match_parent"
+            	android:layout_height="match_parent"
+       			android:textSize="10sp"
+       			android:visibility="gone"
+       			android:gravity="right|center_vertical"
+            	android:text="2015.07.08 14:00提交"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

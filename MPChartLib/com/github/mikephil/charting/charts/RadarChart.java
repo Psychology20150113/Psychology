@@ -71,7 +71,7 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
 
         mYAxis = new YAxis(AxisDependency.LEFT);
         mXAxis = new XAxis();
-        mXAxis.setSpaceBetweenLabels(0);
+        mXAxis.setSpaceBetweenLabels(0); 
 
         mWebLineWidth = Utils.convertDpToPixel(1.5f);
         mInnerWebLineWidth = Utils.convertDpToPixel(0.75f);

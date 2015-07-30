@@ -16,6 +16,7 @@
         android:textSize="18sp"
         android:background="@color/white"
         android:text="@string/doctor_info"/>
+
 	<TextView 
 	    android:id="@+id/tv_doctor_info"
 	    android:layout_width="match_parent"

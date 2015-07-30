@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 消息通知页面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/v2_divider"/>
+     <include layout="@layout/item_message_layout" />
+     <ImageView 
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+            	android:layout_marginLeft="8dp"
+            	android:visibility="visible"
+            	android:layout_marginRight="8dp"
+                android:background="@color/divider"/>
+     <TextView 
+		                android:id="@+id/tv_item_achieve2"
+		                android:layout_width="match_parent"
+		                android:layout_height="250dp"
+		                android:layout_marginLeft="12dp"
+		                android:textColor="#727171"
+		                android:visibility="visible"
+            			android:layout_marginRight="12dp"
+            			android:layout_marginTop="8dp"
+		                android:textSize="15sp"
+		                android:text="2015.06.11 12:00"/>
+     <!-- 完善资料和进入约聊室按钮隐藏 -->
+      <Button
+        android:id="@+id/btn_organiz_data"
+        android:layout_width="208dp"
+        android:layout_height="51dp"
+        android:background="@drawable/bg_btn10"
+		android:layout_gravity="center"
+		android:visibility="gone"
+		android:layout_marginTop="50dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:text="@string/organiz_data" />
+      <Button
+        android:id="@+id/btn_goto_talk"
+        android:layout_width="208dp"
+        android:layout_height="51dp"
+        android:background="@drawable/bg_btn10"
+		android:layout_gravity="center"
+		android:visibility="gone"
+		android:layout_marginTop="50dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:text="@string/goto_talk" />
+              
+
+</LinearLayout>

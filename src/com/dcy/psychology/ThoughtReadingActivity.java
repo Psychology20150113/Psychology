@@ -96,7 +96,8 @@ public class ThoughtReadingActivity extends BaseActivity implements OnClickListe
 	}
 
 	private void initView() {
-		setTopTitle(themeTitle);;
+		setTopTitle(themeTitle);
+		mProgressBar = (ProgressBar) findViewById(R.id.pb_progress);
 		mViewPager = (ViewPager) findViewById(R.id.qiestion_vp);
 		mAdapter = new QuestionAdapter(mQuestionViewList);
 		mViewPager.setAdapter(mAdapter);
@@ -108,9 +109,9 @@ public class ThoughtReadingActivity extends BaseActivity implements OnClickListe
 		mButtonLayout = findViewById(R.id.button_layout);
 		mAloneButton.setOnClickListener(this);
 		mNextButton.setOnClickListener(this);
-		mProgressBar = (ProgressBar) findViewById(R.id.pb_progress);
+		
 		if(isDNATest){
-			findViewById(R.id.ll_progress).setVisibility(View.VISIBLE);
+			findViewById(R.id.pb_progress).setVisibility(View.VISIBLE);
 			findViewById(R.id.ll_opration).setVisibility(View.GONE);
 			mViewPager.setOnTouchListener(mTouchListener);
 		}
