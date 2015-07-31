@@ -4,6 +4,7 @@ import android.app.Application;
 import cn.jpush.android.api.JPushInterface;
 
 import com.dcy.psychology.db.PreInstallDbHelper;
+import com.dcy.psychology.emchat.HXChatManager;
 import com.dcy.psychology.emchat.HXSDKHelper;
 import com.dcy.psychology.network.NetworkManager;
 import com.dcy.psychology.util.AsyncImageCache;
@@ -24,8 +25,9 @@ public class MyApplication extends Application{
 	public static Gson mGson;
 	public static PreInstallDbHelper preInstallDbHelper;
 	private static MyApplication instance;
-	private static NetworkManager mNetworkManager;
+	private NetworkManager mNetworkManager;
 	private HXSDKHelper mHelper = new HXSDKHelper();
+	private HXChatManager mChatManager;
 	
 	@Override
 	public void onCreate() {
@@ -49,6 +51,13 @@ public class MyApplication extends Application{
 			mNetworkManager = NetworkManager.getInstance(this);
 		}
 		return mNetworkManager;
+	}
+	
+	public HXChatManager getChatManager(){
+		if(mChatManager == null){
+			mChatManager = HXChatManager.getInstance(this);
+		}
+		return mChatManager;
 	}
 	
 	public static Application getInstance(){
