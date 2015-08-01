@@ -34,6 +34,7 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    
 	
     <uses-sdk
         android:minSdkVersion="13"
@@ -408,5 +409,9 @@
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
         <meta-data android:name="JPUSH_APPKEY" android:value="152a07556e85a28c2f7d1182" /> 
         <!-- Jpush end -->
+        <!-- HuanXin start -->
+        <meta-data android:name="EASEMOB_APPKEY"  android:value="dcy000#psychology" />
+        <service android:name="com.easemob.chat.EMChatService" />
+        <!-- HuanXin end -->
     </application>
 </manifest>

@@ -36,7 +36,7 @@ public class IMManager {
 	public boolean registerIM(String username , String password){
 		try {
 			Log.i("chat", "register connection start");
-			connection.connect();
+//			connection.connect();
 			Log.i("chat", "register connection end");
 			if(connection.isConnected()){
 				Log.i("chat", "register start");
@@ -62,7 +62,7 @@ public class IMManager {
 			}
 			if(!connection.isConnected()){
 				Log.i("chat", "login connect start");
-				connection.connect();
+//				connection.connect();
 				Log.i("chat", "login connect end");
 			}
 			if(connection.isConnected() && TextUtils.isEmpty(connection.getUser())){

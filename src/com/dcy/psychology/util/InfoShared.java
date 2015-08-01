@@ -15,6 +15,8 @@ public class InfoShared {
 	private final String UserName = "info_name";
 	private final String UserPwd = "info_pwd";
 	private final String UserNick = "info_nick";
+	private final String UserChatName = "info_chat_name";
+	private final String UserChatPwd = "info_chat_pwd";
 	private final String UserRole = "info_role";
 	private final String UserPhoneNum = "info_phone";
 	private final String UserHeaderUrl = "info_header_url";
@@ -65,6 +67,19 @@ public class InfoShared {
 	
 	public String getUserNick(){
 		return mShared.getString(UserNick, "");
+	}
+	
+	public void saveChatInfo(String chatName, String chatPwd){
+		mShared.edit().putString(UserChatName, chatName)
+			.putString(UserChatPwd, chatPwd).commit();
+	}
+	
+	public String getChatName(){
+		return mShared.getString(UserChatName, "");
+	}
+	
+	public String getChatPwd(){
+		return mShared.getString(UserChatPwd, "");
 	}
 	
 	public void setUserRole(String role){

@@ -1,23 +1,16 @@
 package com.dcy.psychology;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import android.app.Application;
-import android.text.TextUtils;
-import android.widget.Toast;
-
 import cn.jpush.android.api.JPushInterface;
 
 import com.dcy.psychology.db.PreInstallDbHelper;
+import com.dcy.psychology.emchat.HXChatManager;
+import com.dcy.psychology.emchat.HXSDKHelper;
 import com.dcy.psychology.network.NetworkManager;
 import com.dcy.psychology.util.AsyncImageCache;
-import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.google.gson.Gson;
-import com.umeng.analytics.MobclickAgent;
 
 
 public class MyApplication extends Application{
@@ -32,7 +25,9 @@ public class MyApplication extends Application{
 	public static Gson mGson;
 	public static PreInstallDbHelper preInstallDbHelper;
 	private static MyApplication instance;
-	private static NetworkManager mNetworkManager;
+	private NetworkManager mNetworkManager;
+	private HXSDKHelper mHelper = new HXSDKHelper();
+	private HXChatManager mChatManager;
 	
 	@Override
 	public void onCreate() {
@@ -48,6 +43,7 @@ public class MyApplication extends Application{
 //        MobclickAgent.setDebugMode(true);
         mGson = new Gson();
         preInstallDbHelper = new PreInstallDbHelper(this);
+        mHelper.onInit(this);
 	}
 	
 	public NetworkManager getNetworkManager(){
@@ -55,6 +51,13 @@ public class MyApplication extends Application{
 			mNetworkManager = NetworkManager.getInstance(this);
 		}
 		return mNetworkManager;
+	}
+	
+	public HXChatManager getChatManager(){
+		if(mChatManager == null){
+			mChatManager = HXChatManager.getInstance(this);
+		}
+		return mChatManager;
 	}
 	
 	public static Application getInstance(){
