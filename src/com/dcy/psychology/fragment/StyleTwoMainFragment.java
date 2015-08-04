@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,7 +65,7 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 		mThemeNameView.setText(isSpecial ? problemArray[themeIndex] : labelArray[themeIndex]);
 		mThemeNameView.setOnClickListener(this);
 		mLevelNameView = (TextView)view.findViewById(R.id.level_name_tv);
-		mLevelNameView.setText(bean == null ? "Ã»ÓÐÊý¾Ý" : bean.getTitle());
+		mLevelNameView.setText(bean == null ? "Ã»ï¿½ï¿½ï¿½ï¿½ï¿½" : bean.getTitle());
 		mLevelNameView.setOnClickListener(this);
 		mCircleView = (CustomCircleView) view.findViewById(R.id.circle_view);
 		mCircleView.setData(outerRatio, innerRatio);
@@ -82,7 +81,7 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 		if(mCursor.getCount() == 0){
 			jsonList = MyApplication.mGson.fromJson(Utils.loadRawString(mContext, R.raw.grow_train_lib), 
 					new TypeToken<ArrayList<ArrayList<GrowModelBean>>>(){}.getType());
-			Toast.makeText(mContext, "Ã»ÓÐÊý¾Ý", Toast.LENGTH_LONG).show();
+			Toast.makeText(mContext, "Ã»ï¿½ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_LONG).show();
 			return;
 		}
 		int itemIndex = 0;
@@ -118,12 +117,13 @@ public class StyleTwoMainFragment extends Fragment implements OnClickListener{
 				getNewestOpration();
 				mCircleView.setData(outerRatio, innerRatio);
 				mThemeNameView.setText(isSpecial ? problemArray[themeIndex] : labelArray[themeIndex]);
-				mLevelNameView.setText(bean == null ? "Ã»ÓÐÊý¾Ý" : bean.getTitle());
+				mLevelNameView.setText(bean == null ? "Ã»ï¿½ï¿½ï¿½ï¿½ï¿½" : bean.getTitle());
 			}
 		}
 		
 	};
 	
+	@Override
 	public void onClick(View v) {
 		Intent mIntent = null;
 		switch (v.getId()) {

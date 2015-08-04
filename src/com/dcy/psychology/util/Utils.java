@@ -1,7 +1,6 @@
 package com.dcy.psychology.util;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,17 +8,11 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +22,6 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpResponseException;
 import org.ksoap2.transport.HttpTransportSE;
-import org.ksoap2.transport.HttpsTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.dcy.psychology.MyApplication;
@@ -44,17 +36,14 @@ import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.gsonbean.UserInfoBean;
+import com.dcy.psychology.model.MessageModel;
 import com.dcy.psychology.model.UserInfoModel;
-import com.dcy.psychology.view.QuestionView;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
@@ -62,7 +51,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Space;
 import android.widget.Toast;
 
 public class Utils {
@@ -124,14 +112,14 @@ public class Utils {
 	}
 	
 	private static SoapObject getResultFromRequest(SoapObject request, String url) {
-		//Éú³Éµ÷ÓÃWebServiceµÄSOAPÇëÇó
+		//ï¿½ï¿½Éµï¿½ï¿½ï¿½WebServiceï¿½ï¿½SOAPï¿½ï¿½ï¿½ï¿½
 		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER12);
 		envelope.bodyOut = request;
 		envelope.dotNet = true;
 		HttpTransportSE transportSE = new HttpTransportSE(TextUtils.isEmpty(url) ? 
 				Constants.UserWSDL : url, Constants.TimeOut);
 		try {
-			//1.1°æ±¾ÐèÒªÊ¹ÓÃµÚÒ»¸ö²ÎÊýSoapAction(Àýhttp://114.215.179.130/Login),1.2²»ÐèÒªSoapAction
+			//1.1ï¿½æ±¾ï¿½ï¿½ÒªÊ¹ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SoapAction(ï¿½ï¿½http://114.215.179.130/Login),1.2ï¿½ï¿½ï¿½ï¿½ÒªSoapAction
 			transportSE.call("", envelope);
 		} catch (HttpResponseException e) {
 			e.printStackTrace();
@@ -166,9 +154,9 @@ public class Utils {
 	}
 	
 	public static LoginBean getLoginWeb(String name,String pwd){
-		//´Ë´¦ºóÃæÃ»ÓÐ¡°/¡±£¬²»È»»áµ¼ÖÂ¡°Ã»ÓÐÓÐÐ§µÄ²ÎÊý²Ù×÷<1.2>¡±»òÕß1.0ÀïÃæÎÞ·¨´«µÝ²ÎÊý
+		//ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¡ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½áµ¼ï¿½Â¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<1.2>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1.0ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.LoginMethod);
-		//ÉèÖÃµ÷ÓÃ²ÎÊý,1.2°æ±¾Ç°ÃæÃüÃûÐèÒªÓë·þÎñÆ÷Ò»ÖÂ
+		//ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ã²ï¿½ï¿½ï¿½,1.2ï¿½æ±¾Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 		request.addProperty("loginName", name);
 		request.addProperty("loginPwd", pwd);
 		SoapObject result = getResultFromRequest(request);
@@ -451,6 +439,18 @@ public class Utils {
 			return new ArrayList<SpecificUserBean>();
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<SpecificUserBean>>(){}.getType());
 	}
+	public static ArrayList<MessageModel> getMessageList(){
+		if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+			return null;
+		}
+		SoapObject request = new SoapObject(Constants.SpaceName,Constants.GetMatchestSpecificList);
+		request.addProperty("userPhone", MyApplication.myPhoneNum);
+		request.addProperty("count",3);
+		SoapObject result = getResultFromRequest(request);
+		if(result == null)
+			return new ArrayList<MessageModel>();
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), new TypeToken<ArrayList<MessageModel>>(){}.getType());
+	}
 	
 	public static BasicBean saveTestResult(String type, String testResult, String allResult, String itemScores){
 		if(TextUtils.isEmpty(type) || TextUtils.isEmpty(testResult) || TextUtils.isEmpty(MyApplication.myPhoneNum)){
@@ -614,7 +614,7 @@ public class Utils {
 	}
 	
 	/**
-	 * »ñÈ¡¸üÐÂµÄÊ±¼ä
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½Âµï¿½Ê±ï¿½ï¿½
 	 * 
 	 * @param dateStr
 	 * @return
@@ -632,18 +632,18 @@ public class Utils {
 		} else if ((calendar.get(Calendar.DAY_OF_MONTH) - date.get(Calendar.DAY_OF_MONTH) > 0) && 
 				(calendar.get(Calendar.DAY_OF_MONTH) - date.get(Calendar.DAY_OF_MONTH) < 6)) {
 			int i = calendar.get(Calendar.HOUR_OF_DAY) - date.get(Calendar.HOUR_OF_DAY);
-			return i + "ÌìÇ°";
+			return i + "ï¿½ï¿½Ç°";
 		} else if (calendar.get(Calendar.HOUR_OF_DAY) - date.get(Calendar.HOUR_OF_DAY) > 0) {
 			int i = calendar.get(Calendar.HOUR_OF_DAY) - date.get(Calendar.HOUR_OF_DAY);
 			return i + "Ð¡Ê±Ç°";
 		} else if (calendar.get(Calendar.MINUTE) - date.get(Calendar.MINUTE) > 0) {
 			int i = calendar.get(Calendar.MINUTE) - date.get(Calendar.MINUTE);
-			return i + "·ÖÖÓÇ°";
+			return i + "ï¿½ï¿½ï¿½ï¿½Ç°";
 		} else if (calendar.get(Calendar.SECOND) - date.get(Calendar.SECOND) > 0) {
 			int i = calendar.get(Calendar.SECOND) - date.get(Calendar.SECOND);
-			return i + "ÃëÇ°";
+			return i + "ï¿½ï¿½Ç°";
 		} else if (calendar.get(Calendar.SECOND) - date.get(Calendar.SECOND) == 0) {
-			return "¸Õ¸Õ";
+			return "ï¿½Õ¸ï¿½";
 		} else {
 			return sdf.format(date);
 		}

@@ -23,6 +23,7 @@ public class ChatIMActivity extends BaseActivity implements OnClickListener{
 	private ArrayList<ChatItemModel> mDataList = new ArrayList<ChatItemModel>();
 	private IMManager mManager;
 	private Handler mHandler = new Handler(){
+		@Override
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case 1:

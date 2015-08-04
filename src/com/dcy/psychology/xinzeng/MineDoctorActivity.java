@@ -13,9 +13,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.fragment.AppliedFragment;
-import com.dcy.psychology.fragment.GetFollowUsersFragmentActivity;
-import com.dcy.psychology.fragment.MatchestSpecicalUserFragment;
-import com.dcy.psychology.fragment.MineMarkFragment;
+import com.dcy.psychology.fragment.GetFollowUsersFragment;
 import com.dcy.psychology.util.Utils;
 
 public class MineDoctorActivity extends BaseActivity{
@@ -34,7 +32,7 @@ public class MineDoctorActivity extends BaseActivity{
 	}
 
 	private void initView() {
-		dataFragment.add(new GetFollowUsersFragmentActivity());
+		dataFragment.add(new GetFollowUsersFragment());
 		dataFragment.add(new AppliedFragment());
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		for(int i=0 ; i<dataFragment.size() ; i++){

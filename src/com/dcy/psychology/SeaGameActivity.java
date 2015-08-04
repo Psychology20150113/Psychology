@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.GameSeaLevelChooseAdapter;
 import com.dcy.psychology.gsonbean.GameFishBean;
-import com.dcy.psychology.gsonbean.GameFishBean.Fish;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.SeaChooseLayout;
 import com.dcy.psychology.view.SeaFishView;
@@ -15,14 +14,12 @@ import com.google.gson.reflect.TypeToken;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class SeaGameActivity extends Activity implements OnItemClickListener
@@ -113,6 +110,7 @@ public class SeaGameActivity extends Activity implements OnItemClickListener
 		}
 	};
 	
+	@Override
 	public void onItemClick(android.widget.AdapterView<?> parent, View view, int position, long id) {
 		mGameRuleView.setVisibility(View.GONE);
 		parent.setVisibility(View.GONE);

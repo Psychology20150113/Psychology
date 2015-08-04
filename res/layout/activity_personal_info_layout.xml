@@ -153,23 +153,24 @@
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout 
-            android:id="@+id/rl_diploma"
+            android:id="@+id/rl_state"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="13dp"
+             android:layout_marginTop="13dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:background="@color/white">
         	<TextView 
 	            style="@style/text_black16_style"
-	            android:text="@string/diploma"
+	            android:text="@string/current_state"
 	            android:layout_centerVertical="true"/>    
         	<TextView 
-        	    android:id="@+id/tv_diploma"
+        	    android:id="@+id/tv_state"
         	    style="@style/text_gray16_style"
         	    android:layout_alignParentRight="true"
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
+        
         <RelativeLayout 
             android:id="@+id/rl_school"
             android:layout_width="match_parent"
@@ -184,42 +185,6 @@
 	            android:layout_centerVertical="true"/>    
         	<TextView 
         	    android:id="@+id/tv_school"
-        	    style="@style/text_gray16_style"
-        	    android:layout_alignParentRight="true"
-        	    android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <RelativeLayout 
-            android:id="@+id/rl_year"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:background="@color/white">
-        	<TextView 
-	            style="@style/text_black16_style"
-	            android:text="@string/graduation_year"
-	            android:layout_centerVertical="true"/>    
-        	<TextView 
-        	    android:id="@+id/tv_graduation_year"
-        	    style="@style/text_gray16_style"
-        	    android:layout_alignParentRight="true"
-        	    android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <RelativeLayout 
-            android:id="@+id/rl_state"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:background="@color/white">
-        	<TextView 
-	            style="@style/text_black16_style"
-	            android:text="@string/current_state"
-	            android:layout_centerVertical="true"/>    
-        	<TextView 
-        	    android:id="@+id/tv_state"
         	    style="@style/text_gray16_style"
         	    android:layout_alignParentRight="true"
         	    android:layout_centerVertical="true"/>
@@ -242,7 +207,25 @@
         	    android:layout_alignParentRight="true"
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
-		<RelativeLayout 
+        <RelativeLayout 
+            android:id="@+id/rl_diploma"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/white">
+        	<TextView 
+	            style="@style/text_black16_style"
+	            android:text="@string/diploma"
+	            android:layout_centerVertical="true"/>    
+        	<TextView 
+        	    android:id="@+id/tv_diploma"
+        	    style="@style/text_gray16_style"
+        	    android:layout_alignParentRight="true"
+        	    android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout 
 		    android:id="@+id/rl_industry"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -260,5 +243,26 @@
         	    android:layout_alignParentRight="true"
         	    android:layout_centerVertical="true"/>
         </RelativeLayout>
+        <RelativeLayout 
+            android:id="@+id/rl_year"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/white">
+        	<TextView 
+	            style="@style/text_black16_style"
+	            android:text="@string/graduation_year"
+	            android:layout_centerVertical="true"/>    
+        	<TextView 
+        	    android:id="@+id/tv_graduation_year"
+        	    style="@style/text_gray16_style"
+        	    android:layout_alignParentRight="true"
+        	    android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        
+        
+		
 	</LinearLayout>
 </ScrollView>

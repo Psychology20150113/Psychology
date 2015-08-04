@@ -1,9 +1,7 @@
 package com.dcy.psychology.fragment;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.dcy.psychology.AllTestActivity;
 import com.dcy.psychology.FlowerGameChooseActivity;
 import com.dcy.psychology.MainActivity;
 import com.dcy.psychology.MyApplication;
@@ -30,7 +28,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class TabGrowthFragment extends Fragment implements OnClickListener,OnItemClickListener{
@@ -73,6 +70,7 @@ public class TabGrowthFragment extends Fragment implements OnClickListener,OnIte
 		}
 	};
 	
+	@Override
 	public void onItemClick(android.widget.AdapterView<?> parent, View view, int position, long id) {
 		if((position-1) % mAdapter.getCount() == 1){
 			Intent mIntent = new Intent(mContext, ThoughtReadingActivity.class);

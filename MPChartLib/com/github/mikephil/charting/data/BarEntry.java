@@ -60,7 +60,8 @@ public class BarEntry extends Entry {
     /**
      * Returns an exact copy of the BarEntry.
      */
-    public BarEntry copy() {
+    @Override
+	public BarEntry copy() {
 
         BarEntry copied = new BarEntry(getVal(), getXIndex(), getData());
         copied.mVals = mVals;

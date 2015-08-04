@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -64,35 +65,35 @@ public class QuestionView extends RelativeLayout{
 		LinearLayout questionLayout = new LinearLayout(mContext);
 		questionLayout.setOrientation(LinearLayout.VERTICAL);
 		questionLayout.setGravity(Gravity.CENTER);
-		questionLayout.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		questionLayout.setLayoutParams(new RelativeLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
 		TextView titleView = new TextView(mContext);
 	
 		titleView.setText (index + "." + title);
 		titleView.setTextColor(color.v2_gray);
-		titleView.setLineSpacing(0, 1.2f);// (add , mul)ÐÐ¼ä¾àµÄÉèÖÃ
+		titleView.setLineSpacing(0, 1.2f);// (add , mul)ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		SpannableStringBuilder builder = new SpannableStringBuilder(titleView.getText().toString());
 		// titleView.setTextScaleX(0.5f);
-		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_16);// ×ÖÌå´óÐ¡
+		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_16);// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
 		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 		ForegroundColorSpan sp=new  ForegroundColorSpan(Color.parseColor("#2c60a9")); 
 		if(index<10)
 		{
 			
-			builder.setSpan(sp, 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+			builder.setSpan(sp, 0, 2, Spanned.SPAN_INCLUSIVE_INCLUSIVE); 
 		}
 		else
 		{
 
-			builder.setSpan(sp, 0, 3, Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+			builder.setSpan(sp, 0, 3, Spanned.SPAN_INCLUSIVE_INCLUSIVE); 
 		}
 		
 		titleView.setText (builder);
 		questionLayout.addView(titleView);
 		android.view.ViewGroup.LayoutParams buttonParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 
 				mResources.getDimensionPixelSize(R.dimen.title_height));
-		LinearLayout.LayoutParams dnaParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-		dnaParams.topMargin = mResources.getDimensionPixelSize(R.dimen.a_height);//Ô²È¦µÄ¸ß¶È
-		RadioGroup.LayoutParams rightParams = new RadioGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams dnaParams = new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+		dnaParams.topMargin = mResources.getDimensionPixelSize(R.dimen.a_height);//Ô²È¦ï¿½Ä¸ß¶ï¿½
+		RadioGroup.LayoutParams rightParams = new RadioGroup.LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		rightParams.leftMargin = mResources.getDimensionPixelSize(R.dimen.title_height);
 		int itemColor = getResources().getColor(R.color.color_orange_gray_selector);
 		Drawable transparentDrawable = getResources().getDrawable(android.R.color.transparent);
@@ -111,7 +112,7 @@ public class QuestionView extends RelativeLayout{
 			}
 			for (int i = 0; i < optionList.size(); i++) {
 				RadioButton rb = new RadioButton(mContext);
-				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);// Ô²È¦ÄÚ×ÖÌå´óÐ¡
+				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);// Ô²È¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
 				if(isDnaTest){
 					rb.setButtonDrawable(transparentDrawable);
 					rb.setText(i == 0 ? R.string.yes : R.string.no);

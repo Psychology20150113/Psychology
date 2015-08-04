@@ -33,7 +33,8 @@ public class YAxisRendererHorizontalBarChart extends YAxisRenderer {
      * @param yMin - the minimum y-value in the data object for this axis
      * @param yMax - the maximum y-value in the data object for this axis
      */
-    public void computeAxis(float yMin, float yMax) {
+    @Override
+	public void computeAxis(float yMin, float yMax) {
 
         // calculate the starting and entry point of the y-labels (depending on
         // zoom / contentrect bounds)

@@ -2,12 +2,9 @@ package com.dcy.psychology.view;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
 import com.dcy.psychology.GrowDetailActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
-import com.dcy.psychology.adapter.GrowWriteAdapter;
 import com.dcy.psychology.db.DbHelper;
 import com.dcy.psychology.db.SqlConstants;
 import com.dcy.psychology.gsonbean.GrowModelBean;
@@ -17,28 +14,20 @@ import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 
 import android.app.Activity;
-import android.app.AlertDialog.Builder;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.drawable.BitmapDrawable;
-import android.hardware.input.InputManager;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -84,9 +73,9 @@ public class GrowDetailView extends LinearLayout {
 		mResources = mContext.getResources();
 		mInflater = LayoutInflater.from(context);
 		dm = mResources.getDisplayMetrics();
-		mMatchParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		mRadioButtonParams = new LayoutParams(LayoutParams.MATCH_PARENT, (int)(40*dm.density));
-		mAverageParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1);
+		mMatchParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT);
+		mRadioButtonParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, (int)(40*dm.density));
+		mAverageParams = new LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1);
 		mAverageParams.setMargins((int)(10*dm.density), 0, 0,(int)(10 * dm.density));
 		mDbHelper = new DbHelper(mContext, SqlConstants.DBName, SqlConstants.DbVersion, SqlConstants.CreateTableSql);
 	}
@@ -104,6 +93,7 @@ public class GrowDetailView extends LinearLayout {
 			return Utils.publishComment(MyApplication.myPhoneNum, params[0], Constants.IdOfGrowMode[themeIndex]);
 		}
 		
+		@Override
 		protected void onPostExecute(String result) {
 			if(TextUtils.isEmpty(result))
 				return;
@@ -386,10 +376,10 @@ public class GrowDetailView extends LinearLayout {
 				View itemView = mInflater.inflate(R.layout.item_mission_check_layout, null);
 				if(bean.getMissionTips() != null){
 					((TextView)itemView.findViewById(R.id.mission_detail_tv)).setText(String.format(
-							"%d¡¢%s----%s", i+1 ,bean.getMissionTips().get(i) , bean.getMissionDetail().get(i)));
+							"%dï¿½ï¿½%s----%s", i+1 ,bean.getMissionTips().get(i) , bean.getMissionDetail().get(i)));
 				} else {
 					((TextView)itemView.findViewById(R.id.mission_detail_tv)).setText(String.format(
-							"%d¡¢%s", i+1 , bean.getMissionDetail().get(i)));
+							"%dï¿½ï¿½%s", i+1 , bean.getMissionDetail().get(i)));
 				}
 				((TextView)itemView.findViewById(R.id.check_title_tv)).setText(bean.getCheckTitle());
 				RadioGroup itemGroup = (RadioGroup) itemView.findViewById(R.id.check_rg);

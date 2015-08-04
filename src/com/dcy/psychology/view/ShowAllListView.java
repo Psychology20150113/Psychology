@@ -2,7 +2,6 @@ package com.dcy.psychology.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View.MeasureSpec;
 import android.widget.ListView;
 
 public class ShowAllListView extends ListView {

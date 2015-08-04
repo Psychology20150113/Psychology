@@ -3,10 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="#FEB97E"
-    android:padding="23dp">
+    android:background="#FEB97E">
     
-    
+    <ImageView 
+        android:id="@+id/iv_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerInside"/>
 
          <com.dcy.psychology.view.CornerImageView 
 	        android:id="@+id/iv_header"
@@ -20,12 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="48dp"
-        android:orientation="vertical"  >
+        android:orientation="vertical" 
+        android:layout_marginLeft="23dp" 
+        android:layout_marginRight="23dp">
          
          <EditText 
         android:id="@+id/account_et"
        style="@style/login_edit_style"
-       android:layout_marginBottom="10dp"
+       android:layout_marginBottom="7dp"
         android:hint="@string/account"/>
          <ImageView 
              android:layout_width="match_parent"
@@ -34,7 +40,8 @@
     <EditText 
         android:id="@+id/psw_et"
         style="@style/login_edit_style"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="41dp"
         android:hint="@string/password"
        
         android:inputType="textPassword"/>
@@ -49,6 +56,8 @@
       	style="@style/login_button_style"
         android:text="@string/login"
         android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:textSize="18sp"/>
 
     <TextView
@@ -66,7 +75,9 @@
         android:id="@+id/register_btn"
        style="@style/login_button_style"
        android:layout_marginTop="95dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:text="@string/register"
-        android:textSize="15sp"/>
+        android:textSize="16sp"/>
 
 </LinearLayout>

@@ -24,7 +24,6 @@ import com.dcy.psychology.OnlinePicListActivity;
 import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.QuestionThemeChooseActivity;
 import com.dcy.psychology.R;
-import com.dcy.psychology.SeaGameActivity;
 import com.dcy.psychology.StudentGrowActivity;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.gsonbean.ArticleBean;

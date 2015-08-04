@@ -23,7 +23,6 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
-import com.dcy.psychology.view.dialog.ShareMatchDialog;
 import com.dcy.psychology.view.dialog.ShowHolledDialog;
 import com.dcy.psychology.view.dialog.SimpleMessageDialog;
 import android.app.Fragment;
@@ -33,7 +32,6 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,7 +45,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CareerPlanFragment extends Fragment implements OnClickListener, OnItemSelectedListener{

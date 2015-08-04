@@ -1,12 +1,6 @@
 package com.dcy.psychology.xinzeng;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 

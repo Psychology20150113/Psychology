@@ -386,7 +386,7 @@ public class ViewPortHandler {
     }
 
     public boolean isInBoundsRight(float x) {
-        x = (float)((int)(x * 100.f)) / 100.f;
+        x = ((int)(x * 100.f)) / 100.f;
         return mContentRect.right >= x ? true : false;
     }
 
@@ -395,7 +395,7 @@ public class ViewPortHandler {
     }
 
     public boolean isInBoundsBottom(float y) {
-        y = (float)((int)(y * 100.f)) / 100.f;
+        y = ((int)(y * 100.f)) / 100.f;
         return mContentRect.bottom >= y ? true : false;
     }
 

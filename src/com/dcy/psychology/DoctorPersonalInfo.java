@@ -45,7 +45,7 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		if(!TextUtils.isEmpty(phoneNum)){
 			showCustomDialog();
 			new GetInfoTask().execute();
-			setRightView1(R.drawable.icon_attention);
+			setRightView1(R.drawable.icon_attention1);
 			setRightView2(R.drawable.icon_share1);
 		}
 	}
@@ -54,16 +54,16 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		showCustomDialog();
 		switch (v.getId()) {
-		case R.id.top_right_iv2:
+		/*case R.id.tv_item_match:
 			new GetMatchTask().execute(specialId);
 			break;
-		case R.id.top_right_iv1:
+		case R.id.tv_item_attention:
 			if(mContext.getResources().getString(R.string.attention).equals(((TextView)v).getText())){
 				new FollowTask((TextView)v, false).execute(specialId);
 			} else {
 				new FollowTask((TextView)v, true).execute(specialId);
 			}
-			break;
+			break;*/
 		default:
 			break;
 		}
@@ -110,10 +110,10 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		@Override
 		protected void onPostExecute(BasicBean result) {
 			hideCustomDialog();
-			/*if(result == null){
+			if(result == null){
 				return;
 			}
-			if(result.isResult()){
+			/*if(result.isResult()){
 				if(isFollowed){
 					mTextView.setText(R.string.attention);
 					Toast.makeText(mContext, R.string.cancel_attention_success, Toast.LENGTH_SHORT).show();
@@ -160,9 +160,9 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		headerView = (ImageView) findViewById(R.id.iv_header);
 		achieveView = (TextView) findViewById(R.id.tv_item_achieve);
 		mInfoView = (TextView) findViewById(R.id.tv_doctor_info);
-		findViewById(R.id.top_right_iv1).setOnClickListener(this);
+		/*findViewById(R.id.tv_item_attention).setOnClickListener(this);
 		
-		findViewById(R.id.top_right_iv2).setOnClickListener(this);
+		findViewById(R.id.tv_item_match).setOnClickListener(this);*/
 	}
 	
 	private class GetInfoTask extends AsyncTask<Void, Void, UserInfoBean> {

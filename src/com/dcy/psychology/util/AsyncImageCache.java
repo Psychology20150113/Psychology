@@ -136,7 +136,8 @@ public class AsyncImageCache {
         final int cacheSize = sMemoryCacheSize;
         mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
 
-            protected int sizeOf(String key, Bitmap bitmap) {
+            @Override
+			protected int sizeOf(String key, Bitmap bitmap) {
                 return bitmap.getRowBytes() * bitmap.getHeight();
             }
 
@@ -504,8 +505,8 @@ public class AsyncImageCache {
                     byte[] md5Byte = md5.digest(str.getBytes("UTF8"));
                     StringBuffer sb = new StringBuffer();
                     for (int i = 0; i < md5Byte.length; i++) {
-                        sb.append(HEX[(int) (md5Byte[i] & 0xff) / 16]);
-                        sb.append(HEX[(int) (md5Byte[i] & 0xff) % 16]);
+                        sb.append(HEX[(md5Byte[i] & 0xff) / 16]);
+                        sb.append(HEX[(md5Byte[i] & 0xff) % 16]);
                     }
                     str = sb.toString();
                 } catch (NoSuchAlgorithmException e) {
@@ -767,7 +768,7 @@ public class AsyncImageCache {
                         || imageRef.tag == null)
                     break;
 
-                if (!(imageRef.tag).equals((String) imageRef.imageView
+                if (!(imageRef.tag).equals(imageRef.imageView
                         .getTag())) {
                     break;
                 }

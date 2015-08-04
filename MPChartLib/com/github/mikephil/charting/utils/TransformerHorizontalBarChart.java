@@ -17,7 +17,8 @@ public class TransformerHorizontalBarChart extends Transformer {
      * 
      * @param chart
      */
-    public void prepareMatrixOffset(boolean inverted) {
+    @Override
+	public void prepareMatrixOffset(boolean inverted) {
 
         mMatrixOffset.reset();
 

@@ -402,7 +402,8 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends DataSet<? 
      * 
      * @param l
      */
-    public void setOnTouchListener(OnTouchListener l) {
+    @Override
+	public void setOnTouchListener(OnTouchListener l) {
         this.mListener = l;
     }
 

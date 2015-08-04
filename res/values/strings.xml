@@ -55,10 +55,11 @@
 	<string name="question_theme_five">眼睛的心理</string>    
 	<string name="question_theme_seven">课堂心理学</string>
 	<string name="question_theme_eight">饭店</string>
-	<string name="slide_attention">我的关注</string>
+	<string name="slide_mine_doctor">我的心晴师</string>
 	<string name="slide_dna">我的职业DNA</string>
-	<string name="slide_message">我的信息</string>
+	<string name="slide_message">我的消息</string>
 	<string name="slide_problem">常见问题</string>
+	<string name="slide_collect">我的收藏</string>
 	<string name="slide_blackhole">宣泄黑洞</string>
 	<string name="slide_love">我的收藏</string>
 	<string name="slide_point">我的积分</string>
@@ -69,13 +70,14 @@
 	<string name="tab_mine">心声宝典</string>
 	
 	<string name="login">登录</string>
+	<string name="ok_login">完成并登录</string>
 	<string name="register">注册</string>
 	<string name="account">请输入账号   +86</string>
 	<string name="password">请输入密码</string>
 	<string name="change_pwd">输入新密码</string>
 	<string name="change_pwd_second">请再次输入新密码</string>
 	
-	<string name="password_second">确认密码</string>
+	<string name="password_second">再次输入密码</string>
 	<string name="nick">真实姓名</string>
 	<string name="age">年龄</string>
 	<string name="sex">性别</string>
@@ -177,7 +179,7 @@
         							全部完成时，点击右上角的√即可查看得分。分数越高，说明一个人的短时记忆能力及注意力越高。</string>
 	<string name="input_phone">请输入手机号</string>
 	<string name="verfication_code">输入验证码</string>
-	<string name="get_verfication_code">发送验证码</string>
+	<string name="get_verfication_code">获取验证码</string>
 	<string name="retry">重试</string>
 	<string name="find_pwd">找回密码</string>
 	<string name="change_ped_success">修改密码成功，请重新登录</string>
@@ -216,7 +218,7 @@
 	<string name="diploma_three">博士</string>
 	<string name="diploma_four">其他</string>
 	
-	<string name="major">专长</string>
+	<string name="major">专业</string>
 	<string name="graduation_year">毕业年份</string>
 	<string name="current_state">状态</string>
 	<string name="working_city">所在城市</string>
@@ -307,7 +309,7 @@
 	<string name="convenience">方便聊天的时间:</string>
 	<string name="submit">提交</string>
 	<string name="submitsuccess">提交成功</string>
-	<string name="suggest">匹配度越高，资料填写的越详细被导师选中的概率会更高哦！一旦被导师钦点成功，心晴管家会及时电话提醒您，就算没有选上也不要灰心，参与直播互动也能学到很多，而且可以增加下一次被选中的概率！！！</string>
+	<string name="suggest">尽量完善个人资料  &amp; 匹配度测试完整。只有被了解才能赢机会，一旦申请成功，详情将短信通知，如未能如愿，出记住两个秘诀外，还可以参加该导师的直播互动，为下一次的成功预约增加概率。</string>
 	<string name="goback">回到主页</string>
 	<string name="personal_homepage">个人主页</string>
 	<string name="completeness">资料完成度  </string>
@@ -335,11 +337,25 @@
 	<string name="organiz_data">完善资料</string>
 	<string name="goto_talk">进入约聊室</string>
 	<string name="apply_result">由于导师的时间比较紧张，这次你没有被幸运地抽中，但是不要气馁，等待下一次机会重新申请，心晴管家会根据用户的申请次数提高用户被导师选中的概率，多关注导师的活动，编辑更多有意思的话题来吸引来吸引导师的注意，相信下一次你能成功地从导师那里得到你想要的东西</string>
-	<string name="code">验证码将以短信的形式发送给你，请注意查收</string>
+	<string name="code">手机短信获取验证码</string>
 	<string name="agreement">用户协议</string>
 	<string name="privacy">隐私条款</string>
 	<string name="enter_careeradvice">进入职业点拨</string>
 	<string name="mine_doctor">我的心晴师</string>
+	<string name="mine_message">我的消息</string>
+	<string name="man">男</string>
+	<string name="women">女</string>
+	<string name="personalinfo_perfect">个人 信息完善</string>
+	<string name="leisure">近期可约</string>
+	<string name="busy">近期忙碌</string>
+	
+	
+	<string name="real_name">请填写真实姓名</string>
+	<string name="nickname">请填写昵称</string>
+	<string name="choose_sex">请选择性别</string>
+	<string name="choose_age">请输入年龄</string>
+	<string name="area">请选择所在地区</string>
+	<string name="email">请填写常用邮箱</string>
 	
 	
 	

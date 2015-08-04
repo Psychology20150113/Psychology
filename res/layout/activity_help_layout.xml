@@ -9,36 +9,36 @@
 
     <View 
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="7dp"
         android:background="@color/v2_divider"/>
     <LinearLayout
         android:id="@+id/ll_about"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="59dp"
         android:background="#ffffff">
     	<TextView
         android:id="@+id/tv_about"
         style="@style/help_tv_style"
         android:drawableLeft="@drawable/icon_mouse"
       
-        android:drawablePadding="20dp"
+        android:drawablePadding="19dp"
     
         android:text="@string/about" />
     </LinearLayout>
     <View 
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="7dp"
         android:background="@color/v2_divider"/>
     <LinearLayout
         android:id="@+id/ll_howuse"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="59dp"
         android:background="#ffffff">
     	<TextView
         android:id="@+id/tv_howuse"
        style="@style/help_tv_style"
         android:drawableLeft="@drawable/icon_search"      
-        android:drawablePadding="20dp"      
+        android:drawablePadding="19dp"      
         android:text="@string/howuse" />
     </LinearLayout>
     <View 
@@ -48,29 +48,29 @@
     <LinearLayout
         android:id="@+id/ll_relation"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="59dp"
         android:background="#ffffff">
     	<TextView
         android:id="@+id/tv_relation"
        style="@style/help_tv_style"
         android:drawableLeft="@drawable/icon_phones"
-        android:drawablePadding="20dp"
+        android:drawablePadding="19dp"
         android:text="@string/relation" />
     </LinearLayout>
     <View 
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="7dp"
         android:background="@color/v2_divider"/>
     <LinearLayout
         android:id="@+id/ll_feedback"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="59dp"
         android:background="#ffffff">
     	<TextView
         android:id="@+id/tv_feedback"
        style="@style/help_tv_style"
         android:drawableLeft="@drawable/icon_pacman"
-        android:drawablePadding="20dp"
+        android:drawablePadding="19dp"
         android:text="@string/feedback" />
     </LinearLayout>
 

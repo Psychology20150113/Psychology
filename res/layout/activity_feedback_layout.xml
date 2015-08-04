@@ -54,10 +54,10 @@
         android:layout_width="266dp"
         android:layout_height="50dp"
         android:background="@drawable/bg_btn10"
-        android:layout_marginBottom="20dip"
-        android:layout_gravity="center"
+        android:layout_marginBottom="16dip"
+        android:layout_gravity="bottom"
         android:textColor="#ffffff"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:text="@string/submit" />
     </LinearLayout>
 

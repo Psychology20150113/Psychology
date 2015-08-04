@@ -80,7 +80,8 @@ public class ScatterChart extends BarLineChartBase<ScatterData> implements Scatt
         };
     }
 
-    public ScatterData getScatterData() {
+    @Override
+	public ScatterData getScatterData() {
         return mData;
     };
 }

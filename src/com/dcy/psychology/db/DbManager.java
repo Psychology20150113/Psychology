@@ -6,7 +6,6 @@ import android.database.Cursor;
 
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.model.IdAndName;
-import com.dcy.psychology.util.Constants;
 
 public class DbManager {
 	public static ArrayList<IdAndName> getProvince(){

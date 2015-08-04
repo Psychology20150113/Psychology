@@ -3,12 +3,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
-    
-    <View 
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/v2_divider"/>
+
+
      <include layout="@layout/item_message_layout" />
      <ImageView 
                 android:layout_width="match_parent"
@@ -18,7 +16,7 @@
             	android:layout_marginRight="8dp"
                 android:background="@color/divider"/>
      <TextView 
-		                android:id="@+id/tv_item_achieve2"
+		                android:id="@+id/tv_message_info"
 		                android:layout_width="match_parent"
 		                android:layout_height="250dp"
 		                android:layout_marginLeft="12dp"

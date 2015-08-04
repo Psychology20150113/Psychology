@@ -2,19 +2,17 @@ package com.dcy.psychology.view;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-
 import com.dcy.psychology.R;
 import com.dcy.psychology.util.Utils;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.AbsListView;
@@ -110,15 +108,15 @@ public class PullRefreshListView extends ListView implements OnScrollListener {
 		setOnScrollListener(this);
 
 		animation = new RotateAnimation(0, -180,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+				Animation.RELATIVE_TO_SELF, 0.5f,
+				Animation.RELATIVE_TO_SELF, 0.5f);
 		animation.setInterpolator(new LinearInterpolator());
 		animation.setDuration(250);
 		animation.setFillAfter(true);
 
 		reverseAnimation = new RotateAnimation(-180, 0,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+				Animation.RELATIVE_TO_SELF, 0.5f,
+				Animation.RELATIVE_TO_SELF, 0.5f);
 		reverseAnimation.setInterpolator(new LinearInterpolator());
 		reverseAnimation.setDuration(200);
 		reverseAnimation.setFillAfter(true);
@@ -140,12 +138,14 @@ public class PullRefreshListView extends ListView implements OnScrollListener {
 		}
 	}
 
+	@Override
 	public void onScrollStateChanged(AbsListView arg0, int arg1) {
 		if(mScrollListener != null){
 			mScrollListener.onScrollStateChanged(arg0, arg1);
 		}
 	}
 
+	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (isEnd && isRefreshable) {
 			switch (event.getAction()) {

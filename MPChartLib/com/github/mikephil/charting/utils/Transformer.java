@@ -39,8 +39,8 @@ public class Transformer {
      */
     public void prepareMatrixValuePx(float xChartMin, float deltaX, float deltaY, float yChartMin) {
 
-        float scaleX = (float) ((mViewPortHandler.contentWidth()) / deltaX);
-        float scaleY = (float) ((mViewPortHandler.contentHeight()) / deltaY);
+        float scaleX = ((mViewPortHandler.contentWidth()) / deltaX);
+        float scaleY = ((mViewPortHandler.contentHeight()) / deltaY);
 
         // setup all matrices
         mMatrixValueToPx.reset();
@@ -137,7 +137,7 @@ public class Transformer {
             Entry e = entries.get(j / 2 + from);
 
             if (e != null) {
-                valuePoints[j] = (float) (e.getXIndex() - from) * phaseX + from;
+                valuePoints[j] = (e.getXIndex() - from) * phaseX + from;
                 valuePoints[j + 1] = e.getVal() * phaseY;
             }
         }

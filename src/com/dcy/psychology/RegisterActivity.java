@@ -1,10 +1,8 @@
 package com.dcy.psychology;
 
 import com.dcy.psychology.R;
-import com.dcy.psychology.LoginActivity.ChatLoginTask;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.model.UserInfoModel;
-import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;

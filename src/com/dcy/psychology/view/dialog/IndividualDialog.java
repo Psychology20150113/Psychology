@@ -1,15 +1,8 @@
 package com.dcy.psychology.view.dialog;
 
 import com.dcy.psychology.R;
-import com.dcy.psychology.view.MyMarkerView;
-import com.github.mikephil.charting.charts.RadarChart;
-
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -21,15 +14,15 @@ public class IndividualDialog extends Activity{
 	public IndividualDialog(Context context) {
 		super(context);
 		this.context=context;
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½
 	}*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 //ÉèÖÃÎÞ±êÌâ  
+		 //ï¿½ï¿½ï¿½ï¿½ï¿½Þ±ï¿½ï¿½ï¿½  
         requestWindowFeature(Window.FEATURE_NO_TITLE);  
-        //ÉèÖÃÈ«ÆÁ  
+        //ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½  
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);  
 		setContentView(R.layout.dialog_individual_layout);

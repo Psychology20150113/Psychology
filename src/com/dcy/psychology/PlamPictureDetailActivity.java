@@ -1,11 +1,7 @@
 package com.dcy.psychology;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.ArticleBean;
 import com.dcy.psychology.gsonbean.ClassBean;
@@ -14,16 +10,12 @@ import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IOUtils;
 import com.dcy.psychology.util.Utils;
-import com.dcy.psychology.util.AsyncImageCache.NetworkImageGenerator;
-
 import android.content.res.AssetManager;
-import android.content.res.Resources.NotFoundException;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PlamPictureDetailActivity extends BaseActivity {
 	private ImageView mPicView;

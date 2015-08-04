@@ -3,7 +3,6 @@ package com.dcy.psychology.fragment;
 import java.util.ArrayList;
 
 import com.dcy.psychology.DetailTestResultActivity;
-import com.dcy.psychology.MineActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ShowListActivity;
@@ -16,18 +15,15 @@ import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-import com.umeng.socialize.controller.c;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
@@ -76,7 +72,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 		if(!TextUtils.isEmpty(mShared.getHollendResult())){
 			SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(
 					getString(R.string.mine_zhiye), mShared.getHollendResult()));
-			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_blue)), 4, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_blue)), 4, 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			((TextView)rootView.findViewById(R.id.tv_zhiye)).setText(spanBuilder);
 			dataArray = mShared.getHollendData().split(",");
 			setData();
@@ -92,7 +88,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 			String[] mQizhiData = mShared.getQizhiData().split(",");
 			setQizhiData(mQizhiData);
 			SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), mShared.getQizhiResult()));
-			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_blue)), 7, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.v2_blue)), 7, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 		} else {
 			rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.GONE);
@@ -143,7 +139,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
 				if(qizhiArray != null && qizhiArray.length == 4){
 					setQizhiData(qizhiArray);
 					SpannableStringBuilder spanBuilder = new SpannableStringBuilder(String.format(getString(R.string.mine_qizhi), result.TemperamentTest));
-					spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue)), 7, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+					spanBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue)), 7, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 					((TextView)rootView.findViewById(R.id.tv_qizhi)).setText(spanBuilder);
 					rootView.findViewById(R.id.ll_qizhi_show).setVisibility(View.VISIBLE);
 					rootView.findViewById(R.id.tv_empty_qizhi).setVisibility(View.GONE);
@@ -190,7 +186,7 @@ public class MineMarkFragment extends Fragment implements OnClickListener{
         RadarDataSet set1 = new RadarDataSet(yVals1, "Set 1");
         set1.setColor(getResources().getColor(R.color.v2_blue));
         set1.setDrawFilled(false);
-        set1.setLineWidth(5f);//³ÈÉ«ÏßÌõµÄ¿í¶È
+        set1.setLineWidth(5f);//ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
         RadarData data = new RadarData(careerArray, set1);
         data.setValueTextSize(8f);
         data.setDrawValues(false);

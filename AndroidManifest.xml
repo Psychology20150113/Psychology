@@ -158,6 +158,18 @@
             android:name="com.dcy.psychology.xinzeng.MineDoctorActivity"
             android:screenOrientation="portrait">
         </activity>
+         <activity 
+            android:name="com.dcy.psychology.Mine_MessageFragment"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.Mine_MessageActivity"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity 
+            android:name="com.dcy.psychology.MessageInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
         
         
         

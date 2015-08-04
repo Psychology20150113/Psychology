@@ -39,21 +39,71 @@
         	    android:text="@string/quit"/>
         </LinearLayout>
     </RelativeLayout>
-    <LinearLayout 
-        android:id="@+id/ll_slide_attention"
+    
+     <LinearLayout 
+        android:id="@+id/ll_slide_dna"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center">
+        android:layout_height="47dp"
+        android:orientation="horizontal" 
+        android:gravity="center_vertical">
+        <ImageView 
+            android:id="@+id/iv_icon1"
+            style="@style/slide_menu_iv_style"
+            android:background="@drawable/icon_attention"
+            android:visibility="visible"/>
+        <ImageView 
+            android:id="@+id/iv_icon_login1"
+            style="@style/slide_menu_iv_style"
+            android:background="@drawable/icon_match"
+            android:visibility="gone"/>
+
+    <TextView 
+        android:id="@+id/tv_slide_dna"
+      	style="@style/slide_menu_tv_style"
+       	android:layout_marginLeft="22dp"
+        android:text="@string/slide_dna"/>
+     </LinearLayout>
+    <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/divider"/>
+    <LinearLayout 
+        android:id="@+id/ll_slide_mine_doctor"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+    	 <ImageView 
+    	    android:id="@+id/iv_icon2"
+           style="@style/slide_menu_iv_style"
+           android:background="@drawable/icon_attention"
+            android:visibility="visible"/>
+    	 <ImageView 
+            android:id="@+id/iv_icon_login2"
+            style="@style/slide_menu_iv_style"
+            android:background="@drawable/icon_match"
+            android:visibility="gone"/>
         <TextView 
-        android:id="@+id/tv_slide_attention"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:drawableLeft="@drawable/icon_attention"
-        android:drawablePadding="8dp"
-        android:textSize="15sp"
-        android:textColor="#727171"
-        android:text="@string/slide_attention"/>
+        android:id="@+id/tv_slide_mine_doctor"
+       	style="@style/slide_menu_tv_style"
+        android:layout_marginLeft="22dp"
+        android:text="@string/slide_mine_doctor"/>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical">
+             <TextView 
+            android:id="@+id/tv_doctor_count"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:background="@drawable/bg_tv_count"
+            android:textColor="#ffffff"
+            android:text="2"/>
+        </LinearLayout>
+       
         
         
     </LinearLayout>
@@ -63,47 +113,47 @@
         android:layout_height="10dp"
         android:background="@color/divider" />
      <LinearLayout 
-        android:id="@+id/ll_slide_dna"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center">
-
-    <TextView 
-        android:id="@+id/tv_slide_dna"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:drawableLeft="@drawable/icon_attention"
-		android:drawablePadding="5dp"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:textColor="#727171"
-        android:text="@string/slide_dna"/>
-     </LinearLayout>
-    <ImageView 
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/divider"/>
-     <LinearLayout 
         android:id="@+id/ll_slide_message"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center">
-    <TextView 
+        android:layout_height="47dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView 
+            android:id="@+id/iv_icon3"
+           style="@style/slide_menu_iv_style"
+           android:background="@drawable/icon_attention"
+            android:visibility="visible"/>
+        <ImageView 
+            android:id="@+id/iv_icon_login3"
+            style="@style/slide_menu_iv_style"
+            android:background="@drawable/icon_match"
+            android:visibility="gone"/>
+   		 <TextView 
         android:id="@+id/tv_slide_message"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:drawableLeft="@drawable/icon_attention"
-		android:drawablePadding="5dp"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:textColor="#727171"
+        style="@style/slide_menu_tv_style"
+        android:layout_marginLeft="22dp"
         android:text="@string/slide_message"/>
+   		 <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical">
+             <TextView 
+            android:id="@+id/tv_message_count"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginRight="12dp"
+            android:visibility="gone"
+            android:gravity="center"
+            android:background="@drawable/bg_tv_count"
+            android:textColor="#ffffff"
+            android:text="2"/>
+        </LinearLayout>
      </LinearLayout>
     <ImageView 
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/divider"/>
-     <LinearLayout 
+    <!--  <LinearLayout 
         android:id="@+id/ll_slide_problem"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -123,14 +173,40 @@
      <ImageView 
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/divider"/> 
+        android:background="@color/divider"/>  -->
      <LinearLayout 
         android:id="@+id/ll_help"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+   		  <ImageView 
+   		   android:id="@+id/iv_icon4"
+           style="@style/slide_menu_iv_style"
+           android:background="@drawable/icon_attention"
+            android:visibility="visible"/>
+   		  <ImageView 
+            android:id="@+id/iv_icon_login4"
+            style="@style/slide_menu_iv_style"
+            android:background="@drawable/icon_match"
+            android:visibility="gone"/>
+   		 <TextView 
+        android:id="@+id/tv_help"
+        style="@style/slide_menu_tv_style"
+       	android:layout_marginLeft="22dp"
+        android:text="@string/help"/>
+    </LinearLayout>
+     <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/divider"/>
+    <!--  <LinearLayout 
+        android:id="@+id/ll_collect"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
     <TextView 
-        android:id="@+id/tv_help"
+        android:id="@+id/tv_collect"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:drawableLeft="@drawable/icon_attention"
@@ -138,20 +214,7 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="#727171"
-        android:text="@string/help"/>
-    </LinearLayout>
-     <LinearLayout 
-         android:layout_width="match_parent"
-         android:layout_height="match_parent">
-     <TextView 
-        android:id="@+id/tv_enter_careeradvice"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:background="#ed823b"
-        android:layout_gravity="bottom"
-        android:textSize="18sp"
-        android:textColor="#727171"
-        android:text="@string/enter_careeradvice"/> 
-     </LinearLayout>
+        android:text="@string/slide_collect"/>
+    </LinearLayout> -->
+    
 </LinearLayout>

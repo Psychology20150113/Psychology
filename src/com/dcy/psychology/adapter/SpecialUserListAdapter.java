@@ -2,7 +2,6 @@ package com.dcy.psychology.adapter;
 
 import java.util.ArrayList;
 
-import android.R.string;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -16,11 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.Activity;
-
 import com.dcy.psychology.DoctorPersonalInfo;
-import com.dcy.psychology.DoctorPersonalInfo2;
-import com.dcy.psychology.PersonalInfoActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
@@ -78,8 +73,8 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			mHolder.matchTv = (TextView) convertView.findViewById(R.id.tv_item_match);*/
 			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_user_info);
 			mHolder.infoLayout.setOnClickListener(lookInfoListener);
-			mHolder.pointLayout = convertView.findViewById(R.id.ll_point);
-			mHolder.pointTv = (TextView) convertView.findViewById(R.id.tv_match_point);
+			/*mHolder.pointLayout = convertView.findViewById(R.id.ll_point);
+			mHolder.pointTv = (TextView) convertView.findViewById(R.id.tv_match_point);*/
 			/*if(canOpration){
 				mHolder.attentionTv.setOnClickListener(this);
 				mHolder.matchTv.setOnClickListener(this);
@@ -97,14 +92,14 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		mHolder.achieveTv.setText(item.SpecificUserAchievement);
 		//mHolder.attentionTv.setText(item.IsFollow ? R.string.cancel_attention : R.string.attention);
 		long specialUserID = dataList.get(position).SpecificUserID;
-		//mHolder.attentionTv.setTag(specialUserID);
-		//mHolder.matchTv.setTag(specialUserID);
+		/*mHolder.attentionTv.setTag(specialUserID);
+		mHolder.matchTv.setTag(specialUserID);*/
 		mHolder.infoLayout.setTag(item.SpecificUserPhone);
 		//ÂåπÈÖçÂ∫¶ÁöÑÊòæÈöê
-		if(!TextUtils.isEmpty(String.valueOf(item.MatchResult)) && item.MatchResult != 0){
+		/*if(!TextUtils.isEmpty(String.valueOf(item.MatchResult)) && item.MatchResult != 0){
 			mHolder.pointLayout.setVisibility(View.VISIBLE);
 			mHolder.pointTv.setText(String.valueOf((int)item.MatchResult) + "%");
-		}
+		}*/
 		return convertView;
 	}
 	
@@ -200,7 +195,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			}
 			if(result.isResult())
 			{
-				//Toast…Ë÷√£¨Õ¨—˘µƒ…Ë÷√ªπ‘⁄DoctorPersonalInfo÷–”¶”√
+				//ToastÔøΩÔøΩÔøΩ√£ÔøΩÕ¨ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ√ªÔøΩÔøΩÔøΩDoctorPersonalInfoÔøΩÔøΩ”¶ÔøΩÔøΩ
 				if(isFollowed)
 				{
 					mTextView.setText(R.string.attention);
@@ -249,10 +244,10 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		ImageView headerIv;
 		TextView nameTv;
 		TextView achieveTv;
-		//TextView attentionTv;
-		//TextView matchTv;
+		/*TextView attentionTv;
+		TextView matchTv;
 		TextView pointTv;
-		View pointLayout;
+		View pointLayout;*/
 		View infoLayout;
 	}
 }

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+	<EditText
+        android:id="@+id/et_real_name"
+        android:layout_width="314dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true" 
+        android:background="@drawable/bg_edit_perfect"
+        android:drawableLeft="@drawable/icon_attention"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="61dp"
+        android:ems="10"
+        android:hint="@string/real_name"
+        android:padding="10dp"
+        android:textSize="12sp" />
+    <View
+        android:id="@+id/View_real_name"
+        android:layout_width="314dp"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_below="@id/et_real_name" 
+        android:background="#5991bf" />
+    <EditText
+        android:id="@+id/et_nickname"
+        android:layout_width="314dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true" 
+        android:background="@drawable/bg_edit_perfect"
+        android:drawableLeft="@drawable/icon_attention"
+        android:drawablePadding="10dp"
+        android:layout_below="@id/View_real_name" 
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/nickname"
+        android:padding="10dp"
+        android:textSize="12sp" />
+    <View
+        android:id="@+id/View_nickname"
+        android:layout_width="314dp"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_below="@id/et_nickname" 
+        android:background="#5991bf" />
+    <LinearLayout
+        android:id="@+id/ll_choose_sex"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:background="@drawable/bg_edit_perfect"
+        android:layout_alignLeft ="@id/View_nickname"
+        android:layout_below="@id/View_nickname" 
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="19dp" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_attention"
+            android:layout_marginLeft="10dp"/>
+        <Spinner 
+            android:id="@+id/sp_choose_sex"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="1dp"
+           	android:background="#ffffff"
+            />
+    </LinearLayout>
+    
+    <View
+        android:id="@+id/View_choose_sex"
+        android:layout_width="150dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_alignLeft ="@id/View_nickname"
+        android:layout_below="@id/ll_choose_sex" 
+        android:background="#5991bf" />
+    <EditText
+        android:id="@+id/et_choose_age"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:background="@drawable/bg_edit_perfect"
+        android:drawableLeft="@drawable/icon_attention"
+        android:layout_alignRight="@id/View_nickname"
+        android:drawablePadding="10dp"
+        android:layout_below="@id/View_nickname" 
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/choose_age"
+        android:padding="10dp"
+        android:textSize="12sp" />
+    <View
+        android:id="@+id/View_choose_age"
+        android:layout_width="150dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_alignRight="@id/View_nickname"
+        android:layout_below="@id/et_choose_age" 
+        android:background="#5991bf" />
+    <TextView
+        android:id="@+id/tv_area"
+        android:layout_width="314dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true" 
+        android:background="@drawable/bg_edit_perfect"
+        android:drawableLeft="@drawable/icon_attention"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/View_choose_age" 
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:text="@string/area"
+        android:textColor="@color/v2_gray"
+        android:padding="10dp"
+        android:textSize="12sp" />
+    <View
+        android:id="@+id/View_area"
+        android:layout_width="314dp"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_below="@id/tv_area" 
+        android:background="#5991bf" />
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="314dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true" 
+        android:background="@drawable/bg_edit_perfect"
+        android:drawableLeft="@drawable/icon_attention"
+        android:drawablePadding="10dp"
+        android:layout_below="@id/View_area" 
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:padding="10dp"
+        android:textSize="12sp" />
+    <View
+        android:id="@+id/View_email"
+        android:layout_width="314dp"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_below="@id/et_email" 
+        android:background="#5991bf" />
+    
+    <Button 
+        android:layout_width="317dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/bg_save_btn_shape"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:text="@string/ok"
+         />
+   
+    
+
+    
+
+</RelativeLayout>

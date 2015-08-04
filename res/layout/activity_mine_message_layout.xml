@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
-    
-    <ListView
-        android:id="@+id/lv_mine_message"
+     <fragment 
+        android:name="com.dcy.psychology.fragment.Mine_MessageFragment"
+        android:id="@+id/fragment1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/v2_divider"
-        android:divider="@null" >
-    </ListView>
-    
+        android:layout_height="wrap_content"
+
+        />
 
 </LinearLayout>

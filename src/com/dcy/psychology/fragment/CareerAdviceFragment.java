@@ -3,8 +3,6 @@ package com.dcy.psychology.fragment;
 import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
-import com.dcy.psychology.view.dialog.IndividualDialog;
-import com.dcy.psychology.xinzeng.AboutActivity;
 import com.dcy.psychology.xinzeng.AdvanceActivity;
 import com.dcy.psychology.xinzeng.Mine_talkaboutActivity;
 import com.dcy.psychology.xinzeng.UnderwayActivity;
@@ -42,7 +40,7 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Intent nIntent = null;
 		switch (v.getId()) {
 		case R.id.btn_mine_talkabout:

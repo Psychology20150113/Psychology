@@ -9,7 +9,6 @@ import com.dcy.psychology.db.SqlConstants;
 import com.dcy.psychology.gsonbean.GrowModelBean;
 import com.dcy.psychology.model.GrowWriteItem;
 import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.ShareUtils;
 import com.dcy.psychology.util.Utils;
 import com.umeng.socialize.sso.UMSsoHandler;
 
@@ -128,6 +127,7 @@ public class GrowHistoryActivity extends BaseActivity {
 			return Utils.publishComment(MyApplication.myPhoneNum, params[0], Constants.IdOfGrowMode[themeIndex]);
 		}
 		
+		@Override
 		protected void onPostExecute(String result) {
 			if(TextUtils.isEmpty(result))
 				return;

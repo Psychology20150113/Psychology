@@ -17,23 +17,14 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.dcy.psychology.R;
-import com.dcy.psychology.adapter.SlideAdapter;
 import com.dcy.psychology.fragment.CareerPlanFragment;
-import com.dcy.psychology.fragment.ChatIMFragment;
-import com.dcy.psychology.fragment.GetFollowUsersFragmentActivity;
 import com.dcy.psychology.fragment.StyleTwoBoxFragment;
-import com.dcy.psychology.fragment.StyleTwoMainFragment;
-import com.dcy.psychology.fragment.TabChatFragment;
-import com.dcy.psychology.fragment.WaitingFragment;
 import com.dcy.psychology.fragment.CareerAdviceFragment;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
@@ -43,13 +34,22 @@ import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.xinzeng.HelpActivity;
 import com.dcy.psychology.xinzeng.MineDoctorActivity;
 import com.dcy.psychology.xinzeng.PersonalHomepage;
-import com.umeng.analytics.MobclickAgent;
 
 public class SlideMainActivity extends BaseActivity implements OnClickListener{
 	DrawerLayout drawerLayout;
 	private TextView nameText;
+	private TextView doctorcountText;
+	private TextView messagecountText;
 	//private TextView helpText;
 	private TextView loginOutText;
+	private ImageView loginIv1;
+	private ImageView loginIv2;
+	private ImageView loginIv3;
+	private ImageView loginIv4;
+	private ImageView slideIv1;
+	private ImageView slideIv2;
+	private ImageView slideIv3;
+	private ImageView slideIv4;
 	private View nameInfoLayout;
 	
 	private ViewPager mViewPager;
@@ -101,20 +101,39 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		nameInfoLayout.setOnClickListener(this);
 		loginOutText = (TextView)findViewById(R.id.tv_loginout);
 		loginOutText.setOnClickListener(this);
+		doctorcountText = (TextView)findViewById(R.id.tv_doctor_count);
+		messagecountText = (TextView)findViewById(R.id.tv_message_count);
+		loginIv1 = (ImageView)findViewById(R.id.iv_icon_login1);
+		loginIv2 = (ImageView)findViewById(R.id.iv_icon_login2);
+		loginIv3 = (ImageView)findViewById(R.id.iv_icon_login3);
+		loginIv4 = (ImageView)findViewById(R.id.iv_icon_login4);
+		slideIv1 = (ImageView)findViewById(R.id.iv_icon1);
+		slideIv2 = (ImageView)findViewById(R.id.iv_icon2);
+		slideIv3 = (ImageView)findViewById(R.id.iv_icon3);
+		slideIv4 = (ImageView)findViewById(R.id.iv_icon4);
 		if(!TextUtils.isEmpty(MyApplication.myHeadUrl)){
 			mCache.displayImage((ImageView)findViewById(R.id.iv_header), R.drawable.ic_launcher, 
 					new AsyncImageCache.NetworkImageGenerator(MyApplication.myHeadUrl, MyApplication.myHeadUrl));
 		}
 		findViewById(R.id.iv_header).setOnClickListener(this);
-		findViewById(R.id.ll_slide_attention).setOnClickListener(this);
+		findViewById(R.id.ll_slide_mine_doctor).setOnClickListener(this);
 		findViewById(R.id.ll_slide_dna).setOnClickListener(this);
 		findViewById(R.id.ll_slide_message).setOnClickListener(this);
-		findViewById(R.id.ll_slide_problem).setOnClickListener(this);
+		//findViewById(R.id.ll_collect).setOnClickListener(this);
 		findViewById(R.id.ll_help).setOnClickListener(this);
-		findViewById(R.id.tv_enter_careeradvice).setOnClickListener(this);
 		setLeftView(R.drawable.icon_slide);
 		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			loginOutText.setVisibility(View.VISIBLE);
+			loginIv1.setVisibility(View.VISIBLE);
+			loginIv2.setVisibility(View.VISIBLE);
+			loginIv3.setVisibility(View.VISIBLE);
+			loginIv4.setVisibility(View.VISIBLE);
+			slideIv1.setVisibility(View.GONE);
+			slideIv2.setVisibility(View.GONE);
+			slideIv3.setVisibility(View.GONE);
+			slideIv4.setVisibility(View.GONE);
+			doctorcountText.setVisibility(View.VISIBLE);
+			messagecountText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
 		}
 		mViewPager = (ViewPager) findViewById(R.id.main_vp);
@@ -131,6 +150,16 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			if(Constants.ReceiverAction_LoginSuccess.equals(intent.getAction())){
 				nameText.setText(MyApplication.myPhoneNum);
 				loginOutText.setVisibility(View.VISIBLE);
+				loginIv1.setVisibility(View.VISIBLE);
+				loginIv2.setVisibility(View.VISIBLE);
+				loginIv3.setVisibility(View.VISIBLE);
+				loginIv4.setVisibility(View.VISIBLE);
+				slideIv1.setVisibility(View.GONE);
+				slideIv2.setVisibility(View.GONE);
+				slideIv3.setVisibility(View.GONE);
+				slideIv4.setVisibility(View.GONE);
+				doctorcountText.setVisibility(View.VISIBLE);
+				messagecountText.setVisibility(View.VISIBLE);
 			}
 		}
 	};
@@ -215,6 +244,16 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			IMManager.getInstance().logoutIM();
 			nameText.setText(R.string.login_now);
 			loginOutText.setVisibility(View.GONE);
+			loginIv1.setVisibility(View.GONE);
+			loginIv2.setVisibility(View.GONE);
+			loginIv3.setVisibility(View.GONE);
+			loginIv4.setVisibility(View.GONE);
+			slideIv1.setVisibility(View.VISIBLE);
+			slideIv2.setVisibility(View.VISIBLE);
+			slideIv3.setVisibility(View.VISIBLE);
+			slideIv4.setVisibility(View.VISIBLE);
+			doctorcountText.setVisibility(View.GONE);
+			messagecountText.setVisibility(View.GONE);
 			if(!TextUtils.isEmpty(MyApplication.myHeadUrl)){
 				((ImageView)findViewById(R.id.iv_header)).setImageResource(R.drawable.icon_slide_default_header);
 			}
@@ -238,7 +277,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 				mIntent = new Intent(this, PersonalHomepage.class);
 			}
 			break;
-		case R.id.ll_slide_attention:
+		case R.id.ll_slide_mine_doctor:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
@@ -256,20 +295,18 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				mIntent = new Intent(this, LoginActivity.class);
 			} else {
-				mIntent = new Intent(this, PersonalInfoActivity.class);
+				mIntent = new Intent(this, Mine_MessageActivity.class);
 			}
 			break;
-		case R.id.ll_slide_problem:
-			mIntent = new Intent(this, ShowProblemActivity.class);
-			break;
+	/*	case R.id.ll_collect:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				mIntent = new Intent(this, LoginActivity.class);
+			} else {
+			mIntent = new Intent(this, PersonalInfoActivity.class);
+			}
+			break;*/
 		case R.id.ll_help:
 			mIntent = new Intent(this, HelpActivity.class);
-			break;
-		case R.id.tv_enter_careeradvice:
-			int position = 0;
-			setTopTitle(mTabNameArray[position]);
-			mViewPager.setCurrentItem(position);
-			drawerLayout.closeDrawer(Gravity.LEFT);
 			break;
 		default:
 			break;
@@ -295,6 +332,16 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 				return;
 			}
 			loginOutText.setVisibility(View.VISIBLE);
+			loginIv1.setVisibility(View.VISIBLE);
+			loginIv2.setVisibility(View.VISIBLE);
+			loginIv3.setVisibility(View.VISIBLE);
+			loginIv4.setVisibility(View.VISIBLE);
+			slideIv1.setVisibility(View.GONE);
+			slideIv2.setVisibility(View.GONE);
+			slideIv3.setVisibility(View.GONE);
+			slideIv4.setVisibility(View.GONE);
+			doctorcountText.setVisibility(View.VISIBLE);
+			messagecountText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
 			break;
 		default:

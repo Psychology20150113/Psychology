@@ -5,21 +5,17 @@ import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.RegisterActivity;
 import com.dcy.psychology.util.InfoShared;
-import com.dcy.psychology.util.Utils;
-
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class TabMineFragment extends Fragment implements OnClickListener{
 	

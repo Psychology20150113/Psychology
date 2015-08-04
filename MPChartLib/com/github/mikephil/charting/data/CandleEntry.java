@@ -86,7 +86,8 @@ public class CandleEntry extends Entry {
         return super.getVal();
     }
 
-    public CandleEntry copy() {
+    @Override
+	public CandleEntry copy() {
 
         CandleEntry c = new CandleEntry(getXIndex(), mShadowHigh, mShadowLow, mOpen,
                 mClose, getData());

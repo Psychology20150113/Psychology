@@ -18,6 +18,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.provider.MediaStore.Images;
+import android.provider.MediaStore.Images.ImageColumns;
+import android.provider.MediaStore.MediaColumns;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -820,7 +822,8 @@ public abstract class Chart<T extends ChartData<? extends DataSet<? extends Entr
      * 
      * @return
      */
-    public ValueFormatter getDefaultValueFormatter() {
+    @Override
+	public ValueFormatter getDefaultValueFormatter() {
         return mDefaultFormatter;
     }
 
@@ -1446,14 +1449,14 @@ public abstract class Chart<T extends ChartData<? extends DataSet<? extends Entr
         ContentValues values = new ContentValues(8);
 
         // store the details
-        values.put(Images.Media.TITLE, fileName);
-        values.put(Images.Media.DISPLAY_NAME, fileName);
-        values.put(Images.Media.DATE_ADDED, currentTime);
-        values.put(Images.Media.MIME_TYPE, "image/jpeg");
-        values.put(Images.Media.DESCRIPTION, "MPAndroidChart-Library Save");
-        values.put(Images.Media.ORIENTATION, 0);
-        values.put(Images.Media.DATA, filePath);
-        values.put(Images.Media.SIZE, size);
+        values.put(MediaColumns.TITLE, fileName);
+        values.put(MediaColumns.DISPLAY_NAME, fileName);
+        values.put(MediaColumns.DATE_ADDED, currentTime);
+        values.put(MediaColumns.MIME_TYPE, "image/jpeg");
+        values.put(ImageColumns.DESCRIPTION, "MPAndroidChart-Library Save");
+        values.put(ImageColumns.ORIENTATION, 0);
+        values.put(MediaColumns.DATA, filePath);
+        values.put(MediaColumns.SIZE, size);
 
         return getContext().getContentResolver().insert(Images.Media.EXTERNAL_CONTENT_URI, values) == null
                 ? false : true;

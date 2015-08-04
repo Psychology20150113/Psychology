@@ -354,7 +354,7 @@ public class PieRadarChartTouchListener extends SimpleOnGestureListener implemen
 
         mDecelerationAngularVelocity *= mChart.getDragDecelerationFrictionCoef();
 
-        final float timeInterval = (float)(currentTime - mDecelerationLastTime) / 1000.f;
+        final float timeInterval = (currentTime - mDecelerationLastTime) / 1000.f;
 
         mChart.setRotationAngle(mChart.getRotationAngle() + mDecelerationAngularVelocity * timeInterval);
 

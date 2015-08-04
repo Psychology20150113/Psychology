@@ -158,7 +158,7 @@ public abstract class ChartData<T extends DataSet<? extends Entry>> {
             sum += mXVals.get(i).length();
         }
 
-        mXValAverageLength = sum / (float) mXVals.size();
+        mXValAverageLength = sum / mXVals.size();
     }
 
     /**

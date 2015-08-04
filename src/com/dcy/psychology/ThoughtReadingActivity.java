@@ -3,7 +3,6 @@ package com.dcy.psychology;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,17 +12,14 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dcy.psychology.R;
@@ -258,7 +254,7 @@ public class ThoughtReadingActivity extends BaseActivity implements OnClickListe
 			}else if(mCurrentPage == mQuestionViewList.size() - 1){
 				mAloneButton.setVisibility(View.GONE);
 				mButtonLayout.setVisibility(View.VISIBLE);
-				mNextButton.setText("Íê³É");
+				mNextButton.setText("ï¿½ï¿½ï¿½");
 			}else {
 				mAloneButton.setVisibility(View.GONE);
 				mButtonLayout.setVisibility(View.VISIBLE);

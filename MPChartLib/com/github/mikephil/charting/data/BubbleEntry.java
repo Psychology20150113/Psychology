@@ -40,7 +40,8 @@ public class BubbleEntry extends Entry {
         this.mSize = size;
     }
 
-    public BubbleEntry copy() {
+    @Override
+	public BubbleEntry copy() {
 
         BubbleEntry c = new BubbleEntry(getXIndex(), getVal(), mSize, getData());
 

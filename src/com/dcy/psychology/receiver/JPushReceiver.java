@@ -1,8 +1,5 @@
 package com.dcy.psychology.receiver;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +8,11 @@ import android.util.Log;
 import cn.jpush.android.api.JPushInterface;
 
 /**
- * ×Ô¶¨Òå½ÓÊÕÆ÷
+ * ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * 
- * Èç¹û²»¶¨ÒåÕâ¸ö Receiver£¬Ôò£º
- * 1) Ä¬ÈÏÓÃ»§»á´ò¿ªÖ÷½çÃæ
- * 2) ½ÓÊÕ²»µ½×Ô¶¨ÒåÏûÏ¢
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Receiverï¿½ï¿½ï¿½ï¿½
+ * 1) Ä¬ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 2) ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
  */
 public class JPushReceiver extends BroadcastReceiver {
 	private static final String TAG = "JPush";
@@ -27,22 +24,22 @@ public class JPushReceiver extends BroadcastReceiver {
 		
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
             String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
-            Log.d(TAG, "[MyReceiver] ½ÓÊÕRegistration Id : " + regId);
+            Log.d(TAG, "[MyReceiver] ï¿½ï¿½ï¿½ï¿½Registration Id : " + regId);
             //send the Registration Id to your server...
                         
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
-        	Log.d(TAG, "[MyReceiver] ½ÓÊÕµ½ÍÆËÍÏÂÀ´µÄ×Ô¶¨ÒåÏûÏ¢: " + bundle.getString(JPushInterface.EXTRA_MESSAGE));
+        	Log.d(TAG, "[MyReceiver] ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢: " + bundle.getString(JPushInterface.EXTRA_MESSAGE));
 //        	processCustomMessage(context, bundle);
         
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
-            Log.d(TAG, "[MyReceiver] ½ÓÊÕµ½ÍÆËÍÏÂÀ´µÄÍ¨Öª");
+            Log.d(TAG, "[MyReceiver] ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öª");
             int notifactionId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
-            Log.d(TAG, "[MyReceiver] ½ÓÊÕµ½ÍÆËÍÏÂÀ´µÄÍ¨ÖªµÄID: " + notifactionId);
+            Log.d(TAG, "[MyReceiver] ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öªï¿½ï¿½ID: " + notifactionId);
         	
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
-            Log.d(TAG, "[MyReceiver] ÓÃ»§µã»÷´ò¿ªÁËÍ¨Öª");
+            Log.d(TAG, "[MyReceiver] ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öª");
             
-        	//´ò¿ª×Ô¶¨ÒåµÄActivity
+        	//ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Activity
 //        	Intent i = new Intent(context, TestActivity.class);
 //        	i.putExtras(bundle);
 //        	//i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -50,8 +47,8 @@ public class JPushReceiver extends BroadcastReceiver {
 //        	context.startActivity(i);
         	
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
-            Log.d(TAG, "[MyReceiver] ÓÃ»§ÊÕµ½µ½RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
-            //ÔÚÕâÀï¸ù¾Ý JPushInterface.EXTRA_EXTRA µÄÄÚÈÝ´¦Àí´úÂë£¬±ÈÈç´ò¿ªÐÂµÄActivity£¬ ´ò¿ªÒ»¸öÍøÒ³µÈ..
+            Log.d(TAG, "[MyReceiver] ï¿½Ã»ï¿½ï¿½Õµï¿½ï¿½ï¿½RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ JPushInterface.EXTRA_EXTRA ï¿½ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Activityï¿½ï¿½ ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½..
         	
         } else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
         	boolean connected = intent.getBooleanExtra(JPushInterface.EXTRA_CONNECTION_CHANGE, false);
@@ -61,7 +58,7 @@ public class JPushReceiver extends BroadcastReceiver {
         }
 	}
 
-	// ´òÓ¡ËùÓÐµÄ intent extra Êý¾Ý
+	// ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Ðµï¿½ intent extra ï¿½ï¿½ï¿½
 	private static String printBundle(Bundle bundle) {
 		StringBuilder sb = new StringBuilder();
 		for (String key : bundle.keySet()) {

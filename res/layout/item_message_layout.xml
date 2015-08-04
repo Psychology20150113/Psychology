@@ -2,21 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#ffffff"
     android:orientation="vertical" >
-
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/v2_divider" />
     <LinearLayout
+        android:id="@+id/ll_item_message"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:gravity="center_vertical"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp" >
+        android:gravity="center_vertical" >
 
         <com.dcy.psychology.view.CornerImageView
             android:id="@+id/iv_header"
             android:layout_width="61dp"
             android:layout_height="61dp"
+            android:layout_marginLeft="5dp"
             android:src="@drawable/ic_launcher" />
 
         <LinearLayout

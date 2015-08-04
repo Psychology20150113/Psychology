@@ -13,7 +13,6 @@
  */
 package com.dcy.psychology.emchat;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,14 +24,8 @@ import android.util.Log;
 import com.easemob.EMCallBack;
 import com.easemob.EMConnectionListener;
 import com.easemob.EMError;
-import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChat;
-import com.easemob.chat.EMChatConfig.EMEnvMode;
 import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMChatOptions;
-import com.easemob.chat.EMContactManager;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.exceptions.EaseMobException;
 
 /**
  * The developer can derive from this class to talk with HuanXin SDK
