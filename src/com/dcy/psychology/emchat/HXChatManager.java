@@ -1,6 +1,8 @@
 package com.dcy.psychology.emchat;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -14,6 +16,23 @@ public class HXChatManager {
 	private static HXChatManager mChatManager;
 	private InfoShared mShared;
 	private Context mContext;
+	private final int Msg_Login_Success = 100;
+	private final int Msg_Login_Fail = 101;
+	
+	private Handler mHandler = new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case Msg_Login_Success:
+				Toast.makeText(mContext, R.string.login_chat_success, Toast.LENGTH_SHORT).show();
+				break;
+			case Msg_Login_Fail:
+				Toast.makeText(mContext, (String)msg.obj, Toast.LENGTH_SHORT).show();
+				break;
+			default:
+				break;
+			}
+		};
+	};
 	
 	private HXChatManager(Context context){
 		mContext = context;
@@ -40,7 +59,7 @@ public class HXChatManager {
 			@Override
 			public void onSuccess() {
 				mShared.saveChatInfo(name, pwd);
-				Toast.makeText(mContext, R.string.login_chat_failed, Toast.LENGTH_SHORT).show();
+				mHandler.sendMessage(mHandler.obtainMessage(Msg_Login_Success));
 				try {
 					EMGroupManager.getInstance().loadAllGroups();
 					EMChatManager.getInstance().loadAllConversations();
@@ -57,7 +76,7 @@ public class HXChatManager {
 			
 			@Override
 			public void onError(int arg0, String arg1) {
-				Toast.makeText(mContext, R.string.login_chat_failed, Toast.LENGTH_SHORT).show();
+				mHandler.sendMessage(mHandler.obtainMessage(Msg_Login_Fail, arg1));
 				if(errorRunnable != null){
 					errorRunnable.run();
 				}

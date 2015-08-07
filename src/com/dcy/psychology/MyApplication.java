@@ -60,7 +60,7 @@ public class MyApplication extends Application{
 		return mChatManager;
 	}
 	
-	public static Application getInstance(){
+	public static MyApplication getInstance(){
 		return instance;
 	}
 	

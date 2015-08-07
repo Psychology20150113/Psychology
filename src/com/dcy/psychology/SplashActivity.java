@@ -18,6 +18,7 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash_layout);
+//		MyApplication.getInstance().getChatManager().chatLogin("123", "12345");
 		new Handler().postDelayed(runnable, SplashTime);
 	}
 	
