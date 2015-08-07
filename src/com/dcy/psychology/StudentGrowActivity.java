@@ -7,7 +7,6 @@ import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.StudentGrowPlatformAdapter;
 import com.dcy.psychology.adapter.StudentGrowPlatformAdapter.OnPlatClickListener;
 import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.ThoughtReadingUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import android.content.Intent;

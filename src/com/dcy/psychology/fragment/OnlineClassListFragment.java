@@ -19,9 +19,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.R;
-import com.dcy.psychology.adapter.ArticleListAdapter;
 import com.dcy.psychology.adapter.ClassShowListAdapter;
-import com.dcy.psychology.gsonbean.ArticleBean;
 import com.dcy.psychology.gsonbean.ClassBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;

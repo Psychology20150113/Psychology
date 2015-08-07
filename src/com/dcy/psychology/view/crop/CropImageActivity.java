@@ -31,7 +31,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -97,14 +96,16 @@ public class CropImageActivity extends MonitoredActivity {
         });
 
         findViewById(R.id.btn_cancel).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
                 setResult(RESULT_CANCELED);
                 finish();
             }
         });
 
         findViewById(R.id.btn_done).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
                 onSaveClicked();
             }
         });
@@ -185,10 +186,12 @@ public class CropImageActivity extends MonitoredActivity {
         imageView.setImageRotateBitmapResetBase(rotateBitmap, true);
         CropUtil.startBackgroundJob(this, null, getResources().getString(R.string.crop__wait),
                 new Runnable() {
-                    public void run() {
+                    @Override
+					public void run() {
                         final CountDownLatch latch = new CountDownLatch(1);
                         handler.post(new Runnable() {
-                            public void run() {
+                            @Override
+							public void run() {
                                 if (imageView.getScale() == 1F) {
                                     imageView.center(true, true);
                                 }
@@ -242,7 +245,8 @@ public class CropImageActivity extends MonitoredActivity {
 
         public void crop() {
             handler.post(new Runnable() {
-                public void run() {
+                @Override
+				public void run() {
                     makeDefault();
                     imageView.invalidate();
                     if (imageView.highlightViews.size() == 1) {
@@ -275,10 +279,10 @@ public class CropImageActivity extends MonitoredActivity {
             float ratio = (float) width / (float) height;
             if ((float) maxX / (float) maxY > ratio) {
                 outHeight = maxY;
-                outWidth = (int) ((float) maxY * ratio + .5f);
+                outWidth = (int) (maxY * ratio + .5f);
             } else {
                 outWidth = maxX;
-                outHeight = (int) ((float) maxX / ratio + .5f);
+                outHeight = (int) (maxX / ratio + .5f);
             }
         }
 
@@ -322,7 +326,8 @@ public class CropImageActivity extends MonitoredActivity {
 
             CropUtil.startBackgroundJob(this, null, getResources().getString(R.string.crop__saving),
                     new Runnable() {
-                        public void run() {
+                        @Override
+						public void run() {
                             saveOutput(b);
                         }
                     }, handler
@@ -453,7 +458,8 @@ public class CropImageActivity extends MonitoredActivity {
 
         final Bitmap b = croppedImage;
         handler.post(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 imageView.clear();
                 b.recycle();
             }

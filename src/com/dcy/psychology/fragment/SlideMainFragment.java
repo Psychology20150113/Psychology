@@ -1,12 +1,10 @@
 package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import com.dcy.psychology.FlowerGameChooseActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.PlamPictureDetailActivity;
 import com.dcy.psychology.PlatformTwoActivity;
@@ -33,7 +31,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -172,6 +169,7 @@ public class SlideMainFragment extends Fragment implements OnClickListener , OnI
 	}
 	
 	private Handler mBannerChangeHandler = new Handler(){
+		@Override
 		public void handleMessage(android.os.Message msg) {
 			mBannerPager.setCurrentItem((mBannerPager.getCurrentItem() + 1) % bannerRes.length);
 		};

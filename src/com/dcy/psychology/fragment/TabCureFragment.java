@@ -1,7 +1,6 @@
 package com.dcy.psychology.fragment;
 
 import com.dcy.psychology.GrowLevelChooseActivity;
-import com.dcy.psychology.ProblemDirectoryActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ShowListActivity;
 import com.dcy.psychology.util.Constants;
@@ -18,8 +17,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class TabCureFragment extends Fragment implements OnClickListener{

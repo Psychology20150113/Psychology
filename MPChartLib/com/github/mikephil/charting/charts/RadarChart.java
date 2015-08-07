@@ -33,10 +33,10 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
     private float mInnerWebLineWidth = 1.5f;
 
     /** color for the main web lines */
-    private int mWebColor = Color.rgb(122, 122, 122);//ÁùÃ¢ÐÇ±ßÉÏ6¸ùÏßµÄÑÕÉ«
+    private int mWebColor = Color.rgb(122, 122, 122);//ï¿½ï¿½Ã¢ï¿½Ç±ï¿½ï¿½ï¿½6ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½É«
 
     /** color for the inner web */
-    private int mWebColorInner = Color.rgb(122, 122, 122);//ÁùÃ¢ÐÇÄÚ±äÏßµÄÑÕÉ«
+    private int mWebColorInner = Color.rgb(122, 122, 122);//ï¿½ï¿½Ã¢ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ßµï¿½ï¿½ï¿½É«
 
     /** transparency the grid is drawn with (0-255) */
     private int mWebAlpha = 150;
@@ -71,7 +71,7 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
 
         mYAxis = new YAxis(AxisDependency.LEFT);
         mXAxis = new XAxis();
-        mXAxis.setSpaceBetweenLabels(0);
+        mXAxis.setSpaceBetweenLabels(0); 
 
         mWebLineWidth = Utils.convertDpToPixel(1.5f);
         mInnerWebLineWidth = Utils.convertDpToPixel(0.75f);
@@ -183,7 +183,7 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
      */
     public float getFactor() {
         RectF content = mViewPortHandler.getContentRect();
-        return (float) Math.min(content.width() / 2f, content.height() / 2f)
+        return Math.min(content.width() / 2f, content.height() / 2f)
                 / mYAxis.mAxisRange;
     }
 
@@ -193,7 +193,7 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
      * @return
      */
     public float getSliceAngle() {
-        return 360f / (float) mData.getXValCount();
+        return 360f / mData.getXValCount();
     }
 
     @Override
@@ -336,14 +336,16 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
     /**
      * Returns the maximum value this chart can display on it's y-axis.
      */
-    public float getYChartMax() {
+    @Override
+	public float getYChartMax() {
         return mYAxis.mAxisMaximum;
     }
 
     /**
      * Returns the minimum value this chart can display on it's y-axis.
      */
-    public float getYChartMin() {
+    @Override
+	public float getYChartMin() {
         return mYAxis.mAxisMinimum;
     }
 

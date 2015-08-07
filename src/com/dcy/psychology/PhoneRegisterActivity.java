@@ -1,17 +1,16 @@
 package com.dcy.psychology;
 
-import javax.crypto.spec.IvParameterSpec;
-
 import com.dcy.psychology.R;
 import com.dcy.psychology.LoginActivity.ChatLoginTask;
 import com.dcy.psychology.gsonbean.BasicBean;
-import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
+import com.dcy.psychology.view.CustomProgressDialog;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,22 +18,25 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PhoneRegisterActivity extends BaseActivity implements OnClickListener{
+public class PhoneRegisterActivity extends Activity implements OnClickListener{
 	private EditText mPhoneEt;
 	private EditText mCodeEt;
 	private EditText mPwdEt;
 	private EditText mSecondPwdEt;
 	private TextView mGetCodeText;
+	private CustomProgressDialog mDialog;
 	private InfoShared mShared;
 	private final int CountDownNum = 30;
 	private ImageView magree;
 	private ImageView mnoagree;
+	private ImageView backview;
 	
 
 	private int mCountDownTime = CountDownNum;
@@ -43,13 +45,14 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
 		setContentView(R.layout.activity_phone_register_layout);
 		initView();
 		mShared = new InfoShared(this);
 	}
 
 	private void initView(){
-		setTopTitle(R.string.register);
+		//setTopTitle(R.string.register);
 		mPhoneEt = (EditText) findViewById(R.id.phone_et);
 		mCodeEt = (EditText) findViewById(R.id.code_et);
 		mPwdEt = (EditText) findViewById(R.id.password_et);
@@ -60,6 +63,9 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 		magree.setOnClickListener(this);
 		mnoagree.setOnClickListener(this);
 		mGetCodeText.setOnClickListener(this);
+		backview=(ImageView) findViewById(R.id.iv_back);
+		backview.setImageResource(R.drawable.back);
+		backview.setOnClickListener(this);
 		findViewById(R.id.register_tv).setOnClickListener(this);
 		//findViewById(R.id.find_pwd_tv).setOnClickListener(this);
 	}
@@ -160,6 +166,9 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 			mnoagree.setVisibility(View.GONE);
 			magree.setVisibility(View.VISIBLE);
 			break;
+		case R.id.iv_back:
+				finish();
+			break;
 		default:
 			break;
 		}
@@ -230,5 +239,16 @@ public class PhoneRegisterActivity extends BaseActivity implements OnClickListen
 			return false;
 		}
 		return true;
+	}
+	protected void showCustomDialog(){
+		if(mDialog == null){
+			mDialog = new CustomProgressDialog(this);
+		}
+		mDialog.show();
+	}
+	
+	protected void hideCustomDialog(){
+		if(mDialog != null && mDialog.isShowing())
+			mDialog.dismiss();
 	}
 }

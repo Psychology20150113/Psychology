@@ -46,7 +46,7 @@ public class BubbleChart extends BarLineChartBase<BubbleData> implements BubbleD
             mDeltaX = 1;
 
         mXChartMin = -0.5f;
-        mXChartMax = (float) mData.getXValCount() - 0.5f;
+        mXChartMax = mData.getXValCount() - 0.5f;
 
         if (mRenderer != null) {
             for (BubbleDataSet set : mData.getDataSets()) {
@@ -65,7 +65,8 @@ public class BubbleChart extends BarLineChartBase<BubbleData> implements BubbleD
         mDeltaX = Math.abs(mXChartMax - mXChartMin);
     }
 
-    public BubbleData getBubbleData() {
+    @Override
+	public BubbleData getBubbleData() {
         return mData;
     }
 }

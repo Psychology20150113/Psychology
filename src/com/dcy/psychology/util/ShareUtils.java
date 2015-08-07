@@ -1,7 +1,6 @@
 package com.dcy.psychology.util;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
@@ -16,11 +15,8 @@ import com.umeng.socialize.controller.listener.SocializeListeners;
 import com.umeng.socialize.media.BaseShareContent;
 import com.umeng.socialize.media.QQShareContent;
 import com.umeng.socialize.media.QZoneShareContent;
-import com.umeng.socialize.media.SimpleShareContent;
 import com.umeng.socialize.media.SinaShareContent;
-import com.umeng.socialize.media.TencentWbShareContent;
 import com.umeng.socialize.media.UMImage;
-import com.umeng.socialize.media.UMediaObject;
 import com.umeng.socialize.sso.QZoneSsoHandler;
 import com.umeng.socialize.sso.SinaSsoHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;

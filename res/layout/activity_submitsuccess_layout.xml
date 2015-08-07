@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 提交成功页面 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,35 +12,49 @@
             style="@style/text_black18_style"
             android:layout_width="match_parent"
             android:gravity="center"
-            android:padding="15dp"
-            android:textSize="28sp"
+            android:layout_marginTop="105dp"
+            android:textSize="20sp"
+            android:textColor="#323537"
             android:text="@string/submitsuccess" 
             />
         <TextView
             android:id="@+id/tv_suggest"
             style="@style/text_black18_style"
             android:layout_width="match_parent"
-            android:layout_below="@+id/tv_submitsuccess"
-            android:padding="15dp"
-            android:textSize="15sp"
+            android:layout_marginTop="54dp"
+            android:gravity="center"
+            android:textColor="#898989"
+            android:textSize="16sp"
+            android:text="被导师钦点只有两个秘诀" 
+            />
+         <TextView
+            android:id="@+id/tv_suggest_info"
+            style="@style/text_black18_style"
+            android:layout_width="match_parent"
+            android:layout_marginTop="31dp"
+            android:layout_marginLeft="63dp"
+            android:layout_marginRight="63dp"
+            android:lineSpacingExtra="11dp"
+            android:textColor="#898989"
+            android:textSize="12sp"
             android:text="@string/suggest" 
             />
+
          <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="100dp"
-            android:layout_alignParentBottom="true"
-        	android:layout_centerHorizontal="true"
-        	android:layout_marginBottom="57dp" >
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:gravity="bottom|center"
+             android:orientation="vertical" >
 
-  		  <Button
-	        android:id="@+id/btn_goback"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	       
-	        android:background="#ffffff"
-	        android:text="@string/goback" />
-    	</LinearLayout>
+             <Button
+                 android:id="@+id/btn_goback"
+                 android:layout_width="267dp"
+                 android:layout_height="51dp"
+                 android:layout_marginBottom="16dp"
+                 android:background="@drawable/btn_submitsuccess_frame"
+                 android:text="@string/goback"
+                 android:textColor="#333636"
+                 android:textSize="16dp" />
+         </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -1,12 +1,8 @@
 package com.dcy.psychology.view;
 
-import com.dcy.psychology.R;
-
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.AttributeSet;

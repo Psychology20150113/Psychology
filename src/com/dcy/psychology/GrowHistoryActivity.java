@@ -9,7 +9,6 @@ import com.dcy.psychology.db.SqlConstants;
 import com.dcy.psychology.gsonbean.GrowModelBean;
 import com.dcy.psychology.model.GrowWriteItem;
 import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.ShareUtils;
 import com.dcy.psychology.util.Utils;
 import com.umeng.socialize.sso.UMSsoHandler;
 
@@ -36,7 +35,7 @@ public class GrowHistoryActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_grow_history_layout);
 		setTopTitle(R.string.grow_history);
-		setRightView(R.drawable.icon_share);
+		setRightView2(R.drawable.icon_share);
 		mDbHelper = new DbHelper(this, SqlConstants.DBName, SqlConstants.DbVersion, SqlConstants.CreateTableSql);
 		bean = (GrowModelBean) getIntent().getSerializableExtra(Constants.GrowModelBean);
 		themeIndex = getIntent().getIntExtra(Constants.ThemeIndex, 0);
@@ -54,7 +53,7 @@ public class GrowHistoryActivity extends BaseActivity {
 	}
 
 	@Override
-	public void onRightViewClick() {
+	public void onRightView2Click() {
 		showSharePopupWindow();
 	}
 	
@@ -128,6 +127,7 @@ public class GrowHistoryActivity extends BaseActivity {
 			return Utils.publishComment(MyApplication.myPhoneNum, params[0], Constants.IdOfGrowMode[themeIndex]);
 		}
 		
+		@Override
 		protected void onPostExecute(String result) {
 			if(TextUtils.isEmpty(result))
 				return;

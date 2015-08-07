@@ -1,6 +1,7 @@
 package com.dcy.psychology;
 
 import com.dcy.psychology.R;
+import com.dcy.psychology.fragment.GetFollowUsersFragment;
 import com.dcy.psychology.util.Constants;
 
 import android.content.Intent;
@@ -24,7 +25,7 @@ public class MineActivity extends BaseActivity implements OnClickListener{
 		Intent mIntent = null;
 		switch (v.getId()) {
 		case R.id.tv_attention:
-			mIntent = new Intent(this, GetFollowUsersActivity.class);
+			mIntent = new Intent(this, GetFollowUsersFragment.class);
 			break;
 		case R.id.tv_dna:
 			mIntent = new Intent(this, ShowListActivity.class);

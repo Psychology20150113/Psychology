@@ -14,8 +14,8 @@ public class PageIndicatorView extends LinearLayout {
 	
 	public PageIndicatorView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		mLayoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
-				LayoutParams.WRAP_CONTENT);
+		mLayoutParams = new LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		mLayoutParams.leftMargin = getResources().getDimensionPixelSize(
 				R.dimen.margin_1x);
 	}

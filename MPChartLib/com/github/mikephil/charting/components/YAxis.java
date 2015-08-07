@@ -311,7 +311,7 @@ public class YAxis extends AxisBase {
         p.setTextSize(mTextSize);
 
         String label = getLongestLabel();
-        return (float) Utils.calcTextWidth(p, label) + getXOffset() * 2f;
+        return Utils.calcTextWidth(p, label) + getXOffset() * 2f;
     }
 
     public float getRequiredHeightSpace(Paint p) {
@@ -319,7 +319,7 @@ public class YAxis extends AxisBase {
         p.setTextSize(mTextSize);
 
         String label = getLongestLabel();
-        return (float) Utils.calcTextHeight(p, label) + getYOffset() * 2f;
+        return Utils.calcTextHeight(p, label) + getYOffset() * 2f;
     }
 
     @Override

@@ -44,7 +44,7 @@ public class XAxisRendererBarChart extends XAxisRenderer {
 
             // consider groups (center label for each group)
             if (step > 1) {
-                position[0] += ((float) step - 1f) / 2f;
+                position[0] += (step - 1f) / 2f;
             }
 
             mTrans.pointValuesToPixel(position);

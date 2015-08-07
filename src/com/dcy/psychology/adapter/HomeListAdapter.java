@@ -5,13 +5,11 @@ import java.util.ArrayList;
 
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.GrowPictureBean;
-import com.dcy.psychology.gsonbean.GrowQuestionBean;
 import com.dcy.psychology.util.Constants;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

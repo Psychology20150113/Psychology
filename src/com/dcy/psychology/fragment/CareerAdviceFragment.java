@@ -1,14 +1,16 @@
 package com.dcy.psychology.fragment;
 
+import com.dcy.psychology.LoginActivity;
+import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
-import com.dcy.psychology.view.dialog.IndividualDialog;
-import com.dcy.psychology.xinzeng.AboutActivity;
 import com.dcy.psychology.xinzeng.AdvanceActivity;
+import com.dcy.psychology.xinzeng.Mine_talkaboutActivity;
 import com.dcy.psychology.xinzeng.UnderwayActivity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,18 +40,34 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Intent nIntent = null;
 		switch (v.getId()) {
 		case R.id.btn_mine_talkabout:
-			nIntent = new Intent(mContext, IndividualDialog.class);
+			
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				nIntent = new Intent(mContext, LoginActivity.class);
+			} else
+			{
+			nIntent = new Intent(mContext, Mine_talkaboutActivity.class);
+			}
 			
 			break;
 		case R.id.btn_advance:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				nIntent = new Intent(mContext, LoginActivity.class);
+			} else
+			{
 			nIntent = new Intent(mContext, AdvanceActivity.class);
+			}
 			break;
 		case R.id.btn_underway:
+			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
+				nIntent = new Intent(mContext, LoginActivity.class);
+			} else
+			{
 			nIntent = new Intent(mContext, UnderwayActivity.class);
+			}		
 			break;
 		
 		}

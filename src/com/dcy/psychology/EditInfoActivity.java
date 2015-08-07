@@ -3,25 +3,18 @@ package com.dcy.psychology;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import cn.jpush.android.api.e;
-
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.SimpleTextAdapter;
 import com.dcy.psychology.db.DbManager;
 import com.dcy.psychology.gsonbean.BasicBean;
-import com.dcy.psychology.gsonbean.GrowQuestionBean;
 import com.dcy.psychology.model.IdAndName;
 import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.ThoughtReadingUtils;
 import com.dcy.psychology.util.Utils;
-import com.dcy.psychology.view.dialog.SimpleMessageDialog;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;

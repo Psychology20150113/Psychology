@@ -152,9 +152,9 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
         } else {
 
             // calculate how often the group-space appears
-            int steps = (int) ((float) xPosition / ((float) setCount + mData.getGroupSpace()));
+            int steps = (int) ((float) xPosition / (setCount + mData.getGroupSpace()));
 
-            float groupSpaceSum = mData.getGroupSpace() * (float) steps;
+            float groupSpaceSum = mData.getGroupSpace() * steps;
 
             float baseNoSpace = (float) xPosition - groupSpaceSum;
 
@@ -260,7 +260,8 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * 
      * @return
      */
-    public boolean isDrawHighlightArrowEnabled() {
+    @Override
+	public boolean isDrawHighlightArrowEnabled() {
         return mDrawHighlightArrow;
     }
 
@@ -279,7 +280,8 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * 
      * @return
      */
-    public boolean isDrawValueAboveBarEnabled() {
+    @Override
+	public boolean isDrawValueAboveBarEnabled() {
         return mDrawValueAboveBar;
     }
 
@@ -298,7 +300,8 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * 
      * @return
      */
-    public boolean isDrawValuesForWholeStackEnabled() {
+    @Override
+	public boolean isDrawValuesForWholeStackEnabled() {
         return mDrawValuesForWholeStack;
     }
 
@@ -318,7 +321,8 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * 
      * @return
      */
-    public boolean isDrawBarShadowEnabled() {
+    @Override
+	public boolean isDrawBarShadowEnabled() {
         return mDrawBarShadow;
     }
 

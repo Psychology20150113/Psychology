@@ -431,7 +431,7 @@ public abstract class Utils {
 
             if (axis == null || sel.dataSet.getAxisDependency() == axis) {
 
-                float cdistance = Math.abs((float) sel.val - val);
+                float cdistance = Math.abs(sel.val - val);
                 if (cdistance < distance) {
                     index = valsAtIndex.get(i).dataSetIndex;
                     distance = cdistance;
@@ -464,7 +464,7 @@ public abstract class Utils {
 
             if (sel.dataSet.getAxisDependency() == axis) {
 
-                float cdistance = Math.abs((float) sel.val - val);
+                float cdistance = Math.abs(sel.val - val);
                 if (cdistance < distance) {
                     distance = cdistance;
                 }

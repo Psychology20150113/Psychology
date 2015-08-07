@@ -1,5 +1,6 @@
 package com.dcy.psychology;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -7,7 +8,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.dcy.psychology.R;
@@ -17,10 +21,11 @@ import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 
-public class LoginActivity extends BaseActivity implements OnClickListener{
+public class LoginActivity extends Activity implements OnClickListener{
 	private EditText accountET;
 	private EditText pwdET;
 	private String userRole;
+	private ImageView backview;
 	
 	private class LoginTask extends AsyncTask<Void, Void, LoginBean>{
 		@Override
@@ -30,7 +35,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		
 		@Override
 		protected void onPostExecute(LoginBean result) {
-			hideCustomDialog();
+			//hideCustomDialog();
 			if("NO".equals(result.getResult())){
 				Toast.makeText(LoginActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
 			}else {
@@ -86,13 +91,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
+		//this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_login_layout);
 		userRole = getIntent().getStringExtra(Constants.UserRole);
 		initView();
 	}
 	
 	private void initView(){
-		setTopTitle(R.string.login);
+		//setTopTitle(R.string.login);
 		/*if(userRole == null || Constants.RoleUser.equals(userRole)){
 			setRightText(R.string.register);
 		}*/
@@ -101,6 +108,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		findViewById(R.id.login_btn).setOnClickListener(this);
 		findViewById(R.id.register_btn).setOnClickListener(this);
 		findViewById(R.id.find_pwd_tv).setOnClickListener(this);
+		backview=(ImageView) findViewById(R.id.iv_back);
+		backview.setImageResource(R.drawable.back);
+		backview.setOnClickListener(this);
 	}
 	
 	/*@Override
@@ -114,7 +124,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		switch (view.getId()) {
 		case R.id.login_btn:
 			if(checkInput()){
-				showCustomDialog();
+				//showCustomDialog();
 				new LoginTask().execute();
 			}
 			break;
@@ -124,6 +134,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		case R.id.register_btn:
 			startActivity(new Intent(this, PhoneRegisterActivity.class));
 			break;
+		case R.id.iv_back:
+			finish();
+		break;
 		default:
 			break;
 		}

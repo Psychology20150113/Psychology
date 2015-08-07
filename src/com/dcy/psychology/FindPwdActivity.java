@@ -1,7 +1,5 @@
 package com.dcy.psychology;
 
-import u.aly.br;
-
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
@@ -15,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +31,7 @@ public class FindPwdActivity extends BaseActivity implements OnClickListener{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.activity_find_pwd_layout);
 		initView();
 		mShared = new InfoShared(this);
@@ -46,7 +45,7 @@ public class FindPwdActivity extends BaseActivity implements OnClickListener{
 		mSecondPwdEt = (EditText) findViewById(R.id.second_password_et);
 		mGetCodeText = (TextView) findViewById(R.id.get_code_tv);
 		mGetCodeText.setOnClickListener(this);
-		findViewById(R.id.change_ok_tv).setOnClickListener(this);
+		findViewById(R.id.ok_login_tv).setOnClickListener(this);
 	}
 	
 	private class ChangePwdTask extends AsyncTask<String, Void, BasicBean>{
@@ -114,7 +113,7 @@ public class FindPwdActivity extends BaseActivity implements OnClickListener{
 				showCustomDialog();
 				new GetFindSmsCodeTask().execute();
 				break;
-			case R.id.change_ok_tv:
+			case R.id.ok_login_tv:
 				if(!checkInput()){
 					return;
 				}

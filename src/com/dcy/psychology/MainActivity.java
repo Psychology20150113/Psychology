@@ -27,7 +27,6 @@ import android.view.View.OnClickListener;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.Toast;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
 	
@@ -174,6 +173,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		switch (v.getId()) {
 			case R.id.login_tv:
 				new Thread(){
+					@Override
 					public void run() {
 						Utils.getLoginWeb("blue", "123456");
 						//Utils.getArticleList();

@@ -7,7 +7,6 @@ import com.dcy.psychology.fragment.MatchestSpecicalUserFragment;
 import com.dcy.psychology.fragment.MineMarkFragment;
 import com.dcy.psychology.util.Utils;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;

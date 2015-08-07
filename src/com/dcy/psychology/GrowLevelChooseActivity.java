@@ -99,6 +99,7 @@ public class GrowLevelChooseActivity extends BaseActivity implements OnClickList
 		}
 	};
 	
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (resultCode) {
 		case 1:
@@ -112,6 +113,7 @@ public class GrowLevelChooseActivity extends BaseActivity implements OnClickList
 		}
 	};
 	
+	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
 		default:

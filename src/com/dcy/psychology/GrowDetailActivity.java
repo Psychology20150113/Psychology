@@ -22,7 +22,7 @@ public class GrowDetailActivity extends BaseActivity {
 		themeIndex = mIntent.getIntExtra(Constants.ThemeIndex, 0);
 		level = mIntent.getIntExtra(Constants.Level, 0);
 		setTopTitle(bean.getTitle());
-		setRightView(R.drawable.icon_history);
+		setRightView2(R.drawable.icon_history);
 		GrowDetailView detailView = (GrowDetailView) findViewById(R.id.detail_view);
 		detailView.saveCompeLevel(mIntent.getBooleanExtra(Constants.IsSpecial, false), 
 				themeIndex, level);
@@ -30,7 +30,7 @@ public class GrowDetailActivity extends BaseActivity {
 	}
 	
 	@Override
-	public void onRightViewClick() {
+	public void onRightView2Click() {
 		Intent mIntent = new Intent(this, GrowHistoryActivity.class);
 		mIntent.putExtra(Constants.GrowModelBean, bean);
 		mIntent.putExtra(Constants.ThemeIndex, themeIndex);

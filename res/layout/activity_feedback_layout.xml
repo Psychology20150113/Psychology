@@ -4,57 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-   <View 
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/v2_divider"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:orientation="vertical" 
-        android:background="#ffffff"
-        android:layout_gravity="center">
-        
-        <TextView 
-       
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:padding="5dp"
-        android:text="@string/your_email"
-        android:gravity="center"
-        android:textSize="15sp"
-        />
-    <TextView 
-       
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:padding="5dp"
-        android:text="@string/reply"
-        android:textSize="15sp"
-        />
- 	</LinearLayout>
  	<View 
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/v2_divider"/>
-
-    
-    
-    
-    <TextView 
-       
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:text="@string/ourphone"
-        android:gravity="center_horizontal"
-        android:textSize="20sp"
-        />
+   
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -66,17 +20,22 @@
        
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         android:layout_marginRight="25dp"
+        android:layout_marginRight="25dp"
+        android:padding="15dp"
         android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="13sp"
         android:text="@string/write_advice"
-        android:padding="5dp"
         />
      <EditText
         android:id="@+id/mail_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginLeft="22dp"
+        android:padding="5dp"
+        android:textColor="#898989"
+        android:textSize="16sp"
         android:background="#ffffff" >
 
         <requestFocus />
@@ -92,13 +51,13 @@
 
     <Button
         android:id="@+id/btn_submit"
-        android:layout_width="208dp"
-        android:layout_height="51dp"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
         android:background="@drawable/bg_btn10"
-        android:layout_marginBottom="20dip"
-        android:layout_gravity="center"
+        android:layout_marginBottom="16dip"
+        android:layout_gravity="bottom"
         android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:text="@string/submit" />
     </LinearLayout>
 

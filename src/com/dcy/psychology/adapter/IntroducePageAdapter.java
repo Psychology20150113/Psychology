@@ -18,7 +18,7 @@ public class IntroducePageAdapter extends PagerAdapter {
 	
 	public IntroducePageAdapter(Context mContext) {
 		mIntroduceView = new ArrayList<View>();
-		LayoutParams mMatchParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		LayoutParams mMatchParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT);
 		for(int i = 0; i < resId.length; i ++){
 			ImageView itemView = new ImageView(mContext);
 			itemView.setLayoutParams(mMatchParams);

@@ -5,7 +5,6 @@ import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.BlackHoleView;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;

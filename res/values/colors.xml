@@ -15,20 +15,24 @@
     <color name="tab_gray">#888888</color>
     <color name="bg_gray">#f0f0f0</color>
     <color name="bg_problem_one">#a989bd</color>
-    <color name="bg_problem_two">#f8ac2f</color>
+    <color name="bg_problem_to">#f8ac2f</color>
     <color name="bg_problem_three">#87abd9</color>
     <color name="bg_student_one">#8fdbb3</color>
     <color name="bg_student_two">#a1c1e3</color>
     <color name="bg_student_three">#b9ade9</color>
-    <color name="bg_check_item">#ffa062</color>
-    <color name="bg_save_btn">#ff6622</color>
+    <color name="bg_check_item">#ec833c</color>
+    <color name="bg_save_btn">#e8722f</color>
     
     <color name="crop__button_bar">#f3f3f3</color>
     <color name="crop__button_text">#666666</color>
     <color name="crop__selector_pressed">#1a000000</color>
     <color name="crop__selector_focused">#77000000</color>
     <color name="v2_orange">#ed823b</color>
-    <color name="v2_divider">#ECE8E3</color>
+     <color name="v2_blue">#578fbe</color>
+    
+    <color name="v2_divider">#f1f2e8</color>
     <color name="v2_gray">#898989</color>
     <color name="white">#ffffff</color>
+    <color name="questionbule">#F80909</color>
+    <color name="transparent">#99ffffff</color> 
 </resources>

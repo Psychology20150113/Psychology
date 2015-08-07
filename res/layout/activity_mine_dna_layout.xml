@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:checkedButton="@+id/rb_mark"
+        android:background="#ffffff"
         android:orientation="horizontal">
         <RadioButton 
             android:id="@+id/rb_mark"
@@ -16,6 +17,7 @@
             android:layout_height="match_parent"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
+            android:layout_marginLeft="31dp"
             android:text="@string/mark"
             android:gravity="center"
             android:button="@null"
@@ -28,6 +30,7 @@
             android:layout_height="match_parent"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
+            android:layout_marginRight="31dp"
             android:text="@string/match"
             android:gravity="center"
             android:button="@null"
@@ -36,7 +39,7 @@
     </RadioGroup>
     <ImageView 
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:background="@color/divider"/>
 	<android.support.v4.view.ViewPager
 	    android:id="@+id/vp_mine_dna"

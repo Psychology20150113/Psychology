@@ -177,7 +177,7 @@ public class Legend extends ComponentBase {
 
             if (mLabels[i] != null) {
 
-                float length = (float) Utils.calcTextWidth(p, mLabels[i]);
+                float length = Utils.calcTextWidth(p, mLabels[i]);
 
                 if (length > max)
                     max = length;
@@ -201,7 +201,7 @@ public class Legend extends ComponentBase {
 
             if (mLabels[i] != null) {
 
-                float length = (float) Utils.calcTextHeight(p, mLabels[i]);
+                float length = Utils.calcTextHeight(p, mLabels[i]);
 
                 if (length > max)
                     max = length;
@@ -774,10 +774,10 @@ public class Legend extends ComponentBase {
             mTextHeightMax = getMaximumEntryHeight(labelpaint);
             mNeededWidth = maxLineWidth;
             mNeededHeight = labelLineHeight
-                    * (float) (mCalculatedLineSizes.length)
+                    * (mCalculatedLineSizes.length)
                     +
                     mYEntrySpace
-                    * (float) (mCalculatedLineSizes.length == 0 ? 0
+                    * (mCalculatedLineSizes.length == 0 ? 0
                             : (mCalculatedLineSizes.length - 1));
 
         } else {

@@ -1,8 +1,6 @@
 package com.dcy.psychology.view;
 
 import java.util.ArrayList;
-import java.util.Random;
-
 import com.dcy.psychology.R;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;
@@ -11,10 +9,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -85,7 +81,7 @@ public class GrowLevelView extends LinearLayout{
 		InfoShared info = new InfoShared(mContext);
 		savedPosition = info.getInt(String.format(info.ThemeFormat, String.valueOf(isSpecial) , themeIndex));
 		LinearLayout mContentLayout = new LinearLayout(mContext);
-		LayoutParams contentParams = new LayoutParams(LayoutParams.MATCH_PARENT, dpToPx(100)*count);
+		LayoutParams contentParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, dpToPx(100)*count);
 		contentParams.bottomMargin = dpToPx(100);
 		mContentLayout.setLayoutParams(contentParams);
 		mContentLayout.setOrientation(LinearLayout.VERTICAL);
@@ -99,8 +95,9 @@ public class GrowLevelView extends LinearLayout{
 		if(count > 0)
 			setSavedBirdPosition(count);
 		new Handler().postDelayed(new Runnable() {
+			@Override
 			public void run() {
-				mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+				mScrollView.fullScroll(View.FOCUS_DOWN);
 			}
 		},10);
 	}
@@ -130,7 +127,7 @@ public class GrowLevelView extends LinearLayout{
 				item.setClickable(false);
 			}
 		}
-		item.setText("µÚ" + (i+1) + "¹Ø");
+		item.setText("ï¿½ï¿½" + (i+1) + "ï¿½ï¿½");
 		item.setGravity(Gravity.CENTER);
 		buttonList.add(item);
 		mContentLayout.addView(item);

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.text.TextPaint;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,18 +12,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.dcy.psychology.DoctorPersonalInfo;
-import com.dcy.psychology.PersonalInfoActivity;
 import com.dcy.psychology.R;
-import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
-import com.dcy.psychology.util.Utils;
-import com.dcy.psychology.view.CustomProgressDialog;
-import com.dcy.psychology.view.dialog.ShareMatchDialog;
 
 public class TalkingAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
@@ -87,14 +80,14 @@ public class TalkingAdapter extends BaseAdapter {
 				new AsyncImageCache.NetworkImageGenerator(item.SpecificUserHeadUrl, item.SpecificUserHeadUrl));
 		mHolder.nameTv2.setText(item.SpecificUserName);
 		mHolder.time.setText("20150710 11:00");
-		mHolder.tv.setText("Ê£Óà1Ğ¡Ê±");
-		mHolder.tv.setText("106ÈË¹Ø×¢");
+		mHolder.surplus.setText("å‰©ä½™1å°æ—¶");
+		mHolder.tv.setText("106å…³æ³¨");
 		mHolder.nameTv1.setText(item.SpecificUserName);
 		mHolder.infoLayout.setTag(item.SpecificUserPhone);
 		return convertView;
 	}
 	
-	//´¥ÃşÌø×ªµ½ĞÄÇçÊ¦ÏêÇé
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½ï¿½
 	private OnClickListener lookInfoListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {

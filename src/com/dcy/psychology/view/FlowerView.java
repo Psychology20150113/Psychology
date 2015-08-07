@@ -7,16 +7,11 @@ import com.dcy.psychology.util.FlowerGameUtils;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 public class FlowerView extends FrameLayout {
 	private ImageView[] petalArray;

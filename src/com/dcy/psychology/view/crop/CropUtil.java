@@ -126,7 +126,8 @@ class CropUtil {
         private final Runnable mJob;
         private final Handler mHandler;
         private final Runnable mCleanupRunner = new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 mActivity.removeLifeCycleListener(BackgroundJob.this);
                 if (mDialog.getWindow() != null) mDialog.dismiss();
             }
@@ -141,7 +142,8 @@ class CropUtil {
             mHandler = handler;
         }
 
-        public void run() {
+        @Override
+		public void run() {
             try {
                 mJob.run();
             } finally {

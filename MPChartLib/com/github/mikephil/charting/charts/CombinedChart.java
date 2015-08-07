@@ -119,7 +119,8 @@ public class CombinedChart extends BarLineChartBase<CombinedData> implements Lin
         mRenderer.initBuffers();
     }
 
-    public void setFillFormatter(FillFormatter formatter) {
+    @Override
+	public void setFillFormatter(FillFormatter formatter) {
 
         if (formatter == null)
             formatter = new DefaultFillFormatter();

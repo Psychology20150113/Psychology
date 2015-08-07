@@ -1,7 +1,6 @@
 package com.dcy.psychology.adapter;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

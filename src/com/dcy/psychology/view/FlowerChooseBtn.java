@@ -6,7 +6,6 @@ import com.dcy.psychology.util.FlowerGameUtils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable.Orientation;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;

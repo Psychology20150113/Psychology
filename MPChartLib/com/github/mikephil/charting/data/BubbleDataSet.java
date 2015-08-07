@@ -143,11 +143,11 @@ public class BubbleDataSet extends BarLineScatterCandleDataSet<BubbleEntry> {
     }
 
     private float xMin(BubbleEntry entry) {
-        return (float) entry.getXIndex();
+        return entry.getXIndex();
     }
 
     private float xMax(BubbleEntry entry) {
-        return (float) entry.getXIndex();
+        return entry.getXIndex();
     }
 
     private float largestSize(BubbleEntry entry) {

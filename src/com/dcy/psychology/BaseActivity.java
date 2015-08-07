@@ -45,12 +45,12 @@ public class BaseActivity extends Activity {
 	private View mTitleView;
 	private TextView mTitleText;
 	protected LayoutInflater mInflater;
-	private View infoLayout;
 	protected Resources mResources;
 	private CustomProgressDialog mDialog;
 	private TextView mTopRightText;
 	private ImageView mLeftView;
-	private ImageView mRightView;
+	private ImageView mRightView1;
+	private ImageView mRightView2;
 	private PopupWindow mShareWindow;
 	protected ShareUtils mShareUtils;
 	
@@ -68,11 +68,14 @@ public class BaseActivity extends Activity {
 			case R.id.top_right_tv:
 				onRightTextClick();
 				break;
-			case R.id.ll_left:
+			case R.id.top_left_iv:
 				onLeftViewClick();
 				break;
-			case R.id.top_right_iv:
-				onRightViewClick();
+			case R.id.top_right_iv1:
+				onRightView1Click();
+				break;
+			case R.id.top_right_iv2:
+				onRightView2Click();
 				break;
 			default:
 				break;
@@ -263,12 +266,16 @@ public class BaseActivity extends Activity {
 		mTopRightText = (TextView) mTitleView.findViewById(R.id.top_right_tv);
 		mTopRightText.setOnClickListener(mClickListener);
 		mLeftView = (ImageView) mTitleView.findViewById(R.id.top_left_iv);
-		//mLeftView.setOnClickListener(mClickListener);
+		mLeftView.setOnClickListener(mClickListener);
 		mLeftView.setImageResource(R.drawable.icon_back);
-		infoLayout = mTitleView.findViewById(R.id.ll_left);
-		infoLayout.setOnClickListener(mClickListener);
-		mRightView = (ImageView) mTitleView.findViewById(R.id.top_right_iv);
-		mRightView.setOnClickListener(mClickListener);
+		
+		
+		/*infoLayout = mTitleView.findViewById(R.id.top_left_iv);
+		infoLayout.setOnClickListener(mClickListener);*/
+		mRightView1 = (ImageView) mTitleView.findViewById(R.id.top_right_iv1);
+		mRightView1.setOnClickListener(mClickListener);
+		mRightView2 = (ImageView) mTitleView.findViewById(R.id.top_right_iv2);
+		mRightView2.setOnClickListener(mClickListener);
 	}
 	
 	public void setTopTitle(int resId){
@@ -295,9 +302,13 @@ public class BaseActivity extends Activity {
 		mTopRightText.setVisibility(View.GONE);
 	}
 	
-	public void setRightView(int resId){
-		mRightView.setVisibility(View.VISIBLE);
-		mRightView.setImageResource(resId);
+	public void setRightView1(int resId){
+		mRightView1.setVisibility(View.VISIBLE);
+		mRightView1.setImageResource(resId);
+	}
+	public void setRightView2(int resId){
+		mRightView2.setVisibility(View.VISIBLE);
+		mRightView2.setImageResource(resId);
 	}
 	
 	public void hideTitleView(){
@@ -312,7 +323,8 @@ public class BaseActivity extends Activity {
 	
 	public void onLeftViewClick(){finish();};
 	
-	public void onRightViewClick(){};
+	public void onRightView1Click(){};
+	public void onRightView2Click(){};
 	
 	protected void showCustomDialog(){
 		if(mDialog == null){

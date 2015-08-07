@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="sp_choose_sex"> 
+        <item>@string/choose_sex</item> 
+        <item>@string/man</item> 
+        <item>@string/women</item> 
+    </string-array> 
     <string-array name="level_choose">
         <item>@string/easy</item>
         <item>@string/normal</item>
@@ -37,10 +42,10 @@
         <item>@string/label_platform_four</item>
     </string-array>
     <string-array name="slide_item_array">
-        <item>@string/slide_attention</item>
+        <item>@string/slide_mine_doctor</item>
         <item>@string/slide_dna</item>
         <item>@string/slide_message</item>
-        <item>@string/slide_problem</item>
+        <item>@string/slide_collect</item>
         <item>@string/slide_blackhole</item>
         <item>@string/slide_love</item>
         <item>@string/slide_point</item>

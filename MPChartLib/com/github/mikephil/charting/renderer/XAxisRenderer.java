@@ -37,7 +37,7 @@ public class XAxisRenderer extends AxisRenderer {
 
         StringBuffer a = new StringBuffer();
 
-        int max = (int) Math.round(xValAverageLength
+        int max = Math.round(xValAverageLength
                 + mXAxis.getSpaceBetweenLabels());
 
         for (int i = 0; i < max; i++) {

@@ -92,8 +92,8 @@ public class BubbleChartRenderer extends DataRenderer {
 
             final BubbleEntry entry = entries.get(j);
 
-            pointBuffer[0] = (float) (entry.getXIndex() - minx) * phaseX + (float) minx;
-            pointBuffer[1] = (float) (entry.getVal()) * phaseY;
+            pointBuffer[0] = (entry.getXIndex() - minx) * phaseX + minx;
+            pointBuffer[1] = (entry.getVal()) * phaseY;
             trans.pointValuesToPixel(pointBuffer);
 
             float shapeHalf = getShapeSize(entry.getSize(), dataSet.getMaxSize(), referenceSize) / 2f;
@@ -124,7 +124,7 @@ public class BubbleChartRenderer extends DataRenderer {
             return;
 
         // if values are drawn
-        if (bubbleData.getYValCount() < (int) (Math.ceil((float) (mChart.getMaxVisibleCount())
+        if (bubbleData.getYValCount() < (int) (Math.ceil((mChart.getMaxVisibleCount())
                 * mViewPortHandler.getScaleX()))) {
 
             final List<BubbleDataSet> dataSets = bubbleData.getDataSets();
@@ -223,8 +223,8 @@ public class BubbleChartRenderer extends DataRenderer {
             final float maxBubbleHeight = Math.abs(mViewPortHandler.contentBottom() - mViewPortHandler.contentTop());
             final float referenceSize = Math.min(maxBubbleHeight, maxBubbleWidth);
 
-            pointBuffer[0] = (float) (entry.getXIndex() - minx) * phaseX + (float) minx;
-            pointBuffer[1] = (float) (entry.getVal()) * phaseY;
+            pointBuffer[0] = (entry.getXIndex() - minx) * phaseX + minx;
+            pointBuffer[1] = (entry.getVal()) * phaseY;
             trans.pointValuesToPixel(pointBuffer);
 
             float shapeHalf = getShapeSize(entry.getSize(), dataSet.getMaxSize(), referenceSize) / 2f;

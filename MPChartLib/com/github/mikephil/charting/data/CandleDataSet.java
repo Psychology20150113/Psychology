@@ -50,7 +50,7 @@ public class CandleDataSet extends BarLineScatterCandleDataSet<CandleEntry> {
         List<CandleEntry> yVals = new ArrayList<CandleEntry>();
 
         for (int i = 0; i < mYVals.size(); i++) {
-            yVals.add(((CandleEntry) mYVals.get(i)).copy());
+            yVals.add(mYVals.get(i).copy());
         }
 
         CandleDataSet copied = new CandleDataSet(yVals, getLabel());

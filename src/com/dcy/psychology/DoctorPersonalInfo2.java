@@ -50,9 +50,9 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 	public void onClick(View v) {
 		showCustomDialog();
 		switch (v.getId()) {
-		case R.id.tv_item_match:
-			new GetMatchTask().execute(specialId);
-			break;
+//		/*case R.id.tv_item_match:
+//			new GetMatchTask().execute(specialId);
+//			break;*/
 		case R.id.tv_told:
 			if(mContext.getResources().getString(R.string.attention).equals(((TextView)v).getText())){
 				new FollowTask((TextView)v, false).execute(specialId);

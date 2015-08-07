@@ -558,7 +558,8 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
      *
      * @return
      */
-    public Transformer getTransformer(AxisDependency which) {
+    @Override
+	public Transformer getTransformer(AxisDependency which) {
         if (which == AxisDependency.LEFT)
             return mLeftAxisTransformer;
         else
@@ -823,7 +824,8 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
      * 
      * @param l
      */
-    public void setOnTouchListener(OnTouchListener l) {
+    @Override
+	public void setOnTouchListener(OnTouchListener l) {
         this.mListener = l;
     }
 
@@ -876,7 +878,8 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
         this.mMaxVisibleCount = count;
     }
 
-    public int getMaxVisibleCount() {
+    @Override
+	public int getMaxVisibleCount() {
         return mMaxVisibleCount;
     }
 
@@ -1233,7 +1236,8 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
     /**
      * returns the current x-scale factor
      */
-    public float getScaleX() {
+    @Override
+	public float getScaleX() {
         if (mViewPortHandler == null)
             return 1f;
         else
@@ -1243,7 +1247,8 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
     /**
      * returns the current y-scale factor
      */
-    public float getScaleY() {
+    @Override
+	public float getScaleY() {
         if (mViewPortHandler == null)
             return 1f;
         else
@@ -1396,11 +1401,13 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleData<? exte
         return mAxisRendererRight;
     }
 
-    public float getYChartMax() {
+    @Override
+	public float getYChartMax() {
         return Math.max(mAxisLeft.mAxisMaximum, mAxisRight.mAxisMaximum);
     }
 
-    public float getYChartMin() {
+    @Override
+	public float getYChartMin() {
         return Math.min(mAxisLeft.mAxisMinimum, mAxisRight.mAxisMinimum);
     }
 

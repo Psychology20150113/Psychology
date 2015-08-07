@@ -225,7 +225,7 @@ public class CommentListAdapter extends BaseAdapter implements OnClickListener{
 			}
 			parent.setVisibility(View.GONE);
 			showCustomDialog();
-			new CommentItemTask().execute((Integer)v.getTag() , content.getText().toString());
+			new CommentItemTask().execute(v.getTag() , content.getText().toString());
 			content.setText("");
 			break;
 		case R.id.item_hide_comment_ll:
