@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="sp_shoose_time">
+        <item>@string/time_slot1</item>
+        <item>@string/time_slot2</item>
+        <item>@string/time_slot3</item>
+        <item>@string/all</item>
+    </string-array>
+    <string-array name="sp_am">
+        <item>AM.</item>
+        <item>PM.</item>
+    </string-array>
     <string-array name="sp_choose_sex"> 
         <item>@string/choose_sex</item> 
         <item>@string/man</item> 

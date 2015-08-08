@@ -46,9 +46,7 @@ public class PersonalInfo_PerfectActivity extends BaseActivity implements OnClic
 		findViewById(R.id.tv_area).setOnClickListener(this);
 		mCache = AsyncImageCache.from(this);
 		showCustomDialog();
-		new GetInfoTask().execute();
-		
-		
+		new GetInfoTask().execute();				
 	}
 	@Override
 	public void onClick(View v) {

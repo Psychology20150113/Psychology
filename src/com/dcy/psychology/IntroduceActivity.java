@@ -40,7 +40,7 @@ public class IntroduceActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		startActivity(new Intent(this, SlideMainActivity.class));
+		startActivity(new Intent(this, LoginActivity.class));
 		finish();
 	}
 	

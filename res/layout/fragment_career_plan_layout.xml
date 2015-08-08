@@ -8,13 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView 
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="@string/hot_teacher"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textColor="@color/v2_orange"/>
+      
 		<com.dcy.psychology.view.PullRefreshListView 
 		    android:id="@+id/pull_refresh_lv"
 		    android:layout_width="match_parent"
@@ -31,9 +25,9 @@
         android:gravity="center"
         android:visibility="gone"
         android:textColor="@color/black"/>
-    <include 
+   <!--  <include 
         android:id="@+id/ll_complete_info"
-        layout="@layout/layout_perfect_info"/>
+        layout="@layout/layout_perfect_info"/> -->
     <TextView 
         android:id="@+id/tv_help"
         android:layout_width="match_parent"
@@ -43,7 +37,7 @@
         android:visibility="gone"
         android:gravity="center"
         android:text="帮"/>
-    <LinearLayout 
+<!--     <LinearLayout 
         android:id="@+id/ll_entry"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -73,5 +67,5 @@
             android:textSize="18sp"
             android:textColor="#ffffff"
             android:background="#3ab1d3"/>
-    </LinearLayout>
+    </LinearLayout> -->
 </FrameLayout>

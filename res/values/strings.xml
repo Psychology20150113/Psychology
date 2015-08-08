@@ -153,7 +153,7 @@
 	<string name="personal_data">个人资料</string>
 	<string name="mine_account">我的账户</string>
 	<string name="mine_favorite">我的收藏</string>
-	<string name="quit">退出登陆</string>
+	<string name="quit">退出登入</string>
 	<string name="thinking">感想</string>
 	<string name="think_title">请输入感想</string>
 	<string name="publish_success">发表成功</string>
@@ -192,8 +192,8 @@
 	<string name="class_type_one">课堂教学</string>
 	<string name="class_type_two">家庭作业</string>
 	<string name="class_type_three">课堂游戏</string>
-	<string name="student_entry">心晴生入口>></string>
-	<string name="teacher_entry">心晴师入口>></string>
+	<string name="student_entry">心晴生</string>
+	<string name="teacher_entry">心晴师</string>
 	
 	<string name="xingzuo">星座</string>
 	<string name="xingzuo_baiyang">白羊座</string>
@@ -304,9 +304,11 @@
 	<string name="underway">进行中</string>
 	<string name="toldabout">已约聊</string>
 	<string name="apply">申请约聊</string>
-	<string name="hope">希望请教的问题 (30-300字):</string>
-	<string name="liru">例如:</string>
-	<string name="convenience">方便聊天的时间:</string>
+	<string name="hope">希望请教的问题 (30-200字):</string>
+	<string name="introduce">个人介绍(30-200字)</string>
+	<string name="such_us">例如:回国半年，准备创业，考虑做一个健身O2O项目；之前在美国做律师，是一个很大的转变，心里没底，想快速了解和适应国内的创业环境。</string>
+	<string name="such_us_introduce">例如:我目前在一家科技媒体做运营，工作3年，传媒大学毕业，业余运营一个微信公众号，平时喜欢写文章，希望职业上有更好的突破。</string>
+	<string name="convenience">根据导师的空闲时间范围自己的空闲时段。</string>
 	<string name="submit">提交</string>
 	<string name="submitsuccess">提交成功</string>
 	<string name="suggest">尽量完善个人资料  &amp; 匹配度测试完整。只有被了解才能赢机会，一旦申请成功，详情将短信通知，如未能如愿，出记住两个秘诀外，还可以参加该导师的直播互动，为下一次的成功预约增加概率。</string>
@@ -348,6 +350,14 @@
 	<string name="personalinfo_perfect">个人 信息完善</string>
 	<string name="leisure">近期可约</string>
 	<string name="busy">近期忙碌</string>
+	<string name="applying">申请进行中</string>
+	<string name="apply_success">申请已成功</string>
+	<string name="apply_outtime">申请已过期</string>
+	<string name="focus">关注话题：</string>
+	<string name="time_slot1">00:00-04:00</string>
+	<string name="time_slot2">04:00-08:00</string>
+	<string name="time_slot3">08:00-12:00</string>
+	<string name="all">全部</string>
 	
 	
 	<string name="real_name">请填写真实姓名</string>
@@ -414,5 +424,5 @@
     <string name="tip_match">你未来可以成为他，用分享记录吧！</string>
     <string name="match_format">匹配度\n%s%%</string>
     <string name="share_to">分享到:</string>
-    <string name="login_now">立即登入</string>
+    <string name="login_now">登入</string>
 </resources>

@@ -72,7 +72,7 @@ import com.easemob.chatuidemo.DemoHXSDKHelper;
 import com.easemob.chatuidemo.R;
 import com.easemob.chatuidemo.activity.AlertDialog;
 import com.easemob.chatuidemo.activity.BaiduMapActivity;
-import com.easemob.chatuidemo.activity.ChatActivity;
+import com.dcy.psychology.ChatActivity;
 import com.easemob.chatuidemo.activity.ContextMenu;
 import com.easemob.chatuidemo.activity.ShowBigImage;
 import com.easemob.chatuidemo.activity.ShowNormalFileActivity;

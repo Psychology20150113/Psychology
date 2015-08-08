@@ -17,18 +17,34 @@
 	        android:layout_width="84dp"
 	        android:layout_height="84dp"
 	        android:src="@drawable/ic_launcher"/>
+        <!-- 蓝色框 -->
         <View 
             android:id="@+id/view_online"
             android:layout_width="11dp"
             android:layout_height="84dp"
             android:visibility="visible"
             android:background="#5991bf"/>
+        <!-- 灰色框 -->
         <View 
-            android:id="@+id/view_oline"
+            android:id="@+id/view_outline"
             android:layout_width="11dp"
             android:layout_height="84dp"
             android:visibility="gone"
             android:background="#898989"/>
+        <!-- 橙色框 -->
+        <View 
+            android:id="@+id/view_applying"
+            android:layout_width="11dp"
+            android:layout_height="84dp"
+            android:visibility="gone"
+            android:background="#ec833c"/>
+        <!-- 黑色框 -->
+        <View 
+            android:id="@+id/view_apply_success"
+            android:layout_width="11dp"
+            android:layout_height="84dp"
+            android:visibility="gone"
+            android:background="#333638"/>
         <LinearLayout 
             android:layout_width="match_parent"
             android:layout_height="84dp"
@@ -45,7 +61,25 @@
                     android:orientation="vertical">
                     <TextView 
 		                android:id="@+id/tv_item_name"
-		                style="@style/text_black18_style"/>
+		                style="@style/text_black18_style"
+		                android:visibility="visible"
+		                android:layout_marginTop="11dp"/>
+                    <!-- 热门 -->
+                    <TextView 
+		                android:id="@+id/tv_item_hotname"
+		                style="@style/text_black18_style"
+		                android:drawableRight="@drawable/bg_hot"
+		                android:drawablePadding="12dp"
+		                android:visibility="gone"
+		                android:layout_marginTop="11dp"/>
+                    <!-- 新 -->
+                    <TextView 
+		                android:id="@+id/tv_item_newname"
+		                style="@style/text_black18_style"
+		                android:drawableRight="@drawable/bg_new"
+		                android:drawablePadding="12dp"
+		                android:visibility="gone"
+		                android:layout_marginTop="11dp"/>
                     <TextView 
 		                android:id="@+id/tv_item_achieve"
 		                style="@style/text_gray16_style"
@@ -73,33 +107,10 @@
                 	    style="@style/text_black20_style"
                 	    android:text="无"/>
                 </LinearLayout> -->
-                 <LinearLayout 
-                    android:id="@+id/ll_now_apply"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    android:gravity="center_horizontal">
-                    <TextView 
-                        style="@style/text_black16_style"
-                        android:paddingLeft="10dp"
-                        android:textSize="13sp"
-                        android:text="申请进行中"
-                        />
-                	<TextView 
-                	    android:id="@+id/tv_now_apply"
-                	    style="@style/text_black20_style"
-                	    android:paddingLeft="10dp"
-                	    android:paddingTop="10dp"
-                	    android:paddingBottom="10dp"
-                	    android:textSize="13sp"
-                	    android:text="已申请:1次"/>
-                </LinearLayout>
                 <LinearLayout 
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:gravity="right"
                     >
                     <!-- 近期可约 -->
                     <TextView 
@@ -123,6 +134,42 @@
                         android:background="@drawable/bg_tv_busy"
                         android:gravity="center"
                         android:text="@string/busy"
+                        android:textColor="#ffffff"
+                        android:visibility="gone" />
+                    <!-- 申请进行中-->
+                    <TextView
+                        android:id="@+id/tv_applying"
+                        android:layout_width="77dp"
+                        android:layout_height="18dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="11dp"
+                        android:background="@drawable/bg_tv_applying"
+                        android:gravity="center"
+                        android:text="@string/applying"
+                        android:textColor="#ffffff"
+                        android:visibility="gone" />
+                    <!-- 申请已成功 -->
+                    <TextView
+                        android:id="@+id/tv_apply_success"
+                        android:layout_width="77dp"
+                        android:layout_height="18dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="11dp"
+                        android:background="@drawable/bg_tv_apply_success"
+                        android:gravity="center"
+                        android:text="@string/apply_success"
+                        android:textColor="#ffffff"
+                        android:visibility="gone"/>
+                    <!-- 申请已过期-->
+                    <TextView
+                        android:id="@+id/tv_apply_outtime"
+                        android:layout_width="77dp"
+                        android:layout_height="18dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="11dp"
+                        android:background="@drawable/bg_tv_busy"
+                        android:gravity="center"
+                        android:text="@string/apply_outtime"
                         android:textColor="#ffffff"
                         android:visibility="gone" />
 
@@ -180,12 +227,12 @@
 			    android:gravity="center_vertical"
 			    android:orientation="horizontal">
 			    <TextView 
-            	android:id="@+id/tv_fovus"
+            	android:id="@+id/tv_focus"
             	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
        			android:textSize="12sp"
        			android:textColor="@color/v2_gray"
-            	android:text="关注话题："/>
+            	android:text="@string/focus"/>
 			    <TextView 
             	android:id="@+id/tv_topic1"
             	android:layout_width="wrap_content"
@@ -235,7 +282,7 @@
             	android:layout_height="match_parent"
 				android:layout_weight="1"
        			android:textSize="10sp"
-       			
+       			android:textColor="#d8d3cd"
        			android:gravity="left|center_vertical"
             	android:text="2015.07.08 14:00提交"/>
 			    <TextView 
@@ -244,6 +291,8 @@
             	android:layout_height="match_parent"
 				android:layout_weight="2"
        			android:textSize="10sp"
+       			android:textColor="#d8d3cd"
+       			android:layout_marginRight="17dp"
        			android:gravity="right|center_vertical"
             	android:text="已申请0次"/>
 			    

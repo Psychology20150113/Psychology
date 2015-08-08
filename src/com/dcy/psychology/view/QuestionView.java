@@ -7,16 +7,17 @@ import com.dcy.psychology.R.color;
 import com.dcy.psychology.util.ThoughtReadingUtils.QuestionType;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -62,8 +63,8 @@ public class QuestionView extends RelativeLayout{
 	}
 	
 	public void setDate(int index, String title, ArrayList<String> optionList) {
-		LinearLayout questionLayout = new LinearLayout(mContext);
-		questionLayout.setOrientation(LinearLayout.VERTICAL);
+		RelativeLayout questionLayout = new RelativeLayout(mContext);
+		//questionLayout.setOrientation(LinearLayout.VERTICAL);
 		questionLayout.setGravity(Gravity.CENTER);
 		questionLayout.setLayoutParams(new RelativeLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
 		TextView titleView = new TextView(mContext);
@@ -73,7 +74,8 @@ public class QuestionView extends RelativeLayout{
 		titleView.setLineSpacing(0, 1.2f);// (add , mul)�м�������
 		SpannableStringBuilder builder = new SpannableStringBuilder(titleView.getText().toString());
 		// titleView.setTextScaleX(0.5f);
-		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_16);// �����С
+		int fontSize = mResources.getDimensionPixelSize(R.dimen.txt_size_16);
+		int fontSize1 = mResources.getDimensionPixelSize(R.dimen.txt_size_20);// �����С
 		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 		ForegroundColorSpan sp=new  ForegroundColorSpan(Color.parseColor("#2c60a9")); 
 		if(index<10)
@@ -88,14 +90,19 @@ public class QuestionView extends RelativeLayout{
 		}
 		
 		titleView.setText (builder);
-		questionLayout.addView(titleView);
+		RelativeLayout.LayoutParams tv = new RelativeLayout.LayoutParams
+				(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT); 
+		tv.topMargin= mResources.getDimensionPixelSize(R.dimen.titleview_height);
+		tv.addRule(RelativeLayout.ALIGN_PARENT_TOP); 
+		questionLayout.addView(titleView,tv);
 		android.view.ViewGroup.LayoutParams buttonParams = new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 
 				mResources.getDimensionPixelSize(R.dimen.title_height));
-		LinearLayout.LayoutParams dnaParams = new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
-		dnaParams.topMargin = mResources.getDimensionPixelSize(R.dimen.a_height);//ԲȦ�ĸ߶�
+		RelativeLayout.LayoutParams dnaParams = new RelativeLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+		dnaParams.bottomMargin = mResources.getDimensionPixelSize(R.dimen.radiobutton_height);//ԲȦ�ĸ߶�
+		dnaParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 		RadioGroup.LayoutParams rightParams = new RadioGroup.LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		rightParams.leftMargin = mResources.getDimensionPixelSize(R.dimen.title_height);
-		int itemColor = getResources().getColor(R.color.color_orange_gray_selector);
+		ColorStateList itemColor = getResources().getColorStateList(R.color.color_orange_gray_selector);
 		Drawable transparentDrawable = getResources().getDrawable(android.R.color.transparent);
 		switch (mQuestionType) {
 		case Type_Grow:
@@ -108,17 +115,17 @@ public class QuestionView extends RelativeLayout{
 			if(isDnaTest){
 				radioGroup.setOrientation(LinearLayout.HORIZONTAL);
 				radioGroup.setGravity(Gravity.CENTER);
-				radioGroup.setLayoutParams(dnaParams);
+				radioGroup.setLayoutParams(dnaParams);			
 			}
 			for (int i = 0; i < optionList.size(); i++) {
 				RadioButton rb = new RadioButton(mContext);
-				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);// ԲȦ�������С
+				rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize1);//是否的字体大小
 				if(isDnaTest){
 					rb.setButtonDrawable(transparentDrawable);
 					rb.setText(i == 0 ? R.string.yes : R.string.no);
 					rb.setGravity(Gravity.CENTER);
+					rb.setBackgroundResource(R.drawable.bg_circle_check_selector);				
 					rb.setTextColor(itemColor);
-					rb.setBackgroundResource(R.drawable.bg_circle_check_selector);
 					if(i == 1){
 						rb.setLayoutParams(rightParams);
 					}
