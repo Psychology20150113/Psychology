@@ -6,106 +6,137 @@
      android:background="#ffffff">
     <View 
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="6dp"
         android:background="@color/v2_divider"/>
      <LinearLayout 
         android:id="@+id/ll_item_talkabout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       	android:orientation="horizontal">
-        <LinearLayout 
-            android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	
-        	android:layout_weight="1"
-        	android:orientation="vertical" >
-
+        android:layout_height="102dp"
+       	android:orientation="horizontal">     
             <com.dcy.psychology.view.CornerImageView
-                android:id="@+id/iv_st_header"
-                android:layout_width="83dp"
-                android:layout_height="83dp"
-                android:layout_gravity="center"
+                android:id="@+id/iv_header"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="9dp"
                 android:src="@drawable/ic_launcher" />
+            <LinearLayout 
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="17dp"
+                    android:orientation="vertical">
+                    <TextView 
+		                android:id="@+id/tv_item_name"
+		                style="@style/text_black18_style"
+		                android:visibility="visible"
+		                android:layout_marginTop="11dp"/>
+                    <TextView 
+		                android:id="@+id/tv_item_achieve"
+		                style="@style/text_gray16_style"
+		                android:textSize="13sp"
+		                android:lines="1"/>
+                    <TextView 
+                    android:id="@+id/tv_doctor"
+                    android:layout_width="61dp"
+                    android:layout_height="16dp"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#ffffff"
+					android:background="@drawable/bg_tv_leisure"	
+                    android:text="@string/teacher_entry"/>
+                </LinearLayout>
+          <ImageView 
+              android:id="@+id/iv_remind"
+              android:layout_width="51dp"
+              android:layout_height="51dp"
+              android:visibility="visible"
+              android:background="@drawable/bg_remind"
+              android:layout_gravity="center_vertical"
+              android:layout_marginRight="8dp"/>
+          <ImageView 
+              android:id="@+id/iv_goto_chat"
+              android:layout_width="51dp"
+              android:layout_height="51dp"
+              android:visibility="gone"
+              android:background="@drawable/bg_goto_chat"
+              android:layout_gravity="center_vertical"
+              android:layout_marginRight="8dp"/>
+       
           
-           <TextView
-               android:id="@+id/tv_item_stname"
-               android:layout_width="83dp"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:gravity="center"
-               android:text=""
-               android:textSize="18sp" />
-          
-          </LinearLayout>
-        
-        <LinearLayout 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-               
-            <TextView
-                android:id="@+id/tv_item_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingBottom="8dp"
-                android:text=""
-                android:textSize="13sp" />
-             
-            <ImageView 
-                android:layout_width="fill_parent"
-                android:layout_height="3px"
-                android:layout_gravity="center"
-                android:background="@color/blacks"/>
-            
-            <TextView
-                android:id="@+id/tv_item_surplus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text=""
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/tv_item_concern"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text=""
-                android:textSize="13sp" />
-            
-		</LinearLayout>
+       
 		
-         <LinearLayout 
-            android:layout_width="fill_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_weight="1"
-      		
-        	android:orientation="vertical" >
-            
-		 <com.dcy.psychology.view.CornerImageView 
-	        android:id="@+id/iv_te_header"
-	        android:layout_width="83dp"
-	        android:layout_height="83dp"
-	        android:layout_gravity="center"
-	        android:src="@drawable/ic_launcher"/>
-
-			 <TextView
-			     android:id="@+id/tv_item_tename"
-			     android:layout_width="83dp"
-			     android:layout_height="wrap_content"
-			     android:layout_gravity="center"
-			     android:gravity="center"
-			     android:text=""
-			     android:textSize="18sp" />
-          
-         	 </LinearLayout>
 			      
 	</LinearLayout>
-    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="2dp" 
+        android:background="@color/v2_gray"/>
+    <RelativeLayout
+        android:id="@+id/rl_advice"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:visibility="visible"
+        android:orientation="horizontal">
+        <TextView 
+            android:id="@+id/tv_attention_amount"
+			style="@style/show_talk_about_tv_style"
+            android:layout_marginLeft="10dp"
+
+            android:text="已有100人关注"/>
+        <TextView 
+            android:id="@+id/tv_ptime"
+            style="@style/show_talk_about_tv_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:drawableLeft="@drawable/bg_clock"            
+            android:drawablePadding="5dp"
+            android:text="7月15日  17:30-18:30"/>
+    </RelativeLayout>
+     <RelativeLayout
+        android:id="@+id/rl_underway"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+        <TextView 
+            android:id="@+id/tv_discuss_amount"
+			style="@style/show_talk_about_tv_style"
+            android:layout_marginLeft="10dp"
+            android:text="已有100人参与讨论"/>
+        <TextView 
+            android:id="@+id/tv_surplus"
+            style="@style/show_talk_about_tv_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:drawableLeft="@drawable/bg_clock"            
+            android:drawablePadding="5dp"
+            android:text="还有3分钟结束"/>
+    </RelativeLayout>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:background="@color/v2_gray"/>
+    <LinearLayout 
+        android:id="@+id/ll_pull"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:gravity="center">
+        <ImageView 
+            android:id="@+id/iv_pullup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/bg_pullup"/>
+        <ImageView 
+            android:id="@+id/iv_pulldown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:background="@drawable/bg_pulldown"/>
+    </LinearLayout>
 
 </LinearLayout>

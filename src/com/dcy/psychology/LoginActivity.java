@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,6 +19,7 @@ import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
+import com.tencent.weibo.sdk.android.model.ImageInfo;
 
 public class LoginActivity extends Activity implements OnClickListener{
 	private EditText accountET;
@@ -51,10 +51,13 @@ public class LoginActivity extends Activity implements OnClickListener{
 				Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
 				mShared.savePhoneInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState(), result.isIsPrefectUserInfo());
 				new ChatLoginTask(LoginActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
-				Intent mIntent = new Intent();
+				Intent mIntent = new Intent(LoginActivity.this,SlideMainActivity.class);
 				mIntent.putExtra("login_success", true);
 				setResult(0, mIntent);
+				
+				
 				finish();
+				startActivityForResult(mIntent, 0);
 			}
 		}
 	} 
@@ -109,7 +112,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 		findViewById(R.id.register_btn).setOnClickListener(this);
 		findViewById(R.id.find_pwd_tv).setOnClickListener(this);
 		backview=(ImageView) findViewById(R.id.iv_back);
-		backview.setImageResource(R.drawable.back);
+		backview.setImageResource(R.drawable.icon_back1);
 		backview.setOnClickListener(this);
 	}
 	

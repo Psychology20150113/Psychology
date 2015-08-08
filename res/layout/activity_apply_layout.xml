@@ -4,94 +4,225 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
     <View 
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="13dp"
         android:background="@color/v2_divider"/>
-    <LinearLayout
+    <RelativeLayout 
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical" 
-        android:layout_gravity="center">
+        android:layout_height="wrap_content">
          <TextView 
-       
+        android:id="@+id/tv_hope"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        android:padding="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="7dp"
+        android:textColor="#33353a"
         android:text="@string/hope"
-        android:gravity="center"
-        android:textSize="15sp"
+        android:textSize="12sp"
         />
-    	<ImageView 
+         <TextView 
+             android:layout_width="48dp"
+             android:layout_height="16dp"
+             android:background="@drawable/bg_tv_number"
+             android:text="120字"
+             android:textColor="#ffffff"
+             android:textSize="12sp"
+             android:gravity="center"
+             android:layout_marginTop="13dp"
+             android:layout_marginRight="15dp"
+             android:layout_alignParentRight="true"
+             />
+    </RelativeLayout>
+        
+    	<View 
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginRight="10dp"
-            	android:layout_marginLeft="10dp"
-                android:background="@color/divider"/>
-    	<TextView 
-       
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:padding="5dp"
-        android:text="@string/liru"
-        android:textSize="15sp"
-        />
-    </LinearLayout>
+                android:layout_marginRight="17dp"
+            	android:layout_marginLeft="17dp"
+                android:background="#5991bf"/>
+
+    	<EditText
+    	    android:id="@+id/et_hope"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="131dp"
+    	    android:layout_marginLeft="20dp"
+    	    android:layout_marginRight="20dp"
+    	    android:background="#ffffff"
+    	    android:paddingTop="11dp"
+    	    android:ems="10"
+    	    android:gravity="left"
+    	    android:hint="@string/such_us"
+    	    android:textSize="16sp" >
+
+    	    <requestFocus />
+    	</EditText>
+    	<View 
+    	    android:layout_width="match_parent"
+    	    android:layout_height="1px"
+    	    android:background="@color/v2_gray"/>
+
     <View 
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="17dp"
         android:background="@color/v2_divider"/>
-    <LinearLayout
+    <RelativeLayout 
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical" 
-        android:layout_gravity="center">
-    	  <TextView 
-       
+        android:layout_height="wrap_content">
+         <TextView 
+        android:id="@+id/tv_introduce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        android:padding="10dp"
-        android:text="@string/convenience"
-        android:gravity="center"
-        android:textSize="15sp"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="7dp"
+        android:textColor="#33353a"
+        android:text="@string/introduce"
+        android:textSize="12sp"
         />
-    	<ImageView 
+         <TextView 
+             android:layout_width="48dp"
+             android:layout_height="16dp"
+             android:background="@drawable/bg_tv_number"
+             android:text="120字"
+             android:textColor="#ffffff"
+             android:textSize="12sp"
+             android:gravity="center"
+             android:layout_marginTop="13dp"
+             android:layout_marginRight="15dp"
+             android:layout_alignParentRight="true"
+             />
+    </RelativeLayout>
+        
+    	<View 
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginRight="10dp"
-            	android:layout_marginLeft="10dp"
-                android:background="@color/divider"/>
+                android:layout_marginRight="17dp"
+            	android:layout_marginLeft="17dp"
+                android:background="#5991bf"/>
+
+    	<EditText
+    	    android:id="@+id/et_ictroduce"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="113dp"
+    	    android:layout_marginLeft="20dp"
+    	    android:layout_marginRight="20dp"
+    	    android:background="#ffffff"
+    	    android:paddingTop="11dp"
+    	    android:ems="10"
+    	    android:gravity="left"
+    	    android:hint="@string/such_us_introduce"
+    	    android:textSize="16sp" >
+    	    <requestFocus />
+    	</EditText>
+    	<View 
+    	    android:layout_width="match_parent"
+    	    android:layout_height="1px"
+    	    android:background="@color/v2_gray"/>
+    	<View 
+    	    android:layout_width="match_parent"
+    	    android:layout_height="13dp"
+    	    android:background="@color/v2_divider"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        android:background="@color/v2_divider"
+        android:layout_gravity="center">
+    	<ImageView 
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:background="@drawable/bg_addtime"
+    	    android:layout_marginRight="20dp"
+    	    android:layout_alignParentRight="true"/>
+
+    	<TextView
+    	    android:id="@+id/tv_addtime"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="23dp"
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_alignParentTop="true"
+    	    android:gravity="center"
+    	    android:paddingLeft="20dp"
+    	    android:text="@string/convenience"
+    	    android:textSize="12sp" />
+    	<View 
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginRight="17dp"
+            	android:layout_marginLeft="17dp"
+            	android:layout_below="@id/tv_addtime"
+                android:background="#5991bf"/>
+    	<TextView 
+    	    android:id="@+id/tv_day1"
+    	    android:layout_width="117dp"
+			style="@style/apply_chooes_time_style"
+    	    android:layout_below="@id/tv_addtime"
+    	    android:layout_marginTop="14dp"
+
+    	    android:text="7月29日"/>
+    	<Spinner 
+    	    android:id="@+id/sp_choose_time1"
+    	    android:layout_width="167dp"
+			style="@style/apply_chooes_time_style"
+    	    android:layout_below="@id/tv_addtime"
+    	    android:layout_toRightOf="@id/tv_day1"
+    	    android:layout_marginTop="14dp"
+    	    android:layout_marginLeft="5dp"
+    	    />
+    	<Spinner 
+    	    android:id="@+id/sp_am_and_pm1"
+    	    android:layout_width="67dp"
+    	    style="@style/apply_chooes_time_style"
+    	    android:layout_below="@id/tv_addtime"
+    	    android:layout_toRightOf="@id/sp_choose_time1"
+    	    android:layout_marginTop="14dp"
+    	    android:layout_marginLeft="5dp"/>
+    	<TextView 
+    	    android:id="@+id/tv_day2"
+    	    android:layout_width="117dp"
+			style="@style/apply_chooes_time_style"
+    	    android:layout_below="@id/tv_day1"
+    	    android:layout_marginTop="7dp"
+
+    	    android:text="7月29日"/>
+    	<Spinner 
+    	    android:id="@+id/sp_choose_time2"
+    	    android:layout_width="167dp"
+			style="@style/apply_chooes_time_style"
+    	    android:layout_below="@id/sp_choose_time1"
+    	    android:layout_toRightOf="@id/tv_day2"
+    	    android:layout_marginTop="7dp"
+    	    android:layout_marginLeft="5dp"
+    	    />
+    	<Spinner 
+    	    android:id="@+id/sp_am_and_pm2"
+    	    android:layout_width="67dp"
+    	    style="@style/apply_chooes_time_style"
+    	    android:layout_below="@id/sp_am_and_pm1"
+    	    android:layout_toRightOf="@id/sp_choose_time2"
+    	    android:layout_marginTop="7dp"
+    	    android:layout_marginLeft="5dp"/>
     	
-    </LinearLayout>
-    <Button
+    	<Button
         android:id="@+id/btn_submit"
-        android:layout_width="208dp"
+        android:layout_width="267dp"
         android:layout_height="51dp"
         android:background="@drawable/bg_btn10"
-        android:layout_marginTop="50dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
         android:visibility="visible"
-        android:layout_gravity="center"
         android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:text="@string/submit" />
-    <!-- 申请结果已隐藏 -->
-     <TextView 
-       
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:padding="10dp"
-        android:visibility="gone"
-        android:text="@string/apply_result"
-        android:gravity="center"
-        android:textSize="12sp"/>
-    
+    	
+    </RelativeLayout>
     
 
 </LinearLayout>

@@ -10,22 +10,29 @@ import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.dialog.ShareMatchDialog;
+import com.dcy.psychology.xinzeng.ApplyActivity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener{
+public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 	private String phoneNum;
 	private TextView nameTv;
 	private ImageView headerView;
-	private TextView achieveView;
+	private ImageView IvshareView;
+	private ImageView Ivattention;
+	private TextView gotalkView;
+	private  ImageView mbackview;
 	private TextView mInfoView;
 	private AsyncImageCache mAsyncImageCache;
 	private Context mContext;
@@ -34,25 +41,29 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_doctor_info2_layout);
-		setTopTitle(R.string.doctor_info);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_personal_homepage_layout);
 		mContext = this;
 		mAsyncImageCache = AsyncImageCache.from(this);
 		initView();
 		phoneNum = getIntent().getStringExtra(Constants.PhoneNum);
 		if(!TextUtils.isEmpty(phoneNum)){
-			showCustomDialog();
+			//showCustomDialog();
 			new GetInfoTask().execute();
 		}
 	}
 	
 	@Override
 	public void onClick(View v) {
-		showCustomDialog();
+		//showCustomDialog();
 		switch (v.getId()) {
-//		/*case R.id.tv_item_match:
-//			new GetMatchTask().execute(specialId);
-//			break;*/
+		case R.id.iv_back:
+	   			finish();
+	   			break;
+		case R.id.tv_talk:
+	   			Intent mIntent =new Intent(this,ApplyActivity.class);
+	   			startActivity(mIntent);
+	   			break;
 		case R.id.tv_told:
 			if(mContext.getResources().getString(R.string.attention).equals(((TextView)v).getText())){
 				new FollowTask((TextView)v, false).execute(specialId);
@@ -77,7 +88,7 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 		
 		@Override
 		protected void onPostExecute(ArrayList<SpecificUserBean> result) {
-			hideCustomDialog();
+			//hideCustomDialog();
 			if(result == null || result.size() == 0){
 				return;
 			}
@@ -105,7 +116,7 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 		
 		@Override
 		protected void onPostExecute(BasicBean result) {
-			hideCustomDialog();
+			//hideCustomDialog();
 			if(result == null){
 				return;
 			}
@@ -126,7 +137,23 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 	private void initView(){
 		nameTv = (TextView) findViewById(R.id.tv_item_name);
 		headerView = (ImageView) findViewById(R.id.iv_header);
-		findViewById(R.id.tv_told).setOnClickListener(this);
+		mInfoView=(TextView) findViewById(R.id.tv_resume);
+		mbackview=(ImageView) findViewById(R.id.iv_back);
+		mbackview.setOnClickListener(this);
+		mbackview.setImageResource(R.drawable.icon_back);	
+		gotalkView=(TextView) findViewById(R.id.tv_talk);
+		gotalkView.setVisibility(View.VISIBLE);
+		gotalkView.setOnClickListener(this);
+		findViewById(R.id.ll_edit).setVisibility(View.GONE);
+		findViewById(R.id.ll_te_mark).setVisibility(View.VISIBLE);
+		findViewById(R.id.rl_st_told).setVisibility(View.GONE);	
+		findViewById(R.id.rl_te_told).setVisibility(View.VISIBLE);;
+		findViewById(R.id.iv_individual).setVisibility(View.GONE);
+		findViewById(R.id.iv_attentiontopic).setVisibility(View.GONE);
+		IvshareView=(ImageView) findViewById(R.id.iv_share);
+		Ivattention=(ImageView) findViewById(R.id.iv_attention);
+		IvshareView.setVisibility(View.VISIBLE);
+		Ivattention.setVisibility(View.VISIBLE);
 	}
 	
 	private class GetInfoTask extends AsyncTask<Void, Void, UserInfoBean> {
@@ -137,7 +164,7 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 		
 		@Override
 		protected void onPostExecute(UserInfoBean result) {
-			hideCustomDialog();
+			//hideCustomDialog();
 			if(result == null){
 				return;
 			}
@@ -150,5 +177,6 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 		nameTv.setText(result.UserName);
 		mAsyncImageCache.displayImage(headerView, R.drawable.ic_launcher, 
 				new AsyncImageCache.NetworkImageGenerator(result.UserHeadUrl, result.UserHeadUrl));
+		mInfoView.setText(result.UserResume);
 	}
 }

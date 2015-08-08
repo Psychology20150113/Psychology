@@ -119,6 +119,7 @@
         </activity>
         <activity 
             android:name="com.dcy.psychology.xinzeng.AboutActivity"
+            
             android:screenOrientation="portrait">
         </activity>
         <activity 
@@ -168,6 +169,19 @@
         </activity>
          <activity 
             android:name="com.dcy.psychology.MessageInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity 
+            android:name="com.dcy.psychology.view.dialog.ShareDialog"
+            android:theme="@style/Transparent"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.ApplyActivity"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity 
+            android:name="com.dcy.psychology.xinzeng.PersonalInfo_PerfectActivity"
             android:screenOrientation="portrait">
         </activity>
         

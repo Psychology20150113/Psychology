@@ -37,10 +37,10 @@
             android:textColor="@color/tab_color_selector"
             android:background="@drawable/tab_line_selector"/>
     </RadioGroup>
-    <ImageView 
+    <!-- <ImageView 
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/divider"/>
+        android:background="@color/divider"/> -->
 	<android.support.v4.view.ViewPager
 	    android:id="@+id/vp_mine_dna"
 	    android:layout_width="match_parent" 

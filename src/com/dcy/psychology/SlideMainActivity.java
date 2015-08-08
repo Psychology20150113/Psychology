@@ -64,6 +64,11 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.activity_slide_main_layout);
 		mTabNameArray = mResources.getStringArray(R.array.tab_name);
 		mCache = AsyncImageCache.from(this);
+		if(TextUtils.isEmpty(MyApplication.myPhoneNum))
+		{
+			Intent mIntent=new Intent(this,LoginActivity.class);
+			startActivity(mIntent);
+		}
 		initData();
 		initView();
 		registerReceiver(mLoginReceiver, new IntentFilter(Constants.ReceiverAction_LoginSuccess));
@@ -111,10 +116,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		slideIv2 = (ImageView)findViewById(R.id.iv_icon2);
 		slideIv3 = (ImageView)findViewById(R.id.iv_icon3);
 		slideIv4 = (ImageView)findViewById(R.id.iv_icon4);
-		if(!TextUtils.isEmpty(MyApplication.myHeadUrl)){
-			mCache.displayImage((ImageView)findViewById(R.id.iv_header), R.drawable.ic_launcher, 
-					new AsyncImageCache.NetworkImageGenerator(MyApplication.myHeadUrl, MyApplication.myHeadUrl));
-		}
+		
 		findViewById(R.id.iv_header).setOnClickListener(this);
 		findViewById(R.id.ll_slide_mine_doctor).setOnClickListener(this);
 		findViewById(R.id.ll_slide_dna).setOnClickListener(this);
@@ -122,6 +124,10 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		//findViewById(R.id.ll_collect).setOnClickListener(this);
 		findViewById(R.id.ll_help).setOnClickListener(this);
 		setLeftView(R.drawable.icon_slide);
+		if(!TextUtils.isEmpty(MyApplication.myHeadUrl)){
+			mCache.displayImage((ImageView)findViewById(R.id.iv_header), R.drawable.ic_launcher, 
+					new AsyncImageCache.NetworkImageGenerator(MyApplication.myHeadUrl, MyApplication.myHeadUrl));
+		}
 		if(!TextUtils.isEmpty(MyApplication.myPhoneNum)){
 			loginOutText.setVisibility(View.VISIBLE);
 			loginIv1.setVisibility(View.VISIBLE);
@@ -254,6 +260,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			slideIv4.setVisibility(View.VISIBLE);
 			doctorcountText.setVisibility(View.GONE);
 			messagecountText.setVisibility(View.GONE);
+			v.invalidate();
 			if(!TextUtils.isEmpty(MyApplication.myHeadUrl)){
 				((ImageView)findViewById(R.id.iv_header)).setImageResource(R.drawable.icon_slide_default_header);
 			}
@@ -264,6 +271,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 				if(new InfoShared(this).lastIsDoctor()){
 					loginIntent.putExtra(Constants.UserRole, Constants.RoleTeacher);
 				}
+				finish();
 				startActivityForResult(loginIntent, 0);
 			}
 			return;

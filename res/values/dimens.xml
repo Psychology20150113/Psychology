@@ -10,5 +10,6 @@
     <dimen name="txt_size_20">20sp</dimen>
     <dimen name="txt_size_16">16sp</dimen>
     <dimen name="title_height">50dp</dimen>
-    <dimen name="a_height">120dp</dimen>
+    <dimen name="titleview_height">57dp</dimen>
+    <dimen name="radiobutton_height">116dp</dimen>
 </resources>

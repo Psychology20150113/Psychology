@@ -60,12 +60,13 @@
             android:id="@+id/iv_share"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:background="@drawable/share"
+            android:background="@drawable/bg_share"
             android:layout_alignParentRight="true"
             android:visibility="gone"
             android:layout_marginTop="23dp"
             android:layout_marginRight="10dp"/>
         <ImageView 
+            android:id="@+id/iv_attention"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:background="@drawable/icon_attention1"
@@ -195,11 +196,15 @@
             android:textSize="12sp" />     
            </RelativeLayout>
          
-         <LinearLayout 
+         <LinearLayout        
+             android:id="@+id/ll_te_mark"
              android:layout_width="match_parent"
              android:layout_height="111dp"
+             android:orientation="horizontal"
              android:visibility="gone"
-             ></LinearLayout>
+             >
+             
+         </LinearLayout>
          <View 
         android:layout_width="match_parent"
         android:layout_height="10dp"
@@ -263,6 +268,7 @@
 		            
 		            
 		            <ImageView 
+		                android:id="@+id/iv_attentiontopic"
                		android:layout_width="wrap_content"
                		android:layout_height="wrap_content"
                		android:layout_alignParentRight="true"
