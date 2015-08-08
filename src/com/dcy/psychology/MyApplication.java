@@ -10,6 +10,7 @@ import com.dcy.psychology.network.NetworkManager;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
+import com.easemob.chatuidemo.DemoHXSDKHelper;
 import com.google.gson.Gson;
 
 
@@ -26,7 +27,7 @@ public class MyApplication extends Application{
 	public static PreInstallDbHelper preInstallDbHelper;
 	private static MyApplication instance;
 	private NetworkManager mNetworkManager;
-	private HXSDKHelper mHelper = new HXSDKHelper();
+	private DemoHXSDKHelper mHelper = new DemoHXSDKHelper();
 	private HXChatManager mChatManager;
 	
 	@Override

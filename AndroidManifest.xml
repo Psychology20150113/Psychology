@@ -93,7 +93,10 @@
             android:name="com.dcy.psychology.OnlinePicListActivity"
             android:screenOrientation="portrait">
         </activity>
-        
+        <activity 
+            android:name="com.dcy.psychology.ChatActivity"
+            android:screenOrientation="portrait">
+        </activity>
         
         
         
