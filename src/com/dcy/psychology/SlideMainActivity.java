@@ -88,7 +88,7 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 	//dataFragment.add(new StyleTwoMainFragment());
 		dataFragment.add(new CareerAdviceFragment());
 		dataFragment.add(new CareerPlanFragment());
-		dataFragment.add(new StyleTwoBoxFragment());
+		//dataFragment.add(new StyleTwoBoxFragment());
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		for(int i=0 ; i<dataFragment.size() ; i++){
 			transaction.add(R.id.main_vp, dataFragment.get(i));

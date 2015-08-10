@@ -15,7 +15,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.dcy.psychology.DoctorPersonalInfo;
 import com.dcy.psychology.DoctorPersonalInfo2;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;

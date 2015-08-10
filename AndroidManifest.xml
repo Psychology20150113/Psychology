@@ -172,7 +172,7 @@
             android:screenOrientation="portrait">
         </activity>
          <activity 
-            android:name="com.dcy.psychology.view.dialog.ShareDialog"
+            android:name="com.dcy.psychology.xinzeng.ShareActivity"
             android:theme="@style/Transparent"
             android:screenOrientation="portrait">
         </activity>

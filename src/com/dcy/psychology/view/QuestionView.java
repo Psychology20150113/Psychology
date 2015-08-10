@@ -70,7 +70,7 @@ public class QuestionView extends RelativeLayout{
 		TextView titleView = new TextView(mContext);
 	
 		titleView.setText (index + "." + title);
-		titleView.setTextColor(color.v2_gray);
+		//titleView.setTextColor(color.v2_gray);
 		titleView.setLineSpacing(0, 1.2f);// (add , mul)�м�������
 		SpannableStringBuilder builder = new SpannableStringBuilder(titleView.getText().toString());
 		// titleView.setTextScaleX(0.5f);
@@ -78,15 +78,18 @@ public class QuestionView extends RelativeLayout{
 		int fontSize1 = mResources.getDimensionPixelSize(R.dimen.txt_size_20);// �����С
 		titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
 		ForegroundColorSpan sp=new  ForegroundColorSpan(Color.parseColor("#2c60a9")); 
+		ForegroundColorSpan sp2=new  ForegroundColorSpan(Color.parseColor("#898989")); 
 		if(index<10)
 		{
 			
-			builder.setSpan(sp, 0, 2, Spanned.SPAN_INCLUSIVE_INCLUSIVE); 
+			builder.setSpan(sp, 0, 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+			builder.setSpan(sp2, 2, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); 
 		}
 		else
 		{
 
-			builder.setSpan(sp, 0, 3, Spanned.SPAN_INCLUSIVE_INCLUSIVE); 
+			builder.setSpan(sp, 0, 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); 
+			builder.setSpan(sp2, 3, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); 
 		}
 		
 		titleView.setText (builder);

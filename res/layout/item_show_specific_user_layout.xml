@@ -115,62 +115,37 @@
                     <!-- 近期可约 -->
                     <TextView 
                     android:id="@+id/tv_leisure"
-                    android:layout_width="67dp"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="11dp"
-                    android:layout_marginRight="8dp"
-                    android:gravity="center"
-                    android:visibility="visible"
-                    android:textColor="#ffffff"
+                    style="@style/state_tv_style"
+                    android:visibility="visible"          
 					android:background="@drawable/bg_tv_leisure"	
                     android:text="@string/leisure"/>
 					<!-- 近期忙碌 -->
                     <TextView
                         android:id="@+id/tv_busy"
-                        android:layout_width="67dp"
-                        android:layout_height="18dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="11dp"
-                        android:background="@drawable/bg_tv_busy"
-                        android:gravity="center"
-                        android:text="@string/busy"
-                        android:textColor="#ffffff"
+                        style="@style/state_tv_style"                      
+                        android:background="@drawable/bg_tv_busy"                     
+                        android:text="@string/busy"                   
                         android:visibility="gone" />
                     <!-- 申请进行中-->
                     <TextView
                         android:id="@+id/tv_applying"
-                        android:layout_width="77dp"
-                        android:layout_height="18dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="11dp"
-                        android:background="@drawable/bg_tv_applying"
-                        android:gravity="center"
-                        android:text="@string/applying"
-                        android:textColor="#ffffff"
+                        style="@style/state_tv_style"                      
+                        android:background="@drawable/bg_tv_applying"                     
+                        android:text="@string/applying"                     
                         android:visibility="gone" />
                     <!-- 申请已成功 -->
                     <TextView
                         android:id="@+id/tv_apply_success"
-                        android:layout_width="77dp"
-                        android:layout_height="18dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="11dp"
-                        android:background="@drawable/bg_tv_apply_success"
-                        android:gravity="center"
-                        android:text="@string/apply_success"
-                        android:textColor="#ffffff"
+                       style="@style/state_tv_style"
+                        android:background="@drawable/bg_tv_apply_success"                       
+                        android:text="@string/apply_success"               
                         android:visibility="gone"/>
                     <!-- 申请已过期-->
                     <TextView
                         android:id="@+id/tv_apply_outtime"
-                        android:layout_width="77dp"
-                        android:layout_height="18dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="11dp"
-                        android:background="@drawable/bg_tv_busy"
-                        android:gravity="center"
-                        android:text="@string/apply_outtime"
-                        android:textColor="#ffffff"
+                         style="@style/state_tv_style"
+                        android:background="@drawable/bg_tv_busy"                      
+                        android:text="@string/apply_outtime"                    
                         android:visibility="gone" />
 
                 </LinearLayout>

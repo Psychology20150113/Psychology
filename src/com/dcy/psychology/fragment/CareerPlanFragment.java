@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.dcy.psychology.EditInfoActivity;
 import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.adapter.SimpleTextAdapter;
 import com.dcy.psychology.adapter.SpecialUserListAdapter;
+import com.dcy.psychology.adapter.TestArrayAdapter;
 import com.dcy.psychology.db.DbManager;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
@@ -25,6 +27,8 @@ import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
 import com.dcy.psychology.view.dialog.ShowHolledDialog;
 import com.dcy.psychology.view.dialog.SimpleMessageDialog;
+import com.dcy.psychology.xinzeng.PersonalInfo_PerfectActivity;
+
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -55,6 +59,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	private EditText ageEt;
 	private EditText mailEt;
 	private EditText gradurationYearEt;
+	private Spinner mSpinner;
 	private Spinner mIndustrySpinner;
 	private Spinner mXingzuoSpinner;
 	private Spinner mProvinceSpinner;
@@ -107,11 +112,9 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mListView.setonRefreshListener(mRefreshListener);
 		mListView.setAdapter(mAdapter);
 		mListView.setEmptyView(rootView.findViewById(R.id.tv_empty_data));
-		//initPerfectInfoView();
+		initPerfectInfoView();
 		if(TextUtils.isEmpty(MyApplication.myPhoneNum))
 		{
-			/*Intent mIntent=new Intent(mContext,LoginActivity.class);
-			startActivity(mIntent);*/
 			/*rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
 			rootView.findViewById(R.id.tv_student_entry).setOnClickListener(this);
 			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);*/
@@ -161,6 +164,11 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.tv_area:
+			Intent mIntent = new Intent(mContext, EditInfoActivity.class);
+			mIntent.putExtra(Constants.TitleName, getString(R.string.working_city));
+			mIntent.putExtra(Constants.Params, "workingCity");
+			break;
 		/*case R.id.tv_student_entry:
 			Intent mStudentIntent = new Intent(mContext, LoginActivity.class);
 			mStudentIntent.putExtra(Constants.UserRole, Constants.RoleUser);
@@ -231,7 +239,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			if(result.isResult()){
 				mShared.setIsPrefectInfo(true);
 				MyApplication.hasPrefectInfo = true;
-				//rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
+				rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
 				if(!TextUtils.isEmpty(MyApplication.myUserRole) && 
 						MyApplication.myUserRole.equals(Constants.RoleTeacher)){
 					rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
@@ -351,7 +359,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 
 	private void loadListData() {
 		if(MyApplication.hasPrefectInfo){
-			//rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
+			rootView.findViewById(R.id.ll_complete_info).setVisibility(View.GONE);
 			if(MyApplication.myUserRole.equals(Constants.RoleTeacher)){
 				rootView.findViewById(R.id.tv_help).setVisibility(View.VISIBLE);
 				rootView.findViewById(R.id.tv_empty_data).setVisibility(View.GONE);
@@ -364,7 +372,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		}
 	}
 	
-	/*private void initPerfectInfoView(){
+	 private void initPerfectInfoView(){
 		nickEt = (EditText) rootView.findViewById(R.id.nick_et);
 		sexGroup = (RadioGroup) rootView.findViewById(R.id.sex_rg);
 		ageEt = (EditText) rootView.findViewById(R.id.age_et);
@@ -406,7 +414,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		mWorkingCityAdapter = new SimpleTextAdapter(mContext, mWorkingCityList);
 		mWorkingCitySpinner.setAdapter(mWorkingCityAdapter);
 		rootView.findViewById(R.id.btn_prefect).setOnClickListener(this);
-	}*/
+	}
 	
 	private boolean checkInput(){
 		if(TextUtils.isEmpty(nickEt.getText())){

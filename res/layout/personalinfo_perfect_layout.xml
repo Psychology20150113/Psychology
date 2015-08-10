@@ -153,6 +153,7 @@
         android:background="#5991bf" />
     
     <Button 
+        android:id="@+id/btn_prefect"
         android:layout_width="317dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

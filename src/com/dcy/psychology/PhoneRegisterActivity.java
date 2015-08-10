@@ -9,6 +9,7 @@ import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
+import com.dcy.psychology.xinzeng.PersonalInfo_PerfectActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -109,7 +110,7 @@ public class PhoneRegisterActivity extends Activity implements OnClickListener{
 			hideCustomDialog();
 			if(result){
 				Toast.makeText(PhoneRegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
-				Intent mIntent = new Intent();
+				Intent mIntent = new Intent(PhoneRegisterActivity.this,PersonalInfo_PerfectActivity.class);
 				mIntent.putExtra("login_success", true);
 				new ChatLoginTask(PhoneRegisterActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
 				setResult(1, mIntent);
