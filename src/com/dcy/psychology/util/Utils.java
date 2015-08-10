@@ -112,14 +112,14 @@ public class Utils {
 	}
 	
 	private static SoapObject getResultFromRequest(SoapObject request, String url) {
-		//��ɵ���WebService��SOAP����
+		//生成调用WebService的SOAP请求
 		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER12);
 		envelope.bodyOut = request;
 		envelope.dotNet = true;
 		HttpTransportSE transportSE = new HttpTransportSE(TextUtils.isEmpty(url) ? 
 				Constants.UserWSDL : url, Constants.TimeOut);
 		try {
-			//1.1�汾��Ҫʹ�õ�һ������SoapAction(��http://114.215.179.130/Login),1.2����ҪSoapAction
+			//1.1版本需要使用第一个参数SoapAction(例http://114.215.179.130/Login),1.2不需要SoapAction
 			transportSE.call("", envelope);
 		} catch (HttpResponseException e) {
 			e.printStackTrace();
@@ -154,9 +154,9 @@ public class Utils {
 	}
 	
 	public static LoginBean getLoginWeb(String name,String pwd){
-		//�˴�����û�С�/������Ȼ�ᵼ�¡�û����Ч�Ĳ������<1.2>������1.0�����޷����ݲ���
+		//此处后面没有“/”，不然会导致“没有有效的参数操作<1.2>”或者1.0里面无法传递参数
 		SoapObject request = new SoapObject(Constants.SpaceName,Constants.LoginMethod);
-		//���õ��ò���,1.2�汾ǰ��������Ҫ�������һ��
+		//设置调用参数,1.2版本前面命名需要与服务器一致
 		request.addProperty("loginName", name);
 		request.addProperty("loginPwd", pwd);
 		SoapObject result = getResultFromRequest(request);
@@ -614,7 +614,7 @@ public class Utils {
 	}
 	
 	/**
-	 * ��ȡ���µ�ʱ��
+	 * 锟斤拷取锟斤拷锟铰碉拷时锟斤拷
 	 * 
 	 * @param dateStr
 	 * @return
@@ -632,18 +632,18 @@ public class Utils {
 		} else if ((calendar.get(Calendar.DAY_OF_MONTH) - date.get(Calendar.DAY_OF_MONTH) > 0) && 
 				(calendar.get(Calendar.DAY_OF_MONTH) - date.get(Calendar.DAY_OF_MONTH) < 6)) {
 			int i = calendar.get(Calendar.HOUR_OF_DAY) - date.get(Calendar.HOUR_OF_DAY);
-			return i + "��ǰ";
+			return i + "锟斤拷前";
 		} else if (calendar.get(Calendar.HOUR_OF_DAY) - date.get(Calendar.HOUR_OF_DAY) > 0) {
 			int i = calendar.get(Calendar.HOUR_OF_DAY) - date.get(Calendar.HOUR_OF_DAY);
-			return i + "Сʱǰ";
+			return i + "小时前";
 		} else if (calendar.get(Calendar.MINUTE) - date.get(Calendar.MINUTE) > 0) {
 			int i = calendar.get(Calendar.MINUTE) - date.get(Calendar.MINUTE);
-			return i + "����ǰ";
+			return i + "锟斤拷锟斤拷前";
 		} else if (calendar.get(Calendar.SECOND) - date.get(Calendar.SECOND) > 0) {
 			int i = calendar.get(Calendar.SECOND) - date.get(Calendar.SECOND);
-			return i + "��ǰ";
+			return i + "锟斤拷前";
 		} else if (calendar.get(Calendar.SECOND) - date.get(Calendar.SECOND) == 0) {
-			return "�ո�";
+			return "锟秸革拷";
 		} else {
 			return sdf.format(date);
 		}
