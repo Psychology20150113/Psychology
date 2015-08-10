@@ -7,5 +7,6 @@
 	<classpathentry kind="src" path="Volley"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="HXSrc"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -115,11 +115,16 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		initPerfectInfoView();
 		if(TextUtils.isEmpty(MyApplication.myPhoneNum))
 		{
+<<<<<<< HEAD
 			/*rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
+=======
+			/*Intent mIntent=new Intent(mContext,LoginActivity.class);
+			startActivity(mIntent);*/
+			rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
+>>>>>>> origin/master
 			rootView.findViewById(R.id.tv_student_entry).setOnClickListener(this);
-			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);*/
-		} else 
-		{
+			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
+		} else {
 			loadListData();
 		}
 		return rootView;
@@ -164,12 +169,16 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+<<<<<<< HEAD
 		case R.id.tv_area:
 			Intent mIntent = new Intent(mContext, EditInfoActivity.class);
 			mIntent.putExtra(Constants.TitleName, getString(R.string.working_city));
 			mIntent.putExtra(Constants.Params, "workingCity");
 			break;
 		/*case R.id.tv_student_entry:
+=======
+		case R.id.tv_student_entry:
+>>>>>>> origin/master
 			Intent mStudentIntent = new Intent(mContext, LoginActivity.class);
 			mStudentIntent.putExtra(Constants.UserRole, Constants.RoleUser);
 			startActivityForResult(mStudentIntent, RequestCode_Login);
@@ -178,7 +187,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			Intent mTeacherIntent = new Intent(mContext, LoginActivity.class);
 			mTeacherIntent.putExtra(Constants.UserRole, Constants.RoleTeacher);
 			startActivityForResult(mTeacherIntent, RequestCode_Login);
-			break;*/
+			break;
 		case R.id.btn_prefect:
 			if(!checkInput())
 			{
@@ -304,7 +313,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			if(data == null){
 				return;
 			} else {
-				//rootView.findViewById(R.id.ll_entry).setVisibility(View.GONE);
+				rootView.findViewById(R.id.ll_entry).setVisibility(View.GONE);
 				loadListData();
 			}
 			break;
@@ -372,7 +381,11 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		}
 	}
 	
+<<<<<<< HEAD
 	 private void initPerfectInfoView(){
+=======
+	private void initPerfectInfoView(){
+>>>>>>> origin/master
 		nickEt = (EditText) rootView.findViewById(R.id.nick_et);
 		sexGroup = (RadioGroup) rootView.findViewById(R.id.sex_rg);
 		ageEt = (EditText) rootView.findViewById(R.id.age_et);
