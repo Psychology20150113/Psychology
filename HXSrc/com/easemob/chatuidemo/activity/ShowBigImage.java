@@ -135,6 +135,7 @@ public class ShowBigImage extends BaseActivity {
 		pd.show();
 		localFilePath = getLocalFilePath(remoteFilePath);
 		final EMCallBack callback = new EMCallBack() {
+			@Override
 			public void onSuccess() {
 
 				runOnUiThread(new Runnable() {
@@ -160,6 +161,7 @@ public class ShowBigImage extends BaseActivity {
 				});
 			}
 
+			@Override
 			public void onError(int error, String msg) {
 				EMLog.e(TAG, "offline file transfer error:" + msg);
 				File file = new File(localFilePath);
@@ -175,6 +177,7 @@ public class ShowBigImage extends BaseActivity {
 				});
 			}
 
+			@Override
 			public void onProgress(final int progress, String status) {
 				EMLog.d(TAG, "Progress: " + progress);
 				final String str2 = getResources().getString(R.string.Download_the_pictures_new);

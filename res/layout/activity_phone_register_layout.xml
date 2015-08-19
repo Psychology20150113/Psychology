@@ -22,36 +22,36 @@
     <EditText
         android:id="@+id/phone_et"
         style="@style/login_edit_style"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:ems="10"
         android:hint="@string/account" >
 
         <requestFocus />
     </EditText>
 
-         <ImageView 
+         <View 
              android:layout_width="match_parent"
              android:layout_height="2dp"
              android:background="#ffffff"/>
     <EditText 
         android:id="@+id/password_et"
         style="@style/login_edit_style"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/password"
         android:inputType="textPassword"/>
-     <ImageView 
+     <View 
              android:layout_width="match_parent"
              android:layout_height="2dp"
              android:background="#ffffff"/>
         <EditText 
         android:id="@+id/second_password_et"
         style="@style/login_edit_style"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/password_second"       
         android:inputType="textPassword"/>
-    <ImageView 
+    <View 
              android:layout_width="match_parent"
              android:layout_height="2dp"
              android:background="#ffffff"/>
@@ -59,8 +59,8 @@
 	 <EditText 
         android:id="@+id/code_et"
         style="@style/login_edit_style"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="109dp"
         android:layout_marginRight="109dp"
         android:hint="@string/verfication_code"       />
@@ -86,7 +86,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="28dp"
-	        android:textSize="12sp"
+	        android:textSize="13sp"
 	        android:layout_gravity="center"
 	        android:text="@string/code"
 	        android:textColor="#ffffff"/>
@@ -114,13 +114,13 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:visibility="visible"
-	        android:background="@drawable/icon_attention"/>
+	        android:background="@drawable/bg_agree"/>
 	    <ImageView 
 	        android:id="@+id/iv_noagree"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:visibility="gone"
-	        android:background="@drawable/icon_match"/>
+	        android:background="@drawable/bg_noagree"/>
 	    
 	    <TextView 
 	    android:layout_width="wrap_content"

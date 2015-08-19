@@ -3,7 +3,6 @@ package com.dcy.psychology.view;
 import java.util.ArrayList;
 
 import com.dcy.psychology.R;
-import com.dcy.psychology.R.color;
 import com.dcy.psychology.util.ThoughtReadingUtils.QuestionType;
 
 import android.content.Context;

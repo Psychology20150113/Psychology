@@ -2,7 +2,6 @@ package com.dcy.psychology.emchat;
 
 import android.content.Context;
 import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -20,6 +19,7 @@ public class HXChatManager {
 	private final int Msg_Login_Fail = 101;
 	
 	private Handler mHandler = new Handler(){
+		@Override
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case Msg_Login_Success:

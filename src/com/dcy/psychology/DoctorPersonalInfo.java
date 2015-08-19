@@ -45,8 +45,6 @@ public class DoctorPersonalInfo extends BaseActivity implements OnClickListener{
 		if(!TextUtils.isEmpty(phoneNum)){
 			showCustomDialog();
 			new GetInfoTask().execute();
-			setRightView1(R.drawable.icon_attention1);
-			setRightView2(R.drawable.icon_share1);
 		}
 	}
 	

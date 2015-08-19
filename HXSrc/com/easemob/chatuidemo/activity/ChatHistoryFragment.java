@@ -134,6 +134,7 @@ public class ChatHistoryFragment extends Fragment {
 		// 搜索框中清除button
 		clearSearch = (ImageButton) getView().findViewById(R.id.search_clear);
 		query.addTextChangedListener(new TextWatcher() {
+			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				
 				adapter.getFilter().filter(s);
@@ -144,9 +145,11 @@ public class ChatHistoryFragment extends Fragment {
 				}
 			}
 
+			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			}
 
+			@Override
 			public void afterTextChanged(Editable s) {
 			}
 		});

@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.EditInfoActivity;
 import com.dcy.psychology.MyApplication;
-import com.dcy.psychology.PersonalInfoActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.adapter.SpecialUserListAdapter;

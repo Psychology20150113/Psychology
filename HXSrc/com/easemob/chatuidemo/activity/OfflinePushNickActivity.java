@@ -48,6 +48,7 @@ public class OfflinePushNickActivity extends BaseActivity {
 								inputNickName.getText().toString());
 						if (!updatenick) {
 							runOnUiThread(new Runnable() {
+								@Override
 								public void run() {
 									Toast.makeText(OfflinePushNickActivity.this, "update nickname failed!",
 											Toast.LENGTH_SHORT).show();
@@ -56,6 +57,7 @@ public class OfflinePushNickActivity extends BaseActivity {
 							});
 						} else {
 							runOnUiThread(new Runnable() {
+								@Override
 								public void run() {
 									dialog.dismiss();
 									Toast.makeText(OfflinePushNickActivity.this, "update nickname success!",

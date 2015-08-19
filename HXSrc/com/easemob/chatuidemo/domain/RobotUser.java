@@ -20,15 +20,19 @@ public class RobotUser extends EMContact{
 	private String nick;
 	private String header;
 	private String avatar;
+	@Override
 	public String getUsername() {
 		return username;
 	}
+	@Override
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	@Override
 	public String getNick() {
 		return nick;
 	}
+	@Override
 	public void setNick(String nick) {
 		this.nick = nick;
 	}

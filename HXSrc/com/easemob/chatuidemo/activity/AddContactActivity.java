@@ -18,7 +18,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -28,7 +27,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easemob.applib.utils.HXPreferenceUtils;
 import com.easemob.chat.EMContactManager;
 import com.easemob.chatuidemo.DemoApplication;
 import com.easemob.chatuidemo.R;
@@ -116,6 +114,7 @@ public class AddContactActivity extends BaseActivity{
 		progressDialog.show();
 		
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				
 				try {
@@ -123,6 +122,7 @@ public class AddContactActivity extends BaseActivity{
 					String s = getResources().getString(R.string.Add_a_friend);
 					EMContactManager.getInstance().addContact(toAddUsername, s);
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							String s1 = getResources().getString(R.string.send_successful);
@@ -131,6 +131,7 @@ public class AddContactActivity extends BaseActivity{
 					});
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							String s2 = getResources().getString(R.string.Request_add_buddy_failure);
@@ -142,6 +143,7 @@ public class AddContactActivity extends BaseActivity{
 		}).start();
 	}
 	
+	@Override
 	public void back(View v) {
 		finish();
 	}

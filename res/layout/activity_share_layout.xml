@@ -42,7 +42,7 @@
         android:layout_marginTop="25dp"
         android:layout_below="@id/iv_weixin"
         android:layout_centerInParent="true" 
-        android:background="@drawable/bg_space"
+        android:background="@drawable/bg_qq"
         />
 
 </RelativeLayout>

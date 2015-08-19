@@ -29,13 +29,10 @@ import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMConversation;
 import com.easemob.chatuidemo.Constant;
 import com.easemob.chatuidemo.R;
 import com.easemob.chatuidemo.domain.User;
 import com.easemob.chatuidemo.utils.UserUtils;
-import com.easemob.chatuidemo.widget.Sidebar;
 import com.easemob.util.EMLog;
 
 /**
@@ -143,10 +140,12 @@ public class ContactAdapter extends ArrayAdapter<User>  implements SectionIndexe
 		return super.getCount();
 	}
 
+	@Override
 	public int getPositionForSection(int section) {
 		return positionOfSection.get(section);
 	}
 
+	@Override
 	public int getSectionForPosition(int position) {
 		return sectionOfPosition.get(position);
 	}

@@ -61,12 +61,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        android:paddingBottom="18dp"
         android:text="400-400-4000"
         android:gravity="center"
         android:textColor="#343539"
         android:textSize="20sp"
         />
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom|center">
+    	<ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="27dp"
+            android:background="@drawable/bg_relation"/>
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginBottom="39dp"
+            android:lineSpacingExtra="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/v2_gray"
+            android:text="@string/relationtext"/>
+        
     </LinearLayout>
     
 

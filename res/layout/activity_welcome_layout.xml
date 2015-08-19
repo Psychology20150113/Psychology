@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 心晴师首次使用提示 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_welcome"
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"
+     android:background="@color/white"
+     android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:textSize="20sp"
+        android:text="@string/welcome"/>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="95dp"
+        android:background="@color/v2_gray"/>
+   
+    <TextView 
+        android:id="@+id/tv_welcome_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="138dp" 
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:textSize="16sp"
+        android:textColor="#333638"
+        android:lineSpacingExtra="6dp"
+        android:text="@string/welcome_info"/>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/tv_welcome_info"
+        android:layout_marginTop="42dp"
+        android:background="@color/v2_gray"/>
+    <Button 
+        android:id="@+id/btn_welcome_next"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rl_career_advice_3"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" 
+        android:layout_marginBottom="23dp"
+        android:textColor="@color/white"
+        android:text="@string/next"
+        />
+    
+
+</RelativeLayout>

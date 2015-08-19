@@ -30,12 +30,10 @@ import android.widget.TextView;
 
 import com.easemob.EMCallBack;
 import com.easemob.applib.controller.HXSDKHelper;
-import com.easemob.applib.model.HXSDKModel;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMChatOptions;
 import com.easemob.chatuidemo.Constant;
 import com.easemob.chatuidemo.DemoApplication;
-import com.easemob.chatuidemo.DemoHXSDKHelper;
 import com.easemob.chatuidemo.DemoHXSDKModel;
 import com.easemob.chatuidemo.R;
 
@@ -349,6 +347,7 @@ public class SettingsFragment extends Fragment implements OnClickListener {
 			@Override
 			public void onSuccess() {
 				getActivity().runOnUiThread(new Runnable() {
+					@Override
 					public void run() {
 						pd.dismiss();
 						// 重新显示登陆页面

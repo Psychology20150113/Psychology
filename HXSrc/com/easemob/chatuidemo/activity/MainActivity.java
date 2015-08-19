@@ -45,7 +45,6 @@ import com.easemob.EMGroupChangeListener;
 import com.easemob.EMNotifierEvent;
 import com.easemob.EMValueCallBack;
 import com.easemob.applib.controller.HXSDKHelper;
-import com.easemob.chat.EMChat;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMContactListener;
 import com.easemob.chat.EMContactManager;
@@ -391,6 +390,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 
 	private void refreshUI() {
 		runOnUiThread(new Runnable() {
+			@Override
 			public void run() {
 				// 刷新bottom bar消息未读数
 				updateUnreadLabel();
@@ -450,6 +450,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	 */
 	public void updateUnreadAddressLable() {
 		runOnUiThread(new Runnable() {
+			@Override
 			public void run() {
 				int count = getUnreadAddressCountTotal();
 				if (count > 0) {
@@ -531,6 +532,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 				inviteMessgeDao.deleteMessage(username);
 			}
 			runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					// 如果正在与此用户的聊天页面
 					String st10 = getResources().getString(R.string.have_you_removed);
@@ -702,6 +704,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 			HXSDKHelper.getInstance().getNotifier().viberateAndPlayTone(msg);
 
 			runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					updateUnreadLabel();
 					// 刷新ui
@@ -731,6 +734,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 			// 提示用户被T了，demo省略此步骤
 			// 刷新ui
 			runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					try {
 						updateUnreadLabel();
@@ -753,6 +757,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 			// 提示用户群被解散,demo省略
 			// 刷新ui
 			runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					updateUnreadLabel();
 					if (currentTabIndex == 0)
@@ -797,6 +802,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 			HXSDKHelper.getInstance().getNotifier().viberateAndPlayTone(msg);
 
 			runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					updateUnreadLabel();
 					// 刷新ui
@@ -887,7 +893,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 
 		// unregister this event listener when this activity enters the
 		// background
-		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) DemoHXSDKHelper.getInstance();
+		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) HXSDKHelper.getInstance();
 		sdkHelper.pushActivity(this);
 
 		// register the event listener when enter the foreground
@@ -898,7 +904,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	@Override
 	protected void onStop() {
 		EMChatManager.getInstance().unregisterEventListener(this);
-		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) DemoHXSDKHelper.getInstance();
+		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) HXSDKHelper.getInstance();
 		sdkHelper.popActivity(this);
 
 		super.onStop();
@@ -1019,7 +1025,8 @@ public class MainActivity extends BaseActivity implements EMEventListener {
                     @Override
                     public void onSuccess() {
                         runOnUiThread(new Runnable() {
-                            public void run() {
+                            @Override
+							public void run() {
                                 // 重新显示登陆页面
                                 finish();
                                 startActivity(new Intent(MainActivity.this, LoginActivity.class));

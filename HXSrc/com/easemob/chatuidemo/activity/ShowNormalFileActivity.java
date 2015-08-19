@@ -40,7 +40,8 @@ public class ShowNormalFileActivity extends BaseActivity {
                     @Override
                     public void onSuccess() {
                         runOnUiThread(new Runnable() {
-                            public void run() {
+                            @Override
+							public void run() {
                                 FileUtils.openFile(file, ShowNormalFileActivity.this);
                                 finish();
                             }
@@ -50,7 +51,8 @@ public class ShowNormalFileActivity extends BaseActivity {
                     @Override
                     public void onProgress(final int progress,String status) {
                         runOnUiThread(new Runnable() {
-                            public void run() {
+                            @Override
+							public void run() {
                                 progressBar.setProgress(progress);
                             }
                         });
@@ -59,7 +61,8 @@ public class ShowNormalFileActivity extends BaseActivity {
                     @Override
                     public void onError(int error, final String msg) {
                         runOnUiThread(new Runnable() {
-                            public void run() {
+                            @Override
+							public void run() {
                                 if(file != null && file.exists()&&file.isFile())
                                     file.delete();
                                 String str4 = getResources().getString(R.string.Failed_to_download_file);

@@ -16,13 +16,13 @@ package com.easemob.chatuidemo.utils;
 import com.easemob.applib.utils.HXPreferenceUtils;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
 /**
  * 
  * @deprecated this class is deprecated, please use {@link HXPreferenceUtils}
  *
  */
+@Deprecated
 public class PreferenceUtils {
 
 	/**

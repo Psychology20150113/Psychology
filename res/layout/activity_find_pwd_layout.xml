@@ -17,7 +17,7 @@
        style="@style/findpwd_edit_style"
        android:layout_marginBottom="10dp"
         android:hint="@string/account"/>
-         <ImageView 
+         <View 
              android:layout_width="match_parent"
              android:layout_height="2dp"
              android:background="@color/v2_gray"/>
@@ -27,7 +27,7 @@
         android:layout_marginBottom="10dp"
         android:hint="@string/password"
          android:inputType="textPassword"/>
-     <ImageView 
+     <View 
              android:layout_width="match_parent"
              android:layout_height="2dp"
              android:background="@color/v2_gray"/>
@@ -37,7 +37,7 @@
         android:layout_marginBottom="10dp"
         android:hint="@string/password_second"       
         android:inputType="textPassword"/>
-    <ImageView 
+    <View 
              android:layout_width="match_parent"
              android:layout_height="2dp"
              android:background="@color/v2_gray"/>
@@ -49,7 +49,7 @@
         android:layout_marginLeft="109dp"
         android:layout_marginRight="109dp"
         android:hint="@string/verfication_code"       />
-	    <ImageView 
+	    <View 
              android:layout_width="match_parent"
              android:layout_height="2dp"
              android:layout_marginLeft="109dp"
@@ -61,7 +61,7 @@
 	        android:layout_width="134dp"
 	        android:layout_height="50dp"
 	        android:layout_marginTop="26dp"
-	        android:textSize="12sp"
+	        android:textSize="13sp"
 	        android:layout_gravity="center"
 	        android:gravity="center"
 	        android:text="@string/get_verfication_code"
@@ -71,7 +71,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="28dp"
-	        android:textSize="12sp"
+	        android:textSize="13sp"
 	        android:layout_gravity="center"
 	        android:text="@string/code"
 	        android:textColor="@color/v2_gray"/>

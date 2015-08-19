@@ -23,7 +23,7 @@
         android:paddingBottom="7dp"
         android:textColor="#33353a"
         android:text="@string/hope"
-        android:textSize="12sp"
+        android:textSize="13sp"
         />
          <TextView 
              android:layout_width="48dp"
@@ -31,7 +31,7 @@
              android:background="@drawable/bg_tv_number"
              android:text="120字"
              android:textColor="#ffffff"
-             android:textSize="12sp"
+             android:textSize="13sp"
              android:gravity="center"
              android:layout_marginTop="13dp"
              android:layout_marginRight="15dp"
@@ -83,7 +83,7 @@
         android:paddingBottom="7dp"
         android:textColor="#33353a"
         android:text="@string/introduce"
-        android:textSize="12sp"
+        android:textSize="13sp"
         />
          <TextView 
              android:layout_width="48dp"
@@ -91,7 +91,7 @@
              android:background="@drawable/bg_tv_number"
              android:text="120字"
              android:textColor="#ffffff"
-             android:textSize="12sp"
+             android:textSize="13sp"
              android:gravity="center"
              android:layout_marginTop="13dp"
              android:layout_marginRight="15dp"
@@ -150,7 +150,7 @@
     	    android:gravity="center"
     	    android:paddingLeft="20dp"
     	    android:text="@string/convenience"
-    	    android:textSize="12sp" />
+    	    android:textSize="13sp" />
     	<View 
                 android:layout_width="match_parent"
                 android:layout_height="1px"

@@ -110,6 +110,7 @@ public class RecorderVideoActivity extends BaseActivity implements
 		chronometer = (Chronometer) findViewById(R.id.chronometer);
 	}
 
+	@Override
 	public void back(View view) {
 		releaseRecorder();
 		releaseCamera();

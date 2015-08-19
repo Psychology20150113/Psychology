@@ -65,7 +65,7 @@ public class PhoneRegisterActivity extends Activity implements OnClickListener{
 		mnoagree.setOnClickListener(this);
 		mGetCodeText.setOnClickListener(this);
 		backview=(ImageView) findViewById(R.id.iv_back);
-		backview.setImageResource(R.drawable.icon_back1);
+		backview.setImageResource(R.drawable.icon_orangeback);
 		backview.setOnClickListener(this);
 		findViewById(R.id.register_tv).setOnClickListener(this);
 		//findViewById(R.id.find_pwd_tv).setOnClickListener(this);

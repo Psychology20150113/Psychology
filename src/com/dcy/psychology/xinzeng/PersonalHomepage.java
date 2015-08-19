@@ -1,6 +1,5 @@
 package com.dcy.psychology.xinzeng;
 
-import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.PersonalInfoActivity;
 import com.dcy.psychology.R;

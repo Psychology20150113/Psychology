@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import com.easemob.applib.controller.HXSDKHelper;
@@ -26,7 +25,7 @@ public class DateUtils {
         
         long messageTime = messageDate.getTime();
         if (isSameDay(messageTime)) {
-            Calendar calendar = GregorianCalendar.getInstance();
+            Calendar calendar = Calendar.getInstance();
             calendar.setTime(messageDate);
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             

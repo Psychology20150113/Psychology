@@ -32,9 +32,9 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		View view = inflater.inflate(R.layout.fragment_career_advice_layout, null);
-		view.findViewById(R.id.btn_mine_talkabout).setOnClickListener(this);
-		view.findViewById(R.id.btn_advance).setOnClickListener(this);
-		view.findViewById(R.id.btn_underway).setOnClickListener(this);
+		view.findViewById(R.id.rl_mine_talkabout).setOnClickListener(this);
+		view.findViewById(R.id.rl_advance).setOnClickListener(this);
+		view.findViewById(R.id.rl_underway).setOnClickListener(this);
 		return view;
 	}
 
@@ -43,7 +43,7 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 		// TODO �Զ���ɵķ������
 		Intent nIntent = null;
 		switch (v.getId()) {
-		case R.id.btn_mine_talkabout:
+		case R.id.rl_mine_talkabout:
 			
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				nIntent = new Intent(mContext, LoginActivity.class);
@@ -53,7 +53,7 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 			}
 			
 			break;
-		case R.id.btn_advance:
+		case R.id.rl_advance:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				nIntent = new Intent(mContext, LoginActivity.class);
 			} else
@@ -61,7 +61,7 @@ public class CareerAdviceFragment extends Fragment implements OnClickListener{
 			nIntent = new Intent(mContext, AdvanceActivity.class);
 			}
 			break;
-		case R.id.btn_underway:
+		case R.id.rl_underway:
 			if(TextUtils.isEmpty(MyApplication.myPhoneNum)){
 				nIntent = new Intent(mContext, LoginActivity.class);
 			} else

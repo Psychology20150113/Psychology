@@ -73,6 +73,7 @@ public class PickContactNoCheckboxActivity extends BaseActivity {
 //		}
 	}
 
+	@Override
 	public void back(View view) {
 		finish();
 	}

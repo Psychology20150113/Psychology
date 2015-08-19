@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 导师个人信息完善 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_doctor_perfect"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:text="@string/doctorinfo_perfect"
+        android:textColor="#333636"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/iv_doctor_header"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_below="@+id/TextView1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/bg_doctor_perfect"
+        android:scaleType="centerInside"
+        android:src="@drawable/icon_doctor_perfect" />
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_doctor_header"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="9dp"
+        android:text="@string/set_header"
+        android:textColor="#898989"
+        android:textSize="13sp" />
+    
+    <EditText
+        android:id="@+id/et_te_real_name"
+        style="@style/edit_perfect_style"
+        android:layout_below="@id/iv_doctor_header"       
+        android:drawableLeft="@drawable/icon_te_perfect1"     
+        android:layout_marginTop="37dp"
+        android:ems="10"
+        android:hint="@string/real_name" />
+    <View
+        android:id="@+id/View_te_real_name"
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_te_real_name" 
+        android:background="#5991bf"/>
+    <EditText
+        android:id="@+id/et_te_email"
+        style="@style/edit_perfect_style"
+        android:drawableLeft="@drawable/icon_te_perfect2" 
+        android:layout_below="@id/View_te_real_name" 
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/email"/>
+    <View
+        android:id="@+id/View_te_email"
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_te_email"  />
+    <EditText
+        android:id="@+id/et_te_work_unit"
+        style="@style/edit_perfect_style"
+        android:drawableLeft="@drawable/icon_te_perfect3" 
+        android:layout_below="@id/View_te_email" 
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/set_work_unit"/>
+    <View
+        android:id="@+id/View_te_work_unit"
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_te_work_unit"  />
+    <EditText
+        android:id="@+id/et_te_position"
+        style="@style/edit_perfect_style"
+        android:background="@drawable/bg_edit_perfect"
+        android:drawableLeft="@drawable/icon_te_perfect4" 
+        android:layout_below="@id/View_te_work_unit" 
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/set_position"/>
+    <View
+        android:id="@+id/View_te_position"
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_te_position"  />
+    
+    <Button 
+        android:id="@+id/btn_perfect_next"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rl_career_advice_2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" 
+        android:layout_marginBottom="23dp"
+        android:textColor="@color/white"
+        android:text="@string/next"
+        />
+
+</RelativeLayout>

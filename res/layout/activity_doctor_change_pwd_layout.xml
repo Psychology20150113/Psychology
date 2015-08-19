@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 心晴师修改初始密码页面 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_amend_initial_password"
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#323738"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="@string/amend_initial_password"/>
+    
+    <EditText
+        android:id="@+id/et_change_password"
+        style="@style/edit_perfect_style"          
+        android:layout_marginTop="127dp"
+        android:paddingLeft="20dp"       
+        android:ems="10"
+        android:hint="@string/change_pwd" />
+     <View
+        android:id="@+id/View_change_password"
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_change_password" 
+        android:background="#5991bf"/>
+     
+     <EditText
+        android:id="@+id/et_change_second_password"
+        style="@style/edit_perfect_style"
+        android:layout_below="@id/View_change_password"           
+        android:layout_marginTop="16dp"
+        android:paddingLeft="20dp"      
+        android:ems="10"
+        android:hint="@string/change_pwd_second" />
+     <View
+        android:id="@+id/View_change_second_password"
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_change_second_password" 
+        android:background="#5991bf"/>
+     <Button 
+        android:id="@+id/btn_change_psw_next"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rl_career_advice_2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" 
+        android:layout_marginBottom="23dp"
+        android:textColor="@color/white"
+        android:text="@string/next"
+        />
+    
+
+</RelativeLayout>

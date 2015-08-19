@@ -56,6 +56,7 @@
 	<string name="question_theme_seven">课堂心理学</string>
 	<string name="question_theme_eight">饭店</string>
 	<string name="slide_mine_doctor">我的心晴师</string>
+	<string name="slide_mine_student">我的心晴生</string>
 	<string name="slide_dna">我的职业DNA</string>
 	<string name="slide_message">我的消息</string>
 	<string name="slide_problem">常见问题</string>
@@ -72,10 +73,11 @@
 	<string name="login">登录</string>
 	<string name="ok_login">完成并登录</string>
 	<string name="register">注册</string>
+	<string name="newregister">新用户注册</string>
 	<string name="account">请输入账号   +86</string>
 	<string name="password">请输入密码</string>
 	<string name="change_pwd">输入新密码</string>
-	<string name="change_pwd_second">请再次输入新密码</string>
+	<string name="change_pwd_second">再次输入密码</string>
 	
 	<string name="password_second">再次输入密码</string>
 	<string name="nick">真实姓名</string>
@@ -298,7 +300,9 @@
 	<string name="about">关于我们</string>
 	<string name="howuse">如何使用</string>
 	<string name="relation">联系我们</string>
+	<string name="relationtext">心晴管家竭诚为您服务心晴管家竭诚为您服务心晴管家竭诚为您服务心晴管家竭诚为您服务心晴管家竭诚为您服务心晴管家竭诚为您服务</string>
 	<string name="feedback">用户反馈</string>
+	<string name="feedbacktext">心晴管家竭诚为您服务心晴管家竭诚为您服务心晴管家竭诚为您服务心晴管家竭诚为您服务</string>
 	<string name="mine_talkabout">我的约聊</string>
 	<string name="advance">预告</string>
 	<string name="underway">进行中</string>
@@ -348,16 +352,19 @@
 	<string name="man">男</string>
 	<string name="women">女</string>
 	<string name="personalinfo_perfect">个人 信息完善</string>
+	<string name="doctorinfo_perfect">完成基本信息填写</string>
 	<string name="leisure">近期可约</string>
 	<string name="busy">近期忙碌</string>
 	<string name="applying">申请进行中</string>
-	<string name="apply_success">申请已成功</string>
+	<string name="apply_successed">申请已成功</string>
 	<string name="apply_outtime">申请已过期</string>
 	<string name="focus">关注话题：</string>
 	<string name="time_slot1">00:00-04:00</string>
 	<string name="time_slot2">04:00-08:00</string>
 	<string name="time_slot3">08:00-12:00</string>
 	<string name="all">全部</string>
+	<string name="web">web端同步进行</string>
+	<string name="easiness">登陆官网聊天更轻松</string>
 	
 	
 	<string name="real_name">请填写真实姓名</string>
@@ -368,8 +375,22 @@
 	<string name="email">请填写常用邮箱</string>
 	
 	
+	<string name="set_header">编辑本人头像</string>
+	<string name="set_work_unit">请填写工作单位名称</string>
+	<string name="set_position">请填写所在单位任职职位</string>
+	<string name="next">下一步</string>
 	
 	
+ 	<string name="notice">测试须知</string>
+ 	<string name="notice_info">人格、气质与职业有着密不可分的关系， 不同职业对从业者的人格特征及气质类型的要求是有差距的，通过科学的测试可以预知自己的人格特征及气质特征，这有助于选择合适于个人发展的职业，您将参与测试的这个《职业兴趣倾向量表》及《气质量表》，可以帮助您作一次简单的人格和气质自评，从而更加清楚自己都的人格及气质特征更适合从事哪方面的工作。\n\n请根据对每一题目的第一印象作答，不必仔细推敲，答案没有好坏、对错之分，根据自己的实际情况回答“是”或“否”。</string>
+	<string name="start_test">开始测试</string>
+	
+	
+	<string name="welcome">心晴管家欢迎您的加入</string>
+	<string name="welcome_info">感谢您启动“灯塔”模式，一艘艘小船在航行中迷失了方向，因为有了航标，他们不再搁浅，因为有了指明灯，他们才能顺利找到回家的路。\n\n为了让他们尽快到达彼岸，请分别开启“点亮”模式（修改初始密码）和“识别”模式（填写基本信息），让小船尽快确认您的灯塔就是他前进的方向</string>
+	<string name="amend_initial_password">修改初始密码</string>
+	
+	<string name="apply_success">申请约聊成功</string>
 	
 	
 	

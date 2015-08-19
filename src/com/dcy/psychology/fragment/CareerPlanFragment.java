@@ -5,13 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.dcy.psychology.EditInfoActivity;
-import com.dcy.psychology.LoginActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ThoughtReadingActivity;
 import com.dcy.psychology.adapter.SimpleTextAdapter;
 import com.dcy.psychology.adapter.SpecialUserListAdapter;
-import com.dcy.psychology.adapter.TestArrayAdapter;
 import com.dcy.psychology.db.DbManager;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.GrowQuestionBean;
@@ -27,8 +25,6 @@ import com.dcy.psychology.view.PullRefreshListView;
 import com.dcy.psychology.view.PullRefreshListView.OnRefreshListener;
 import com.dcy.psychology.view.dialog.ShowHolledDialog;
 import com.dcy.psychology.view.dialog.SimpleMessageDialog;
-import com.dcy.psychology.xinzeng.PersonalInfo_PerfectActivity;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -51,7 +47,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class CareerPlanFragment extends Fragment implements OnClickListener, OnItemSelectedListener{
+public class CareerPlanFragment extends Fragment implements OnClickListener,OnItemSelectedListener{
 	private Context mContext;
 	private Resources mResources;
 	private EditText nickEt;
@@ -115,13 +111,12 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		initPerfectInfoView();
 		if(TextUtils.isEmpty(MyApplication.myPhoneNum))
 		{
-<<<<<<< HEAD
+
 			/*rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
 =======
 			/*Intent mIntent=new Intent(mContext,LoginActivity.class);
 			startActivity(mIntent);*/
 			rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
->>>>>>> origin/master
 			rootView.findViewById(R.id.tv_student_entry).setOnClickListener(this);
 			rootView.findViewById(R.id.tv_teacher_entry).setOnClickListener(this);
 		} else {
@@ -169,16 +164,14 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-<<<<<<< HEAD
+
 		case R.id.tv_area:
 			Intent mIntent = new Intent(mContext, EditInfoActivity.class);
 			mIntent.putExtra(Constants.TitleName, getString(R.string.working_city));
 			mIntent.putExtra(Constants.Params, "workingCity");
 			break;
+	
 		/*case R.id.tv_student_entry:
-=======
-		case R.id.tv_student_entry:
->>>>>>> origin/master
 			Intent mStudentIntent = new Intent(mContext, LoginActivity.class);
 			mStudentIntent.putExtra(Constants.UserRole, Constants.RoleUser);
 			startActivityForResult(mStudentIntent, RequestCode_Login);
@@ -187,7 +180,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			Intent mTeacherIntent = new Intent(mContext, LoginActivity.class);
 			mTeacherIntent.putExtra(Constants.UserRole, Constants.RoleTeacher);
 			startActivityForResult(mTeacherIntent, RequestCode_Login);
-			break;
+			break;*/
 		case R.id.btn_prefect:
 			if(!checkInput())
 			{
@@ -381,11 +374,10 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		}
 	}
 	
-<<<<<<< HEAD
-	 private void initPerfectInfoView(){
-=======
+
+
 	private void initPerfectInfoView(){
->>>>>>> origin/master
+
 		nickEt = (EditText) rootView.findViewById(R.id.nick_et);
 		sexGroup = (RadioGroup) rootView.findViewById(R.id.sex_rg);
 		ageEt = (EditText) rootView.findViewById(R.id.age_et);

@@ -53,7 +53,7 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:text="爱吃水的鱼"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
         </LinearLayout>
         <ImageView 
@@ -69,7 +69,7 @@
             android:id="@+id/iv_attention"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:background="@drawable/icon_attention1"
+            android:background="@drawable/icon_attention"
             android:layout_toLeftOf="@id/iv_share"
             android:visibility="gone"
             android:layout_marginTop="23dp"
@@ -95,7 +95,7 @@
 			android:drawablePadding="5dp"
 			android:textColor="#ffffff"
             android:text="@string/edit"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
              <TextView
             android:id="@+id/tv_completeness"
             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
             android:layout_marginTop="14dp"
             android:textColor="#ffffff"
             android:text="@string/completeness"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
 			</LinearLayout>
 			
         </RelativeLayout>
@@ -126,14 +126,14 @@
             android:id="@+id/tv_st_successtalk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
+            android:layout_marginLeft="13dp"
             android:layout_alignParentLeft="true" 
             android:drawableLeft="@drawable/icon_grade"
 			android:drawablePadding="5dp"
 			android:padding="5dp"
             android:textColor="#ffffff"
             android:text="@string/successtalk"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
             
             <TextView
             android:id="@+id/tv_st_told"
@@ -142,11 +142,11 @@
             android:layout_alignParentRight="true"
             android:drawableLeft="@drawable/icon_grade"
 			android:drawablePadding="5dp"
-			android:layout_marginRight="12dp"
+			android:layout_marginRight="13dp"
             android:padding="5dp"
             android:textColor="#ffffff"
             android:text="@string/told"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
             
             
 
@@ -163,14 +163,14 @@
              android:id="@+id/tv_te_recent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
+            android:layout_marginLeft="13dp"
             android:layout_alignParentLeft="true" 
             android:drawableLeft="@drawable/icon_grade"
 			android:drawablePadding="5dp"
 			android:padding="5dp"
             android:textColor="#ffffff"
             android:text="@string/recent"
-            android:textSize="12sp"/>
+            android:textSize="13sp"/>
             
             
             
@@ -183,7 +183,7 @@
 			android:textColor="#d8d3cd"
             android:padding="5dp"
             android:text="@string/attentionamount"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
              <TextView
             android:id="@+id/tv_te_successtalk"
             android:layout_width="wrap_content"
@@ -193,7 +193,7 @@
             android:layout_toLeftOf="@id/tv_te_attention"
             android:layout_marginRight="10dp"
             android:text="@string/toldamount"
-            android:textSize="12sp" />     
+            android:textSize="13sp" />     
            </RelativeLayout>
          
          <LinearLayout        

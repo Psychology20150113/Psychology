@@ -11,61 +11,70 @@
     <LinearLayout
         android:id="@+id/ll_item_message"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="66dp"
         android:gravity="center_vertical" >
 
-        <com.dcy.psychology.view.CornerImageView
+        <ImageView
             android:id="@+id/iv_header"
-            android:layout_width="61dp"
-            android:layout_height="61dp"
-            android:layout_marginLeft="5dp"
+            android:layout_width="66dp"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_launcher" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="7dp"
             android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
                 <TextView
                     android:id="@+id/tv_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="dddd"
                     android:textColor="#727171"
-                    android:textSize="15sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_item_achieve"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:lines="2"
                     android:text="aaaa"
+                    android:layout_below="@id/tv_item_name"
+                    android:maxEms="13"  
+					android:singleLine="true"  
+					android:ellipsize="end"  
                     android:textColor="#515050"
                     android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="right" >
-
-                <TextView
+                
+                 <TextView
                     android:id="@+id/tv_item_achieve1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
+                    android:layout_below="@id/tv_item_achieve"
                     android:text="2015.06.11 12:00"
                     android:textColor="#7b7b7b"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:textSize="13sp" />
+                 <View 
+                     android:layout_width="14dp"
+                     android:layout_height="14dp"
+                     android:layout_centerVertical="true"
+                     android:layout_alignParentRight="true"
+                     android:layout_marginRight="13dp"
+                     android:visibility="visible"
+                     android:background="@drawable/bg_slide_menu_count"/>
+                 <View 
+                     android:layout_width="14dp"
+                     android:layout_height="14dp"
+                     android:layout_centerVertical="true"
+                     android:layout_alignParentRight="true"
+                     android:layout_marginRight="13dp"
+                     android:visibility="gone"
+                     android:background="@drawable/bg_message_circle_gray"/>
+
+            
+
+               
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

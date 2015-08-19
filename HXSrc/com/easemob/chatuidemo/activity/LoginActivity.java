@@ -32,11 +32,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.easemob.EMCallBack;
+import com.easemob.applib.controller.HXSDKHelper;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.chatuidemo.Constant;
 import com.easemob.chatuidemo.DemoApplication;
-import com.easemob.chatuidemo.DemoHXSDKHelper;
 import com.easemob.chatuidemo.R;
 import com.easemob.chatuidemo.db.UserDao;
 import com.easemob.chatuidemo.domain.User;
@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 
 		// 如果用户名密码都有，直接进入主页面
-		if (DemoHXSDKHelper.getInstance().isLogined()) {
+		if (HXSDKHelper.getInstance().isLogined()) {
 			autoLogin = true;
 			startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
@@ -155,6 +155,7 @@ public class LoginActivity extends BaseActivity {
 					e.printStackTrace();
 					// 取好友或者群聊失败，不让进入主页面
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							DemoApplication.getInstance().logout(null);
@@ -190,6 +191,7 @@ public class LoginActivity extends BaseActivity {
 					return;
 				}
 				runOnUiThread(new Runnable() {
+					@Override
 					public void run() {
 						pd.dismiss();
 						Toast.makeText(getApplicationContext(), getString(R.string.Login_failed) + message,

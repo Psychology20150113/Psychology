@@ -18,8 +18,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;

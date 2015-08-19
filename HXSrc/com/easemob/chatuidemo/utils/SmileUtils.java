@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import android.content.Context;
 import android.text.Spannable;
 import android.text.Spannable.Factory;
+import android.text.Spanned;
 import android.text.style.ImageSpan;
 
 import com.easemob.chatuidemo.R;
@@ -137,7 +138,7 @@ public class SmileUtils {
 	                hasChanges = true;
 	                spannable.setSpan(new ImageSpan(context, entry.getValue()),
 	                        matcher.start(), matcher.end(),
-	                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+	                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 	            }
 	        }
 	    }

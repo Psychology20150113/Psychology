@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easemob.EMError;
-import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroup;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.chatuidemo.R;
@@ -51,11 +50,13 @@ public class PublicGroupsSeachActivity extends BaseActivity{
         
         new Thread(new Runnable() {
 
-            public void run() {
+            @Override
+			public void run() {
                 try {
                     searchedGroup = EMGroupManager.getInstance().getGroupFromServer(idET.getText().toString());
                     runOnUiThread(new Runnable() {
-                        public void run() {
+                        @Override
+						public void run() {
                             pd.dismiss();
                             containerLayout.setVisibility(View.VISIBLE);
                             nameText.setText(searchedGroup.getGroupName());
@@ -65,7 +66,8 @@ public class PublicGroupsSeachActivity extends BaseActivity{
                 } catch (final EaseMobException e) {
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
-                        public void run() {
+                        @Override
+						public void run() {
                             pd.dismiss();
                             searchedGroup = null;
                             containerLayout.setVisibility(View.GONE);

@@ -567,6 +567,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	/**
 	 * onActivityResult
 	 */
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_CODE_EXIT_GROUP) {
@@ -577,19 +578,19 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		if (requestCode == REQUEST_CODE_CONTEXT_MENU) {
 			switch (resultCode) {
 			case RESULT_CODE_COPY: // 复制消息
-				EMMessage copyMsg = ((EMMessage) adapter.getItem(data.getIntExtra("position", -1)));
+				EMMessage copyMsg = adapter.getItem(data.getIntExtra("position", -1));
 				// clipboard.setText(SmileUtils.getSmiledText(ChatActivity.this,
 				// ((TextMessageBody) copyMsg.getBody()).getMessage()));
 				clipboard.setText(((TextMessageBody) copyMsg.getBody()).getMessage());
 				break;
 			case RESULT_CODE_DELETE: // 删除消息
-				EMMessage deleteMsg = (EMMessage) adapter.getItem(data.getIntExtra("position", -1));
+				EMMessage deleteMsg = adapter.getItem(data.getIntExtra("position", -1));
 				conversation.removeMessage(deleteMsg.getMsgId());
 				adapter.refreshSeekTo(data.getIntExtra("position", adapter.getCount()) - 1);
 				break;
 
 			case RESULT_CODE_FORWARD: // 转发消息
-				EMMessage forwardMsg = (EMMessage) adapter.getItem(data.getIntExtra("position", 0));
+				EMMessage forwardMsg = adapter.getItem(data.getIntExtra("position", 0));
 				Intent intent = new Intent(this, ForwardMessageActivity.class);
 				intent.putExtra("forward_msg_id", forwardMsg.getMsgId());
 				startActivity(intent);
@@ -689,7 +690,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
 				}
 			} else if (requestCode == REQUEST_CODE_ADD_TO_BLACKLIST) { // 移入黑名单
-				EMMessage deleteMsg = (EMMessage) adapter.getItem(data.getIntExtra("position", -1));
+				EMMessage deleteMsg = adapter.getItem(data.getIntExtra("position", -1));
 				addUserToBlacklist(deleteMsg.getFrom());
 			} else if (conversation.getMsgCount() > 0) {
 				adapter.refresh();
@@ -828,7 +829,8 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	    }
 	    
 	    runOnUiThread(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 adapter.refreshSelectLast();
             }
         });
@@ -840,6 +842,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
         }
 	    
 		runOnUiThread(new Runnable() {
+			@Override
 			public void run() {
 				adapter.refresh();
 			}
@@ -1483,7 +1486,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		     adapter.refresh();
 	     }
 
-		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) DemoHXSDKHelper.getInstance();
+		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) HXSDKHelper.getInstance();
 		sdkHelper.pushActivity(this);
 		// register the event listener when enter the foreground
 		EMChatManager.getInstance().registerEventListener(
@@ -1498,7 +1501,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		// background
 		EMChatManager.getInstance().unregisterEventListener(this);
 
-		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) DemoHXSDKHelper.getInstance();
+		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) HXSDKHelper.getInstance();
 
 		// 把此activity 从foreground activity 列表里移除
 		sdkHelper.popActivity(this);
@@ -1547,10 +1550,12 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		pd.setCanceledOnTouchOutside(false);
 		pd.show();
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					EMContactManager.getInstance().addUserToBlackList(username, false);
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(getApplicationContext(), R.string.Move_into_blacklist_success, 0).show();
@@ -1559,6 +1564,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				} catch (EaseMobException e) {
 					e.printStackTrace();
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(getApplicationContext(), R.string.Move_into_blacklist_failure, 0).show();
@@ -1574,6 +1580,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	 * 
 	 * @param view
 	 */
+	@Override
 	public void back(View view) {
 		EMChatManager.getInstance().unregisterEventListener(this);
 		if(chatType == CHATTYPE_CHATROOM){
@@ -1715,6 +1722,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 			runOnUiThread(new Runnable() {
 				String st13 = getResources().getString(R.string.you_are_group);
 
+				@Override
 				public void run() {
 					if (toChatUsername.equals(groupId)) {
 						Toast.makeText(ChatActivity.this, st13, 1).show();
@@ -1732,6 +1740,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 			runOnUiThread(new Runnable() {
 				String st14 = getResources().getString(R.string.the_current_group);
 
+				@Override
 				public void run() {
 					if (toChatUsername.equals(groupId)) {
 						Toast.makeText(ChatActivity.this, st14, 1).show();

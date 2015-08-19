@@ -310,7 +310,9 @@ public class BaseActivity extends Activity {
 		mRightView2.setVisibility(View.VISIBLE);
 		mRightView2.setImageResource(resId);
 	}
-	
+	public void showTitleView(){
+		mTitleView.setVisibility(View.VISIBLE);
+	}
 	public void hideTitleView(){
 		mTitleView.setVisibility(View.GONE);
 	}

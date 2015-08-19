@@ -16,7 +16,6 @@ package com.easemob.chatuidemo.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -30,7 +29,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.easemob.chat.EMChatRoom;
-import com.easemob.chat.EMGroup;
 import com.easemob.chatuidemo.R;
 
 public class ChatRoomAdapter extends ArrayAdapter<EMChatRoom> {
@@ -69,6 +67,7 @@ public class ChatRoomAdapter extends ArrayAdapter<EMChatRoom> {
 			final EditText query = (EditText) convertView.findViewById(R.id.query);
 			final ImageButton clearSearch = (ImageButton) convertView.findViewById(R.id.search_clear);
 			query.addTextChangedListener(new TextWatcher() {
+				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count) {
 					getFilter().filter(s);
 					if (s.length() > 0) {
@@ -78,9 +77,11 @@ public class ChatRoomAdapter extends ArrayAdapter<EMChatRoom> {
 					}
 				}
 
+				@Override
 				public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 				}
 
+				@Override
 				public void afterTextChanged(Editable s) {
 				}
 			});

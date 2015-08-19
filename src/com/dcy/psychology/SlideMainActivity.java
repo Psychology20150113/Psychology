@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import com.dcy.psychology.R;
 import com.dcy.psychology.fragment.CareerPlanFragment;
-import com.dcy.psychology.fragment.StyleTwoBoxFragment;
 import com.dcy.psychology.fragment.CareerAdviceFragment;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
@@ -50,6 +49,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 	private ImageView slideIv2;
 	private ImageView slideIv3;
 	private ImageView slideIv4;
+	private ImageView loginIv;
+	private ImageView unloginIv;
 	private View nameInfoLayout;
 	
 	private ViewPager mViewPager;
@@ -116,7 +117,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 		slideIv2 = (ImageView)findViewById(R.id.iv_icon2);
 		slideIv3 = (ImageView)findViewById(R.id.iv_icon3);
 		slideIv4 = (ImageView)findViewById(R.id.iv_icon4);
-		
+		loginIv =(ImageView) findViewById(R.id.iv_login);
+		unloginIv =(ImageView) findViewById(R.id.iv_unlogin);
 		findViewById(R.id.iv_header).setOnClickListener(this);
 		findViewById(R.id.ll_slide_mine_doctor).setOnClickListener(this);
 		findViewById(R.id.ll_slide_dna).setOnClickListener(this);
@@ -138,6 +140,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			slideIv2.setVisibility(View.GONE);
 			slideIv3.setVisibility(View.GONE);
 			slideIv4.setVisibility(View.GONE);
+			loginIv.setVisibility(View.VISIBLE);
+			unloginIv.setVisibility(View.GONE);
 			doctorcountText.setVisibility(View.VISIBLE);
 			messagecountText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
@@ -164,6 +168,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 				slideIv2.setVisibility(View.GONE);
 				slideIv3.setVisibility(View.GONE);
 				slideIv4.setVisibility(View.GONE);
+				loginIv.setVisibility(View.VISIBLE);
+				unloginIv.setVisibility(View.GONE);
 				doctorcountText.setVisibility(View.VISIBLE);
 				messagecountText.setVisibility(View.VISIBLE);
 			}
@@ -232,9 +238,11 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			if(drawerLayout.isDrawerOpen(Gravity.LEFT)){
 			
 				drawerLayout.closeDrawer(Gravity.LEFT);
+				showTitleView();
 			}
 			else{
 				drawerLayout.openDrawer(Gravity.LEFT);
+		
 			}
 		}
 	
@@ -258,6 +266,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			slideIv2.setVisibility(View.VISIBLE);
 			slideIv3.setVisibility(View.VISIBLE);
 			slideIv4.setVisibility(View.VISIBLE);
+			loginIv.setVisibility(View.GONE);
+			unloginIv.setVisibility(View.VISIBLE);
 			doctorcountText.setVisibility(View.GONE);
 			messagecountText.setVisibility(View.GONE);
 			v.invalidate();
@@ -348,6 +358,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			slideIv2.setVisibility(View.GONE);
 			slideIv3.setVisibility(View.GONE);
 			slideIv4.setVisibility(View.GONE);
+			loginIv.setVisibility(View.VISIBLE);
+			unloginIv.setVisibility(View.GONE);
 			doctorcountText.setVisibility(View.VISIBLE);
 			messagecountText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);

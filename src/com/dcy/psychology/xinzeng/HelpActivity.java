@@ -29,7 +29,7 @@ public class HelpActivity extends BaseActivity implements OnClickListener{
 			mIntent = new Intent(this, PersonalInfo_PerfectActivity.class);
 			break;
 		case R.id.ll_howuse:
-			mIntent = new Intent(this, HowuseActivity.class);
+			mIntent = new Intent(this, DoctorWelcomeActivity.class);
 			break;
 		case R.id.ll_relation:
 			mIntent = new Intent(this, RelationActivity.class);
