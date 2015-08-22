@@ -22,8 +22,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMMessage;
 import com.easemob.chat.EMMessage.ChatType;
@@ -66,6 +64,7 @@ public class LoadImageTask extends AsyncTask<Object, Void, Bitmap> {
 
 	}
 
+	@Override
 	protected void onPostExecute(Bitmap image) {
 		if (image != null) {
 			iv.setImageBitmap(image);

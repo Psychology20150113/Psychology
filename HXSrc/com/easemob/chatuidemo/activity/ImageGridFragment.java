@@ -11,9 +11,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build.VERSION_CODES;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.provider.MediaStore;
+import android.provider.MediaStore.MediaColumns;
+import android.provider.MediaStore.Video.VideoColumns;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +23,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
-import android.widget.AbsListView.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -200,7 +201,7 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
 			super();
 			mContext = context;
 			mImageViewLayoutParams = new RelativeLayout.LayoutParams(
-					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+					android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT);
 		}
 
 		@Override
@@ -278,7 +279,7 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
 			}
 			mItemHeight = height;
 			mImageViewLayoutParams = new RelativeLayout.LayoutParams(
-					LayoutParams.MATCH_PARENT, mItemHeight);
+					android.view.ViewGroup.LayoutParams.MATCH_PARENT, mItemHeight);
 			mImageResizer.setImageSize(height);
 			notifyDataSetChanged();
 		}
@@ -319,23 +320,23 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
 
 				// ID:MediaStore.Audio.Media._ID
 				int id = cursor.getInt(cursor
-						.getColumnIndexOrThrow(MediaStore.Video.Media._ID));
+						.getColumnIndexOrThrow(BaseColumns._ID));
 
 				// 名称：MediaStore.Audio.Media.TITLE
 				String title = cursor.getString(cursor
-						.getColumnIndexOrThrow(MediaStore.Video.Media.TITLE));
+						.getColumnIndexOrThrow(MediaColumns.TITLE));
 				// 路径：MediaStore.Audio.Media.DATA
 				String url = cursor.getString(cursor
-						.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
+						.getColumnIndexOrThrow(MediaColumns.DATA));
 
 				// 总播放时长：MediaStore.Audio.Media.DURATION
 				int duration = cursor
 						.getInt(cursor
-								.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));
+								.getColumnIndexOrThrow(VideoColumns.DURATION));
 
 				// 大小：MediaStore.Audio.Media.SIZE
 				int size = (int) cursor.getLong(cursor
-						.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE));
+						.getColumnIndexOrThrow(MediaColumns.SIZE));
 
 				VideoEntity entty = new VideoEntity();
 				entty.ID = id;
@@ -366,8 +367,8 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
 			if(requestCode==100)
 			{
 				Uri uri=data.getParcelableExtra("uri");
-				String[] projects = new String[] { MediaStore.Video.Media.DATA,
-						MediaStore.Video.Media.DURATION };
+				String[] projects = new String[] { MediaColumns.DATA,
+						VideoColumns.DURATION };
 				Cursor cursor = getActivity().getContentResolver().query(
 						uri, projects, null,
 						null, null);
@@ -377,11 +378,11 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
 				if (cursor.moveToFirst()) {
 					// 路径：MediaStore.Audio.Media.DATA
 					filePath = cursor.getString(cursor
-							.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
+							.getColumnIndexOrThrow(MediaColumns.DATA));
 					// 总播放时长：MediaStore.Audio.Media.DURATION
 					duration = cursor
 							.getInt(cursor
-									.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));
+									.getColumnIndexOrThrow(VideoColumns.DURATION));
 					EMLog.d(TAG, "duration:"+duration);
 				}
 				if(cursor!=null)

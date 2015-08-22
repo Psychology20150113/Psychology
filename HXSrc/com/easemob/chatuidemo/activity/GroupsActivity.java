@@ -32,13 +32,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.easemob.applib.controller.HXSDKHelper;
-import com.easemob.applib.utils.HXPreferenceUtils;
-import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroup;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.chatuidemo.R;
 import com.easemob.chatuidemo.adapter.GroupAdapter;
-import com.easemob.exceptions.EaseMobException;
 import com.easemob.util.EMLog;
 
 public class GroupsActivity extends BaseActivity {
@@ -58,6 +55,7 @@ public class GroupsActivity extends BaseActivity {
 		public void onSyncSucess(final boolean success) {
 			EMLog.d(TAG, "onSyncGroupsFinish success:" + success);
 			runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					swipeRefreshLayout.setRefreshing(false);
 					if (success) {
@@ -139,7 +137,7 @@ public class GroupsActivity extends BaseActivity {
 			}
 		});
 		
-		progressBar = (View)findViewById(R.id.progress_bar);
+		progressBar = findViewById(R.id.progress_bar);
 		
 		syncListener = new SyncListener();
 		HXSDKHelper.getInstance().addSyncGroupListener(syncListener);
@@ -199,6 +197,7 @@ public class GroupsActivity extends BaseActivity {
 	 * 
 	 * @param view
 	 */
+	@Override
 	public void back(View view) {
 		finish();
 	}

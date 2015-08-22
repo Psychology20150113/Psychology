@@ -19,8 +19,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -87,14 +85,11 @@ import com.easemob.chat.NormalFileMessageBody;
 import com.easemob.chat.TextMessageBody;
 import com.easemob.chat.VideoMessageBody;
 import com.easemob.chat.VoiceMessageBody;
-import com.easemob.chatuidemo.DemoApplication;
-import com.easemob.chatuidemo.DemoHXSDKHelper;
 import com.dcy.psychology.R;
 import com.easemob.chatuidemo.adapter.ExpressionAdapter;
 import com.easemob.chatuidemo.adapter.ExpressionPagerAdapter;
 import com.easemob.chatuidemo.adapter.MessageAdapter;
 import com.easemob.chatuidemo.adapter.VoicePlayClickListener;
-import com.easemob.chatuidemo.domain.RobotUser;
 import com.easemob.chatuidemo.utils.CommonUtils;
 import com.easemob.chatuidemo.utils.ImageUtils;
 import com.easemob.chatuidemo.utils.SmileUtils;
@@ -568,6 +563,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	/**
 	 * onActivityResult
 	 */
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_CODE_EXIT_GROUP) {
@@ -578,13 +574,13 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		if (requestCode == REQUEST_CODE_CONTEXT_MENU) {
 			switch (resultCode) {
 			case RESULT_CODE_COPY: // 复制消息
-				EMMessage copyMsg = ((EMMessage) adapter.getItem(data.getIntExtra("position", -1)));
+				EMMessage copyMsg = adapter.getItem(data.getIntExtra("position", -1));
 				// clipboard.setText(SmileUtils.getSmiledText(ChatActivity.this,
 				// ((TextMessageBody) copyMsg.getBody()).getMessage()));
 				clipboard.setText(((TextMessageBody) copyMsg.getBody()).getMessage());
 				break;
 			case RESULT_CODE_DELETE: // 删除消息
-				EMMessage deleteMsg = (EMMessage) adapter.getItem(data.getIntExtra("position", -1));
+				EMMessage deleteMsg = adapter.getItem(data.getIntExtra("position", -1));
 				conversation.removeMessage(deleteMsg.getMsgId());
 				adapter.refreshSeekTo(data.getIntExtra("position", adapter.getCount()) - 1);
 				break;
@@ -690,7 +686,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
 				}
 			} else if (requestCode == REQUEST_CODE_ADD_TO_BLACKLIST) { // 移入黑名单
-				EMMessage deleteMsg = (EMMessage) adapter.getItem(data.getIntExtra("position", -1));
+				EMMessage deleteMsg = adapter.getItem(data.getIntExtra("position", -1));
 				addUserToBlacklist(deleteMsg.getFrom());
 			} else if (conversation.getMsgCount() > 0) {
 				adapter.refresh();
@@ -829,7 +825,8 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	    }
 	    
 	    runOnUiThread(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 adapter.refreshSelectLast();
             }
         });
@@ -841,6 +838,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
         }
 	    
 		runOnUiThread(new Runnable() {
+			@Override
 			public void run() {
 				adapter.refresh();
 			}
@@ -1547,10 +1545,12 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		pd.setCanceledOnTouchOutside(false);
 		pd.show();
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					EMContactManager.getInstance().addUserToBlackList(username, false);
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(getApplicationContext(), R.string.Move_into_blacklist_success, 0).show();
@@ -1559,6 +1559,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				} catch (EaseMobException e) {
 					e.printStackTrace();
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(getApplicationContext(), R.string.Move_into_blacklist_failure, 0).show();
@@ -1715,6 +1716,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 			runOnUiThread(new Runnable() {
 				String st13 = getResources().getString(R.string.you_are_group);
 
+				@Override
 				public void run() {
 //					if (toChatUsername.equals(groupId)) {
 //						Toast.makeText(ChatActivity.this, st13, 1).show();

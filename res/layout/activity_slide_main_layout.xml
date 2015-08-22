@@ -33,11 +33,11 @@
 		        style="@style/tab_button_style"
 		        android:drawableTop="@drawable/tab_icon_second_selector"
 		        android:text="@string/tab_two"/>
-		    <RadioButton 
+		    <!-- <RadioButton 
 		        android:id="@+id/tab_three_rb"
 		        style="@style/tab_button_style"
 		        android:drawableTop="@drawable/tab_icon_third_selector"
-		        android:text="@string/tab_mine"/>
+		        android:text="@string/tab_mine"/> -->
 		</RadioGroup>
 	</LinearLayout>
 	<include 

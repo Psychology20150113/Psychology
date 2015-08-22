@@ -336,7 +336,8 @@ public class HXNotifier {
                     // needed
                     if (vendor != null && vendor.toLowerCase().contains("samsung")) {
                         Thread ctlThread = new Thread() {
-                            public void run() {
+                            @Override
+							public void run() {
                                 try {
                                     Thread.sleep(3000);
                                     if (ringtone.isPlaying()) {

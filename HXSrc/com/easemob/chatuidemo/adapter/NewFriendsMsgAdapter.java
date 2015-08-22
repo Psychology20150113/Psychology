@@ -145,6 +145,7 @@ public class NewFriendsMsgAdapter extends ArrayAdapter<InviteMessage> {
 		pd.show();
 
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				// 调用sdk的同意方法
 				try {

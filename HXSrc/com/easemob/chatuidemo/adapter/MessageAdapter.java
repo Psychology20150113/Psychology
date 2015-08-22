@@ -146,7 +146,7 @@ public class MessageAdapter extends BaseAdapter{
 		private void refreshList() {
 			// UI线程不能直接使用conversation.getAllMessages()
 			// 否则在UI刷新过程中，如果收到新的消息，会导致并发问题
-			messages = (EMMessage[]) conversation.getAllMessages().toArray(new EMMessage[conversation.getAllMessages().size()]);
+			messages = conversation.getAllMessages().toArray(new EMMessage[conversation.getAllMessages().size()]);
 			for (int i = 0; i < messages.length; i++) {
 				// getMessage will set message as read status
 				conversation.getMessage(i);
@@ -185,6 +185,7 @@ public class MessageAdapter extends BaseAdapter{
 	/**
 	 * 获取item数
 	 */
+	@Override
 	public int getCount() {
 		return messages == null ? 0 : messages.length;
 	}
@@ -218,6 +219,7 @@ public class MessageAdapter extends BaseAdapter{
 		handler.sendMessage(msg);
 	}
 
+	@Override
 	public EMMessage getItem(int position) {
 		if (messages != null && position < messages.length) {
 			return messages[position];
@@ -225,6 +227,7 @@ public class MessageAdapter extends BaseAdapter{
 		return null;
 	}
 
+	@Override
 	public long getItemId(int position) {
 		return position;
 	}
@@ -232,6 +235,7 @@ public class MessageAdapter extends BaseAdapter{
 	/**
 	 * 获取item类型数
 	 */
+	@Override
 	public int getViewTypeCount() {
         return 18;
     }
@@ -239,6 +243,7 @@ public class MessageAdapter extends BaseAdapter{
 	/**
 	 * 获取item类型
 	 */
+	@Override
 	public int getItemViewType(int position) {
 		EMMessage message = getItem(position); 
 		if (message == null) {
@@ -312,6 +317,7 @@ public class MessageAdapter extends BaseAdapter{
 		}
 	}
 
+	@Override
 	@SuppressLint("NewApi")
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final EMMessage message = getItem(position);
@@ -414,12 +420,12 @@ public class MessageAdapter extends BaseAdapter{
 		}
 
 		// 群聊时，显示接收的消息的发送人的名称
-		if ((chatType == ChatType.GroupChat || chatType == chatType.ChatRoom) && message.direct == EMMessage.Direct.RECEIVE){
+		if ((chatType == ChatType.GroupChat || chatType == ChatType.ChatRoom) && message.direct == EMMessage.Direct.RECEIVE){
 		    //demo里使用username代码nick
 			holder.tv_usernick.setText(message.getFrom());
 		}
 		// 如果是发送的消息并且不是群聊消息，显示已读textview
-		if (!(chatType == ChatType.GroupChat || chatType == chatType.ChatRoom) && message.direct == EMMessage.Direct.SEND) {
+		if (!(chatType == ChatType.GroupChat || chatType == ChatType.ChatRoom) && message.direct == EMMessage.Direct.SEND) {
 			holder.tv_ack = (TextView) convertView.findViewById(R.id.tv_ack);
 			holder.tv_delivered = (TextView) convertView.findViewById(R.id.tv_delivered);
 			if (holder.tv_ack != null) {
@@ -780,6 +786,7 @@ public class MessageAdapter extends BaseAdapter{
 				@Override
 				public void run() {
 					activity.runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							holder.pb.setVisibility(View.VISIBLE);
 							holder.tv.setVisibility(View.VISIBLE);
@@ -1316,6 +1323,7 @@ public class MessageAdapter extends BaseAdapter{
 				public void onSuccess() {
 					Log.d(TAG, "send image message successfully");
 					activity.runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							// send success
 							holder.pb.setVisibility(View.GONE);
@@ -1328,6 +1336,7 @@ public class MessageAdapter extends BaseAdapter{
 				public void onError(int code, String error) {
 					
 					activity.runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							holder.pb.setVisibility(View.GONE);
 							holder.tv.setVisibility(View.GONE);
@@ -1342,6 +1351,7 @@ public class MessageAdapter extends BaseAdapter{
 				@Override
 				public void onProgress(final int progress, String status) {
 					activity.runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							holder.tv.setText(progress + "%");
 						}

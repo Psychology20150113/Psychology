@@ -207,27 +207,33 @@ public class DefaultHXSDKModel extends HXSDKModel{
         return HXPreferenceUtils.getInstance().getSettingAllowChatroomOwnerLeave();
     }
     
-    public void setGroupsSynced(boolean synced){
+    @Override
+	public void setGroupsSynced(boolean synced){
         HXPreferenceUtils.getInstance().setGroupsSynced(synced);
     }
     
-    public boolean isGroupsSynced(){
+    @Override
+	public boolean isGroupsSynced(){
         return HXPreferenceUtils.getInstance().isGroupsSynced();
     }
     
-    public void setContactSynced(boolean synced){
+    @Override
+	public void setContactSynced(boolean synced){
         HXPreferenceUtils.getInstance().setContactSynced(synced);
     }
     
-    public boolean isContactSynced(){
+    @Override
+	public boolean isContactSynced(){
         return HXPreferenceUtils.getInstance().isContactSynced();
     }
     
-    public void setBlacklistSynced(boolean synced){
+    @Override
+	public void setBlacklistSynced(boolean synced){
         HXPreferenceUtils.getInstance().setBlacklistSynced(synced);
     }
     
-    public boolean isBacklistSynced(){
+    @Override
+	public boolean isBacklistSynced(){
         return HXPreferenceUtils.getInstance().isBacklistSynced();
     }
     

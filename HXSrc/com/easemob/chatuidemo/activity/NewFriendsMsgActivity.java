@@ -15,7 +15,6 @@ package com.easemob.chatuidemo.activity;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -49,6 +48,7 @@ public class NewFriendsMsgActivity extends BaseActivity {
 		
 	}
 
+	@Override
 	public void back(View view) {
 		finish();
 	}

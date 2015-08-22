@@ -155,7 +155,8 @@ public class VideoCallActivity extends CallActivity implements OnClickListener {
             callStateTextView.setText(st);
 
             handler.postDelayed(new Runnable() {
-                public void run() {
+                @Override
+				public void run() {
                     streamID = playMakeCallSounds();
                 }
             }, 300);

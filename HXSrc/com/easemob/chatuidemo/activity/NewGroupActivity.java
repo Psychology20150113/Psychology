@@ -25,7 +25,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.chatuidemo.R;
 import com.easemob.exceptions.EaseMobException;
@@ -106,6 +105,7 @@ public class NewGroupActivity extends BaseActivity {
 						    EMGroupManager.getInstance().createPrivateGroup(groupName, desc, members, memberCheckbox.isChecked(),200);
 						}
 						runOnUiThread(new Runnable() {
+							@Override
 							public void run() {
 								progressDialog.dismiss();
 								setResult(RESULT_OK);
@@ -114,6 +114,7 @@ public class NewGroupActivity extends BaseActivity {
 						});
 					} catch (final EaseMobException e) {
 						runOnUiThread(new Runnable() {
+							@Override
 							public void run() {
 								progressDialog.dismiss();
 								Toast.makeText(NewGroupActivity.this, st2 + e.getLocalizedMessage(), 1).show();
@@ -126,6 +127,7 @@ public class NewGroupActivity extends BaseActivity {
 		}
 	}
 
+	@Override
 	public void back(View view) {
 		finish();
 	}

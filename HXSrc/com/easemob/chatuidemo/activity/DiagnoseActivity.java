@@ -57,6 +57,7 @@ public class DiagnoseActivity extends BaseActivity implements OnClickListener {
 			currentVersion.setText(st);}
 	}
 
+	@Override
 	public void back(View view) {
 		finish();
 	}

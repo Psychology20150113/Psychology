@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.dcy.psychology.LoginActivity;
+import com.dcy.psychology.EditInfoActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.ThoughtReadingActivity;
@@ -47,7 +47,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class CareerPlanFragment extends Fragment implements OnClickListener, OnItemSelectedListener{
+public class CareerPlanFragment extends Fragment implements OnClickListener,OnItemSelectedListener{
 	private Context mContext;
 	private Resources mResources;
 	private EditText nickEt;
@@ -55,6 +55,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	private EditText ageEt;
 	private EditText mailEt;
 	private EditText gradurationYearEt;
+	private Spinner mSpinner;
 	private Spinner mIndustrySpinner;
 	private Spinner mXingzuoSpinner;
 	private Spinner mProvinceSpinner;
@@ -110,6 +111,9 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		initPerfectInfoView();
 		if(TextUtils.isEmpty(MyApplication.myPhoneNum))
 		{
+
+			/*rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
+=======
 			/*Intent mIntent=new Intent(mContext,LoginActivity.class);
 			startActivity(mIntent);*/
 			rootView.findViewById(R.id.ll_entry).setVisibility(View.VISIBLE);
@@ -160,7 +164,14 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.tv_student_entry:
+
+		case R.id.tv_area:
+			Intent mIntent = new Intent(mContext, EditInfoActivity.class);
+			mIntent.putExtra(Constants.TitleName, getString(R.string.working_city));
+			mIntent.putExtra(Constants.Params, "workingCity");
+			break;
+	
+		/*case R.id.tv_student_entry:
 			Intent mStudentIntent = new Intent(mContext, LoginActivity.class);
 			mStudentIntent.putExtra(Constants.UserRole, Constants.RoleUser);
 			startActivityForResult(mStudentIntent, RequestCode_Login);
@@ -169,7 +180,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 			Intent mTeacherIntent = new Intent(mContext, LoginActivity.class);
 			mTeacherIntent.putExtra(Constants.UserRole, Constants.RoleTeacher);
 			startActivityForResult(mTeacherIntent, RequestCode_Login);
-			break;
+			break;*/
 		case R.id.btn_prefect:
 			if(!checkInput())
 			{
@@ -363,7 +374,10 @@ public class CareerPlanFragment extends Fragment implements OnClickListener, OnI
 		}
 	}
 	
+
+
 	private void initPerfectInfoView(){
+
 		nickEt = (EditText) rootView.findViewById(R.id.nick_et);
 		sexGroup = (RadioGroup) rootView.findViewById(R.id.sex_rg);
 		ageEt = (EditText) rootView.findViewById(R.id.age_et);

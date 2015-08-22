@@ -184,6 +184,7 @@ public class GroupPickContactsActivity extends BaseActivity {
 		}
 	}
 
+	@Override
 	public void back(View view){
 		finish();
 	}

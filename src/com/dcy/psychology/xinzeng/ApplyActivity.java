@@ -10,7 +10,6 @@ import android.widget.Spinner;
 
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
-import com.dcy.psychology.SlideMainActivity;
 
 public class ApplyActivity  extends BaseActivity implements OnClickListener{
 	private Button submit;

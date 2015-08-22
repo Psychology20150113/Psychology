@@ -232,10 +232,12 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 					progressDialog.show();
 					
 					new Thread(new Runnable() {
+						@Override
 						public void run() {
 							try {
 							    EMGroupManager.getInstance().changeGroupName(groupId, returnData);
 								runOnUiThread(new Runnable() {
+									@Override
 									public void run() {
 										((TextView) findViewById(R.id.group_name)).setText(returnData + "(" + group.getAffiliationsCount()
 												+ st);
@@ -247,6 +249,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 							} catch (EaseMobException e) {
 								e.printStackTrace();
 								runOnUiThread(new Runnable() {
+									@Override
 									public void run() {
 										progressDialog.dismiss();
 										Toast.makeText(getApplicationContext(), st7, 0).show();
@@ -261,10 +264,12 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 				progressDialog.setMessage(st8);
 				progressDialog.show();
 				new Thread(new Runnable() {
+					@Override
 					public void run() {
 						try {
 						    EMGroupManager.getInstance().blockUser(groupId, longClickUsername);
 							runOnUiThread(new Runnable() {
+								@Override
 								public void run() {
 								    refreshMembers();
 									progressDialog.dismiss();
@@ -273,6 +278,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 							});
 						} catch (EaseMobException e) {
 							runOnUiThread(new Runnable() {
+								@Override
 								public void run() {
 									progressDialog.dismiss();
 									Toast.makeText(getApplicationContext(), st9, 0).show();
@@ -339,10 +345,12 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 	private void exitGrop() {
 		String st1 = getResources().getString(R.string.Exit_the_group_chat_failure);
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 				    EMGroupManager.getInstance().exitFromGroup(groupId);
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							setResult(RESULT_OK);
@@ -353,6 +361,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 					});
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							Toast.makeText(getApplicationContext(), getResources().getString(R.string.Exit_the_group_chat_failure) + " " + e.getMessage(), 1).show();
@@ -371,10 +380,12 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 	private void deleteGrop() {
 		final String st5 = getResources().getString(R.string.Dissolve_group_chat_tofail);
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 				    EMGroupManager.getInstance().exitAndDeleteGroup(groupId);
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							setResult(RESULT_OK);
@@ -385,6 +396,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 					});
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							Toast.makeText(getApplicationContext(), st5 + e.getMessage(), 1).show();
@@ -404,6 +416,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 		final String st6 = getResources().getString(R.string.Add_group_members_fail);
 		new Thread(new Runnable() {
 			
+			@Override
 			public void run() {
 				try {
 					// 创建者调用add方法
@@ -414,6 +427,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 					    EMGroupManager.getInstance().inviteUser(groupId, newmembers, null);
 					}
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 						    refreshMembers();
 							((TextView) findViewById(R.id.group_name)).setText(group.getGroupName() + "(" + group.getAffiliationsCount()
@@ -423,6 +437,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 					});
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							Toast.makeText(getApplicationContext(), st6 + e.getMessage(), 1).show();
@@ -448,11 +463,13 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 				progressDialog.setMessage(st6);
 				progressDialog.show();
 				new Thread(new Runnable() {
-                    public void run() {
+                    @Override
+					public void run() {
                         try {
                             EMGroupManager.getInstance().unblockGroupMessage(groupId);
                             runOnUiThread(new Runnable() {
-                                public void run() {
+                                @Override
+								public void run() {
                                     iv_switch_block_groupmsg.setVisibility(View.INVISIBLE);
                                     iv_switch_unblock_groupmsg.setVisibility(View.VISIBLE);
                                     progressDialog.dismiss();
@@ -461,7 +478,8 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
                         } catch (Exception e) {
                             e.printStackTrace();
                             runOnUiThread(new Runnable() {
-                                public void run() {
+                                @Override
+								public void run() {
                                     progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), st7, 1).show();
                                 }
@@ -482,11 +500,13 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 				progressDialog.setMessage(st8);
 				progressDialog.show();
 				new Thread(new Runnable() {
-                    public void run() {
+                    @Override
+					public void run() {
                         try {
                             EMGroupManager.getInstance().blockGroupMessage(groupId);
                             runOnUiThread(new Runnable() {
-                                public void run() {
+                                @Override
+								public void run() {
                                     iv_switch_block_groupmsg.setVisibility(View.VISIBLE);
                                     iv_switch_unblock_groupmsg.setVisibility(View.INVISIBLE);
                                     progressDialog.dismiss();
@@ -495,7 +515,8 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
                         } catch (Exception e) {
                             e.printStackTrace();
                             runOnUiThread(new Runnable() {
-                                public void run() {
+                                @Override
+								public void run() {
                                     progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), st9, 1).show();
                                 }
@@ -696,6 +717,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 								} catch (final Exception e) {
 									deleteDialog.dismiss();
 									runOnUiThread(new Runnable() {
+										@Override
 										public void run() {
 											Toast.makeText(getApplicationContext(), st14 + e.getMessage(), 1).show();
 										}
@@ -735,6 +757,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 
 	protected void updateGroup() {
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					final EMGroup returnGroup = EMGroupManager.getInstance().getGroupFromServer(groupId);
@@ -742,6 +765,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 					EMGroupManager.getInstance().createOrUpdateLocalGroup(returnGroup);
 
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							((TextView) findViewById(R.id.group_name)).setText(group.getGroupName() + "(" + group.getAffiliationsCount()
 									+ ")");
@@ -771,6 +795,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 
 				} catch (Exception e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							loadingPB.setVisibility(View.INVISIBLE);
 						}
@@ -780,6 +805,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 		}).start();
 	}
 
+	@Override
 	public void back(View view) {
 		setResult(RESULT_OK);
 		finish();

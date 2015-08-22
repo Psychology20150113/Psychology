@@ -15,34 +15,21 @@ package com.easemob.chatuidemo.activity;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMChatRoom;
-import com.easemob.chat.EMGroup;
 import com.easemob.chatuidemo.R;
 import com.easemob.chatuidemo.adapter.ChatRoomAdapter;
 
@@ -152,6 +139,7 @@ public class ChatRoomActivity extends BaseActivity {
 	 * 
 	 * @param view
 	 */
+	@Override
 	public void back(View view) {
 		finish();
 	}

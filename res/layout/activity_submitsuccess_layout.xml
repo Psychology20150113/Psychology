@@ -37,7 +37,7 @@
             android:layout_marginRight="63dp"
             android:lineSpacingExtra="11dp"
             android:textColor="#898989"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:text="@string/suggest" 
             />
 

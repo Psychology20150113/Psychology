@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -19,7 +20,6 @@ import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
-import com.tencent.weibo.sdk.android.model.ImageInfo;
 
 public class LoginActivity extends Activity implements OnClickListener{
 	private EditText accountET;
@@ -107,12 +107,12 @@ public class LoginActivity extends Activity implements OnClickListener{
 			setRightText(R.string.register);
 		}*/
 		accountET = (EditText) findViewById(R.id.account_et);
-		pwdET = (EditText) findViewById(R.id.psw_et);
+		pwdET = (EditText) findViewById(R.id.psw_et); 
 		findViewById(R.id.login_btn).setOnClickListener(this);
 		findViewById(R.id.register_btn).setOnClickListener(this);
 		findViewById(R.id.find_pwd_tv).setOnClickListener(this);
 		backview=(ImageView) findViewById(R.id.iv_back);
-		backview.setImageResource(R.drawable.icon_back1);
+		backview.setImageResource(R.drawable.icon_orangeback);
 		backview.setOnClickListener(this);
 	}
 	

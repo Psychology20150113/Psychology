@@ -90,6 +90,7 @@ public class ContactlistFragment extends Fragment {
 		public void onSyncSucess(final boolean success) {
 			EMLog.d(TAG, "on contact list sync success:" + success);
 			ContactlistFragment.this.getActivity().runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 				    getActivity().runOnUiThread(new Runnable(){
 
@@ -155,6 +156,7 @@ public class ContactlistFragment extends Fragment {
 		query.setHint(R.string.search);
 		clearSearch = (ImageButton) getView().findViewById(R.id.search_clear);
 		query.addTextChangedListener(new TextWatcher() {
+			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				adapter.getFilter().filter(s);
 				if (s.length() > 0) {
@@ -165,9 +167,11 @@ public class ContactlistFragment extends Fragment {
 				}
 			}
 
+			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			}
 
+			@Override
 			public void afterTextChanged(Editable s) {
 			}
 		});
@@ -232,7 +236,7 @@ public class ContactlistFragment extends Fragment {
 		});
 		registerForContextMenu(listView);
 		
-		progressBar = (View) getView().findViewById(R.id.progress_bar);
+		progressBar = getView().findViewById(R.id.progress_bar);
 
 		contactSyncListener = new HXContactSyncListener();
 		HXSDKHelper.getInstance().addSyncContactListener(contactSyncListener);
@@ -307,6 +311,7 @@ public class ContactlistFragment extends Fragment {
 		pd.setCanceledOnTouchOutside(false);
 		pd.show();
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					EMContactManager.getInstance().deleteContact(tobeDeleteUser.getUsername());
@@ -315,6 +320,7 @@ public class ContactlistFragment extends Fragment {
 					dao.deleteContact(tobeDeleteUser.getUsername());
 					DemoApplication.getInstance().getContactList().remove(tobeDeleteUser.getUsername());
 					getActivity().runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							adapter.remove(tobeDeleteUser);
@@ -324,6 +330,7 @@ public class ContactlistFragment extends Fragment {
 					});
 				} catch (final Exception e) {
 					getActivity().runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(getActivity(), st2 + e.getMessage(), 1).show();
@@ -349,11 +356,13 @@ public class ContactlistFragment extends Fragment {
 		pd.setCanceledOnTouchOutside(false);
 		pd.show();
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					//加入到黑名单
 					EMContactManager.getInstance().addUserToBlackList(username,false);
 					getActivity().runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(getActivity(), st2, 0).show();
@@ -363,6 +372,7 @@ public class ContactlistFragment extends Fragment {
 				} catch (EaseMobException e) {
 					e.printStackTrace();
 					getActivity().runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(getActivity(), st3, 0).show();
@@ -379,6 +389,7 @@ public class ContactlistFragment extends Fragment {
 		try {
 			// 可能会在子线程中调到这方法
 			getActivity().runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					getContactList();
 					adapter.notifyDataSetChanged();

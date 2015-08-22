@@ -5,7 +5,6 @@ import cn.jpush.android.api.JPushInterface;
 
 import com.dcy.psychology.db.PreInstallDbHelper;
 import com.dcy.psychology.emchat.HXChatManager;
-import com.dcy.psychology.emchat.HXSDKHelper;
 import com.dcy.psychology.network.NetworkManager;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.InfoShared;

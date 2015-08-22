@@ -3,6 +3,7 @@ package com.dcy.psychology.fragment;
 import java.util.ArrayList;
 
 import com.dcy.psychology.R;
+import com.dcy.psychology.adapter.SpecialUserListAdapter;
 import com.dcy.psychology.adapter.TalkingAdapter;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.util.Utils;
@@ -21,14 +22,14 @@ public class AppliedFragment extends Fragment {
 	private CustomProgressDialog mLoadingDialog;
 	private Context mContext;
 	private ArrayList<SpecificUserBean> dataList = new ArrayList<SpecificUserBean>();
-	private TalkingAdapter mAdapter;
+	private SpecialUserListAdapter mAdapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
 		mLoadingDialog = new CustomProgressDialog(mContext);
-		mAdapter = new TalkingAdapter(mContext, dataList);
+		mAdapter = new SpecialUserListAdapter(mContext, dataList);
 		mLoadingDialog.show();
 		new GetMatchestSpecialList().execute();
 	}

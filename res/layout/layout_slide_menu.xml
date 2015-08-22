@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="vertical"   
     android:layout_gravity="left"
-    android:background="@color/white" >
+    android:background="@color/v2_divider" >
     <RelativeLayout 
         android:id="@+id/rl_name_info"
         android:layout_width="match_parent"
@@ -43,18 +43,19 @@
      <LinearLayout 
         android:id="@+id/ll_slide_dna"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="46dp"
+        android:background="@color/white"
         android:orientation="horizontal" 
         android:gravity="center_vertical">
         <ImageView 
             android:id="@+id/iv_icon1"
             style="@style/slide_menu_iv_style"
-            android:background="@drawable/icon_attention"
+            android:background="@drawable/a1"
             android:visibility="visible"/>
         <ImageView 
             android:id="@+id/iv_icon_login1"
             style="@style/slide_menu_iv_style"
-            android:background="@drawable/icon_match"
+            android:background="@drawable/b1"
             android:visibility="gone"/>
 
     <TextView 
@@ -65,42 +66,91 @@
      </LinearLayout>
     <ImageView 
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/divider"/>
-    <LinearLayout 
+        android:layout_height="5dp"
+        android:background="@color/v2_divider"/>
+    <RelativeLayout
         android:id="@+id/ll_slide_mine_doctor"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_height="46dp"
+        android:visibility="visible"
+        android:background="@color/white">
     	 <ImageView 
     	    android:id="@+id/iv_icon2"
            style="@style/slide_menu_iv_style"
-           android:background="@drawable/icon_attention"
+           android:background="@drawable/a2"
+           android:layout_alignParentLeft="true" 
+           android:layout_centerVertical="true"
             android:visibility="visible"/>
     	 <ImageView 
             android:id="@+id/iv_icon_login2"
             style="@style/slide_menu_iv_style"
-            android:background="@drawable/icon_match"
+            android:layout_alignParentLeft="true" 
+            android:layout_centerVertical="true"
+            android:background="@drawable/b2"
             android:visibility="gone"/>
         <TextView 
         android:id="@+id/tv_slide_mine_doctor"
        	style="@style/slide_menu_tv_style"
+        android:layout_marginLeft="67dp"
+        android:text="@string/slide_mine_doctor"/>     
+		  <TextView 
+            android:id="@+id/tv_doctor_count"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_marginRight="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"          
+            android:visibility="visible"
+            android:gravity="center"
+            android:background="@drawable/bg_tv_count"
+            android:scaleType="centerInside"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:text="2"/>
+          
+
+       
+        
+        
+    </RelativeLayout>
+    <!-- 我的心情生 -->
+    <LinearLayout 
+        android:id="@+id/ll_slide_mine_student"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+    	 <ImageView 
+    	   android:id="@+id/iv_te_icon2"
+           style="@style/slide_menu_iv_style"
+           android:background="@drawable/a2"
+            android:visibility="visible"/>
+    	 <ImageView 
+            android:id="@+id/iv_icon_te_login2"
+            style="@style/slide_menu_iv_style"
+            android:background="@drawable/b2"
+            android:visibility="gone"/>
+        <TextView 
+        android:id="@+id/tv_slide_mine_student"
+       	style="@style/slide_menu_tv_style"
         android:layout_marginLeft="22dp"
-        android:text="@string/slide_mine_doctor"/>
+        android:text="@string/slide_mine_student"/>
         <LinearLayout 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="right|center_vertical">
              <TextView 
-            android:id="@+id/tv_doctor_count"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
+            android:id="@+id/tv_student_count"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
             android:layout_marginRight="12dp"
             android:gravity="center"
             android:visibility="gone"
-            android:background="@drawable/bg_tv_count"
+            android:background="@drawable/bg_slide_menu_count"
             android:textColor="#ffffff"
+            android:textSize="12sp"
             android:text="2"/>
         </LinearLayout>
        
@@ -110,23 +160,24 @@
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/divider" />
+        android:layout_height="5dp"
+        android:background="@color/v2_divider" />
      <LinearLayout 
         android:id="@+id/ll_slide_message"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="46dp"
         android:orientation="horizontal"
+        android:background="@color/white"
         android:gravity="center_vertical">
         <ImageView 
             android:id="@+id/iv_icon3"
            style="@style/slide_menu_iv_style"
-           android:background="@drawable/icon_attention"
+           android:background="@drawable/a3"
             android:visibility="visible"/>
         <ImageView 
             android:id="@+id/iv_icon_login3"
             style="@style/slide_menu_iv_style"
-            android:background="@drawable/icon_match"
+            android:background="@drawable/b3"
             android:visibility="gone"/>
    		 <TextView 
         android:id="@+id/tv_slide_message"
@@ -139,20 +190,21 @@
             android:gravity="right|center_vertical">
              <TextView 
             android:id="@+id/tv_message_count"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
             android:layout_marginRight="12dp"
             android:visibility="gone"
             android:gravity="center"
-            android:background="@drawable/bg_tv_count"
+            android:background="@drawable/bg_slide_menu_count"
             android:textColor="#ffffff"
+            android:textSize="12sp"
             android:text="2"/>
         </LinearLayout>
      </LinearLayout>
     <ImageView 
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/divider"/>
+        android:layout_height="5dp"
+        android:background="@color/v2_divider"/>
     <!--  <LinearLayout 
         android:id="@+id/ll_slide_problem"
         android:layout_width="match_parent"
@@ -174,32 +226,55 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/divider"/>  -->
+        
+        <!-- 我的关注 -->
+        <LinearLayout 
+        android:id="@+id/ll_mine_attention"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+   		  <ImageView 
+   		   android:id="@+id/iv_te_icon4"
+           style="@style/slide_menu_iv_style"
+           android:background="@drawable/a4"
+            android:visibility="visible"/>
+   		  <ImageView 
+            android:id="@+id/iv_icon_te_login4"
+            style="@style/slide_menu_iv_style"
+            android:background="@drawable/b4"
+            android:visibility="gone"/>
+   		 <TextView 
+        android:id="@+id/tv_mine_attention"
+        style="@style/slide_menu_tv_style"
+       	android:layout_marginLeft="22dp"
+        android:text="@string/mine_attention"/>
+    </LinearLayout>
      <LinearLayout 
         android:id="@+id/ll_help"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="46dp"
         android:orientation="horizontal"
+        android:background="@color/white"
         android:gravity="center_vertical">
    		  <ImageView 
    		   android:id="@+id/iv_icon4"
            style="@style/slide_menu_iv_style"
-           android:background="@drawable/icon_attention"
+           android:background="@drawable/a5"
             android:visibility="visible"/>
    		  <ImageView 
             android:id="@+id/iv_icon_login4"
             style="@style/slide_menu_iv_style"
-            android:background="@drawable/icon_match"
+            android:background="@drawable/b5"
             android:visibility="gone"/>
    		 <TextView 
         android:id="@+id/tv_help"
         style="@style/slide_menu_tv_style"
-       	android:layout_marginLeft="22dp"
+       	android:layout_marginLeft="21dp"
         android:text="@string/help"/>
     </LinearLayout>
-     <ImageView 
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/divider"/>
     <!--  <LinearLayout 
         android:id="@+id/ll_collect"
         android:layout_width="match_parent"
@@ -216,5 +291,39 @@
         android:textColor="#727171"
         android:text="@string/slide_collect"/>
     </LinearLayout> -->
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
+        <ImageView 
+        android:id="@+id/iv_unlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:visibility="visible"
+        android:background="@drawable/bg_unlogin"/>
+         <ImageView 
+        android:id="@+id/iv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:visibility="gone"
+        android:background="@drawable/bg_iv_login"/>
+    </LinearLayout>
+   
     
-</LinearLayout>
+	</LinearLayout>
+<!-- 	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="#000000"
+	    android:orientation="vertical"
+	    android:gravity="center">
+	    <ImageView 
+	        android:id="@+id/iv_slide_back"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/icon_slide_back"/>
+	</LinearLayout> -->
+    
+    

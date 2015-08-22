@@ -31,12 +31,14 @@ public class DemoHXSDKModel extends DefaultHXSDKModel{
     }
 
     // demo will not use HuanXin roster
-    public boolean getUseHXRoster() {
+    @Override
+	public boolean getUseHXRoster() {
         return false;
     }
     
     // demo will switch on debug mode
-    public boolean isDebugMode(){
+    @Override
+	public boolean isDebugMode(){
         return true;
     }
     

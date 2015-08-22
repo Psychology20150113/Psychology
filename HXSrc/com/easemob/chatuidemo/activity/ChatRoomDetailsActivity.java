@@ -15,13 +15,11 @@ package com.easemob.chatuidemo.activity;
 
 import java.util.List;
 
-import android.R.raw;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,7 +37,6 @@ import android.widget.Toast;
 
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMChatRoom;
-import com.easemob.chat.EMGroup;
 import com.easemob.chatuidemo.R;
 import com.easemob.chatuidemo.utils.UserUtils;
 import com.easemob.chatuidemo.widget.ExpandGridView;
@@ -228,10 +225,12 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 	 */
 	private void exitGrop() {
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					EMChatManager.getInstance().leaveChatRoom(roomId);
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							setResult(RESULT_OK);
@@ -242,6 +241,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					});
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							progressDialog.dismiss();
 							Toast.makeText(getApplicationContext(), "退出聊天室失败: " + e.getMessage(), 1).show();
@@ -254,11 +254,13 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 	
 	protected void updateRoom() {
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					final EMChatRoom returnRoom = EMChatManager.getInstance().fetchChatRoomFromServer(roomId);
 
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							((TextView) findViewById(R.id.group_name)).setText(returnRoom.getName() + "(" + returnRoom.getAffiliationsCount()
 									+ "人)");
@@ -279,6 +281,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 
 				} catch (Exception e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							loadingPB.setVisibility(View.INVISIBLE);
 						}
@@ -453,6 +456,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 	}
 
 
+	@Override
 	public void back(View view) {
 		setResult(RESULT_OK);
 		finish();

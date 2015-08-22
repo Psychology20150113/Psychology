@@ -7,47 +7,27 @@
     android:orientation="vertical" >
 	<EditText
         android:id="@+id/et_real_name"
-        android:layout_width="314dp"
-        android:layout_height="41dp"
-        android:layout_centerHorizontal="true" 
-        android:background="@drawable/bg_edit_perfect"
-        android:drawableLeft="@drawable/icon_attention"
-        android:drawablePadding="10dp"
+        style="@style/edit_perfect_style"
+        android:drawableLeft="@drawable/icon_perfect_1"
         android:layout_marginTop="61dp"
         android:ems="10"
-        android:hint="@string/real_name"
-        android:padding="10dp"
-        android:textSize="12sp" />
+        android:hint="@string/real_name" />
     <View
         android:id="@+id/View_real_name"
-        android:layout_width="314dp"
-        android:layout_height="2dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_below="@id/et_real_name" 
-        android:background="#5991bf" />
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_real_name"  />
     <EditText
         android:id="@+id/et_nickname"
-        android:layout_width="314dp"
-        android:layout_height="41dp"
-        android:layout_centerHorizontal="true" 
-        android:background="@drawable/bg_edit_perfect"
-        android:drawableLeft="@drawable/icon_attention"
-        android:drawablePadding="10dp"
+      	style="@style/edit_perfect_style"
+        android:drawableLeft="@drawable/icon_perfect_2"       
         android:layout_below="@id/View_real_name" 
         android:layout_marginTop="19dp"
         android:ems="10"
-        android:hint="@string/nickname"
-        android:padding="10dp"
-        android:textSize="12sp" />
+        android:hint="@string/nickname" />
     <View
         android:id="@+id/View_nickname"
-        android:layout_width="314dp"
-        android:layout_height="2dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_below="@id/et_nickname" 
-        android:background="#5991bf" />
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_nickname"  />
     <LinearLayout
         android:id="@+id/ll_choose_sex"
         android:layout_width="150dp"
@@ -62,7 +42,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_attention"
+            android:background="@drawable/icon_perfect_3"
             android:layout_marginLeft="10dp"/>
         <Spinner 
             android:id="@+id/sp_choose_sex"
@@ -78,7 +58,7 @@
     <View
         android:id="@+id/View_choose_sex"
         android:layout_width="150dp"
-        android:layout_height="2dp"
+        android:layout_height="2px"
         android:layout_gravity="center"
         android:layout_alignLeft ="@id/View_nickname"
         android:layout_below="@id/ll_choose_sex" 
@@ -88,7 +68,7 @@
         android:layout_width="150dp"
         android:layout_height="41dp"
         android:background="@drawable/bg_edit_perfect"
-        android:drawableLeft="@drawable/icon_attention"
+        android:drawableLeft="@drawable/icon_perfect_4"
         android:layout_alignRight="@id/View_nickname"
         android:drawablePadding="10dp"
         android:layout_below="@id/View_nickname" 
@@ -96,63 +76,46 @@
         android:ems="10"
         android:hint="@string/choose_age"
         android:padding="10dp"
-        android:textSize="12sp" />
+        android:textSize="13sp" />
     <View
         android:id="@+id/View_choose_age"
         android:layout_width="150dp"
-        android:layout_height="2dp"
+        android:layout_height="2px"
         android:layout_gravity="center"
         android:layout_alignRight="@id/View_nickname"
         android:layout_below="@id/et_choose_age" 
         android:background="#5991bf" />
     <TextView
         android:id="@+id/tv_area"
-        android:layout_width="314dp"
-        android:layout_height="41dp"
-        android:layout_centerHorizontal="true" 
-        android:background="@drawable/bg_edit_perfect"
-        android:drawableLeft="@drawable/icon_attention"
-        android:drawablePadding="10dp"
-        android:gravity="center_vertical"
+        style="@style/edit_perfect_style"
+        android:drawableLeft="@drawable/icon_perfect_5"
         android:layout_below="@id/View_choose_age" 
         android:layout_marginTop="19dp"
         android:ems="10"
         android:text="@string/area"
         android:textColor="@color/v2_gray"
-        android:padding="10dp"
-        android:textSize="12sp" />
+        android:textSize="13sp" />
     <View
         android:id="@+id/View_area"
-        android:layout_width="314dp"
-        android:layout_height="2dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_below="@id/tv_area" 
-        android:background="#5991bf" />
+         style="@style/view_perfect_style"
+        android:layout_below="@id/tv_area" />
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="314dp"
-        android:layout_height="41dp"
-        android:layout_centerHorizontal="true" 
+        style="@style/edit_perfect_style"
         android:background="@drawable/bg_edit_perfect"
-        android:drawableLeft="@drawable/icon_attention"
-        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/icon_perfect_6"
+  
         android:layout_below="@id/View_area" 
         android:layout_marginTop="19dp"
         android:ems="10"
-        android:hint="@string/email"
-        android:padding="10dp"
-        android:textSize="12sp" />
+        android:hint="@string/email"/>
     <View
         android:id="@+id/View_email"
-        android:layout_width="314dp"
-        android:layout_height="2dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_below="@id/et_email" 
-        android:background="#5991bf" />
+        style="@style/view_perfect_style"
+        android:layout_below="@id/et_email"  />
     
     <Button 
+        android:id="@+id/btn_prefect"
         android:layout_width="317dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

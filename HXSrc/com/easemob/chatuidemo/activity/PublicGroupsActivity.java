@@ -17,38 +17,29 @@ package com.easemob.chatuidemo.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMCursorResult;
 import com.easemob.chat.EMGroupInfo;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.chatuidemo.R;
 import com.easemob.exceptions.EaseMobException;
-import com.easemob.util.NetUtils;
 
 public class PublicGroupsActivity extends BaseActivity {
 	private ProgressBar pb;
@@ -129,7 +120,8 @@ public class PublicGroupsActivity extends BaseActivity {
 	private void loadAndShowData(){
 	    new Thread(new Runnable() {
 
-            public void run() {
+            @Override
+			public void run() {
                 try {
                     isLoading = true;
                     final EMCursorResult<EMGroupInfo> result = EMGroupManager.getInstance().getPublicGroupsFromServer(pagesize, cursor);
@@ -137,7 +129,8 @@ public class PublicGroupsActivity extends BaseActivity {
                     final List<EMGroupInfo> returnGroups = result.getData();
                     runOnUiThread(new Runnable() {
 
-                        public void run() {
+                        @Override
+						public void run() {
                             searchBtn.setVisibility(View.VISIBLE);
                             groupsList.addAll(returnGroups);
                             if(returnGroups.size() != 0){
@@ -167,7 +160,8 @@ public class PublicGroupsActivity extends BaseActivity {
                 } catch (EaseMobException e) {
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
-                        public void run() {
+                        @Override
+						public void run() {
                             isLoading = false;
                             pb.setVisibility(View.INVISIBLE);
                             footLoadingLayout.setVisibility(View.GONE);
@@ -203,6 +197,7 @@ public class PublicGroupsActivity extends BaseActivity {
 		}
 	}
 	
+	@Override
 	public void back(View view){
 		finish();
 	}

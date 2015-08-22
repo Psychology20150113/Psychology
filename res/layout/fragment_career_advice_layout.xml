@@ -1,57 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 职业点拨页面 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efefef"
     android:orientation="vertical" >
-
-    <Button
-        android:id="@+id/btn_mine_talkabout"
+     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff"
-        android:text="@string/mine_talkabout" />
-
-    <Button
-        android:id="@+id/btn_advance"
+        android:layout_height="198dp"
+        android:background="#ffbf60">
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" 
+            android:layout_marginLeft="29dp"
+            android:src="@drawable/icon_career_advice_1"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_career_advice_2"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="57dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_career_advice_3"
+            android:layout_marginRight="43dp"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_left"
+            android:layout_marginLeft="-9dp"
+            android:layout_marginTop="33dp"
+            android:textSize="17sp"
+            android:textColor="#333638"
+            android:text="@string/web"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_left"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginTop="55dp"
+            android:textSize="12sp"
+            android:textColor="#333638"
+            android:text="@string/easiness"/>
+    </RelativeLayout>
+    <View 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_mine_talkabout"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff"
-        android:text="@string/advance" />
-
-    <Button
-        android:id="@+id/btn_underway"
+        android:layout_height="1px"
+        android:background="@color/v2_gray"/>
+    <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_advance"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff"
-        android:text="@string/underway" />
-
-    <TextView
-        android:id="@+id/tv_danmu"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#fef1c4"
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_iv_danmaku"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="9dp"/>
+        
+    </LinearLayout>
+    <View 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_below="@+id/btn_underway"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff"
-        android:gravity="center_horizontal"
-        android:text="" />
+        android:layout_height="1px"
+        android:background="@color/v2_gray"/>
+    <RelativeLayout
+        android:id="@+id/rl_mine_talkabout"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/rl_career_advice_1"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_liaotianneirong"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_danmu"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff"
-        android:gravity="center_horizontal"
-        android:text="" />
+        <TextView
+            android:id="@+id/tv_mine_talkabout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" 
+            android:textColor="#323738"
+            android:text="@string/mine_talkabout"
+            android:textSize="16sp" />
+        <TextView 
+            android:id="@+id/tv_talkabout_count"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/bg_career_advice_tv1"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/v2_gray"
+            android:text=""/>
+        <View 
+            android:layout_width="1px"
+            android:layout_height="34dp"
+            android:background="#8a8a8a"
+            android:layout_centerVertical="true" 
+            android:layout_toLeftOf="@id/tv_talkabout_count"
+            android:layout_marginRight="14dp"/>
+        
+                                                                                                                                       
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_advance"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/rl_career_advice_2"
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_advance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" 
+            android:textColor="@color/white"
+            android:text="@string/advance"
+            android:textSize="16sp" />
+         <TextView 
+            android:id="@+id/tv_advance_count"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/bg_career_advice_tv2"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/v2_gray"
+            android:text="2"/>
+        <View 
+            android:layout_width="1px"
+            android:layout_height="34dp"
+            android:background="@color/white"
+            android:layout_centerVertical="true" 
+            android:layout_toLeftOf="@id/tv_advance_count"
+            android:layout_marginRight="14dp"/>
+       
+                                                                                                                                       
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_underway"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/rl_career_advice_3"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_underway"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" 
+            android:textColor="@color/white"
+            android:text="@string/underway"
+            android:textSize="16sp" />
+        <TextView 
+            android:id="@+id/tv_underway_count"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/bg_career_advice_tv2"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/v2_gray"
+            android:text="2"/>
+        <View 
+            android:layout_width="1px"
+            android:layout_height="34dp"
+            android:background="@color/white"
+            android:layout_centerVertical="true" 
+            android:layout_toLeftOf="@id/tv_underway_count"
+            android:layout_marginRight="14dp"/>
+        
+                                                                                                                                       
+    </RelativeLayout>
+
+</LinearLayout>

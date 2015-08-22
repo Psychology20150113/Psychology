@@ -177,7 +177,7 @@
             android:screenOrientation="portrait">
         </activity>
          <activity 
-            android:name="com.dcy.psychology.view.dialog.ShareDialog"
+            android:name="com.dcy.psychology.xinzeng.ShareActivity"
             android:theme="@style/Transparent"
             android:screenOrientation="portrait">
         </activity>
@@ -187,6 +187,26 @@
         </activity>
          <activity 
             android:name="com.dcy.psychology.xinzeng.PersonalInfo_PerfectActivity"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity 
+            android:name="com.dcy.psychology.xinzeng.DoctorPerfectActivity"
+            android:theme="@style/Transparent"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.DoctorWelcomeActivity"
+            android:theme="@style/Transparent"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.DoctorChangePwdActivity"
+            android:theme="@style/Transparent"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.dcy.psychology.xinzeng.NoticeActivity"
+            android:theme="@style/Transparent"
             android:screenOrientation="portrait">
         </activity>
         

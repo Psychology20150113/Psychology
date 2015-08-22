@@ -5,7 +5,7 @@
     android:orientation="vertical" 
     android:background="@color/white"
     android:gravity="center_horizontal">
-    <ImageView 
+    <View 
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/divider"/>

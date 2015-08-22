@@ -132,6 +132,7 @@ public class ChatAllHistoryFragment extends Fragment implements View.OnClickList
 		// 搜索框中清除button
 		clearSearch = (ImageButton) getView().findViewById(R.id.search_clear);
 		query.addTextChangedListener(new TextWatcher() {
+			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				adapter.getFilter().filter(s);
 				if (s.length() > 0) {
@@ -141,9 +142,11 @@ public class ChatAllHistoryFragment extends Fragment implements View.OnClickList
 				}
 			}
 
+			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			}
 
+			@Override
 			public void afterTextChanged(Editable s) {
 			}
 		});

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.easemob.chatuidemo.DemoApplication;
-import com.easemob.chatuidemo.R;
 import com.easemob.chatuidemo.domain.User;
-import com.squareup.picasso.Picasso;
 
 public class UserUtils {
     /**

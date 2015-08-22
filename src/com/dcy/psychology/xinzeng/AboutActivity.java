@@ -1,9 +1,6 @@
 package com.dcy.psychology.xinzeng;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
 import com.dcy.psychology.BaseActivity;
 import com.dcy.psychology.R;
 

@@ -11,6 +11,7 @@ import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.dialog.ShareMatchDialog;
 import com.dcy.psychology.xinzeng.ApplyActivity;
+import com.dcy.psychology.xinzeng.ShareActivity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,6 +34,7 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 	private ImageView Ivattention;
 	private TextView gotalkView;
 	private  ImageView mbackview;
+	private  ImageView mshare;
 	private TextView mInfoView;
 	private AsyncImageCache mAsyncImageCache;
 	private Context mContext;
@@ -64,13 +66,10 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 	   			Intent mIntent =new Intent(this,ApplyActivity.class);
 	   			startActivity(mIntent);
 	   			break;
-		case R.id.tv_told:
-			if(mContext.getResources().getString(R.string.attention).equals(((TextView)v).getText())){
-				new FollowTask((TextView)v, false).execute(specialId);
-			} else {
-				new FollowTask((TextView)v, true).execute(specialId);
-			}
-			break;
+		case R.id.iv_share:
+			 mIntent =new Intent(this,ShareActivity.class);
+   			 startActivity(mIntent);
+   			break;
 		default:
 			break;
 		}
@@ -154,6 +153,8 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 		Ivattention=(ImageView) findViewById(R.id.iv_attention);
 		IvshareView.setVisibility(View.VISIBLE);
 		Ivattention.setVisibility(View.VISIBLE);
+		mshare=(ImageView) findViewById(R.id.iv_share);
+		mshare.setOnClickListener(this);
 	}
 	
 	private class GetInfoTask extends AsyncTask<Void, Void, UserInfoBean> {

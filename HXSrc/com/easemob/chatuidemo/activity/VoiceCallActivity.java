@@ -118,6 +118,7 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
 			st1 = getResources().getString(R.string.Are_connected_to_each_other);
 			callStateTextView.setText(st1);
 			handler.postDelayed(new Runnable() {
+				@Override
 				public void run() {
 					streamID = playMakeCallSounds();
 				}
@@ -129,6 +130,7 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
 				e.printStackTrace();
 				final String st2 = getResources().getString(R.string.Is_not_yet_connected_to_the_server);
 				runOnUiThread(new Runnable() {
+					@Override
 					public void run() {
 						Toast.makeText(VoiceCallActivity.this, st2, 0).show();
 					}

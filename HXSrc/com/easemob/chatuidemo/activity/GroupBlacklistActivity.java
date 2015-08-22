@@ -3,7 +3,6 @@ package com.easemob.chatuidemo.activity;
 import java.util.Collections;
 import java.util.List;
 
-import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.chatuidemo.R;
 import com.easemob.exceptions.EaseMobException;
@@ -42,6 +41,7 @@ public class GroupBlacklistActivity extends BaseActivity {
 		final String st1 = getResources().getString(R.string.get_failed_please_check);
 		new Thread(new Runnable() {
 
+			@Override
 			public void run() {
 				try {
 					List<String> blockedList = EMGroupManager.getInstance().getBlockedUsers(groupId);
@@ -49,6 +49,7 @@ public class GroupBlacklistActivity extends BaseActivity {
 						Collections.sort(blockedList);
 						adapter = new BlacklistAdapter(GroupBlacklistActivity.this, 1, blockedList);
 						runOnUiThread(new Runnable() {
+							@Override
 							public void run() {
 								listView.setAdapter(adapter);
 								progressBar.setVisibility(View.INVISIBLE);
@@ -57,6 +58,7 @@ public class GroupBlacklistActivity extends BaseActivity {
 					}
 				} catch (EaseMobException e) {
 					runOnUiThread(new Runnable() {
+						@Override
 						public void run() {
 							Toast.makeText(getApplicationContext(), st1, 1).show();
 							progressBar.setVisibility(View.INVISIBLE);
@@ -99,6 +101,7 @@ public class GroupBlacklistActivity extends BaseActivity {
 		} catch (EaseMobException e) {
 			e.printStackTrace();
 			runOnUiThread(new Runnable() {
+				@Override
 				public void run() {
 					Toast.makeText(getApplicationContext(), st2, 0).show();
 				}
