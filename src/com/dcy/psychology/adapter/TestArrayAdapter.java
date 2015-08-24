@@ -30,7 +30,7 @@ public class TestArrayAdapter extends ArrayAdapter<String> {
     TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
     tv.setText(mStringArray[position]);
     tv.setTextSize(12f);
-    tv.setTextColor(color.v2_gray);
+    tv.setTextColor(Color.GRAY);
     tv.setBackgroundColor(Color.WHITE);
 
     return convertView;
@@ -49,7 +49,7 @@ public class TestArrayAdapter extends ArrayAdapter<String> {
     TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
     tv.setText(mStringArray[position]);
     tv.setTextSize(12f);
-    tv.setTextColor(color.v2_gray);
+    tv.setTextColor(Color.GRAY);
     return convertView;
   }
 

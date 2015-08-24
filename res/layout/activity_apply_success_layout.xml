@@ -1,25 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 申请约聊成功、通知页面 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_apply_success"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical" >
-    
+    <!-- 申请约聊成功 -->
     <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        android:textSize="16dp"
-        android:textSize=""
+        android:visibility="visible"
+        android:textSize="16sp"
         android:text="@string/apply_success"/>
+    <!-- 通知 -->
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:visibility="gone"
+        android:textSize="16sp"
+        android:text="@string/message"/>
     <ImageView 
+        android:id="@+id/finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="30dp"
         android:layout_marginRight="27dp"
         android:src="@drawable/icon_finish"/>
+    
+    <TextView 
+        android:id="@+id/tv_apply_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="41dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginTop="81dp"
+        android:textSize="13sp"
+        android:text=""/>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px" 
+        android:layout_marginTop="167dp"
+        android:background="@color/v2_gray"/>
+    
+    <TextView 
+        android:id="@+id/tv_apply_success_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="41dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginTop="203dp"
+        android:textSize="16sp"
+        android:text=""/>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px" 
+        android:layout_marginBottom="170dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/v2_gray"/>
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="148dp"
+        android:layout_marginRight="22dp"
+        android:textColor="@color/v2_gray"
+        android:textSize="13sp"
+        android:text="2015.07.15 07:00"/>
+    <!-- 显示通知时隐藏 -->
+    <Button 
+        android:id="@+id/btn_enter_mine_talkabout"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:visibility="visible"
+        android:background="@drawable/rl_career_advice_3"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" 
+        android:layout_marginBottom="23dp"
+        android:textColor="@color/white"
+        android:text="@string/go_mine_talkabout"
+        />
 
 </RelativeLayout>

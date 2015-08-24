@@ -26,7 +26,7 @@ public class HelpActivity extends BaseActivity implements OnClickListener{
 		Intent mIntent = null;
 		switch (v.getId()) {
 		case R.id.ll_about:
-			mIntent = new Intent(this, PersonalInfo_PerfectActivity.class);
+			mIntent = new Intent(this, AboutActivity.class);
 			break;
 		case R.id.ll_howuse:
 			mIntent = new Intent(this, DoctorWelcomeActivity.class);
