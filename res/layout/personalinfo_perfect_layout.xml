@@ -91,6 +91,7 @@
         android:drawableLeft="@drawable/icon_perfect_5"
         android:layout_below="@id/View_choose_age" 
         android:layout_marginTop="19dp"
+        android:gravity="center_vertical"
         android:ems="10"
         android:text="@string/area"
         android:textColor="@color/v2_gray"

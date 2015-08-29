@@ -309,7 +309,10 @@
 	<string name="toldabout">已约聊</string>
 	<string name="apply">申请约聊</string>
 	<string name="hope">希望请教的问题 (30-200字):</string>
+	<string name="hopes">希望请教的问题 </string>
 	<string name="introduce">个人介绍(30-200字)</string>
+	<string name="introduces">个人介绍</string>
+	<string name="free_time">空闲时间</string>
 	<string name="such_us">例如:回国半年，准备创业，考虑做一个健身O2O项目；之前在美国做律师，是一个很大的转变，心里没底，想快速了解和适应国内的创业环境。</string>
 	<string name="such_us_introduce">例如:我目前在一家科技媒体做运营，工作3年，传媒大学毕业，业余运营一个微信公众号，平时喜欢写文章，希望职业上有更好的突破。</string>
 	<string name="convenience">根据导师的空闲时间范围自己的空闲时段。</string>
@@ -365,7 +368,10 @@
 	<string name="all">全部</string>
 	<string name="web">web端同步进行</string>
 	<string name="easiness">登陆官网聊天更轻松</string>
-	
+	<string name="accept">接受申请</string>
+	<string name="congratulation">恭喜你已成功预约%s导师，请按时赴约哦！</string>
+	<string name="sorry">抱歉，您的约聊申请未申请成功，但可以来直播间围观， 请关注约聊公告！不要气馁，下次继续，心晴师一直在这里等你！</string>
+	<string name="now">申请状态未更新，请耐心等待申请结果。</string>
 	
 	<string name="real_name">请填写真实姓名</string>
 	<string name="nickname">请填写昵称</string>
@@ -391,6 +397,8 @@
 	<string name="amend_initial_password">修改初始密码</string>
 	
 	<string name="apply_success">申请约聊成功</string>
+	<string name="go_mine_talkabout">进入我的约聊</string>
+	<string name="message">通知</string>
 	
 	
 	
