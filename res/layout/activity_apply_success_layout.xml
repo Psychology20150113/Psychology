@@ -12,12 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-<<<<<<< HEAD
-        android:textSize="16dp"
-=======
         android:visibility="visible"
         android:textSize="16sp"
->>>>>>> 916504c897b952906d3e37d91c32693db2f46cea
         android:text="@string/apply_success"/>
     <!-- 通知 -->
     <TextView 

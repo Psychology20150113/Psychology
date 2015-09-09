@@ -6,10 +6,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
+import com.dcy.psychology.util.Constants;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.json.JSONObject;
 
 /**
  * Created by dcy123 on 2015/3/18.
@@ -32,13 +35,12 @@ public class StringParamsRequest extends StringRequest{
             parsed = new String(response.data);
         }
         try {
-        	return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));
-//            JSONObject resultObject = new JSONObject(parsed);
-//            if(Constants.Api_Success.equals(resultObject.getString("status"))){
-//                return Response.success(resultObject.getString("result"), HttpHeaderParser.parseCacheHeaders(response));
-//            } else {
-//                return Response.error(new VolleyError(resultObject.getString("result"), resultObject.getInt("code")));
-//            }
+            JSONObject resultObject = new JSONObject(parsed);
+            if(Constants.Api_Success.equals(resultObject.getString("status"))){
+                return Response.success(resultObject.getString("result"), HttpHeaderParser.parseCacheHeaders(response));
+            } else {
+                return Response.error(new VolleyError(resultObject.getString("result"), resultObject.getInt("code")));
+            }
         } catch (Exception e) {
             return Response.error(new VolleyError(e));
         }
@@ -49,7 +51,7 @@ public class StringParamsRequest extends StringRequest{
         if(mParams == null){
             mParams = new HashMap<String, String>();
         }
-//        mParams.put("timestamp_now", String.valueOf(System.currentTimeMillis()));
+        mParams.put("timestamp_now", String.valueOf(System.currentTimeMillis()));
 //        if(!TextUtils.isEmpty(Application.userToken)){
 //            mParams.put("user_token", Application.userToken);
 //        }

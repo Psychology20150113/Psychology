@@ -10,6 +10,7 @@ public interface Constants {
 	public static final String IMDefaultGroup = "IMFriends";
 	public static final int TimeOut = 15000;
 	public static final int PageCount = 8;
+	public static final String Api_Success = "ok";
 	
 	public static final String LoginMethod = "Login"; 
 	public static final String RegisterUserMethod = "RegisterUser";

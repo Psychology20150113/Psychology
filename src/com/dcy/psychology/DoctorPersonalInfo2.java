@@ -43,7 +43,6 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_personal_homepage_layout);
 		mContext = this;
 		mAsyncImageCache = AsyncImageCache.from(this);
@@ -63,9 +62,10 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 	   			finish();
 	   			break;
 		case R.id.tv_talk:
-	   			Intent mIntent =new Intent(this,ApplyActivity.class);
-	   			startActivity(mIntent);
-	   			break;
+   			Intent mIntent =new Intent(this,ApplyActivity.class);
+   			mIntent.putExtra(Constants.PhoneNum, phoneNum);
+   			startActivity(mIntent);
+   			break;
 		case R.id.iv_share:
 			 mIntent =new Intent(this,ShareActivity.class);
    			 startActivity(mIntent);

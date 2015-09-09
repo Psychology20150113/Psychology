@@ -141,10 +141,14 @@ public class NetworkManager {
     }
 
     public void getPostResultString(String url, Map<String, String> params, Response.Listener<String> mListener){
-        StringRequest request = new StringParamsRequest(Request.Method.POST,url, params, mListener, mDefaultErrorListener);
-        mRequestQueue.add(request);
+        this.getPostResultString(url, params, mListener, mDefaultErrorListener);
     }
 
+    public void getPostResultString(String url, Map<String, String> params, Response.Listener<String> mListener, Response.ErrorListener errorListener){
+    	StringRequest request = new StringParamsRequest(Request.Method.POST,url, params, mListener, errorListener);
+        mRequestQueue.add(request);
+    }
+    
     private static String addParams(Map<String, String> params) {
         StringBuilder builder = new StringBuilder();
         if(params != null){
