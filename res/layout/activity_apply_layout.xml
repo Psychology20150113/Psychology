@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- 申请约聊页面 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical" >
-    <View 
+    android:background="#ffffff">
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View 
         android:layout_width="match_parent"
         android:layout_height="13dp"
         android:background="@color/v2_divider"/>
@@ -164,7 +167,6 @@
 			style="@style/apply_chooes_time_style"
     	    android:layout_below="@id/tv_addtime"
     	    android:layout_marginTop="14dp"
-
     	    android:text="7月29日"/>
     	<Spinner 
     	    android:id="@+id/sp_choose_time1"
@@ -223,6 +225,5 @@
         android:text="@string/submit" />
     	
     </RelativeLayout>
-    
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

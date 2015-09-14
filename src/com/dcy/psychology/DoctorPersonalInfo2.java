@@ -26,7 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
+public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener{
 	private String phoneNum;
 	private TextView nameTv;
 	private ImageView headerView;
@@ -49,7 +49,7 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 		initView();
 		phoneNum = getIntent().getStringExtra(Constants.PhoneNum);
 		if(!TextUtils.isEmpty(phoneNum)){
-			//showCustomDialog();
+			showCustomDialog();
 			new GetInfoTask().execute();
 		}
 	}
@@ -59,8 +59,8 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 		//showCustomDialog();
 		switch (v.getId()) {
 		case R.id.iv_back:
-	   			finish();
-	   			break;
+   			finish();
+   			break;
 		case R.id.tv_talk:
    			Intent mIntent =new Intent(this,ApplyActivity.class);
    			mIntent.putExtra(Constants.PhoneNum, phoneNum);
@@ -69,6 +69,10 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 		case R.id.iv_share:
 			 mIntent =new Intent(this,ShareActivity.class);
    			 startActivity(mIntent);
+   			break;
+   		case R.id.iv_attention:
+   			showCustomDialog();
+   			new FollowTask(false).execute();
    			break;
 		default:
 			break;
@@ -95,36 +99,29 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 		}
 	}
 	
-	private class FollowTask extends AsyncTask<Long, Void, BasicBean>{
-		private TextView mTextView;
+	private class FollowTask extends AsyncTask<Void, Void, BasicBean>{
 		private boolean isFollowed;
 		
-		public FollowTask(TextView view, boolean isFollowed) {
-			mTextView = view;
+		public FollowTask(boolean isFollowed) {
 			this.isFollowed = isFollowed;
 		}
 		
 		@Override
-		protected BasicBean doInBackground(Long... params) {
-			if(params[0] == null){
-				return null;
-			}
-			return isFollowed ? Utils.cancelFollowSpecificUser(params[0]) : 
-				Utils.followSpecificUser(params[0]);
+		protected BasicBean doInBackground(Void... params) {
+			return isFollowed ? Utils.cancelFollowSpecificUser(Long.parseLong(phoneNum)): 
+				Utils.followSpecificUser(Long.parseLong(phoneNum));
 		}
 		
 		@Override
 		protected void onPostExecute(BasicBean result) {
-			//hideCustomDialog();
+			hideCustomDialog();
 			if(result == null){
 				return;
 			}
 			if(result.isResult()){
 				if(isFollowed){
-					mTextView.setText(R.string.attention);
 					Toast.makeText(mContext, R.string.cancel_attention_success, Toast.LENGTH_SHORT).show();
 				} else {
-					mTextView.setText(R.string.cancel_attention);
 					Toast.makeText(mContext, R.string.attention_success, Toast.LENGTH_SHORT).show();
 				}
 			} else {
@@ -134,6 +131,7 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 	}
 	
 	private void initView(){
+		hideTitleView();
 		nameTv = (TextView) findViewById(R.id.tv_item_name);
 		headerView = (ImageView) findViewById(R.id.iv_header);
 		mInfoView=(TextView) findViewById(R.id.tv_resume);
@@ -151,6 +149,7 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 		findViewById(R.id.iv_attentiontopic).setVisibility(View.GONE);
 		IvshareView=(ImageView) findViewById(R.id.iv_share);
 		Ivattention=(ImageView) findViewById(R.id.iv_attention);
+		Ivattention.setOnClickListener(this);
 		IvshareView.setVisibility(View.VISIBLE);
 		Ivattention.setVisibility(View.VISIBLE);
 		mshare=(ImageView) findViewById(R.id.iv_share);
@@ -165,7 +164,7 @@ public class DoctorPersonalInfo2 extends Activity implements OnClickListener{
 		
 		@Override
 		protected void onPostExecute(UserInfoBean result) {
-			//hideCustomDialog();
+			hideCustomDialog();
 			if(result == null){
 				return;
 			}

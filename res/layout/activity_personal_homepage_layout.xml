@@ -224,7 +224,6 @@
 		            android:text="@string/introduction"
 		            android:textSize="16sp" />
 		            
-		            
 		            <ImageView 
 		            android:id="@+id/iv_individual"
                		android:layout_width="wrap_content"
@@ -243,7 +242,6 @@
             android:layout_marginRight="22dp"
             android:layout_marginLeft="22dp"
             android:textColor="@color/v2_gray"
-            android:text="个人简介山东省大湿地阿斯顿第四实打实大师的萨达阿速达苏打死赛屌丝对哦啊苏"
             android:textSize="15sp" />
            <View 
         	android:layout_width="match_parent"

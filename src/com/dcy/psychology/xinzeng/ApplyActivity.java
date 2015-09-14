@@ -37,7 +37,7 @@ public class ApplyActivity  extends BaseActivity implements OnClickListener{
 		submit=(Button) findViewById(R.id.btn_submit);
 		submit.setOnClickListener(this);
 		mQuestionEt = (EditText) findViewById(R.id.et_hope);
-		mInfoEt = (EditText) findViewById(R.id.et_introduction);
+		mInfoEt = (EditText) findViewById(R.id.et_ictroduce);
 		Spinner mSpinner1 = (Spinner) findViewById(R.id.sp_choose_time1);
 		Spinner mSpinner2 = (Spinner) findViewById(R.id.sp_choose_time2);
 		Spinner mSpinner3 = (Spinner) findViewById(R.id.sp_am_and_pm1);
@@ -65,10 +65,11 @@ public class ApplyActivity  extends BaseActivity implements OnClickListener{
 				return;
 			}
 			showCustomDialog();
-			NetworkApi.applyTalk(phoneNum, mQuestionEt.getText().toString(), mInfoEt.getText().toString(), "", "",
+			NetworkApi.applyTalk(phoneNum, mQuestionEt.getText().toString(), mInfoEt.getText().toString(), "1213,123", "35235,123132",
 					new Response.Listener<String>() {
 						@Override
 						public void onResponse(String response) {
+							hideCustomDialog();
 							Intent mIntent =new Intent(ApplyActivity.this, SubmitsuccessActivity.class); 
 							startActivity(mIntent);
 							finish();
@@ -77,6 +78,7 @@ public class ApplyActivity  extends BaseActivity implements OnClickListener{
 					}, new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
+							hideCustomDialog();
 							Toast.makeText(ApplyActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 						}
 					});
