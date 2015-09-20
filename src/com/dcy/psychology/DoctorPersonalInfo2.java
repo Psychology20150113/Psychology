@@ -71,6 +71,9 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
    			 startActivity(mIntent);
    			break;
    		case R.id.iv_attention:
+   			if(specialId == 0){
+   				return;
+   			}
    			showCustomDialog();
    			new FollowTask(false).execute();
    			break;
@@ -108,8 +111,8 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 		
 		@Override
 		protected BasicBean doInBackground(Void... params) {
-			return isFollowed ? Utils.cancelFollowSpecificUser(Long.parseLong(phoneNum)): 
-				Utils.followSpecificUser(Long.parseLong(phoneNum));
+			return isFollowed ? Utils.cancelFollowSpecificUser(specialId): 
+				Utils.followSpecificUser(specialId);
 		}
 		
 		@Override

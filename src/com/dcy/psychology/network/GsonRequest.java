@@ -10,6 +10,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.dcy.psychology.util.Constants;
 import com.google.gson.Gson;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ public class GsonRequest extends Request{
     private Gson mGson;
     private Map<String, String> mParams;
     private Class mClass;
+    private Type mType;
     private Response.Listener mListener;
     private Response.ErrorListener mErrorListener;
 
@@ -34,6 +36,16 @@ public class GsonRequest extends Request{
         mClass = objectClass;
         mGson = new Gson();
     }
+    
+    public GsonRequest(int method, String url, Map<String, String> params, Type objectType,
+            Response.Listener listener, Response.ErrorListener errorListener){
+		super(method, url, errorListener);
+		mListener = listener;
+		mErrorListener=errorListener;
+		mParams = params;
+		mType = objectType;
+		mGson = new Gson();
+	}
 
     @Override
     protected Response parseNetworkResponse(NetworkResponse response) {
@@ -42,7 +54,7 @@ public class GsonRequest extends Request{
                     HttpHeaderParser.parseCharset(response.headers));
             JSONObject resultObject = new JSONObject(jsonString);
             if(Constants.Api_Success.equals(resultObject.getString("status"))){
-                return Response.success(mGson.fromJson(resultObject.getString("result"), mClass),
+                return Response.success(mGson.fromJson(resultObject.getString("result"), mClass == null ? mType : mClass),
                         HttpHeaderParser.parseCacheHeaders(response));
             } else {
                 return Response.error(new VolleyError(resultObject.getString("result"), resultObject.getInt("code")));

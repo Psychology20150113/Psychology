@@ -454,4 +454,5 @@
     <string name="match_format">匹配度\n%s%%</string>
     <string name="share_to">分享到:</string>
     <string name="login_now">登入</string>
+    <string name="three_max">最多只能选择3个</string>
 </resources>

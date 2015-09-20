@@ -35,4 +35,10 @@ public class UserInfoBean {
 	public String PwdAnswer;
 	public String UserRegisterDate;
 	public String RoleName;
+	public String DoctorType;
+	public String DoctorState;
+	public int DoctorIn;
+	public String DoctorMatch;
+	public int doctorcount;
+	public int succes;
 }

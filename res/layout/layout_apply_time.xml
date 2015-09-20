@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:orientation="horizontal" >
+    <Spinner 
+        android:id="@+id/sp_choose_day"
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        style="@style/apply_chooes_time_style"/>
+	<Spinner 
+        android:id="@+id/sp_choose_time"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        style="@style/apply_chooes_time_style"/>
+	<Spinner 
+        android:id="@+id/sp_choose_am"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        style="@style/apply_chooes_time_style"/>
+</LinearLayout>

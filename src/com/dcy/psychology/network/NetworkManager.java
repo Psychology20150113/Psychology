@@ -1,6 +1,7 @@
 package com.dcy.psychology.network;
 
 import java.io.File;
+import java.lang.reflect.Type;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
@@ -85,6 +86,13 @@ public class NetworkManager {
         mRequestQueue.add(request);
     }
 
+    public void getResultClass(String url, Map<String, String> params, Type objectType,
+            Response.Listener listener){
+		GsonRequest request = new GsonRequest(Request.Method.GET, url + "?" + addParams(params),
+				null, objectType, listener, mDefaultErrorListener);
+		mRequestQueue.add(request);
+	}
+    
     public void getPostResultClass(String url, Map<String, String> params, Class objectClass,
                                    Response.Listener listener, Response.ErrorListener errorListener){
         GsonRequest request = new GsonRequest(Request.Method.POST, url, params, objectClass, listener,
