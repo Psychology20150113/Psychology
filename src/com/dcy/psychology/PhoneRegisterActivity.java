@@ -3,6 +3,8 @@ package com.dcy.psychology;
 import com.dcy.psychology.R;
 import com.dcy.psychology.LoginActivity.ChatLoginTask;
 import com.dcy.psychology.gsonbean.BasicBean;
+import com.dcy.psychology.gsonbean.LoginBean;
+import com.dcy.psychology.gsonbean.PhoneRegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.IMManager;
@@ -46,7 +48,7 @@ public class PhoneRegisterActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
+		requestWindowFeature(Window.FEATURE_NO_TITLE); //璁剧疆鏃犳爣棰�
 		setContentView(R.layout.activity_phone_register_layout);
 		initView();
 		mShared = new InfoShared(this);
@@ -71,7 +73,7 @@ public class PhoneRegisterActivity extends Activity implements OnClickListener{
 		//findViewById(R.id.find_pwd_tv).setOnClickListener(this);
 	}
 	
-	private class RegisterTask extends AsyncTask<String, Void, BasicBean>{
+	private class RegisterTask extends AsyncTask<String, Void, PhoneRegisterBean>{
 		private String phoneNum;
 		private String pwd;
 		
@@ -82,16 +84,25 @@ public class PhoneRegisterActivity extends Activity implements OnClickListener{
 		}
 		
 		@Override
-		protected BasicBean doInBackground(String... arg0) {
+		protected PhoneRegisterBean doInBackground(String... arg0) {
 			return Utils.getVerifySmsCode(phoneNum, mCodeEt.getText().toString(), pwd);
 		}
 		
 		@Override
-		protected void onPostExecute(BasicBean result) {
+		protected void onPostExecute(PhoneRegisterBean result) {
 			super.onPostExecute(result);
 			if(result.isResult()){
 				mShared.savePhoneInfo(phoneNum, pwd, Constants.RoleUser, false);
-				new ChatRegisterTask().execute(phoneNum, pwd);
+				Intent mIntent = new Intent(PhoneRegisterActivity.this,PersonalInfo_PerfectActivity.class);
+				mIntent.putExtra("login_success", true);
+				if(!TextUtils.isEmpty(result.HXPWD)){
+					mShared.setHxPwd(result.HXPWD);
+					MyApplication.getInstance().getChatManager().chatLogin(MyApplication.myPhoneNum, result.HXPWD);
+				}
+				//new ChatLoginTask(PhoneRegisterActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
+				setResult(1, mIntent);
+				finish();
+//				new ChatRegisterTask().execute(phoneNum, pwd);
 			} else {
 				hideCustomDialog();
 				Toast.makeText(PhoneRegisterActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();

@@ -23,6 +23,7 @@ public class ApplyInfoBean {
 	public String industry;
 	public ArrayList<TimeClass> time;
 	public int state;
+	public String UserAchievement;
 	
 	public class TimeClass {
 		public String starttime;

@@ -2,10 +2,13 @@ package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
 
+import com.android.volley.Response.Listener;
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.SpecialUserListAdapter;
 import com.dcy.psychology.adapter.TalkingAdapter;
+import com.dcy.psychology.gsonbean.ApplyInfoBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
+import com.dcy.psychology.network.NetworkApi;
 import com.dcy.psychology.util.Utils;
 import com.dcy.psychology.view.CustomProgressDialog;
 
@@ -31,7 +34,8 @@ public class AppliedFragment extends Fragment {
 		mLoadingDialog = new CustomProgressDialog(mContext);
 		mAdapter = new SpecialUserListAdapter(mContext, dataList);
 		mLoadingDialog.show();
-		new GetMatchestSpecialList().execute();
+		NetworkApi.getApplyList(mListener);
+//		new GetMatchestSpecialList().execute();
 	}
 	
 	@Override
@@ -42,6 +46,19 @@ public class AppliedFragment extends Fragment {
 		mListView.setAdapter(mAdapter);
 		return view;
 	}
+	
+	private Listener<ArrayList<ApplyInfoBean>> mListener = new Listener<ArrayList<ApplyInfoBean>>() {
+		@Override
+		public void onResponse(ArrayList<ApplyInfoBean> response) {
+			if(response == null || response.size() == 0){
+				return;
+			}
+			for(ApplyInfoBean itemBean : response){
+				dataList.add(SpecificUserBean.valueOf(itemBean));
+			}
+			mAdapter.notifyDataSetChanged();
+		}
+	};
 	
 	private class GetMatchestSpecialList extends AsyncTask<Void, Void, ArrayList<SpecificUserBean>>{
 		@Override

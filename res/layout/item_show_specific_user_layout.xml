@@ -84,7 +84,8 @@
 		                android:id="@+id/tv_item_achieve"
 		                style="@style/text_gray16_style"
 		                android:textSize="13sp"
-		                android:lines="1"/>
+		                android:singleLine="true"
+		                android:lines="2"/>
                 </LinearLayout>
                 <!-- <LinearLayout 
                     android:id="@+id/ll_point"
@@ -193,56 +194,6 @@
 			
                 
 			</LinearLayout>
-			<!-- 关注话题-->
-			<LinearLayout 
-			    android:id="@+id/ll_focus_topic"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:visibility="visible"
-			    android:gravity="center_vertical"
-			    android:orientation="horizontal">
-			    <TextView 
-            	android:id="@+id/tv_focus"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-       			android:textSize="13sp"
-       			android:textColor="@color/v2_gray"
-            	android:text="@string/focus"/>
-			    <TextView 
-            	android:id="@+id/tv_topic1"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-       			android:textSize="13sp"
-       			android:textColor="@color/v2_gray"
-            	android:text="机械"/>
-			    
-			    <TextView 
-            	android:id="@+id/tv_topic2"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:layout_marginLeft="8dp"
-       			android:textSize="13sp"
-       			android:textColor="@color/v2_gray"
-            	android:text="机械"/>
-			    <TextView 
-            	android:id="@+id/tv_topic3"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-       			android:textSize="13sp"
-       			android:layout_marginLeft="8dp"
-       			android:textColor="@color/v2_gray"
-            	android:text="机械"/>
-			    <TextView 
-            	android:id="@+id/tv_topic4"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:layout_marginLeft="8dp"
-       			android:textSize="13sp"
-       			android:textColor="@color/v2_gray"
-            	android:text="机械"/>
-			    
-			</LinearLayout>
-			
 			
 			<!-- 提交时间 -->
 			<LinearLayout 

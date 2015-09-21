@@ -32,6 +32,7 @@ import com.dcy.psychology.gsonbean.ClassBean;
 import com.dcy.psychology.gsonbean.CommentBean;
 import com.dcy.psychology.gsonbean.CommentDetailBean;
 import com.dcy.psychology.gsonbean.LoginBean;
+import com.dcy.psychology.gsonbean.PhoneRegisterBean;
 import com.dcy.psychology.gsonbean.RegisterBean;
 import com.dcy.psychology.gsonbean.SmsCodeBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
@@ -187,16 +188,16 @@ public class Utils {
 		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), SmsCodeBean.class);
 	}
 	
-	public static BasicBean getVerifySmsCode(String phoneNum, String smsCode, String userPwd){
+	public static PhoneRegisterBean getVerifySmsCode(String phoneNum, String smsCode, String userPwd){
 		SoapObject request = new SoapObject(Constants.SpaceName, Constants.VerifySmsCode);
 		request.addProperty("phoneNum", phoneNum);
 		request.addProperty("smsCode", smsCode);
 		request.addProperty("userPwd", userPwd);
 		SoapObject result = getResultFromRequest(request);
 		if(result == null)
-			return new BasicBean();
+			return new PhoneRegisterBean();
 		Log.i("mylog", "register : " + result.getPropertyAsString(0));
-		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), BasicBean.class);
+		return MyApplication.mGson.fromJson(result.getPropertyAsString(0), PhoneRegisterBean.class);
 	}
 	
 	public static BasicBean prefectUserInfo(Map<String, String> infoMap){

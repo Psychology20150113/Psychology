@@ -50,11 +50,14 @@ public class LoginActivity extends Activity implements OnClickListener{
 				}
 				Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
 				mShared.savePhoneInfo(accountET.getText().toString(), pwdET.getText().toString(), result.getLoginState(), result.isIsPrefectUserInfo());
-				new ChatLoginTask(LoginActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
+				if(!TextUtils.isEmpty(result.HXPWD)){
+					mShared.setHxPwd(result.HXPWD);
+					MyApplication.getInstance().getChatManager().chatLogin(MyApplication.myPhoneNum, result.HXPWD);
+				}
+//				new ChatLoginTask(LoginActivity.this).execute(MyApplication.myPhoneNum, MyApplication.myPwd);
 				Intent mIntent = new Intent(LoginActivity.this,SlideMainActivity.class);
 				mIntent.putExtra("login_success", true);
 				setResult(0, mIntent);
-				
 				
 				finish();
 				startActivityForResult(mIntent, 0);
@@ -94,7 +97,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
+		requestWindowFeature(Window.FEATURE_NO_TITLE); //璁剧疆鏃犳爣棰�
 		//this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_login_layout);
 		userRole = getIntent().getStringExtra(Constants.UserRole);

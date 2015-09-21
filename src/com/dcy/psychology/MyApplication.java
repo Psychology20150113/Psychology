@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 
 
 public class MyApplication extends Application{
-	
 	public static String myUserName;
 	public static String myPhoneNum;
 	public static boolean hasPrefectInfo;
@@ -74,5 +73,4 @@ public class MyApplication extends Application{
 		myHeadUrl = mShared.getHeaderUrl();
 		hasPrefectInfo = mShared.hasPrefectInfo();
 	}
-	
 }

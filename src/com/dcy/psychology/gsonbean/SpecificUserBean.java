@@ -18,7 +18,7 @@ public class SpecificUserBean {
 		item.SpecificUserID = itemBean.id;
 		item.SpecificUserName = itemBean.username;
 		item.SpecificUserHeadUrl = itemBean.userheadurl;
-//		item.SpecificUserAchievement = itemBean.
+		item.SpecificUserAchievement = itemBean.UserAchievement;
 		item.SpecificUserPhone = itemBean.doctorphone;
 		item.applyState = itemBean.state;
 		return item;

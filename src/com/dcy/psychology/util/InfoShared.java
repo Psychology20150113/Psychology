@@ -17,6 +17,7 @@ public class InfoShared {
 	private final String UserNick = "info_nick";
 	private final String UserChatName = "info_chat_name";
 	private final String UserChatPwd = "info_chat_pwd";
+	private final String HxPwd = "info_hx_pwd";
 	private final String UserRole = "info_role";
 	private final String UserPhoneNum = "info_phone";
 	private final String UserHeaderUrl = "info_header_url";
@@ -104,6 +105,14 @@ public class InfoShared {
 	
 	public String getHeaderUrl(){
 		return mShared.getString(UserHeaderUrl, "");
+	}
+	
+	public void setHxPwd(String pwd){
+		mShared.edit().putString(HxPwd, pwd).commit();
+	}
+	
+	public String getHxPwd(){
+		return mShared.getString(HxPwd, "");
 	}
 	
 	public void setIsPrefectInfo(boolean prefectInfo){

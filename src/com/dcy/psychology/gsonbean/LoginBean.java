@@ -5,6 +5,8 @@ public class LoginBean {
 	private String Reason;
 	private String LoginState;
 	private boolean IsPrefectUserInfo;
+	public String HX;
+	public String HXPWD;
 	
 	public String getResult() {
 		return Result;
