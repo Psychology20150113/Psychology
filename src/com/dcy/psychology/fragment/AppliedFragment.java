@@ -50,6 +50,9 @@ public class AppliedFragment extends Fragment {
 	private Listener<ArrayList<ApplyInfoBean>> mListener = new Listener<ArrayList<ApplyInfoBean>>() {
 		@Override
 		public void onResponse(ArrayList<ApplyInfoBean> response) {
+			if(mLoadingDialog.isShowing()){
+				mLoadingDialog.dismiss();
+			}
 			if(response == null || response.size() == 0){
 				return;
 			}

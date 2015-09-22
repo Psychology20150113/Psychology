@@ -90,10 +90,10 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		mHolder.nameTv.setText(item.SpecificUserName);
 		mHolder.achieveTv.setText(item.SpecificUserAchievement);
 		//mHolder.attentionTv.setText(item.IsFollow ? R.string.cancel_attention : R.string.attention);
-		long specialUserID = dataList.get(position).SpecificUserID;
+//		long specialUserID = dataList.get(position).SpecificUserID;
 		/*mHolder.attentionTv.setTag(specialUserID);
 		mHolder.matchTv.setTag(specialUserID);*/
-		mHolder.infoLayout.setTag(item.SpecificUserPhone);
+		mHolder.infoLayout.setTag(item);
 		//匹配度的显隐
 		/*if(!TextUtils.isEmpty(String.valueOf(item.MatchResult)) && item.MatchResult != 0){
 			mHolder.pointLayout.setVisibility(View.VISIBLE);
@@ -130,9 +130,9 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 	private OnClickListener lookInfoListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			String phoneNum = (String)v.getTag();
+			SpecificUserBean bean = (SpecificUserBean)v.getTag();
 			Intent mIntent = new Intent(mContext, DoctorPersonalInfo2.class);
-			mIntent.putExtra(Constants.PhoneNum, phoneNum);
+			mIntent.putExtra(Constants.UserBean, bean);
 			mContext.startActivity(mIntent);
 		}
 	};

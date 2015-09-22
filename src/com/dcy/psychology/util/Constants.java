@@ -73,6 +73,7 @@ public interface Constants {
 	public static final String ClassCategoryId = "classCategoryId";
 	public static final String ClassCategoryName = "classCategoryName";
 	public static final String PhoneNum = "phoneNum";
+	public static final String UserBean = "userBean";
 	public static final String QizhiResult = "qizhiResult";
 	public static final String ZhiyeResult = "zhiyeResult";
 	public static final String Params = "params";

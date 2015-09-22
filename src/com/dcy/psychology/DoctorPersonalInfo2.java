@@ -2,10 +2,12 @@ package com.dcy.psychology;
 
 import java.util.ArrayList;
 
+import com.android.volley.Response.Listener;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
 import com.dcy.psychology.gsonbean.UserInfoBean;
+import com.dcy.psychology.network.NetworkApi;
 import com.dcy.psychology.util.AsyncImageCache;
 import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.Utils;
@@ -47,11 +49,12 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 		mContext = this;
 		mAsyncImageCache = AsyncImageCache.from(this);
 		initView();
-		phoneNum = getIntent().getStringExtra(Constants.PhoneNum);
-		if(!TextUtils.isEmpty(phoneNum)){
-			showCustomDialog();
-			new GetInfoTask().execute();
-		}
+		SpecificUserBean itemBean = (SpecificUserBean) getIntent().getSerializableExtra(Constants.UserBean);
+		phoneNum = itemBean.SpecificUserPhone;
+		specialId = itemBean.SpecificUserID;
+		showCustomDialog();
+		NetworkApi.getDetailInfo(specialId, mListener);
+//			new GetInfoTask().execute();
 	}
 	
 	@Override
@@ -175,6 +178,16 @@ public class DoctorPersonalInfo2 extends BaseActivity implements OnClickListener
 			setInfoData(result);
 		}
 	}
+	
+	private Listener<UserInfoBean> mListener = new Listener<UserInfoBean>() {
+		public void onResponse(UserInfoBean response) {
+			hideCustomDialog();
+			if(response == null){
+				return;
+			}
+			setInfoData(response);
+		};
+	};
 	
 	private void setInfoData(UserInfoBean result){
 		nameTv.setText(result.UserName);

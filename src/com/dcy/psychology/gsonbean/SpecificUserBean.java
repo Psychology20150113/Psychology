@@ -1,6 +1,8 @@
 package com.dcy.psychology.gsonbean;
 
-public class SpecificUserBean {
+import java.io.Serializable;
+
+public class SpecificUserBean implements Serializable{
 	public long SpecificUserID;
 	public String SpecificUserName;
 	public String SpecificUserHeadUrl;

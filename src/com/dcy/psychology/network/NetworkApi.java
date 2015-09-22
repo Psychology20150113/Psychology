@@ -49,7 +49,7 @@ public class NetworkApi {
 		params.put("phone", MyApplication.myPhoneNum);
 		params.put("page", "1");
 		params.put("pagesize", String.valueOf(Integer.MAX_VALUE));
-		params.put("type", Constants.UserRole.equals(MyApplication.myUserRole) ? "1" : "2");
+		params.put("type", Constants.RoleUser.equals(MyApplication.myUserRole) ? "1" : "2");
 		MyApplication.getInstance().getNetworkManager().getResultClass(GetApplyList, params, 
 				new TypeToken<ArrayList<ApplyInfoBean>>(){}.getType(), mListener);
 	}
