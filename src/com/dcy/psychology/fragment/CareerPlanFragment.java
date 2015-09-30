@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.dcy.psychology.DoctorPersonalInfo2;
 import com.dcy.psychology.EditInfoActivity;
 import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
@@ -37,6 +38,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -47,7 +49,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class CareerPlanFragment extends Fragment implements OnClickListener,OnItemSelectedListener{
+public class CareerPlanFragment extends Fragment implements 
+		OnClickListener,OnItemSelectedListener, OnItemClickListener{
 	private Context mContext;
 	private Resources mResources;
 	private EditText nickEt;
@@ -106,6 +109,7 @@ public class CareerPlanFragment extends Fragment implements OnClickListener,OnIt
 		mListView = (PullRefreshListView) rootView.findViewById(R.id.pull_refresh_lv);
 		mListView.setScrollListener(mScrollListener);
 		mListView.setonRefreshListener(mRefreshListener);
+		mListView.setOnItemClickListener(this);
 		mListView.setAdapter(mAdapter);
 		mListView.setEmptyView(rootView.findViewById(R.id.tv_empty_data));
 		initPerfectInfoView();
@@ -137,6 +141,12 @@ public class CareerPlanFragment extends Fragment implements OnClickListener,OnIt
 			new GetSpecialUserTask().execute();
 			isRefresh = true;
 		}
+	};
+	
+	public void onItemClick(android.widget.AdapterView<?> parent, View view, int position, long id) {
+		Intent mIntent = new Intent(mContext, DoctorPersonalInfo2.class);
+		mIntent.putExtra(Constants.UserBean, mDataList.get(position - 1));
+		mContext.startActivity(mIntent);
 	};
 	
 	private OnScrollListener mScrollListener = new OnScrollListener() {

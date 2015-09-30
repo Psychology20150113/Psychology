@@ -58,6 +58,10 @@ public interface Constants {
 	public static final int Id_Class_Homework = 2;
 	public static final int Id_Class_Game = 3;
 
+	public static final int Apply_Wating = 0;
+	public static final int Apply_Success = 1;
+	public static final int Apply_end = 2;
+	
 	public static final String ReceiverAction_CursorChange = "cursor_change";
 	public static final String ReceiverAction_LoginSuccess = "login_success";
 	

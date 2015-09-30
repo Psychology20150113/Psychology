@@ -70,8 +70,8 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			mHolder.achieveTv = (TextView) convertView.findViewById(R.id.tv_item_achieve);
 			/*mHolder.attentionTv = (TextView) convertView.findViewById(R.id.tv_item_attention);
 			mHolder.matchTv = (TextView) convertView.findViewById(R.id.tv_item_match);*/
-			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_user_info);
-			mHolder.infoLayout.setOnClickListener(lookInfoListener);
+//			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_user_info);
+//			mHolder.infoLayout.setOnClickListener(lookInfoListener);
 			/*mHolder.pointLayout = convertView.findViewById(R.id.ll_point);
 			mHolder.pointTv = (TextView) convertView.findViewById(R.id.tv_match_point);*/
 			/*if(canOpration){
@@ -93,7 +93,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 //		long specialUserID = dataList.get(position).SpecificUserID;
 		/*mHolder.attentionTv.setTag(specialUserID);
 		mHolder.matchTv.setTag(specialUserID);*/
-		mHolder.infoLayout.setTag(item);
+//		mHolder.infoLayout.setTag(item);
 		//匹配度的显隐
 		/*if(!TextUtils.isEmpty(String.valueOf(item.MatchResult)) && item.MatchResult != 0){
 			mHolder.pointLayout.setVisibility(View.VISIBLE);

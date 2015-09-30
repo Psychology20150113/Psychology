@@ -3,6 +3,7 @@ package com.dcy.psychology.fragment;
 import java.util.ArrayList;
 
 import com.android.volley.Response.Listener;
+import com.dcy.psychology.ApplyInfoActivity;
 import com.dcy.psychology.R;
 import com.dcy.psychology.adapter.SpecialUserListAdapter;
 import com.dcy.psychology.adapter.TalkingAdapter;
@@ -14,17 +15,21 @@ import com.dcy.psychology.view.CustomProgressDialog;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class AppliedFragment extends Fragment {
+public class AppliedFragment extends Fragment implements OnItemClickListener{
 	private CustomProgressDialog mLoadingDialog;
 	private Context mContext;
 	private ArrayList<SpecificUserBean> dataList = new ArrayList<SpecificUserBean>();
+	private ArrayList<ApplyInfoBean> applyInfoList;
 	private SpecialUserListAdapter mAdapter;
 	
 	@Override
@@ -44,7 +49,16 @@ public class AppliedFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_applied_layout, null);
 		ListView mListView = (ListView) view.findViewById(R.id.lv_applied);
 		mListView.setAdapter(mAdapter);
+		mListView.setOnItemClickListener(this);
 		return view;
+	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Intent mIntent = new Intent(mContext, ApplyInfoActivity.class);
+		mIntent.putExtra("apply_info", applyInfoList.get(position));
+		startActivity(mIntent);
 	}
 	
 	private Listener<ArrayList<ApplyInfoBean>> mListener = new Listener<ArrayList<ApplyInfoBean>>() {
@@ -56,6 +70,7 @@ public class AppliedFragment extends Fragment {
 			if(response == null || response.size() == 0){
 				return;
 			}
+			applyInfoList = response;
 			for(ApplyInfoBean itemBean : response){
 				dataList.add(SpecificUserBean.valueOf(itemBean));
 			}

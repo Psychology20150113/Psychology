@@ -84,7 +84,8 @@
 		                android:id="@+id/tv_item_achieve"
 		                style="@style/text_gray16_style"
 		                android:textSize="13sp"
-		                android:lines="2"/>
+		                android:lines="2"
+		                android:ellipsize="end"/>
                 </LinearLayout>
                 <!-- <LinearLayout 
                     android:id="@+id/ll_point"

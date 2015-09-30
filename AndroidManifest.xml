@@ -90,6 +90,9 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
+            android:name="com.dcy.psychology.ApplyInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity 
             android:name="com.dcy.psychology.OnlinePicListActivity"
             android:screenOrientation="portrait">
         </activity>

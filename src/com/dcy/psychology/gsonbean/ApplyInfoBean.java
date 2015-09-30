@@ -1,8 +1,9 @@
 package com.dcy.psychology.gsonbean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ApplyInfoBean {
+public class ApplyInfoBean implements Serializable{
 	public long id;
 	public String doctorphone;
 	public String userphone;
@@ -25,7 +26,7 @@ public class ApplyInfoBean {
 	public int state;
 	public String UserAchievement;
 	
-	public class TimeClass {
+	public class TimeClass implements Serializable{
 		public String starttime;
 		public String endtime;
 	}
