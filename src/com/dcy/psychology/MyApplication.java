@@ -7,6 +7,7 @@ import com.dcy.psychology.db.PreInstallDbHelper;
 import com.dcy.psychology.emchat.HXChatManager;
 import com.dcy.psychology.network.NetworkManager;
 import com.dcy.psychology.util.AsyncImageCache;
+import com.dcy.psychology.util.Constants;
 import com.dcy.psychology.util.InfoShared;
 import com.dcy.psychology.util.Utils;
 import com.easemob.chatuidemo.DemoHXSDKHelper;
@@ -61,6 +62,10 @@ public class MyApplication extends Application{
 	
 	public static MyApplication getInstance(){
 		return instance;
+	}
+	
+	public boolean isUser(){
+		return Constants.RoleUser.equals(myUserRole);
 	}
 	
 	private void initAppInfo(){

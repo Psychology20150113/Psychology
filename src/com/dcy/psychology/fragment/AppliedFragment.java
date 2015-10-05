@@ -57,7 +57,7 @@ public class AppliedFragment extends Fragment implements OnItemClickListener{
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Intent mIntent = new Intent(mContext, ApplyInfoActivity.class);
-		mIntent.putExtra("apply_info", applyInfoList.get(position));
+		mIntent.putExtra("apply_id", applyInfoList.get(position).id);
 		startActivity(mIntent);
 	}
 	

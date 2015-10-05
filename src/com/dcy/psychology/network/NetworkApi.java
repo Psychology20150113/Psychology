@@ -24,6 +24,7 @@ public class NetworkApi {
 	private static String GetUserUrl = PhpUrl + "GetUserInfo.php";
 	private static String ApplyTalkUrl = PhpUrl + "InsertBesPeak.php";
 	private static String GetApplyList = PhpUrl + "GetBespeakList.php";
+	private static String GetApplyInfo = PhpUrl + "GetBespeakId.php";
 	
 	public static void applyTalk(String doctorPhone, String question, String info, 
 			String startTime, String endTime, Listener<String> listener, ErrorListener errorListener){
@@ -52,5 +53,12 @@ public class NetworkApi {
 		params.put("type", Constants.RoleUser.equals(MyApplication.myUserRole) ? "1" : "2");
 		MyApplication.getInstance().getNetworkManager().getResultClass(GetApplyList, params, 
 				new TypeToken<ArrayList<ApplyInfoBean>>(){}.getType(), mListener);
+	}
+
+	public static void getApplyInfo(long applyId, Listener<ApplyInfoBean> mListener){
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("BespeakId", String.valueOf(applyId));
+		MyApplication.getInstance().getNetworkManager().getResultClass(GetApplyInfo, params, 
+				ApplyInfoBean.class, mListener);
 	}
 }

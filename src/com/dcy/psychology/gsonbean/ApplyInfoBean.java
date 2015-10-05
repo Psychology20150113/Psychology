@@ -25,6 +25,8 @@ public class ApplyInfoBean implements Serializable{
 	public ArrayList<TimeClass> time;
 	public int state;
 	public String UserAchievement;
+	public String question;
+	public String instr;
 	
 	public class TimeClass implements Serializable{
 		public String starttime;
