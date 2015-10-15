@@ -68,6 +68,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 			mHolder.headerIv = (ImageView) convertView.findViewById(R.id.iv_header);
 			mHolder.nameTv = (TextView) convertView.findViewById(R.id.tv_item_name);
 			mHolder.achieveTv = (TextView) convertView.findViewById(R.id.tv_item_achieve);
+			mHolder.statueTv = (TextView)convertView.findViewById(R.id.tv_item_state);
 			/*mHolder.attentionTv = (TextView) convertView.findViewById(R.id.tv_item_attention);
 			mHolder.matchTv = (TextView) convertView.findViewById(R.id.tv_item_match);*/
 //			mHolder.infoLayout = convertView.findViewById(R.id.ll_item_user_info);
@@ -89,6 +90,23 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 				new AsyncImageCache.NetworkImageGenerator(item.SpecificUserHeadUrl, item.SpecificUserHeadUrl));
 		mHolder.nameTv.setText(item.SpecificUserName);
 		mHolder.achieveTv.setText(item.SpecificUserAchievement);
+		switch (item.applyState) {
+			case Constants.State_Applying:
+				mHolder.statueTv.setText(R.string.applying);
+				mHolder.statueTv.setBackgroundResource(R.drawable.bg_tv_applying);
+				break;
+			case Constants.State_Apply_success:
+				mHolder.statueTv.setText(R.string.apply_successed);
+				mHolder.statueTv.setBackgroundResource(R.drawable.bg_tv_apply_success);
+				break;
+			case Constants.State_Apply_failed:
+				mHolder.statueTv.setText(R.string.apply_outtime);
+				mHolder.statueTv.setBackgroundResource(R.drawable.bg_tv_busy);
+				break;
+			default:
+				break;
+		}
+		
 		//mHolder.attentionTv.setText(item.IsFollow ? R.string.cancel_attention : R.string.attention);
 //		long specialUserID = dataList.get(position).SpecificUserID;
 		/*mHolder.attentionTv.setTag(specialUserID);
@@ -243,6 +261,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		ImageView headerIv;
 		TextView nameTv;
 		TextView achieveTv;
+		TextView statueTv;
 		/*TextView attentionTv;
 		TextView matchTv;
 		TextView pointTv;

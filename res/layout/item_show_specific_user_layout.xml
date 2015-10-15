@@ -117,7 +117,7 @@
                     <TextView 
                     android:id="@+id/tv_leisure"
                     style="@style/state_tv_style"
-                    android:visibility="visible"          
+                    android:visibility="gone"          
 					android:background="@drawable/bg_tv_leisure"	
                     android:text="@string/leisure"/>
 					<!-- 近期忙碌 -->
@@ -127,31 +127,11 @@
                         android:background="@drawable/bg_tv_busy"                     
                         android:text="@string/busy"                   
                         android:visibility="gone" />
-                    <!-- 申请进行中-->
-                    <TextView
-                        android:id="@+id/tv_applying"
-                        style="@style/state_tv_style"                      
-                        android:background="@drawable/bg_tv_applying"                     
-                        android:text="@string/applying"                     
-                        android:visibility="gone" />
-                    <!-- 申请已成功 -->
-                    <TextView
-                        android:id="@+id/tv_apply_success"
-                       style="@style/state_tv_style"
-                        android:background="@drawable/bg_tv_apply_success"                       
-                        android:text="@string/apply_successed"               
-                        android:visibility="gone"/>
-                    <!-- 申请已过期-->
-                    <TextView
-                        android:id="@+id/tv_apply_outtime"
-                         style="@style/state_tv_style"
-                        android:background="@drawable/bg_tv_busy"                      
-                        android:text="@string/apply_outtime"                    
-                        android:visibility="gone" />
-
+                    <TextView 
+                        android:id="@+id/tv_item_state"
+                        style="@style/state_tv_style"/>
                 </LinearLayout>
                 
-           
              <!-- <LinearLayout 
 			    android:id="@+id/ll_item_opration"
 			    android:layout_width="match_parent"

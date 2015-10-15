@@ -9,24 +9,52 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-public class ApplyInfoActivity extends BaseActivity {
+public class ApplyInfoActivity extends BaseActivity implements OnClickListener{
 	private ApplyInfoBean itemBean;
 	private int[] bgRes = {R.drawable.bg_tv_applying, R.drawable.bg_tv_apply_success, 
 			R.drawable.bg_tv_busy};
 	private String[] colorString = {"#ec833c", "#333638", "#898989"};
+	private long applyId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail_apply_info_layout);
-		long applyId = getIntent().getLongExtra("apply_id", 0);
+		applyId = getIntent().getLongExtra("apply_id", 0);
 		if(applyId != 0){
 			showCustomDialog();
 			NetworkApi.getApplyInfo(applyId, mListener);
 		}
+		if(!MyApplication.getInstance().isUser()){
+			findViewById(R.id.btn_agree).setVisibility(View.VISIBLE);
+			findViewById(R.id.btn_agree).setOnClickListener(this);
+		}
 	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_agree:
+			if(applyId == 0){
+				return;
+			}
+			showCustomDialog();
+			NetworkApi.agreeApply(applyId, mAgreeListener);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private Listener<String> mAgreeListener = new Listener<String>() {
+		public void onResponse(String response) {
+			hideCustomDialog();
+			finish();
+		};
+	};
 	
 	private Listener<ApplyInfoBean> mListener = new Listener<ApplyInfoBean>() {
 		@Override
@@ -54,6 +82,7 @@ public class ApplyInfoActivity extends BaseActivity {
 		((TextView) findViewById(R.id.tv_introduce)).setText(itemBean.instr);	
 		if(!MyApplication.getInstance().isUser()){
 			findViewById(R.id.btn_agree).setVisibility(View.VISIBLE);
+			findViewById(R.id.btn_agree).setOnClickListener(this);
 		}
 	}
 }

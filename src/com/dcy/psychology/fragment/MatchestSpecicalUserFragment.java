@@ -67,6 +67,9 @@ public class MatchestSpecicalUserFragment extends Fragment implements OnItemClic
 			if(mLoadingDialog.isShowing()){
 				mLoadingDialog.dismiss();
 			}
+			if(result == null){
+				return;
+			}
 			dataList.addAll(result);
 			mAdapter.notifyDataSetChanged();
 		}
