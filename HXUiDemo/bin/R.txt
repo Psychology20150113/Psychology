@@ -436,8 +436,8 @@ int id container_remove 0x7f0d0013
 int id container_status_btn 0x7f0d00d9
 int id container_to_group 0x7f0d0010
 int id delete_contact 0x7f0d00e6
-int id delete_conversation 0x7f0d00eb
-int id delete_message 0x7f0d00ec
+int id delete_conversation 0x7f0d00e8
+int id delete_message 0x7f0d00e9
 int id edit 0x7f0d0081
 int id edit_group_introduction 0x7f0d0058
 int id edit_group_name 0x7f0d0057
@@ -538,7 +538,7 @@ int id recorder_start 0x7f0d00b5
 int id recorder_stop 0x7f0d00b6
 int id recording_container 0x7f0d0029
 int id recording_hint 0x7f0d002b
-int id remove 0x7f0d00ed
+int id remove 0x7f0d00ea
 int id rl_blacklist 0x7f0d0039
 int id rl_bottom 0x7f0d0015
 int id rl_change_group_name 0x7f0d0038
@@ -611,9 +611,6 @@ int id tv_version 0x7f0d002d
 int id underline 0x7f0d0002
 int id unread_address_number 0x7f0d0053
 int id unread_msg_number 0x7f0d0050
-int id update_blacklist 0x7f0d00e9
-int id update_contacts 0x7f0d00e8
-int id update_groups 0x7f0d00ea
 int id user_state 0x7f0d00c1
 int id username 0x7f0d0048
 int id vPager 0x7f0d0021
@@ -792,7 +789,6 @@ int string Select_the_contact 0x7f08005f
 int string Send_the_following_pictures 0x7f0800f8
 int string Send_voice_need_sdcard_support 0x7f080091
 int string Shielding_of_the_message 0x7f08005e
-int string Sync_Groups_From_Server 0x7f080113
 int string The_delete_button_is_clicked 0x7f0800b2
 int string The_file_is_not_greater_than_10_m 0x7f08008f
 int string The_new_group_chat 0x7f080056
@@ -819,7 +815,6 @@ int string Whether_the_public 0x7f080059
 int string Whether_to_empty_all_chats 0x7f080090
 int string Whether_to_send 0x7f0800d2
 int string add_friend 0x7f08004e
-int string add_public_chat_room 0x7f080112
 int string add_public_group_chat 0x7f0800fe
 int string address_book 0x7f080048
 int string agree 0x7f080070
@@ -977,12 +972,6 @@ int string the_current_group 0x7f080098
 int string the_current_network 0x7f0800c9
 int string unable_to_connect 0x7f08006e
 int string unable_to_get_loaction 0x7f08008a
-int string update_black_list 0x7f080115
-int string update_black_list_failed 0x7f080118
-int string update_contact_list 0x7f080114
-int string update_contact_list_failed 0x7f080117
-int string update_groups 0x7f080116
-int string update_groups_failed 0x7f080119
 int string user_card 0x7f08000f
 int string user_name 0x7f080065
 int string video 0x7f08002d

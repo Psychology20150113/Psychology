@@ -28,7 +28,7 @@ public class AdvanceFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
 		mLoadingDialog = new CustomProgressDialog(mContext);
-		mAdapter = new TalkingAdapter(mContext, dataList);
+//		mAdapter = new TalkingAdapter(mContext, dataList);
 		mLoadingDialog.show();
 		new GetMatchestSpecialList().execute();
 	}

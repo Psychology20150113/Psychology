@@ -15,6 +15,7 @@ package com.easemob.chatuidemo.activity;
 
 import java.io.File;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class AlertDialog extends BaseActivity {
 	private EditText editText;
 	private boolean isEditextShow;
 	
-	@Override
+	@SuppressLint("WrongViewCast") @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alert_dialog);
@@ -46,18 +47,18 @@ public class AlertDialog extends BaseActivity {
 		mButton = (Button) findViewById(R.id.btn_cancel);
 		imageView = (ImageView) findViewById(R.id.image);
 		editText = (EditText) findViewById(R.id.edit);
-		//提示内容
+		//鎻愮ず鍐呭
 		String msg = getIntent().getStringExtra("msg");
-		//提示标题
+		//鎻愮ず鏍囬
 		String title = getIntent().getStringExtra("title");
 		position = getIntent().getIntExtra("position", -1);
-		//是否显示取消标题
+		//鏄惁鏄剧ず鍙栨秷鏍囬
 		boolean isCanceTitle=getIntent().getBooleanExtra("titleIsCancel", false);
-		//是否显示取消按钮
+		//鏄惁鏄剧ず鍙栨秷鎸夐挳
 		boolean isCanceShow = getIntent().getBooleanExtra("cancel", false);
-		//是否显示文本编辑框
+		//鏄惁鏄剧ず鏂囨湰缂栬緫妗�
 		isEditextShow = getIntent().getBooleanExtra("editTextShow",false);
-		//转发复制的图片的path
+		//杞彂澶嶅埗鐨勫浘鐗囩殑path
 		String path = getIntent().getStringExtra("forwardImage");
 		//
 		String edit_text = getIntent().getStringExtra("edit_text");
@@ -72,7 +73,7 @@ public class AlertDialog extends BaseActivity {
 		if(isCanceShow)
 			mButton.setVisibility(View.VISIBLE);
 		if(path != null){
-			 //优先拿大图，没有去取缩略图
+			 //浼樺厛鎷垮ぇ鍥撅紝娌℃湁鍘诲彇缂╃暐鍥�
 			if(!new File(path).exists())
 				path = DownloadImageTask.getThumbnailImagePath(path);
 		    imageView.setVisibility(View.VISIBLE);

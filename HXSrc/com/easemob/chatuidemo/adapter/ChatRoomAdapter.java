@@ -39,7 +39,7 @@ public class ChatRoomAdapter extends ArrayAdapter<EMChatRoom> {
 	public ChatRoomAdapter(Context context, int res, List<EMChatRoom> groups) {
 		super(context, res, groups);
 		this.inflater = LayoutInflater.from(context);
-		addChatRoomString = context.getResources().getString(R.string.add_public_chat_room);
+		//addChatRoomString = context.getResources().getString(R.string.add_public_chat_room);
 	}
 
 	@Override

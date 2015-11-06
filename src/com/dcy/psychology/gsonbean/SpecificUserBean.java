@@ -13,7 +13,7 @@ public class SpecificUserBean implements Serializable{
 	public String SpecificUserTemperamentTest;
 	public boolean IsFollow;
 	public float MatchResult;
-	public int applyState;
+	public int applyState = -1;
 	
 	public static SpecificUserBean valueOf(ApplyInfoBean itemBean){
 		SpecificUserBean item = new SpecificUserBean();

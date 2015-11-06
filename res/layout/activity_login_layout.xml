@@ -78,7 +78,7 @@
     <Button 
         android:id="@+id/register_btn"
        style="@style/login_button_style"
-       android:layout_marginTop="84dp"
+       android:layout_gravity="bottom"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:text="@string/newregister"

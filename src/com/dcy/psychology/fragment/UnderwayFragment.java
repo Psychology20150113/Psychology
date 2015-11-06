@@ -28,7 +28,7 @@ public class UnderwayFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
 		mLoadingDialog = new CustomProgressDialog(mContext);
-		mAdapter = new TalkingAdapter(mContext, dataList,false);
+//		mAdapter = new TalkingAdapter(mContext, dataList,false);
 		mLoadingDialog.show();
 		new GetMatchestSpecialList().execute();
 	}

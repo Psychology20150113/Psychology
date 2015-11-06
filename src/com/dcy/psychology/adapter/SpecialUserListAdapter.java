@@ -104,6 +104,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 				mHolder.statueTv.setBackgroundResource(R.drawable.bg_tv_busy);
 				break;
 			default:
+				mHolder.statueTv.setVisibility(View.GONE);
 				break;
 		}
 		

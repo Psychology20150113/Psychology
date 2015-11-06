@@ -743,8 +743,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int container_status_btn=0x7f0d00d9;
         public static int container_to_group=0x7f0d0010;
         public static int delete_contact=0x7f0d00e6;
-        public static int delete_conversation=0x7f0d00eb;
-        public static int delete_message=0x7f0d00ec;
+        public static int delete_conversation=0x7f0d00e8;
+        public static int delete_message=0x7f0d00e9;
         public static int edit=0x7f0d0081;
         public static int edit_group_introduction=0x7f0d0058;
         public static int edit_group_name=0x7f0d0057;
@@ -845,7 +845,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int recorder_stop=0x7f0d00b6;
         public static int recording_container=0x7f0d0029;
         public static int recording_hint=0x7f0d002b;
-        public static int remove=0x7f0d00ed;
+        public static int remove=0x7f0d00ea;
         public static int rl_blacklist=0x7f0d0039;
         public static int rl_bottom=0x7f0d0015;
         public static int rl_change_group_name=0x7f0d0038;
@@ -918,9 +918,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int underline=0x7f0d0002;
         public static int unread_address_number=0x7f0d0053;
         public static int unread_msg_number=0x7f0d0050;
-        public static int update_blacklist=0x7f0d00e9;
-        public static int update_contacts=0x7f0d00e8;
-        public static int update_groups=0x7f0d00ea;
         public static int user_state=0x7f0d00c1;
         public static int username=0x7f0d0048;
         public static int vPager=0x7f0d0021;
@@ -1109,7 +1106,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int Send_the_following_pictures=0x7f0800f8;
         public static int Send_voice_need_sdcard_support=0x7f080091;
         public static int Shielding_of_the_message=0x7f08005e;
-        public static int Sync_Groups_From_Server=0x7f080113;
         public static int The_delete_button_is_clicked=0x7f0800b2;
         public static int The_file_is_not_greater_than_10_m=0x7f08008f;
         public static int The_new_group_chat=0x7f080056;
@@ -1136,7 +1132,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int Whether_to_empty_all_chats=0x7f080090;
         public static int Whether_to_send=0x7f0800d2;
         public static int add_friend=0x7f08004e;
-        public static int add_public_chat_room=0x7f080112;
         public static int add_public_group_chat=0x7f0800fe;
         public static int address_book=0x7f080048;
         public static int agree=0x7f080070;
@@ -1294,12 +1289,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int the_current_network=0x7f0800c9;
         public static int unable_to_connect=0x7f08006e;
         public static int unable_to_get_loaction=0x7f08008a;
-        public static int update_black_list=0x7f080115;
-        public static int update_black_list_failed=0x7f080118;
-        public static int update_contact_list=0x7f080114;
-        public static int update_contact_list_failed=0x7f080117;
-        public static int update_groups=0x7f080116;
-        public static int update_groups_failed=0x7f080119;
         public static int user_card=0x7f08000f;
         public static int user_name=0x7f080065;
         public static int video=0x7f08002d;

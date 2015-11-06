@@ -40,5 +40,5 @@ public class UserInfoBean {
 	public int DoctorIn;
 	public String DoctorMatch;
 	public int doctorcount;
-	public int succes;
+	public float succes;
 }

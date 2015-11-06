@@ -101,7 +101,7 @@ import com.easemob.util.PathUtil;
 import com.easemob.util.VoiceRecorder;
 
 /**
- * 聊天页面
+ * 鑱婂ぉ椤甸潰
  * 
  */
 public class ChatActivity extends BaseActivity implements OnClickListener, EMEventListener{
@@ -165,7 +165,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	private int chatType;
 	private EMConversation conversation;
 	public static ChatActivity activityInstance = null;
-	// 给谁发送消息
+	// 缁欒皝鍙戦�佹秷鎭�
 	private String toChatUsername;
 	private VoiceRecorder voiceRecorder;
 	private MessageAdapter adapter;
@@ -189,7 +189,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	private Handler micImageHandler = new Handler() {
 		@Override
 		public void handleMessage(android.os.Message msg) {
-			// 切换msg切换图片
+			// 鍒囨崲msg鍒囨崲鍥剧墖
 			micImage.setImageDrawable(micImages[msg.what]);
 		}
 	};
@@ -201,6 +201,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chat);
+		hideTitleView();
 		activityInstance = this;
 		initView();
 		setUpView();
@@ -232,7 +233,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		more = findViewById(R.id.more);
 		edittext_layout.setBackgroundResource(R.drawable.input_bar_bg_normal);
 
-		// 动画资源文件,用于录制语音时
+		// 鍔ㄧ敾璧勬簮鏂囦欢,鐢ㄤ簬褰曞埗璇煶鏃�
 		micImages = new Drawable[] { getResources().getDrawable(R.drawable.record_animate_01),
 				getResources().getDrawable(R.drawable.record_animate_02),
 				getResources().getDrawable(R.drawable.record_animate_03),
@@ -248,9 +249,9 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				getResources().getDrawable(R.drawable.record_animate_13),
 				getResources().getDrawable(R.drawable.record_animate_14), };
 
-		// 表情list
+		// 琛ㄦ儏list
 		reslist = getExpressionRes(35);
-		// 初始化表情viewpager
+		// 鍒濆鍖栬〃鎯卾iewpager
 		List<View> views = new ArrayList<View>();
 		View gv1 = getGridChildView(1);
 		View gv2 = getGridChildView(2);
@@ -284,7 +285,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				btnContainer.setVisibility(View.GONE);
 			}
 		});
-		// 监听文字框
+		// 鐩戝惉鏂囧瓧妗�
 		mEditTextContent.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -366,10 +367,10 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		wakeLock = ((PowerManager) getSystemService(Context.POWER_SERVICE)).newWakeLock(
 				PowerManager.SCREEN_DIM_WAKE_LOCK, "demo");
-		// 判断单聊还是群聊
+		// 鍒ゆ柇鍗曡亰杩樻槸缇よ亰
 		chatType = getIntent().getIntExtra("chatType", CHATTYPE_SINGLE);
 
-		if (chatType == CHATTYPE_SINGLE) { // 单聊
+		if (chatType == CHATTYPE_SINGLE) { // 鍗曡亰
 			toChatUsername = getIntent().getStringExtra("userId");
 			((TextView) findViewById(R.id.name)).setText(toChatUsername);
 //			Map<String,RobotUser> robotMap=((DemoHXSDKHelper)HXSDKHelper.getInstance()).getRobotList();
@@ -385,7 +386,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 //				((TextView) findViewById(R.id.name)).setText(toChatUsername);
 //			}
 		} else {
-			// 群聊
+			// 缇よ亰
 			findViewById(R.id.container_to_group).setVisibility(View.VISIBLE);
 			findViewById(R.id.container_remove).setVisibility(View.GONE);
 			toChatUsername = getIntent().getStringExtra("groupId");
@@ -406,7 +407,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	        // show forward message if the message is not null
 	        String forward_msg_id = getIntent().getStringExtra("forward_msg_id");
 	        if (forward_msg_id != null) {
-	            // 显示发送要转发的消息
+	            // 鏄剧ず鍙戦�佽杞彂鐨勬秷鎭�
 	            forwardMessage(forward_msg_id);
 	        }
 		}
@@ -421,11 +422,11 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	        conversation = EMChatManager.getInstance().getConversationByType(toChatUsername,EMConversationType.ChatRoom);
 	    }
 	     
-        // 把此会话的未读数置为0
+        // 鎶婃浼氳瘽鐨勬湭璇绘暟缃负0
         conversation.markAllMessagesAsRead();
 
-        // 初始化db时，每个conversation加载数目是getChatOptions().getNumberOfMessagesLoaded
-        // 这个数目如果比用户期望进入会话界面时显示的个数不一样，就多加载一些
+        // 鍒濆鍖杁b鏃讹紝姣忎釜conversation鍔犺浇鏁扮洰鏄痝etChatOptions().getNumberOfMessagesLoaded
+        // 杩欎釜鏁扮洰濡傛灉姣旂敤鎴锋湡鏈涜繘鍏ヤ細璇濈晫闈㈡椂鏄剧ず鐨勪釜鏁颁笉涓�鏍凤紝灏卞鍔犺浇涓�浜�
         final List<EMMessage> msgs = conversation.getAllMessages();
         int msgCount = msgs != null ? msgs.size() : 0;
         if (msgCount < conversation.getAllMsgCount() && msgCount < pagesize) {
@@ -476,7 +477,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	
 	protected void onListViewCreation(){
         adapter = new MessageAdapter(ChatActivity.this, toChatUsername, chatType);
-        // 显示消息
+        // 鏄剧ず娑堟伅
         listView.setAdapter(adapter);
         
         listView.setOnScrollListener(new ListScrollListener());
@@ -506,7 +507,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
             ((TextView) findViewById(R.id.name)).setText(toChatUsername);
         }
         
-        // 监听当前会话的群聊解散被T事件
+        // 鐩戝惉褰撳墠浼氳瘽鐨勭兢鑱婅В鏁ｈT浜嬩欢
         groupListener = new GroupListener();
         EMGroupManager.getInstance().addGroupChangeListener(groupListener);
 	}
@@ -567,19 +568,19 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		}
 		if (requestCode == REQUEST_CODE_CONTEXT_MENU) {
 			switch (resultCode) {
-			case RESULT_CODE_COPY: // 复制消息
+			case RESULT_CODE_COPY: // 澶嶅埗娑堟伅
 				EMMessage copyMsg = adapter.getItem(data.getIntExtra("position", -1));
 				// clipboard.setText(SmileUtils.getSmiledText(ChatActivity.this,
 				// ((TextMessageBody) copyMsg.getBody()).getMessage()));
 				clipboard.setText(((TextMessageBody) copyMsg.getBody()).getMessage());
 				break;
-			case RESULT_CODE_DELETE: // 删除消息
+			case RESULT_CODE_DELETE: // 鍒犻櫎娑堟伅
 				EMMessage deleteMsg = adapter.getItem(data.getIntExtra("position", -1));
 				conversation.removeMessage(deleteMsg.getMsgId());
 				adapter.refreshSeekTo(data.getIntExtra("position", adapter.getCount()) - 1);
 				break;
 
-//			case RESULT_CODE_FORWARD: // 转发消息
+//			case RESULT_CODE_FORWARD: // 杞彂娑堟伅
 //				EMMessage forwardMsg = (EMMessage) adapter.getItem(data.getIntExtra("position", 0));
 //				Intent intent = new Intent(this, ForwardMessageActivity.class);
 //				intent.putExtra("forward_msg_id", forwardMsg.getMsgId());
@@ -591,15 +592,15 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				break;
 			}
 		}
-		if (resultCode == RESULT_OK) { // 清空消息
+		if (resultCode == RESULT_OK) { // 娓呯┖娑堟伅
 			if (requestCode == REQUEST_CODE_EMPTY_HISTORY) {
-				// 清空会话
+				// 娓呯┖浼氳瘽
 				EMChatManager.getInstance().clearConversation(toChatUsername);
 				adapter.refresh();
-			} else if (requestCode == REQUEST_CODE_CAMERA) { // 发送照片
+			} else if (requestCode == REQUEST_CODE_CAMERA) { // 鍙戦�佺収鐗�
 				if (cameraFile != null && cameraFile.exists())
 					sendPicture(cameraFile.getAbsolutePath());
-			} else if (requestCode == REQUEST_CODE_SELECT_VIDEO) { // 发送本地选择的视频
+			} else if (requestCode == REQUEST_CODE_SELECT_VIDEO) { // 鍙戦�佹湰鍦伴�夋嫨鐨勮棰�
 
 				int duration = data.getIntExtra("dur", 0);
 				String videoPath = data.getStringExtra("path");
@@ -638,14 +639,14 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				}
 				sendVideo(videoPath, file.getAbsolutePath(), duration / 1000);
 
-			} else if (requestCode == REQUEST_CODE_LOCAL) { // 发送本地图片
+			} else if (requestCode == REQUEST_CODE_LOCAL) { // 鍙戦�佹湰鍦板浘鐗�
 				if (data != null) {
 					Uri selectedImage = data.getData();
 					if (selectedImage != null) {
 						sendPicByUri(selectedImage);
 					}
 				}
-			} else if (requestCode == REQUEST_CODE_SELECT_FILE) { // 发送选择的文件
+			} else if (requestCode == REQUEST_CODE_SELECT_FILE) { // 鍙戦�侀�夋嫨鐨勬枃浠�
 				if (data != null) {
 					Uri uri = data.getData();
 					if (uri != null) {
@@ -653,7 +654,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 					}
 				}
 
-			} else if (requestCode == REQUEST_CODE_MAP) { // 地图
+			} else if (requestCode == REQUEST_CODE_MAP) { // 鍦板浘
 				double latitude = data.getDoubleExtra("latitude", 0);
 				double longitude = data.getDoubleExtra("longitude", 0);
 				String locationAddress = data.getStringExtra("address");
@@ -664,22 +665,22 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 					String st = getResources().getString(R.string.unable_to_get_loaction);
 					Toast.makeText(this, st, 0).show();
 				}
-				// 重发消息
+				// 閲嶅彂娑堟伅
 			} else if (requestCode == REQUEST_CODE_TEXT || requestCode == REQUEST_CODE_VOICE
 					|| requestCode == REQUEST_CODE_PICTURE || requestCode == REQUEST_CODE_LOCATION
 					|| requestCode == REQUEST_CODE_VIDEO || requestCode == REQUEST_CODE_FILE) {
 				resendMessage();
 			} else if (requestCode == REQUEST_CODE_COPY_AND_PASTE) {
-				// 粘贴
+				// 绮樿创
 				if (!TextUtils.isEmpty(clipboard.getText())) {
 					String pasteText = clipboard.getText().toString();
 					if (pasteText.startsWith(COPY_IMAGE)) {
-						// 把图片前缀去掉，还原成正常的path
+						// 鎶婂浘鐗囧墠缂�鍘绘帀锛岃繕鍘熸垚姝ｅ父鐨刾ath
 						sendPicture(pasteText.replace(COPY_IMAGE, ""));
 					}
 
 				}
-			} else if (requestCode == REQUEST_CODE_ADD_TO_BLACKLIST) { // 移入黑名单
+			} else if (requestCode == REQUEST_CODE_ADD_TO_BLACKLIST) { // 绉诲叆榛戝悕鍗�
 				EMMessage deleteMsg = adapter.getItem(data.getIntExtra("position", -1));
 				addUserToBlacklist(deleteMsg.getFrom());
 			} else if (conversation.getMsgCount() > 0) {
@@ -692,7 +693,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 消息图标点击事件
+	 * 娑堟伅鍥炬爣鐐瑰嚮浜嬩欢
 	 * 
 	 * @param view
 	 */
@@ -700,23 +701,23 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	public void onClick(View view) {
 		String st1 = getResources().getString(R.string.not_connect_to_server);
 		int id = view.getId();
-		if (id == R.id.btn_send) {// 点击发送按钮(发文字和表情)
+		if (id == R.id.btn_send) {// 鐐瑰嚮鍙戦�佹寜閽�(鍙戞枃瀛楀拰琛ㄦ儏)
 			String s = mEditTextContent.getText().toString();
 			sendText(s);
 		} else if (id == R.id.btn_take_picture) {
-			selectPicFromCamera();// 点击照相图标
+			selectPicFromCamera();// 鐐瑰嚮鐓х浉鍥炬爣
 		} else if (id == R.id.btn_picture) {
-			selectPicFromLocal(); // 点击图片图标
-//		} else if (id == R.id.btn_location) { // 位置
+			selectPicFromLocal(); // 鐐瑰嚮鍥剧墖鍥炬爣
+//		} else if (id == R.id.btn_location) { // 浣嶇疆
 //			startActivityForResult(new Intent(this, BaiduMapActivity.class), REQUEST_CODE_MAP);
-		} else if (id == R.id.iv_emoticons_normal) { // 点击显示表情框
+		} else if (id == R.id.iv_emoticons_normal) { // 鐐瑰嚮鏄剧ず琛ㄦ儏妗�
 			more.setVisibility(View.VISIBLE);
 			iv_emoticons_normal.setVisibility(View.INVISIBLE);
 			iv_emoticons_checked.setVisibility(View.VISIBLE);
 			btnContainer.setVisibility(View.GONE);
 			emojiIconContainer.setVisibility(View.VISIBLE);
 			hideKeyboard();
-		} else if (id == R.id.iv_emoticons_checked) { // 点击隐藏表情框
+		} else if (id == R.id.iv_emoticons_checked) { // 鐐瑰嚮闅愯棌琛ㄦ儏妗�
 			iv_emoticons_normal.setVisibility(View.VISIBLE);
 			iv_emoticons_checked.setVisibility(View.INVISIBLE);
 			btnContainer.setVisibility(View.VISIBLE);
@@ -724,12 +725,12 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 			more.setVisibility(View.GONE);
 
 		} else if (id == R.id.btn_video) {
-//			// 点击摄像图标
+//			// 鐐瑰嚮鎽勫儚鍥炬爣
 //			Intent intent = new Intent(ChatActivity.this, ImageGridActivity.class);
 //			startActivityForResult(intent, REQUEST_CODE_SELECT_VIDEO);
-		} else if (id == R.id.btn_file) { // 点击文件图标
+		} else if (id == R.id.btn_file) { // 鐐瑰嚮鏂囦欢鍥炬爣
 			selectFileFromLocal();
-//		} else if (id == R.id.btn_voice_call) { // 点击语音电话图标
+//		} else if (id == R.id.btn_voice_call) { // 鐐瑰嚮璇煶鐢佃瘽鍥炬爣
 //			if (!EMChatManager.getInstance().isConnected())
 //				Toast.makeText(this, st1, 0).show();
 //			else{
@@ -738,7 +739,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 //				voiceCallBtn.setEnabled(false);
 //				toggleMore(null);
 //			}
-//		} else if (id == R.id.btn_video_call) { // 视频通话
+//		} else if (id == R.id.btn_video_call) { // 瑙嗛閫氳瘽
 //			if (!EMChatManager.getInstance().isConnected())
 //				Toast.makeText(this, st1, 0).show();
 //			else{
@@ -751,7 +752,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 事件监听
+	 * 浜嬩欢鐩戝惉
 	 * 
 	 * see {@link EMNotifierEvent}
      */
@@ -760,26 +761,26 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
         switch (event.getEvent()) {
         case EventNewMessage:
         {
-            //获取到message
+            //鑾峰彇鍒癿essage
             EMMessage message = (EMMessage) event.getData();
             
             String username = null;
-            //群组消息
+            //缇ょ粍娑堟伅
             if(message.getChatType() == ChatType.GroupChat || message.getChatType() == ChatType.ChatRoom){
                 username = message.getTo();
             }
             else{
-                //单聊消息
+                //鍗曡亰娑堟伅
                 username = message.getFrom();
             }
 
-            //如果是当前会话的消息，刷新聊天页面
+            //濡傛灉鏄綋鍓嶄細璇濈殑娑堟伅锛屽埛鏂拌亰澶╅〉闈�
             if(username.equals(getToChatUsername())){
                 refreshUIWithNewMessage();
-                //声音和震动提示有新消息
+                //澹伴煶鍜岄渿鍔ㄦ彁绀烘湁鏂版秷鎭�
                 HXSDKHelper.getInstance().getNotifier().viberateAndPlayTone(message);
             }else{
-                //如果消息不是和当前聊天ID的消息
+                //濡傛灉娑堟伅涓嶆槸鍜屽綋鍓嶈亰澶㊣D鐨勬秷鎭�
                 HXSDKHelper.getInstance().getNotifier().onNewMsg(message);
             }
 
@@ -787,14 +788,14 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
         }
         case EventDeliveryAck:
         {
-            //获取到message
+            //鑾峰彇鍒癿essage
             EMMessage message = (EMMessage) event.getData();
             refreshUI();
             break;
         }
         case EventReadAck:
         {
-            //获取到message
+            //鑾峰彇鍒癿essage
             EMMessage message = (EMMessage) event.getData();
             refreshUI();
             break;
@@ -840,7 +841,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 照相获取图片
+	 * 鐓х浉鑾峰彇鍥剧墖
 	 */
 	public void selectPicFromCamera() {
 		if (!CommonUtils.isExitsSdcard()) {
@@ -857,7 +858,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 选择文件
+	 * 閫夋嫨鏂囦欢
 	 */
 	private void selectFileFromLocal() {
 		Intent intent = null;
@@ -873,7 +874,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 从图库获取图片
+	 * 浠庡浘搴撹幏鍙栧浘鐗�
 	 */
 	public void selectPicFromLocal() {
 		Intent intent;
@@ -888,7 +889,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 发送文本消息
+	 * 鍙戦�佹枃鏈秷鎭�
 	 * 
 	 * @param content
 	 *            message content
@@ -899,7 +900,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
 		if (content.length() > 0) {
 			EMMessage message = EMMessage.createSendMessage(EMMessage.Type.TXT);
-			// 如果是群聊，设置chattype,默认是单聊
+			// 濡傛灉鏄兢鑱婏紝璁剧疆chattype,榛樿鏄崟鑱�
 			if (chatType == CHATTYPE_GROUP){
 			    message.setChatType(ChatType.GroupChat);
 			}else if(chatType == CHATTYPE_CHATROOM){
@@ -909,13 +910,13 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				message.setAttribute("em_robot_message", true);
 			}
 			TextMessageBody txtBody = new TextMessageBody(content);
-			// 设置消息body
+			// 璁剧疆娑堟伅body
 			message.addBody(txtBody);
-			// 设置要发给谁,用户username或者群聊groupid
+			// 璁剧疆瑕佸彂缁欒皝,鐢ㄦ埛username鎴栬�呯兢鑱奼roupid
 			message.setReceipt(toChatUsername);
-			// 把messgage加到conversation中
+			// 鎶妋essgage鍔犲埌conversation涓�
 			conversation.addMessage(message);
-			// 通知adapter有消息变动，adapter会根据加入的这条message显示消息和调用sdk的发送方法
+			// 閫氱煡adapter鏈夋秷鎭彉鍔紝adapter浼氭牴鎹姞鍏ョ殑杩欐潯message鏄剧ず娑堟伅鍜岃皟鐢╯dk鐨勫彂閫佹柟娉�
 			adapter.refreshSelectLast();
 			mEditTextContent.setText("");
 
@@ -925,7 +926,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 发送语音
+	 * 鍙戦�佽闊�
 	 * 
 	 * @param filePath
 	 * @param fileName
@@ -938,7 +939,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		}
 		try {
 			final EMMessage message = EMMessage.createSendMessage(EMMessage.Type.VOICE);
-			// 如果是群聊，设置chattype,默认是单聊
+			// 濡傛灉鏄兢鑱婏紝璁剧疆chattype,榛樿鏄崟鑱�
 			if (chatType == CHATTYPE_GROUP){
 				message.setChatType(ChatType.GroupChat);
 				}else if(chatType == CHATTYPE_CHATROOM){
@@ -962,7 +963,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 发送图片
+	 * 鍙戦�佸浘鐗�
 	 * 
 	 * @param filePath
 	 */
@@ -970,7 +971,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		String to = toChatUsername;
 		// create and add image message in view
 		final EMMessage message = EMMessage.createSendMessage(EMMessage.Type.IMAGE);
-		// 如果是群聊，设置chattype,默认是单聊
+		// 濡傛灉鏄兢鑱婏紝璁剧疆chattype,榛樿鏄崟鑱�
 		if (chatType == CHATTYPE_GROUP){
 			message.setChatType(ChatType.GroupChat);
 		}else if(chatType == CHATTYPE_CHATROOM){
@@ -979,7 +980,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
 		message.setReceipt(to);
 		ImageMessageBody body = new ImageMessageBody(new File(filePath));
-		// 默认超过100k的图片会压缩后发给对方，可以设置成发送原图
+		// 榛樿瓒呰繃100k鐨勫浘鐗囦細鍘嬬缉鍚庡彂缁欏鏂癸紝鍙互璁剧疆鎴愬彂閫佸師鍥�
 		// body.setSendOriginalImage(true);
 		message.addBody(body);
 		if(isRobot){
@@ -994,7 +995,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 发送视频消息
+	 * 鍙戦�佽棰戞秷鎭�
 	 */
 	private void sendVideo(final String filePath, final String thumbPath, final int length) {
 		final File videoFile = new File(filePath);
@@ -1003,7 +1004,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		}
 		try {
 			EMMessage message = EMMessage.createSendMessage(EMMessage.Type.VIDEO);
-			// 如果是群聊，设置chattype,默认是单聊
+			// 濡傛灉鏄兢鑱婏紝璁剧疆chattype,榛樿鏄崟鑱�
 			if (chatType == CHATTYPE_GROUP){
 				message.setChatType(ChatType.GroupChat);
 			}else if(chatType == CHATTYPE_CHATROOM){
@@ -1027,7 +1028,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 根据图库图片uri发送图片
+	 * 鏍规嵁鍥惧簱鍥剧墖uri鍙戦�佸浘鐗�
 	 * 
 	 * @param selectedImage
 	 */
@@ -1064,7 +1065,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 发送位置信息
+	 * 鍙戦�佷綅缃俊鎭�
 	 * 
 	 * @param latitude
 	 * @param longitude
@@ -1073,7 +1074,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	 */
 	private void sendLocationMsg(double latitude, double longitude, String imagePath, String locationAddress) {
 		EMMessage message = EMMessage.createSendMessage(EMMessage.Type.LOCATION);
-		// 如果是群聊，设置chattype,默认是单聊
+		// 濡傛灉鏄兢鑱婏紝璁剧疆chattype,榛樿鏄崟鑱�
 		if (chatType == CHATTYPE_GROUP){
 			message.setChatType(ChatType.GroupChat);
 		}else if(chatType == CHATTYPE_CHATROOM){
@@ -1093,7 +1094,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 发送文件
+	 * 鍙戦�佹枃浠�
 	 * 
 	 * @param uri
 	 */
@@ -1127,9 +1128,9 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 			return;
 		}
 
-		// 创建一个文件消息
+		// 鍒涘缓涓�涓枃浠舵秷鎭�
 		EMMessage message = EMMessage.createSendMessage(EMMessage.Type.FILE);
-		// 如果是群聊，设置chattype,默认是单聊
+		// 濡傛灉鏄兢鑱婏紝璁剧疆chattype,榛樿鏄崟鑱�
 		if (chatType == CHATTYPE_GROUP){
 			message.setChatType(ChatType.GroupChat);
 		}else if(chatType == CHATTYPE_CHATROOM){
@@ -1150,7 +1151,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 重发消息
+	 * 閲嶅彂娑堟伅
 	 */
 	private void resendMessage() {
 		EMMessage msg = null;
@@ -1162,7 +1163,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 显示语音图标按钮
+	 * 鏄剧ず璇煶鍥炬爣鎸夐挳
 	 * 
 	 * @param view
 	 */
@@ -1183,7 +1184,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 显示键盘图标
+	 * 鏄剧ず閿洏鍥炬爣
 	 * 
 	 * @param view
 	 */
@@ -1216,7 +1217,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 点击清空聊天记录
+	 * 鐐瑰嚮娓呯┖鑱婂ぉ璁板綍
 	 * 
 	 * @param view
 	 */
@@ -1227,7 +1228,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 点击进入群组详情
+	 * 鐐瑰嚮杩涘叆缇ょ粍璇︽儏
 	 * 
 	 * @param view
 	 */
@@ -1246,7 +1247,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 显示或隐藏图标按钮页
+	 * 鏄剧ず鎴栭殣钘忓浘鏍囨寜閽〉
 	 * 
 	 * @param view
 	 */
@@ -1272,7 +1273,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 点击文字输入框
+	 * 鐐瑰嚮鏂囧瓧杈撳叆妗�
 	 * 
 	 * @param v
 	 */
@@ -1289,7 +1290,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	private PowerManager.WakeLock wakeLock;
 
 	/**
-	 * 按住说话listener
+	 * 鎸変綇璇磋瘽listener
 	 * 
 	 */
 	class PressToSpeakListen implements View.OnTouchListener {
@@ -1375,7 +1376,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 获取表情的gridview的子view
+	 * 鑾峰彇琛ㄦ儏鐨刧ridview鐨勫瓙view
 	 * 
 	 * @param i
 	 * @return
@@ -1399,24 +1400,24 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				String filename = expressionAdapter.getItem(position);
 				try {
-					// 文字输入框可见时，才可输入表情
-					// 按住说话可见，不让输入表情
+					// 鏂囧瓧杈撳叆妗嗗彲瑙佹椂锛屾墠鍙緭鍏ヨ〃鎯�
+					// 鎸変綇璇磋瘽鍙锛屼笉璁╄緭鍏ヨ〃鎯�
 					if (buttonSetModeKeyboard.getVisibility() != View.VISIBLE) {
 
-						if (filename != "delete_expression") { // 不是删除键，显示表情
-							// 这里用的反射，所以混淆的时候不要混淆SmileUtils这个类
+						if (filename != "delete_expression") { // 涓嶆槸鍒犻櫎閿紝鏄剧ず琛ㄦ儏
+							// 杩欓噷鐢ㄧ殑鍙嶅皠锛屾墍浠ユ贩娣嗙殑鏃跺�欎笉瑕佹贩娣哠mileUtils杩欎釜绫�
 							Class clz = Class.forName("com.easemob.chatuidemo.utils.SmileUtils");
 							Field field = clz.getField(filename);
 							mEditTextContent.append(SmileUtils.getSmiledText(ChatActivity.this,
 									(String) field.get(null)));
-						} else { // 删除文字或者表情
+						} else { // 鍒犻櫎鏂囧瓧鎴栬�呰〃鎯�
 							if (!TextUtils.isEmpty(mEditTextContent.getText())) {
 
-								int selectionStart = mEditTextContent.getSelectionStart();// 获取光标的位置
+								int selectionStart = mEditTextContent.getSelectionStart();// 鑾峰彇鍏夋爣鐨勪綅缃�
 								if (selectionStart > 0) {
 									String body = mEditTextContent.getText().toString();
 									String tempStr = body.substring(0, selectionStart);
-									int i = tempStr.lastIndexOf("[");// 获取最后一个表情的位置
+									int i = tempStr.lastIndexOf("[");// 鑾峰彇鏈�鍚庝竴涓〃鎯呯殑浣嶇疆
 									if (i != -1) {
 										CharSequence cs = tempStr.substring(i, selectionStart);
 										if (SmileUtils.containsKey(cs.toString()))
@@ -1488,7 +1489,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
 //		DemoHXSDKHelper sdkHelper = (DemoHXSDKHelper) DemoHXSDKHelper.getInstance();
 //
-//		// 把此activity 从foreground activity 列表里移除
+//		// 鎶婃activity 浠巉oreground activity 鍒楄〃閲岀Щ闄�
 //		sdkHelper.popActivity(this);
 		
 		super.onStop();
@@ -1500,12 +1501,12 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		if (wakeLock.isHeld())
 			wakeLock.release();
 		if (VoicePlayClickListener.isPlaying && VoicePlayClickListener.currentPlayListener != null) {
-			// 停止语音播放
+			// 鍋滄璇煶鎾斁
 			VoicePlayClickListener.currentPlayListener.stopPlayVoice();
 		}
 
 		try {
-			// 停止录音
+			// 鍋滄褰曢煶
 			if (voiceRecorder.isRecording()) {
 				voiceRecorder.discardRecording();
 				recordingContainer.setVisibility(View.INVISIBLE);
@@ -1515,7 +1516,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 隐藏软键盘
+	 * 闅愯棌杞敭鐩�
 	 */
 	private void hideKeyboard() {
 		if (getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
@@ -1525,7 +1526,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 加入到黑名单
+	 * 鍔犲叆鍒伴粦鍚嶅崟
 	 * 
 	 * @param username
 	 */
@@ -1561,7 +1562,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 返回
+	 * 杩斿洖
 	 * 
 	 * @param view
 	 */
@@ -1574,7 +1575,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 覆盖手机返回键
+	 * 瑕嗙洊鎵嬫満杩斿洖閿�
 	 */
 	@Override
 	public void onBackPressed() {
@@ -1591,7 +1592,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * listview滑动监听listener
+	 * listview婊戝姩鐩戝惉listener
 	 * 
 	 */
 	private class ListScrollListener implements OnScrollListener {
@@ -1603,12 +1604,12 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 				/*if (view.getFirstVisiblePosition() == 0 && !isloading && haveMoreData && conversation.getAllMessages().size() != 0) {
 					isloading = true;
 					loadmorePB.setVisibility(View.VISIBLE);
-					// sdk初始化加载的聊天记录为20条，到顶时去db里获取更多					
+					// sdk鍒濆鍖栧姞杞界殑鑱婂ぉ璁板綍涓�20鏉★紝鍒伴《鏃跺幓db閲岃幏鍙栨洿澶�					
 					List<EMMessage> messages;
 					EMMessage firstMsg = conversation.getAllMessages().get(0);
 					try {
-						// 获取更多messges，调用此方法的时候从db获取的messages
-						// sdk会自动存入到此conversation中
+						// 鑾峰彇鏇村messges锛岃皟鐢ㄦ鏂规硶鐨勬椂鍊欎粠db鑾峰彇鐨刴essages
+						// sdk浼氳嚜鍔ㄥ瓨鍏ュ埌姝onversation涓�
 						if (chatType == CHATTYPE_SINGLE)
 							messages = conversation.loadMoreMsgFromDB(firstMsg.getMsgId(), pagesize);
 						else
@@ -1622,7 +1623,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 					} catch (InterruptedException e) {
 					}
 					if (messages.size() != 0) {
-						// 刷新ui
+						// 鍒锋柊ui
 						if (messages.size() > 0) {
 							adapter.refreshSeekTo(messages.size() - 1);
 						}
@@ -1649,7 +1650,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
 	@Override
 	protected void onNewIntent(Intent intent) {
-		// 点击notification bar进入聊天页面，保证只有一个聊天页面
+		// 鐐瑰嚮notification bar杩涘叆鑱婂ぉ椤甸潰锛屼繚璇佸彧鏈変竴涓亰澶╅〉闈�
 		String username = intent.getStringExtra("userId");
 		if (toChatUsername.equals(username))
 			super.onNewIntent(intent);
@@ -1661,7 +1662,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 
 	/**
-	 * 转发消息
+	 * 杞彂娑堟伅
 	 * 
 	 * @param forward_msg_id
 	 */
@@ -1670,17 +1671,17 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 		EMMessage.Type type = forward_msg.getType();
 		switch (type) {
 		case TXT:
-			// 获取消息内容，发送消息
+			// 鑾峰彇娑堟伅鍐呭锛屽彂閫佹秷鎭�
 			String content = ((TextMessageBody) forward_msg.getBody()).getMessage();
 			sendText(content);
 			break;
 		case IMAGE:
-			// 发送图片
+			// 鍙戦�佸浘鐗�
 			String filePath = ((ImageMessageBody) forward_msg.getBody()).getLocalUrl();
 			if (filePath != null) {
 				File file = new File(filePath);
 				if (!file.exists()) {
-					// 不存在大图发送缩略图
+					// 涓嶅瓨鍦ㄥぇ鍥惧彂閫佺缉鐣ュ浘
 					filePath = ImageUtils.getThumbnailImagePath(filePath);
 				}
 				sendPicture(filePath);
@@ -1696,7 +1697,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 	}
 	
 	/**
-	 * 监测群组解散或者被T事件
+	 * 鐩戞祴缇ょ粍瑙ｆ暎鎴栬�呰T浜嬩欢
 	 * 
 	 */
 	class GroupListener extends GroupRemoveListener{
@@ -1720,7 +1721,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
 		@Override
 		public void onGroupDestroy(final String groupId, String groupName) {
-//			// 群组解散正好在此页面，提示群组被解散，并finish此页面
+//			// 缇ょ粍瑙ｆ暎姝ｅソ鍦ㄦ椤甸潰锛屾彁绀虹兢缁勮瑙ｆ暎锛屽苟finish姝ら〉闈�
 //			runOnUiThread(new Runnable() {
 //				String st14 = getResources().getString(R.string.the_current_group);
 //

@@ -2,25 +2,30 @@ package com.dcy.psychology.fragment;
 
 import java.util.ArrayList;
 
-import com.dcy.psychology.R;
-import com.dcy.psychology.adapter.TalkingAdapter;
-import com.dcy.psychology.gsonbean.SpecificUserBean;
-import com.dcy.psychology.util.Utils;
-import com.dcy.psychology.view.CustomProgressDialog;
-
 import android.app.Fragment;
 import android.content.Context;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class Mine_talkaboutFragment extends Fragment {
+import com.android.volley.Response.Listener;
+import com.dcy.psychology.ChatActivity;
+import com.dcy.psychology.MyApplication;
+import com.dcy.psychology.R;
+import com.dcy.psychology.adapter.TalkingAdapter;
+import com.dcy.psychology.gsonbean.ApplyInfoBean;
+import com.dcy.psychology.network.NetworkApi;
+import com.dcy.psychology.view.CustomProgressDialog;
+
+public class Mine_talkaboutFragment extends Fragment implements OnItemClickListener{
 	private CustomProgressDialog mLoadingDialog;
 	private Context mContext;
-	private ArrayList<SpecificUserBean> dataList = new ArrayList<SpecificUserBean>();
+	private ArrayList<ApplyInfoBean> dataList = new ArrayList<ApplyInfoBean>();
 	private TalkingAdapter mAdapter;
 	
 	@Override
@@ -30,7 +35,7 @@ public class Mine_talkaboutFragment extends Fragment {
 		mLoadingDialog = new CustomProgressDialog(mContext);
 		mAdapter = new TalkingAdapter(mContext, dataList);
 		mLoadingDialog.show();
-		new GetMatchestSpecialList().execute();
+		NetworkApi.getAgreedList(mListener);
 	}
 	
 	@Override
@@ -39,22 +44,28 @@ public class Mine_talkaboutFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_mine_talkabout, null);
 		ListView mListView = (ListView) view.findViewById(R.id.lv_talkabout);
 		mListView.setAdapter(mAdapter);
+		mListView.setOnItemClickListener(this);
 		return view;
 	}
 	
-	private class GetMatchestSpecialList extends AsyncTask<Void, Void, ArrayList<SpecificUserBean>>{
-		@Override
-		protected ArrayList<SpecificUserBean> doInBackground(Void... params) {
-			return Utils.getMatchestSpecificUserList();
-		}
-		
-		@Override
-		protected void onPostExecute(ArrayList<SpecificUserBean> result) {
-			if(mLoadingDialog.isShowing()){
-				mLoadingDialog.dismiss();
-			}
-			dataList.addAll(result);
-			mAdapter.notifyDataSetChanged();
-		}
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Intent mIntent = new Intent(mContext, ChatActivity.class);
+		String chatUserName = MyApplication.getInstance().isUser() ? 
+				dataList.get(position).doctorphone : dataList.get(position).userphone;
+		mIntent.putExtra("userId", chatUserName);
+		startActivity(mIntent);
 	}
+	
+	private Listener<ArrayList<ApplyInfoBean>> mListener = new Listener<ArrayList<ApplyInfoBean>>() {
+		public void onResponse(java.util.ArrayList<ApplyInfoBean> response) {
+			mLoadingDialog.dismiss();
+			if(response == null){
+				return;
+			}
+			dataList.addAll(response);
+			mAdapter.notifyDataSetChanged();
+		};
+	};
 }
