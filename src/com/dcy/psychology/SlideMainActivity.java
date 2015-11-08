@@ -99,6 +99,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	private void initView() {
+		((TextView)findViewById(R.id.tv_slide_mine_doctor)).setText(MyApplication.getInstance().isUser() ?
+				R.string.slide_mine_doctor : R.string.slide_mine_student);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		nameText = (TextView) findViewById(R.id.name_tv);
 		nameInfoLayout = findViewById(R.id.rl_name_info);
@@ -142,8 +144,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			slideIv4.setVisibility(View.GONE);
 			loginIv.setVisibility(View.VISIBLE);
 			unloginIv.setVisibility(View.GONE);
-			doctorcountText.setVisibility(View.VISIBLE);
-			messagecountText.setVisibility(View.VISIBLE);
+//			doctorcountText.setVisibility(View.VISIBLE);
+//			messagecountText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
 		}
 		mViewPager = (ViewPager) findViewById(R.id.main_vp);
@@ -170,8 +172,10 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 				slideIv4.setVisibility(View.GONE);
 				loginIv.setVisibility(View.VISIBLE);
 				unloginIv.setVisibility(View.GONE);
-				doctorcountText.setVisibility(View.VISIBLE);
-				messagecountText.setVisibility(View.VISIBLE);
+				((TextView)findViewById(R.id.tv_slide_mine_doctor)).setText(MyApplication.getInstance().isUser() ?
+						R.string.slide_mine_doctor : R.string.slide_mine_student);
+//				doctorcountText.setVisibility(View.VISIBLE);
+//				messagecountText.setVisibility(View.VISIBLE);
 			}
 		}
 	};
@@ -360,8 +364,8 @@ public class SlideMainActivity extends BaseActivity implements OnClickListener{
 			slideIv4.setVisibility(View.GONE);
 			loginIv.setVisibility(View.VISIBLE);
 			unloginIv.setVisibility(View.GONE);
-			doctorcountText.setVisibility(View.VISIBLE);
-			messagecountText.setVisibility(View.VISIBLE);
+//			doctorcountText.setVisibility(View.VISIBLE);
+//			messagecountText.setVisibility(View.VISIBLE);
 			nameText.setText(MyApplication.myPhoneNum);
 			break;
 		default:

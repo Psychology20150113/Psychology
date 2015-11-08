@@ -315,7 +315,7 @@
 	<string name="free_time">空闲时间</string>
 	<string name="such_us">例如:回国半年，准备创业，考虑做一个健身O2O项目；之前在美国做律师，是一个很大的转变，心里没底，想快速了解和适应国内的创业环境。</string>
 	<string name="such_us_introduce">例如:我目前在一家科技媒体做运营，工作3年，传媒大学毕业，业余运营一个微信公众号，平时喜欢写文章，希望职业上有更好的突破。</string>
-	<string name="convenience">根据导师的空闲时间范围自己的空闲时段。</string>
+	<string name="convenience">选择自己的空闲时间</string>
 	<string name="submit">提交</string>
 	<string name="submitsuccess">提交成功</string>
 	<string name="suggest">尽量完善个人资料  &amp; 匹配度测试完整。只有被了解才能赢机会，一旦申请成功，详情将短信通知，如未能如愿，出记住两个秘诀外，还可以参加该导师的直播互动，为下一次的成功预约增加概率。</string>
@@ -360,6 +360,7 @@
 	<string name="busy">近期忙碌</string>
 	<string name="applying">申请进行中</string>
 	<string name="apply_successed">申请已成功</string>
+	<string name="apply_successed_teacher">已同意</string>
 	<string name="apply_outtime">申请已过期</string>
 	<string name="focus">关注话题：</string>
 	<string name="time_slot1">00:00-04:00</string>

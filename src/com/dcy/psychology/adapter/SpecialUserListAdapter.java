@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.dcy.psychology.DoctorPersonalInfo2;
+import com.dcy.psychology.MyApplication;
 import com.dcy.psychology.R;
 import com.dcy.psychology.gsonbean.BasicBean;
 import com.dcy.psychology.gsonbean.SpecificUserBean;
@@ -31,6 +32,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 	private CustomProgressDialog mDialog;
 	private boolean canOpration = true;
 	private AsyncImageCache mAsyncImageCache;
+	private boolean isUser;
 	
 	public SpecialUserListAdapter(Context mContext, ArrayList<SpecificUserBean> dataList){
 		this(mContext, dataList, true);
@@ -42,6 +44,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 		this.mContext = mContext;
 		this.canOpration = canOpration;
 		mAsyncImageCache = AsyncImageCache.from(mContext);
+		isUser = MyApplication.getInstance().isUser();
 	}
 	
 	@Override
@@ -96,7 +99,7 @@ public class SpecialUserListAdapter extends BaseAdapter implements OnClickListen
 				mHolder.statueTv.setBackgroundResource(R.drawable.bg_tv_applying);
 				break;
 			case Constants.State_Apply_success:
-				mHolder.statueTv.setText(R.string.apply_successed);
+				mHolder.statueTv.setText(isUser ? R.string.apply_successed : R.string.apply_successed_teacher);
 				mHolder.statueTv.setBackgroundResource(R.drawable.bg_tv_apply_success);
 				break;
 			case Constants.State_Apply_failed:

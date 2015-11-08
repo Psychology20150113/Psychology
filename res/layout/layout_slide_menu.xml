@@ -100,7 +100,7 @@
             android:layout_marginRight="12dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"          
-            android:visibility="visible"
+            android:visibility="gone"
             android:gravity="center"
             android:background="@drawable/bg_tv_count"
             android:scaleType="centerInside"

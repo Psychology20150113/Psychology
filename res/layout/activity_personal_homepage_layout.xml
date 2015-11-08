@@ -52,7 +52,6 @@
                 android:layout_gravity="center"
                 android:textColor="#ffffff"
                 android:gravity="center"
-                android:text="爱吃水的鱼"
                 android:textSize="13sp" />
 
         </LinearLayout>
@@ -213,6 +212,7 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginTop="17dp"
+             android:visibility="gone"
              android:orientation="horizontal">
             
 		            <TextView
@@ -253,6 +253,7 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginTop="27dp"
+             android:visibility="gone"
              android:orientation="horizontal">
             
 		            <TextView
